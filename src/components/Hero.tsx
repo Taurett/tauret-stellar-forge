@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Zap, Target, Trophy } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden bg-black">
       {/* Background decoration */}
@@ -33,11 +36,11 @@ const Hero = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed font-semibold">
-          UNLEASH YOUR INNER FIGHTER
+          {t('hero.tagline')}
         </p>
         
         <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-          Premium contact sports apparel for K1, kickboxing, and martial arts warriors.
+          {t('hero.description')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -45,14 +48,14 @@ const Hero = () => {
             size="lg" 
             className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-none transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-600/25 uppercase tracking-wider"
           >
-            Shop Collection
+            {t('hero.shopCollection')}
           </Button>
           <Button 
             variant="outline" 
             size="lg"
             className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 rounded-none transition-all duration-300 hover:scale-105 uppercase tracking-wider"
           >
-            View Catalog
+            {t('hero.viewCatalog')}
           </Button>
         </div>
       </div>

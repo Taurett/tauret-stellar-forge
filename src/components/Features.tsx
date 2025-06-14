@@ -1,38 +1,41 @@
 
 import { Shield, Zap, Trophy, Target, Flame, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Features = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: Shield,
-      title: "Combat Protection",
-      description: "Advanced materials and reinforced stitching designed to withstand the intensity of contact sports."
+      title: t('features.combatProtection'),
+      description: t('features.combatProtectionDesc')
     },
     {
       icon: Zap,
-      title: "Lightning Speed",
-      description: "Lightweight, flexible designs that move with you for maximum agility and speed in the ring."
+      title: t('features.lightningSpeed'),
+      description: t('features.lightningSpeedDesc')
     },
     {
       icon: Trophy,
-      title: "Champion Quality",
-      description: "Professional-grade gear trusted by K1 fighters and martial arts champions worldwide."
+      title: t('features.championQuality'),
+      description: t('features.championQualityDesc')
     },
     {
       icon: Target,
-      title: "Precision Fit",
-      description: "Anatomically designed cuts and sizing for optimal comfort and performance during training."
+      title: t('features.precisionFit'),
+      description: t('features.precisionFitDesc')
     },
     {
       icon: Flame,
-      title: "Warrior Spirit",
-      description: "Bold designs that embody the fierce determination and fighting spirit of true warriors."
+      title: t('features.warriorSpirit'),
+      description: t('features.warriorSpiritDesc')
     },
     {
       icon: Star,
-      title: "Elite Performance",
-      description: "Premium fabrics and technology for superior moisture management and durability."
+      title: t('features.elitePerformance'),
+      description: t('features.elitePerformanceDesc')
     }
   ];
 
@@ -41,10 +44,10 @@ const Features = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent uppercase">
-            Built for Warriors
+            {t('features.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Every piece of Tauret gear is engineered for the demands of contact sports and combat training.
+            {t('features.subtitle')}
           </p>
         </div>
         

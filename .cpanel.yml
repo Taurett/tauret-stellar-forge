@@ -4,5 +4,4 @@ deployment:
     - /bin/corepack enable
     - /bin/npm ci
     - /bin/npm run build
-    - /bin/rsync -av --delete --exclude ".git" dist/ $DEPLOYPATH/
 

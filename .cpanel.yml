@@ -1,7 +1,16 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/tauret/public_html
-    - /bin/corepack enable
-    - /bin/npm ci
-    - /bin/npm run build
 
+    # Install Node LTS under ~/.n if missing
+    - export N_PREFIX=/home2/tauret/.n
+    - if ! command -v node >/dev/null 2>&1; then curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts; fi
+    - if [ -x "/home2/tauret/.n/bin/node" ]; then export PATH="/home2/tauret/.n/bin:$PATH"; fi
+
+    # Build your app
+    - corepack enable
+    - npm ci
+    - npm run build
+
+    # Deploy built files
+    - rsync -av --delete --exclude ".git" dist/ $DEPLOYPATH/

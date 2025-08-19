@@ -28,7 +28,7 @@ const Hero = () => {
               <img 
                 src={tauretLogo} 
                 alt="Tauret Logo" 
-                className="w-full h-full object-contain filter brightness-0 invert"
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="absolute inset-0 bg-red-600/20 blur-xl"></div>

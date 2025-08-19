@@ -1,24 +1,7 @@
 deployment:
   tasks:
-    - export NODE_ENV=production
-
-    - export N_PREFIX=/home/<cpanel_user>/.n
-    - if ! command -v node >/dev/null 2>&1; then /bin/curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts; fi
-    - if [ -x "/home/<cpanel_user>/.n/bin/node" ]; then export PATH="/home/<cpanel_user>/.n/bin:$PATH"; fi
+    - export DEPLOYPATH=/home/<cpanel_user>/public_html
     - /bin/corepack enable
     - /bin/npm ci
     - /bin/npm run build
-
-    # --- Deploy to public_html (replaces WP) ---
-    - export DEPLOYPATH=/home/<cpanel_user>/public_html
-    # Make public_html match the built /dist exactly (delete everything else)
     - /bin/rsync -av --delete --exclude ".git" dist/ $DEPLOYPATH/
-
-    # --- Ensure SPA routing works ---
-    - /bin/bash -lc 'cat > /home/<cpanel_user>/public_html/.htaccess << "EOF"
-RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
-EOF'

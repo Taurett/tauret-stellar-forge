@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Target, Trophy } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import tauretLogo from "@/assets/tauret-logo.png";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -23,11 +24,14 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         <div className="mb-8 flex justify-center">
           <div className="relative">
-            {/* Bull logo placeholder - replace with actual logo */}
-            <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center animate-pulse">
-              <span className="text-white font-bold text-3xl">🐂</span>
+            <div className="w-32 h-32 flex items-center justify-center">
+              <img 
+                src={tauretLogo} 
+                alt="Tauret Logo" 
+                className="w-full h-full object-contain filter brightness-0 invert"
+              />
             </div>
-            <div className="absolute inset-0 bg-red-600/20 rounded-full blur-xl"></div>
+            <div className="absolute inset-0 bg-red-600/20 blur-xl"></div>
           </div>
         </div>
         

@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Target, Trophy } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import tauretLogo from "@/assets/tauret-logo.png";
+
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -26,7 +26,7 @@ const Hero = () => {
           <div className="relative">
             <div className="w-32 h-32 flex items-center justify-center">
               <img 
-                src={tauretLogo} 
+                src="/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png" 
                 alt="Tauret Logo" 
                 className="w-full h-full object-contain"
               />

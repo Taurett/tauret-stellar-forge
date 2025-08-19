@@ -1,7 +1,8 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/<cpanel_user>/public_html
+    - export DEPLOYPATH=/home2/tauret/public_html
     - /bin/corepack enable
     - /bin/npm ci
     - /bin/npm run build
     - /bin/rsync -av --delete --exclude ".git" dist/ $DEPLOYPATH/
+

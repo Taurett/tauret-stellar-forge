@@ -13,8 +13,8 @@ const LanguageSwitcher = () => {
         onClick={() => setLanguage('en')}
         className={`${
           language === 'en' 
-            ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-            : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
+            ? 'bg-rose-400 hover:bg-rose-500 text-white' 
+            : 'border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white'
         } rounded-none uppercase font-bold tracking-wider`}
       >
         EN
@@ -25,8 +25,8 @@ const LanguageSwitcher = () => {
         onClick={() => setLanguage('ro')}
         className={`${
           language === 'ro' 
-            ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-            : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
+            ? 'bg-rose-400 hover:bg-rose-500 text-white' 
+            : 'border-rose-400 text-rose-400 hover:bg-rose-400 hover:text-white'
         } rounded-none uppercase font-bold tracking-wider`}
       >
         RO

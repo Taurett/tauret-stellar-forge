@@ -43,7 +43,7 @@ const Features = () => {
     <section className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent uppercase">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-sky-500 bg-clip-text text-transparent uppercase">
             {t('features.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -55,16 +55,16 @@ const Features = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="bg-black border-blue-600/30 hover:border-blue-500/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-600/20"
+              className="bg-black border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
             >
               <CardContent className="p-6 text-center">
                 <div className="mb-4 flex justify-center">
                   <div className="relative">
-                    <feature.icon className="w-12 h-12 text-blue-500" />
-                    <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-lg"></div>
+                    <feature.icon className="w-12 h-12 text-cyan-400" />
+                    <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-lg"></div>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-blue-500 uppercase tracking-wide">
+                <h3 className="text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed">

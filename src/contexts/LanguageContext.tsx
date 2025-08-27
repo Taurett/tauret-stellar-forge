@@ -20,14 +20,14 @@ const translations = {
     // Categories section
     'categories.title': 'Shop by Sport',
     'categories.subtitle': 'Find the perfect gear for your favorite activities',
-    'categories.gymFitness': 'Gym & Fitness',
-    'categories.cycling': 'Cycling',
-    'categories.hiking': 'Hiking',
+    'categories.tennis': 'Tennis',
+    'categories.padel': 'Padel',
     'categories.football': 'Football',
-    'categories.swimming': 'Swimming',
-    'categories.activewear': 'Activewear',
-    'categories.shoes': 'Shoes',
-    'categories.teamSports': 'Team Sports',
+    'categories.basketball': 'Basketball',
+    'categories.handball': 'Handball',
+    'categories.cycling': 'Cycling',
+    'categories.gymFitness': 'Gym & Fitness',
+    'categories.airsoft': 'Airsoft',
     
     // Promotions section
     'promotions.sale.title': 'Flash Sale',
@@ -102,14 +102,14 @@ const translations = {
     // Categories section
     'categories.title': 'Cumpără după Sport',
     'categories.subtitle': 'Găsește echipamentul perfect pentru activitățile tale favorite',
-    'categories.gymFitness': 'Sală & Fitness',
-    'categories.cycling': 'Ciclism',
-    'categories.hiking': 'Drumeție',
+    'categories.tennis': 'Tenis',
+    'categories.padel': 'Padel',
     'categories.football': 'Fotbal',
-    'categories.swimming': 'Înot',
-    'categories.activewear': 'Îmbrăcăminte Sportivă',
-    'categories.shoes': 'Încălțăminte',
-    'categories.teamSports': 'Sporturi de Echipă',
+    'categories.basketball': 'Baschet',
+    'categories.handball': 'Handbal',
+    'categories.cycling': 'Ciclism',
+    'categories.gymFitness': 'Sală & Fitness',
+    'categories.airsoft': 'Airsoft',
     
     // Promotions section
     'promotions.sale.title': 'Ofertă Flash',

@@ -2,14 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { 
   Dumbbell, 
   Bike, 
-  TreePine, 
   CircleDot, 
-  Waves, 
-  Trophy,
-  Target,
-  Shirt,
-  Footprints,
-  Users
+  Circle, 
+  Target, 
+  Zap,
+  Activity
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -18,60 +15,60 @@ const SportCategories = () => {
 
   const categories = [
     { 
-      id: 'gym-fitness', 
-      name: t('categories.gymFitness'), 
-      icon: Dumbbell, 
+      id: 'tennis', 
+      name: t('categories.tennis'), 
+      icon: CircleDot, 
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50 dark:bg-green-950/30'
+    },
+    { 
+      id: 'padel', 
+      name: t('categories.padel'), 
+      icon: Activity, 
       color: 'from-blue-500 to-blue-600',
       bgColor: 'bg-blue-50 dark:bg-blue-950/30'
+    },
+    { 
+      id: 'football', 
+      name: t('categories.football'), 
+      icon: Circle, 
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-50 dark:bg-orange-950/30'
+    },
+    { 
+      id: 'basketball', 
+      name: t('categories.basketball'), 
+      icon: CircleDot, 
+      color: 'from-red-500 to-red-600',
+      bgColor: 'bg-red-50 dark:bg-red-950/30'
+    },
+    { 
+      id: 'handball', 
+      name: t('categories.handball'), 
+      icon: Circle, 
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50 dark:bg-purple-950/30'
     },
     { 
       id: 'cycling', 
       name: t('categories.cycling'), 
       icon: Bike, 
-      color: 'from-green-500 to-green-600',
-      bgColor: 'bg-green-50 dark:bg-green-950/30'
-    },
-    { 
-      id: 'hiking', 
-      name: t('categories.hiking'), 
-      icon: TreePine, 
-      color: 'from-emerald-500 to-emerald-600',
-      bgColor: 'bg-emerald-50 dark:bg-emerald-950/30'
-    },
-    { 
-      id: 'football', 
-      name: t('categories.football'), 
-      icon: CircleDot, 
-      color: 'from-orange-500 to-orange-600',
-      bgColor: 'bg-orange-50 dark:bg-orange-950/30'
-    },
-    { 
-      id: 'swimming', 
-      name: t('categories.swimming'), 
-      icon: Waves, 
       color: 'from-cyan-500 to-cyan-600',
       bgColor: 'bg-cyan-50 dark:bg-cyan-950/30'
     },
     { 
-      id: 'activewear', 
-      name: t('categories.activewear'), 
-      icon: Shirt, 
-      color: 'from-purple-500 to-purple-600',
-      bgColor: 'bg-purple-50 dark:bg-purple-950/30'
-    },
-    { 
-      id: 'shoes', 
-      name: t('categories.shoes'), 
-      icon: Footprints, 
-      color: 'from-red-500 to-red-600',
-      bgColor: 'bg-red-50 dark:bg-red-950/30'
-    },
-    { 
-      id: 'team-sports', 
-      name: t('categories.teamSports'), 
-      icon: Users, 
+      id: 'gym-fitness', 
+      name: t('categories.gymFitness'), 
+      icon: Dumbbell, 
       color: 'from-indigo-500 to-indigo-600',
       bgColor: 'bg-indigo-50 dark:bg-indigo-950/30'
+    },
+    { 
+      id: 'airsoft', 
+      name: t('categories.airsoft'), 
+      icon: Target, 
+      color: 'from-gray-600 to-gray-700',
+      bgColor: 'bg-gray-50 dark:bg-gray-950/30'
     }
   ];
 

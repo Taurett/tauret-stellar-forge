@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter, Heart, ShoppingCart, User } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import tauretLogo from "@/assets/tauret-logo-official.jpg";
 
 const SearchBar = () => {
   const { t } = useLanguage();
@@ -21,7 +22,14 @@ const SearchBar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-primary">TAURET</h1>
+            <div className="flex items-center space-x-3">
+              <img 
+                src={tauretLogo} 
+                alt="Tauret Logo" 
+                className="w-10 h-10 object-contain"
+              />
+              <h1 className="text-2xl font-bold text-primary">TAURET</h1>
+            </div>
           </div>
 
           {/* Search Bar */}

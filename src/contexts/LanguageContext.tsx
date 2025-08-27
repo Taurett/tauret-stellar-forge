@@ -17,6 +17,38 @@ const translations = {
     'hero.shopCollection': 'Shop Collection',
     'hero.viewCatalog': 'View Catalog',
     
+    // Categories section
+    'categories.title': 'Shop by Sport',
+    'categories.subtitle': 'Find the perfect gear for your favorite activities',
+    'categories.gymFitness': 'Gym & Fitness',
+    'categories.cycling': 'Cycling',
+    'categories.hiking': 'Hiking',
+    'categories.football': 'Football',
+    'categories.swimming': 'Swimming',
+    'categories.activewear': 'Activewear',
+    'categories.shoes': 'Shoes',
+    'categories.teamSports': 'Team Sports',
+    
+    // Promotions section
+    'promotions.sale.title': 'Flash Sale',
+    'promotions.sale.description': 'Limited time offers on premium sports equipment',
+    'promotions.sale.cta': 'Shop Sale',
+    'promotions.newArrivals.title': 'New Arrivals',
+    'promotions.newArrivals.description': 'Latest gear from top brands',
+    'promotions.newArrivals.cta': 'Explore New',
+    'promotions.limitedTime.title': 'Limited Edition',
+    'promotions.limitedTime.description': 'Exclusive collections while stocks last',
+    'promotions.limitedTime.cta': 'Shop Now',
+    
+    // Search section
+    'search.placeholder': 'Search for products, brands, sports...',
+    
+    // Featured section
+    'featured.title': 'Featured Products',
+    'featured.subtitle': 'Handpicked essentials for every athlete',
+    'featured.addToCart': 'Add to Cart',
+    'featured.viewAll': 'View All Products',
+    
     // Features section
     'features.title': 'Built for Athletes',
     'features.subtitle': 'Every piece of SportElite gear is engineered for peak performance across all sports disciplines.',
@@ -66,6 +98,38 @@ const translations = {
     'hero.description': 'Îmbrăcăminte și echipament sportiv premium pentru atleți din toate disciplinele.',
     'hero.shopCollection': 'Vezi Colecția',
     'hero.viewCatalog': 'Vezi Catalogul',
+    
+    // Categories section
+    'categories.title': 'Cumpără după Sport',
+    'categories.subtitle': 'Găsește echipamentul perfect pentru activitățile tale favorite',
+    'categories.gymFitness': 'Sală & Fitness',
+    'categories.cycling': 'Ciclism',
+    'categories.hiking': 'Drumeție',
+    'categories.football': 'Fotbal',
+    'categories.swimming': 'Înot',
+    'categories.activewear': 'Îmbrăcăminte Sportivă',
+    'categories.shoes': 'Încălțăminte',
+    'categories.teamSports': 'Sporturi de Echipă',
+    
+    // Promotions section
+    'promotions.sale.title': 'Ofertă Flash',
+    'promotions.sale.description': 'Oferte pe timp limitat pentru echipament sportiv premium',
+    'promotions.sale.cta': 'Vezi Ofertele',
+    'promotions.newArrivals.title': 'Noutăți',
+    'promotions.newArrivals.description': 'Cel mai nou echipament de la brandurile de top',
+    'promotions.newArrivals.cta': 'Explorează Noutățile',
+    'promotions.limitedTime.title': 'Ediție Limitată',
+    'promotions.limitedTime.description': 'Colecții exclusive cât timp există în stoc',
+    'promotions.limitedTime.cta': 'Cumpără Acum',
+    
+    // Search section
+    'search.placeholder': 'Caută produse, branduri, sporturi...',
+    
+    // Featured section
+    'featured.title': 'Produse Recomandate',
+    'featured.subtitle': 'Esențiale alese cu grijă pentru fiecare atlet',
+    'featured.addToCart': 'Adaugă în Coș',
+    'featured.viewAll': 'Vezi Toate Produsele',
     
     // Features section
     'features.title': 'Construit pentru Atleți',

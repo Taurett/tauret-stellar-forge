@@ -6,8 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Search, ShoppingCart, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { toast } from "@/hooks/use-toast";
 
 // Mock product data
 const products = [
@@ -79,8 +81,23 @@ const sportCategories = [
 
 const Shop = () => {
   const { t } = useLanguage();
+  const { addToCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category
+    });
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
@@ -166,7 +183,10 @@ const Shop = () => {
                   <p className="text-2xl font-bold text-cyan-400">${product.price}</p>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                  <Button 
+                    className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
+                    onClick={() => handleAddToCart(product)}
+                  >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Add to Cart
                   </Button>

@@ -3,9 +3,26 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Heart, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "@/hooks/use-toast";
 
 const FeaturedProducts = () => {
   const { t } = useLanguage();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category
+    });
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
 
   const featuredProducts = [
     {
@@ -150,7 +167,7 @@ const FeaturedProducts = () => {
               </CardContent>
               
               <CardFooter className="p-4 pt-0">
-                <Button className="w-full">
+                <Button className="w-full" onClick={() => handleAddToCart(product)}>
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   {t('featured.addToCart')}
                 </Button>

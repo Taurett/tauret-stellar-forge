@@ -3,10 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter, Heart, ShoppingCart, User } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCart } from "@/contexts/CartContext";
+import { Link } from "react-router-dom";
 import tauretLogo from "@/assets/tauret-logo-official.jpg";
 
 const SearchBar = () => {
   const { t } = useLanguage();
+  const { getTotalItems } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
@@ -60,9 +63,16 @@ const SearchBar = () => {
             <Button variant="ghost" size="sm">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="sm">
-              <ShoppingCart className="h-5 w-5" />
-            </Button>
+            <Link to="/cart">
+              <Button variant="ghost" size="sm" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm">
               <User className="h-5 w-5" />
             </Button>

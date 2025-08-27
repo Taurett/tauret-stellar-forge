@@ -48,21 +48,13 @@ const Hero = () => {
           {t('hero.description')}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Button 
             size="lg" 
             className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold px-8 py-3 rounded-none transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 uppercase tracking-wider"
             onClick={() => window.location.href = '/shop'}
           >
             {t('hero.shopCollection')}
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white px-8 py-3 rounded-none transition-all duration-300 hover:scale-105 uppercase tracking-wider"
-            onClick={() => window.location.href = '/catalog'}
-          >
-            {t('hero.viewCatalog')}
           </Button>
         </div>
       </div>

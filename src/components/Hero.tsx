@@ -72,27 +72,11 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Stats or Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 animate-[fade-in_1s_ease-out_1.5s]">
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">50K+</div>
-            <div className="text-gray-300">Athletes Trust Us</div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">15+</div>
-            <div className="text-gray-300">Sports Categories</div>
-          </div>
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">98%</div>
-            <div className="text-gray-300">Satisfaction Rate</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

@@ -32,20 +32,6 @@ const Hero = () => {
       </div>
       
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
-        {/* Logo Section */}
-        <div className="mb-8 flex justify-center animate-[scale-in_0.8s_ease-out]">
-          <div className="relative group">
-            <div className="w-40 h-40 flex items-center justify-center">
-              <img 
-                src={tauretLogo} 
-                alt="Tauret Logo" 
-                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="absolute inset-0 bg-primary/30 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-          </div>
-        </div>
-        
         {/* Main Title */}
         <h1 className="text-7xl md:text-9xl font-bold mb-6 bg-gradient-to-r from-primary via-cyan-300 to-primary bg-clip-text text-transparent animate-[fade-in_1s_ease-out_0.3s] animate-[scale-in_0.8s_ease-out_0.3s]">
           TAURET

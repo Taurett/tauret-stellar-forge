@@ -37,19 +37,6 @@ import airsoftVestDetail from "@/assets/products/airsoft-vest-detail.jpg";
 
 const productsData = [
   {
-    id: 1,
-    name: "Professional Tennis Racket",
-    price: 199.99,
-    images: [tennisRacket, tennisRacketDetail],
-    category: "tennis",
-    rating: 4.9,
-    reviews: 342,
-    description: "High-performance tennis racket designed for professional players. Features advanced carbon fiber technology for optimal power and control.",
-    fabric: "Carbon Fiber Composite",
-    features: ["Weight: 300g", "Head Size: 98 sq in", "String Pattern: 16x19", "Grip: Synthetic leather"],
-    sizes: ["4 1/8", "4 1/4", "4 3/8", "4 1/2"]
-  },
-  {
     id: 3,
     name: "Tennis Athletic Dress",
     price: 79.99,
@@ -61,19 +48,6 @@ const productsData = [
     fabric: "88% Polyester, 12% Spandex - Moisture-wicking mesh fabric",
     features: ["Built-in shorts", "UV Protection 50+", "Anti-odor technology", "4-way stretch"],
     sizes: ["XS", "S", "M", "L", "XL"]
-  },
-  {
-    id: 4,
-    name: "Carbon Fiber Padel Racket",
-    price: 189.99,
-    images: [padelRacket, padelRacketDetail],
-    category: "padel",
-    rating: 4.9,
-    reviews: 298,
-    description: "Premium padel racket with carbon fiber construction for maximum power and precision. Ideal for competitive play.",
-    fabric: "12K Carbon Fiber with EVA foam core",
-    features: ["Weight: 365g", "Balance: Medium", "Shape: Diamond", "Anti-vibration system"],
-    sizes: ["One Size"]
   },
   {
     id: 6,
@@ -178,19 +152,6 @@ const productsData = [
     fabric: "80% Nylon, 20% Spandex compression fabric",
     features: ["Muscle support", "Quick-dry", "4-way stretch", "Flatlock seams"],
     sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 19,
-    name: "Tactical Airsoft Vest",
-    price: 139.99,
-    images: [airsoftVest, airsoftVestDetail],
-    category: "airsoft",
-    rating: 4.8,
-    reviews: 267,
-    description: "Military-grade tactical vest with MOLLE system. Durable construction for serious airsoft enthusiasts.",
-    fabric: "1000D Cordura Nylon with reinforced stitching",
-    features: ["MOLLE webbing", "Adjustable straps", "Multiple pockets", "Plate carrier compatible"],
-    sizes: ["M", "L", "XL"]
   }
 ];
 

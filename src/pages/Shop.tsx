@@ -37,15 +37,6 @@ import airsoftGoggles from "@/assets/products/airsoft-goggles.jpg";
 const products = [
   // Tennis
   {
-    id: 1,
-    name: "Professional Tennis Racket",
-    price: 199.99,
-    image: tennisRacket,
-    category: "tennis",
-    rating: 4.9,
-    reviews: 342
-  },
-  {
     id: 3,
     name: "Tennis Athletic Dress",
     price: 79.99,
@@ -55,15 +46,6 @@ const products = [
     reviews: 189
   },
   // Padel
-  {
-    id: 4,
-    name: "Carbon Fiber Padel Racket",
-    price: 189.99,
-    image: padelRacket,
-    category: "padel",
-    rating: 4.9,
-    reviews: 298
-  },
   {
     id: 6,
     name: "Professional Padel Bag",
@@ -140,17 +122,7 @@ const products = [
     category: "gym",
     rating: 4.7,
     reviews: 334
-  },
-  // Airsoft
-  {
-    id: 19,
-    name: "Tactical Airsoft Vest",
-    price: 139.99,
-    image: airsoftVest,
-    category: "airsoft",
-    rating: 4.8,
-    reviews: 267
-  },
+  }
 ];
 
 const sportCategories = [

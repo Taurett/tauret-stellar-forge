@@ -11,72 +11,230 @@ import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { toast } from "@/hooks/use-toast";
 
-// Mock product data
+// Import product images
+import tennisRacket from "@/assets/products/tennis-racket.jpg";
+import tennisShoes from "@/assets/products/tennis-shoes.jpg";
+import tennisOutfit from "@/assets/products/tennis-outfit.jpg";
+import padelRacket from "@/assets/products/padel-racket.jpg";
+import padelShoes from "@/assets/products/padel-shoes.jpg";
+import padelBag from "@/assets/products/padel-bag.jpg";
+import footballJersey from "@/assets/products/football-jersey.jpg";
+import footballBoots from "@/assets/products/football-boots.jpg";
+import footballShorts from "@/assets/products/football-shorts.jpg";
+import basketballShoes from "@/assets/products/basketball-shoes.jpg";
+import basketballJersey from "@/assets/products/basketball-jersey.jpg";
+import handballJersey from "@/assets/products/handball-jersey.jpg";
+import handballShoes from "@/assets/products/handball-shoes.jpg";
+import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
+import cyclingHelmet from "@/assets/products/cycling-helmet.jpg";
+import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
+import gymShoes from "@/assets/products/gym-shoes.jpg";
+import gymShirt from "@/assets/products/gym-shirt.jpg";
+import airsoftVest from "@/assets/products/airsoft-vest.jpg";
+import airsoftGoggles from "@/assets/products/airsoft-goggles.jpg";
+
+// Product catalog
 const products = [
+  // Tennis
   {
     id: 1,
-    name: "Pro Football Jersey",
-    price: 89.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
-    category: "football",
-    rating: 4.8,
-    reviews: 234
+    name: "Professional Tennis Racket",
+    price: 199.99,
+    image: tennisRacket,
+    category: "tennis",
+    rating: 4.9,
+    reviews: 342
   },
   {
     id: 2,
-    name: "Elite Basketball Shorts",
-    price: 49.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
-    category: "basketball",
-    rating: 4.9,
-    reviews: 156
+    name: "Tennis Court Shoes",
+    price: 129.99,
+    image: tennisShoes,
+    category: "tennis",
+    rating: 4.8,
+    reviews: 256
   },
   {
     id: 3,
-    name: "Running Performance Tights",
+    name: "Tennis Athletic Dress",
     price: 79.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
-    category: "running",
+    image: tennisOutfit,
+    category: "tennis",
     rating: 4.7,
-    reviews: 312
+    reviews: 189
   },
+  // Padel
   {
     id: 4,
-    name: "Tennis Pro Polo",
-    price: 69.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
-    category: "tennis",
-    rating: 4.6,
-    reviews: 89
+    name: "Carbon Fiber Padel Racket",
+    price: 189.99,
+    image: padelRacket,
+    category: "padel",
+    rating: 4.9,
+    reviews: 298
   },
   {
     id: 5,
-    name: "Soccer Training Kit",
-    price: 129.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
-    category: "soccer",
-    rating: 4.9,
-    reviews: 445
+    name: "Padel Court Shoes",
+    price: 119.99,
+    image: padelShoes,
+    category: "padel",
+    rating: 4.8,
+    reviews: 214
   },
   {
     id: 6,
-    name: "Cycling Performance Jersey",
+    name: "Professional Padel Bag",
     price: 89.99,
-    image: "/public/lovable-uploads/3d5d5054-e7b8-40cb-8983-ef4bde177a05.png",
+    image: padelBag,
+    category: "padel",
+    rating: 4.6,
+    reviews: 167
+  },
+  // Football
+  {
+    id: 7,
+    name: "Pro Football Jersey",
+    price: 79.99,
+    image: footballJersey,
+    category: "football",
+    rating: 4.8,
+    reviews: 445
+  },
+  {
+    id: 8,
+    name: "Football Cleats Pro",
+    price: 149.99,
+    image: footballBoots,
+    category: "football",
+    rating: 4.9,
+    reviews: 389
+  },
+  {
+    id: 9,
+    name: "Football Training Shorts",
+    price: 49.99,
+    image: footballShorts,
+    category: "football",
+    rating: 4.7,
+    reviews: 312
+  },
+  // Basketball
+  {
+    id: 10,
+    name: "Elite Basketball Shoes",
+    price: 169.99,
+    image: basketballShoes,
+    category: "basketball",
+    rating: 4.9,
+    reviews: 521
+  },
+  {
+    id: 11,
+    name: "Basketball Pro Jersey",
+    price: 89.99,
+    image: basketballJersey,
+    category: "basketball",
+    rating: 4.8,
+    reviews: 387
+  },
+  // Handball
+  {
+    id: 12,
+    name: "Handball Team Jersey",
+    price: 69.99,
+    image: handballJersey,
+    category: "handball",
+    rating: 4.7,
+    reviews: 234
+  },
+  {
+    id: 13,
+    name: "Handball Court Shoes",
+    price: 119.99,
+    image: handballShoes,
+    category: "handball",
+    rating: 4.8,
+    reviews: 198
+  },
+  // Cycling
+  {
+    id: 14,
+    name: "Aerodynamic Cycling Jersey",
+    price: 109.99,
+    image: cyclingJersey,
     category: "cycling",
     rating: 4.8,
-    reviews: 167
+    reviews: 276
+  },
+  {
+    id: 15,
+    name: "Professional Cycling Helmet",
+    price: 159.99,
+    image: cyclingHelmet,
+    category: "cycling",
+    rating: 4.9,
+    reviews: 412
+  },
+  {
+    id: 16,
+    name: "Cycling Bib Shorts",
+    price: 99.99,
+    image: cyclingShorts,
+    category: "cycling",
+    rating: 4.7,
+    reviews: 289
+  },
+  // Gym & Fitness
+  {
+    id: 17,
+    name: "Fitness Training Shoes",
+    price: 129.99,
+    image: gymShoes,
+    category: "gym",
+    rating: 4.8,
+    reviews: 456
+  },
+  {
+    id: 18,
+    name: "Compression Training Shirt",
+    price: 59.99,
+    image: gymShirt,
+    category: "gym",
+    rating: 4.7,
+    reviews: 334
+  },
+  // Airsoft
+  {
+    id: 19,
+    name: "Tactical Airsoft Vest",
+    price: 139.99,
+    image: airsoftVest,
+    category: "airsoft",
+    rating: 4.8,
+    reviews: 267
+  },
+  {
+    id: 20,
+    name: "Airsoft Protective Goggles",
+    price: 49.99,
+    image: airsoftGoggles,
+    category: "airsoft",
+    rating: 4.9,
+    reviews: 389
   }
 ];
 
 const sportCategories = [
   { value: "all", label: "All Sports" },
+  { value: "tennis", label: "Tennis" },
+  { value: "padel", label: "Padel" },
   { value: "football", label: "Football" },
   { value: "basketball", label: "Basketball" },
-  { value: "running", label: "Running" },
-  { value: "tennis", label: "Tennis" },
-  { value: "soccer", label: "Soccer" },
-  { value: "cycling", label: "Cycling" }
+  { value: "handball", label: "Handball" },
+  { value: "cycling", label: "Cycling" },
+  { value: "gym", label: "Gym & Fitness" },
+  { value: "airsoft", label: "Airsoft" }
 ];
 
 const Shop = () => {

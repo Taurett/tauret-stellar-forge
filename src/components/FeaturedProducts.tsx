@@ -5,6 +5,10 @@ import { Star, Heart, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
+import basketballShoes from "@/assets/products/basketball-shoes.jpg";
+import cyclingHelmet from "@/assets/products/cycling-helmet.jpg";
+import footballJersey from "@/assets/products/football-jersey.jpg";
+import gymShirt from "@/assets/products/gym-shirt.jpg";
 
 const FeaturedProducts = () => {
   const { t } = useLanguage();
@@ -26,46 +30,46 @@ const FeaturedProducts = () => {
 
   const featuredProducts = [
     {
-      id: 1,
-      name: "Professional Running Shoes",
-      price: 129.99,
-      originalPrice: 179.99,
-      image: "/api/placeholder/300/200",
-      rating: 4.8,
-      reviews: 124,
-      badge: "BESTSELLER",
-      category: "Running"
-    },
-    {
-      id: 2,
-      name: "Premium Yoga Mat",
-      price: 49.99,
-      originalPrice: 69.99,
-      image: "/api/placeholder/300/200",
+      id: 10,
+      name: "Elite Basketball Shoes",
+      price: 169.99,
+      originalPrice: 199.99,
+      image: basketballShoes,
       rating: 4.9,
-      reviews: 89,
+      reviews: 521,
+      badge: "BESTSELLER",
+      category: "Basketball"
+    },
+    {
+      id: 7,
+      name: "Pro Football Jersey",
+      price: 79.99,
+      originalPrice: 99.99,
+      image: footballJersey,
+      rating: 4.8,
+      reviews: 445,
       badge: "NEW",
-      category: "Fitness"
+      category: "Football"
     },
     {
-      id: 3,
-      name: "Athletic Performance T-Shirt",
-      price: 34.99,
-      originalPrice: 49.99,
-      image: "/api/placeholder/300/200",
+      id: 18,
+      name: "Compression Training Shirt",
+      price: 59.99,
+      originalPrice: 79.99,
+      image: gymShirt,
       rating: 4.7,
-      reviews: 156,
+      reviews: 334,
       badge: "SALE",
-      category: "Activewear"
+      category: "Gym & Fitness"
     },
     {
-      id: 4,
-      name: "Mountain Bike Helmet",
-      price: 89.99,
-      originalPrice: 119.99,
-      image: "/api/placeholder/300/200",
-      rating: 4.6,
-      reviews: 67,
+      id: 15,
+      name: "Professional Cycling Helmet",
+      price: 159.99,
+      originalPrice: 189.99,
+      image: cyclingHelmet,
+      rating: 4.9,
+      reviews: 412,
       badge: "LIMITED",
       category: "Cycling"
     }

@@ -5,8 +5,8 @@ import { Star, Heart, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
-import basketballShoes from "@/assets/products/basketball-shoes.jpg";
-import cyclingHelmet from "@/assets/products/cycling-helmet.jpg";
+import basketballJersey from "@/assets/products/basketball-jersey.jpg";
+import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
 import footballJersey from "@/assets/products/football-jersey.jpg";
 import gymShirt from "@/assets/products/gym-shirt.jpg";
 
@@ -30,13 +30,13 @@ const FeaturedProducts = () => {
 
   const featuredProducts = [
     {
-      id: 10,
-      name: "Elite Basketball Shoes",
-      price: 169.99,
-      originalPrice: 199.99,
-      image: basketballShoes,
-      rating: 4.9,
-      reviews: 521,
+      id: 11,
+      name: "Basketball Pro Jersey",
+      price: 89.99,
+      originalPrice: 109.99,
+      image: basketballJersey,
+      rating: 4.8,
+      reviews: 387,
       badge: "BESTSELLER",
       category: "Basketball"
     },
@@ -63,13 +63,13 @@ const FeaturedProducts = () => {
       category: "Gym & Fitness"
     },
     {
-      id: 15,
-      name: "Professional Cycling Helmet",
-      price: 159.99,
-      originalPrice: 189.99,
-      image: cyclingHelmet,
-      rating: 4.9,
-      reviews: 412,
+      id: 14,
+      name: "Aerodynamic Cycling Jersey",
+      price: 109.99,
+      originalPrice: 139.99,
+      image: cyclingJersey,
+      rating: 4.8,
+      reviews: 276,
       badge: "LIMITED",
       category: "Cycling"
     }

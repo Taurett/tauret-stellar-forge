@@ -46,15 +46,6 @@ const products = [
     reviews: 342
   },
   {
-    id: 2,
-    name: "Tennis Court Shoes",
-    price: 129.99,
-    image: tennisShoes,
-    category: "tennis",
-    rating: 4.8,
-    reviews: 256
-  },
-  {
     id: 3,
     name: "Tennis Athletic Dress",
     price: 79.99,
@@ -72,15 +63,6 @@ const products = [
     category: "padel",
     rating: 4.9,
     reviews: 298
-  },
-  {
-    id: 5,
-    name: "Padel Court Shoes",
-    price: 119.99,
-    image: padelShoes,
-    category: "padel",
-    rating: 4.8,
-    reviews: 214
   },
   {
     id: 6,
@@ -102,15 +84,6 @@ const products = [
     reviews: 445
   },
   {
-    id: 8,
-    name: "Football Cleats Pro",
-    price: 149.99,
-    image: footballBoots,
-    category: "football",
-    rating: 4.9,
-    reviews: 389
-  },
-  {
     id: 9,
     name: "Football Training Shorts",
     price: 49.99,
@@ -120,15 +93,6 @@ const products = [
     reviews: 312
   },
   // Basketball
-  {
-    id: 10,
-    name: "Elite Basketball Shoes",
-    price: 169.99,
-    image: basketballShoes,
-    category: "basketball",
-    rating: 4.9,
-    reviews: 521
-  },
   {
     id: 11,
     name: "Basketball Pro Jersey",
@@ -148,15 +112,6 @@ const products = [
     rating: 4.7,
     reviews: 234
   },
-  {
-    id: 13,
-    name: "Handball Court Shoes",
-    price: 119.99,
-    image: handballShoes,
-    category: "handball",
-    rating: 4.8,
-    reviews: 198
-  },
   // Cycling
   {
     id: 14,
@@ -168,15 +123,6 @@ const products = [
     reviews: 276
   },
   {
-    id: 15,
-    name: "Professional Cycling Helmet",
-    price: 159.99,
-    image: cyclingHelmet,
-    category: "cycling",
-    rating: 4.9,
-    reviews: 412
-  },
-  {
     id: 16,
     name: "Cycling Bib Shorts",
     price: 99.99,
@@ -186,15 +132,6 @@ const products = [
     reviews: 289
   },
   // Gym & Fitness
-  {
-    id: 17,
-    name: "Fitness Training Shoes",
-    price: 129.99,
-    image: gymShoes,
-    category: "gym",
-    rating: 4.8,
-    reviews: 456
-  },
   {
     id: 18,
     name: "Compression Training Shirt",
@@ -214,15 +151,6 @@ const products = [
     rating: 4.8,
     reviews: 267
   },
-  {
-    id: 20,
-    name: "Airsoft Protective Goggles",
-    price: 49.99,
-    image: airsoftGoggles,
-    category: "airsoft",
-    rating: 4.9,
-    reviews: 389
-  }
 ];
 
 const sportCategories = [

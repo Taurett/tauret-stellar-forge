@@ -5,6 +5,7 @@ import { Star, Heart, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 import basketballJersey from "@/assets/products/basketball-jersey.jpg";
 import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
 import footballJersey from "@/assets/products/football-jersey.jpg";
@@ -119,11 +120,13 @@ const FeaturedProducts = () => {
             <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300">
               <CardContent className="p-0">
                 <div className="relative overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <Link to={`/product/${product.id}`}>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-48 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </Link>
                   <Badge 
                     className="absolute top-2 left-2"
                     variant={getBadgeVariant(product.badge)}
@@ -144,9 +147,11 @@ const FeaturedProducts = () => {
                     {product.category}
                   </Badge>
                   
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
+                  <Link to={`/product/${product.id}`}>
+                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {product.name}
+                    </h3>
+                  </Link>
                   
                   <div className="flex items-center mb-2">
                     <div className="flex items-center">

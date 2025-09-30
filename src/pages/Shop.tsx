@@ -249,18 +249,24 @@ const Shop = () => {
               <Card key={product.id} className="bg-gray-900 border-gray-800 hover:border-cyan-500/50 transition-all duration-300 group">
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <Link to={`/product/${product.id}`}>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-48 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </Link>
                     <Badge className="absolute top-2 left-2 bg-cyan-600 text-white">
                       {sportCategories.find(cat => cat.value === product.category)?.label}
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <CardTitle className="text-white mb-2">{product.name}</CardTitle>
+                  <Link to={`/product/${product.id}`}>
+                    <CardTitle className="text-white mb-2 hover:text-cyan-400 transition-colors">
+                      {product.name}
+                    </CardTitle>
+                  </Link>
                   <div className="flex items-center gap-1 mb-2">
                     <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     <span className="text-yellow-400">{product.rating}</span>

@@ -345,14 +345,10 @@ const ProductDetail = () => {
               </Button>
 
               {/* Features */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800">
+              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-800">
                 <div className="text-center">
                   <Truck className="h-8 w-8 text-cyan-400 mx-auto mb-2" />
                   <p className="text-gray-400 text-sm">Free Shipping</p>
-                </div>
-                <div className="text-center">
-                  <Shield className="h-8 w-8 text-cyan-400 mx-auto mb-2" />
-                  <p className="text-gray-400 text-sm">2 Year Warranty</p>
                 </div>
                 <div className="text-center">
                   <RefreshCw className="h-8 w-8 text-cyan-400 mx-auto mb-2" />

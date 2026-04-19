@@ -3,6 +3,7 @@ import Features from "@/components/Features";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import SportCategories from "@/components/SportCategories";
 import PromotionalBanner from "@/components/PromotionalBanner";
@@ -13,6 +14,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SearchBar />
       <LanguageSwitcher />
+      <ThemeToggle />
       <Hero />
       <SportCategories />
       <PromotionalBanner />

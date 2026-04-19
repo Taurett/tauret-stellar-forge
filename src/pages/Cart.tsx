@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 
 const Cart = () => {
@@ -32,6 +33,7 @@ const Cart = () => {
       <div className="min-h-screen bg-background">
         <SearchBar />
         <LanguageSwitcher />
+        <ThemeToggle />
         <Header title={t('cart.empty')} />
 
         <div className="flex flex-col items-center justify-center py-24 px-4">
@@ -62,6 +64,7 @@ const Cart = () => {
     <div className="min-h-screen bg-background">
       <SearchBar />
       <LanguageSwitcher />
+      <ThemeToggle />
       <Header title={`${t('cart.title')} · ${getTotalItems()}`} />
 
       <div className="max-w-7xl mx-auto px-4 pb-16">

@@ -6,39 +6,31 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ShoppingCart, ArrowLeft, Star, Truck, RefreshCw } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { toast } from "@/hooks/use-toast";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
+import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 
-import tennisOutfit from "@/assets/products/tennis-outfit.jpg";
-import tennisOutfitDetail from "@/assets/products/tennis-outfit-detail.jpg";
-import footballJersey from "@/assets/products/football-jersey.jpg";
-import footballJerseyDetail from "@/assets/products/football-jersey-detail.jpg";
-import footballShorts from "@/assets/products/football-shorts.jpg";
-import footballShortsDetail from "@/assets/products/football-shorts-detail.jpg";
-import basketballJersey from "@/assets/products/basketball-jersey.jpg";
-import basketballJerseyDetail from "@/assets/products/basketball-jersey-detail.jpg";
-import handballJersey from "@/assets/products/handball-jersey.jpg";
-import handballJerseyDetail from "@/assets/products/handball-jersey-detail.jpg";
-import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
-import cyclingJerseyDetail from "@/assets/products/cycling-jersey-detail.jpg";
-import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
-import cyclingShortsDetail from "@/assets/products/cycling-shorts-detail.jpg";
-import gymShirt from "@/assets/products/gym-shirt.jpg";
-import gymShirtDetail from "@/assets/products/gym-shirt-detail.jpg";
-import tennisPolo from "@/assets/products/tennis-polo.jpg";
-import goalkeeperJersey from "@/assets/products/goalkeeper-jersey.jpg";
-import basketballShorts from "@/assets/products/basketball-shorts.jpg";
-import runningTank from "@/assets/products/running-tank.jpg";
-import runningLeggings from "@/assets/products/running-leggings.jpg";
-import gymHoodie from "@/assets/products/gym-hoodie.jpg";
-import yogaBra from "@/assets/products/yoga-bra.jpg";
-import cyclingJacket from "@/assets/products/cycling-jacket.jpg";
+interface ProductData {
+  id: number;
+  name: string;
+  price: number;
+  imageKeys: ProductImageKey[];
+  category: string;
+  rating: number;
+  reviews: number;
+  description: string;
+  fabric: string;
+  features: string[];
+  sizes: string[];
+}
 
-const productsData = [
+const productsData: ProductData[] = [
   {
     id: 3, name: "Tennis Athletic Dress", price: 79.99,
-    images: [tennisOutfit, tennisOutfitDetail], category: "tennis",
+    imageKeys: ["tennis-outfit", "tennis-outfit-detail"], category: "tennis",
     rating: 4.7, reviews: 189,
     description: "Lightweight and breathable tennis dress with moisture-wicking technology. Perfect for intense matches and training sessions.",
     fabric: "88% Polyester, 12% Spandex — Moisture-wicking mesh fabric",
@@ -47,7 +39,7 @@ const productsData = [
   },
   {
     id: 7, name: "Pro Football Jersey", price: 79.99,
-    images: [footballJersey, footballJerseyDetail], category: "football",
+    imageKeys: ["football-jersey", "football-jersey-detail"], category: "football",
     rating: 4.8, reviews: 445,
     description: "Professional-grade football jersey with advanced moisture management. Designed for peak performance on the field.",
     fabric: "100% Recycled Polyester with Dri-FIT technology",
@@ -56,7 +48,7 @@ const productsData = [
   },
   {
     id: 9, name: "Football Training Shorts", price: 49.99,
-    images: [footballShorts, footballShortsDetail], category: "football",
+    imageKeys: ["football-shorts", "football-shorts-detail"], category: "football",
     rating: 4.7, reviews: 312,
     description: "Lightweight training shorts with elastic waistband and quick-dry fabric. Essential for any football player.",
     fabric: "100% Polyester with moisture-wicking finish",
@@ -65,7 +57,7 @@ const productsData = [
   },
   {
     id: 11, name: "Basketball Pro Jersey", price: 89.99,
-    images: [basketballJersey, basketballJerseyDetail], category: "basketball",
+    imageKeys: ["basketball-jersey", "basketball-jersey-detail"], category: "basketball",
     rating: 4.8, reviews: 387,
     description: "Authentic basketball jersey with breathable mesh construction. Perfect for game day or casual wear.",
     fabric: "100% Polyester double-knit mesh",
@@ -74,7 +66,7 @@ const productsData = [
   },
   {
     id: 12, name: "Handball Team Jersey", price: 69.99,
-    images: [handballJersey, handballJerseyDetail], category: "handball",
+    imageKeys: ["handball-jersey", "handball-jersey-detail"], category: "handball",
     rating: 4.7, reviews: 234,
     description: "High-performance handball jersey with excellent ventilation and comfort for intense matches.",
     fabric: "Polyester blend with ClimaCool technology",
@@ -83,7 +75,7 @@ const productsData = [
   },
   {
     id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99,
-    images: [cyclingJersey, cyclingJerseyDetail], category: "cycling",
+    imageKeys: ["cycling-jersey", "cycling-jersey-detail"], category: "cycling",
     rating: 4.8, reviews: 276,
     description: "Aerodynamic cycling jersey with race-fit design. Features advanced fabric technology for optimal performance.",
     fabric: "Italian Lycra with compression zones",
@@ -92,7 +84,7 @@ const productsData = [
   },
   {
     id: 16, name: "Cycling Bib Shorts", price: 99.99,
-    images: [cyclingShorts, cyclingShortsDetail], category: "cycling",
+    imageKeys: ["cycling-shorts", "cycling-shorts-detail"], category: "cycling",
     rating: 4.7, reviews: 289,
     description: "Premium cycling bib shorts with Italian chamois pad. Designed for long-distance comfort and performance.",
     fabric: "Compression Lycra with 4-way stretch",
@@ -101,7 +93,7 @@ const productsData = [
   },
   {
     id: 18, name: "Compression Training Shirt", price: 59.99,
-    images: [gymShirt, gymShirtDetail], category: "gym",
+    imageKeys: ["gym-shirt", "gym-shirt-detail"], category: "gym",
     rating: 4.7, reviews: 334,
     description: "Compression training shirt that supports muscles and enhances performance. Perfect for any workout.",
     fabric: "80% Nylon, 20% Spandex compression fabric",
@@ -110,7 +102,7 @@ const productsData = [
   },
   {
     id: 20, name: "Tennis Performance Polo", price: 64.99,
-    images: [tennisPolo, tennisPolo], category: "tennis",
+    imageKeys: ["tennis-polo", "tennis-polo"], category: "tennis",
     rating: 4.6, reviews: 142,
     description: "Classic-cut tennis polo with futuristic neon trims. Engineered for fast play with breathable, moisture-wicking fabric.",
     fabric: "92% Polyester, 8% Elastane — Smooth-touch piqué knit",
@@ -119,7 +111,7 @@ const productsData = [
   },
   {
     id: 21, name: "Goalkeeper Long-Sleeve Jersey", price: 94.99,
-    images: [goalkeeperJersey, goalkeeperJersey], category: "football",
+    imageKeys: ["goalkeeper-jersey", "goalkeeper-jersey"], category: "football",
     rating: 4.9, reviews: 198,
     description: "Long-sleeve goalkeeper jersey with padded forearms and high-grip torso panels. Built for the keepers who own the box.",
     fabric: "Recycled Polyester with foam-padded elbows",
@@ -128,7 +120,7 @@ const productsData = [
   },
   {
     id: 22, name: "Basketball Court Shorts", price: 54.99,
-    images: [basketballShorts, basketballShorts], category: "basketball",
+    imageKeys: ["basketball-shorts", "basketball-shorts"], category: "basketball",
     rating: 4.7, reviews: 256,
     description: "Lightweight basketball shorts with above-the-knee cut and elastic waistband. Designed for explosive movement on the court.",
     fabric: "100% Polyester woven dazzle fabric",
@@ -137,7 +129,7 @@ const productsData = [
   },
   {
     id: 23, name: "Cycling Windbreaker Jacket", price: 129.99,
-    images: [cyclingJacket, cyclingJacket], category: "cycling",
+    imageKeys: ["cycling-jacket", "cycling-jacket"], category: "cycling",
     rating: 4.8, reviews: 167,
     description: "Ultra-light packable cycling windbreaker with reflective panels for low-light visibility. Your shield against wind and chill.",
     fabric: "Ripstop nylon with DWR water-repellent coating",
@@ -146,7 +138,7 @@ const productsData = [
   },
   {
     id: 24, name: "Aero Running Tank", price: 44.99,
-    images: [runningTank, runningTank], category: "running",
+    imageKeys: ["running-tank", "running-tank"], category: "running",
     rating: 4.6, reviews: 203,
     description: "Featherweight running tank with laser-cut ventilation. Engineered for hot days and fast splits.",
     fabric: "Recycled Polyester mesh with mineral cooling yarn",
@@ -155,7 +147,7 @@ const productsData = [
   },
   {
     id: 25, name: "Compression Running Leggings", price: 74.99,
-    images: [runningLeggings, runningLeggings], category: "running",
+    imageKeys: ["running-leggings", "running-leggings"], category: "running",
     rating: 4.8, reviews: 312,
     description: "High-rise compression leggings with sculpting seams and a hidden waistband pocket. Built for distance.",
     fabric: "78% Nylon, 22% Spandex — 4-way compression",
@@ -164,7 +156,7 @@ const productsData = [
   },
   {
     id: 26, name: "Tech Fleece Gym Hoodie", price: 89.99,
-    images: [gymHoodie, gymHoodie], category: "gym",
+    imageKeys: ["gym-hoodie", "gym-hoodie"], category: "gym",
     rating: 4.8, reviews: 421,
     description: "Tech fleece hoodie with brushed interior, kangaroo pocket and full-zip front. Pre and post-session warmth, refined.",
     fabric: "Tech fleece — 65% Cotton, 35% Polyester",
@@ -173,7 +165,7 @@ const productsData = [
   },
   {
     id: 27, name: "High-Support Sports Bra", price: 49.99,
-    images: [yogaBra, yogaBra], category: "gym",
+    imageKeys: ["yoga-bra", "yoga-bra"], category: "gym",
     rating: 4.7, reviews: 287,
     description: "High-support sports bra with crossback straps and removable cups. Engineered for high-impact training and yoga flow alike.",
     fabric: "82% Recycled Polyester, 18% Elastane",
@@ -187,6 +179,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { t, formatPrice } = useLanguage();
+  const { theme } = useTheme();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -206,6 +199,8 @@ const ProductDetail = () => {
     );
   }
 
+  const images = product.imageKeys.map(k => getProductImage(k, theme));
+
   const handleAddToCart = () => {
     if (product.sizes && product.sizes.length > 0 && !selectedSize) {
       toast({
@@ -219,7 +214,7 @@ const ProductDetail = () => {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.images[0],
+      image: images[0],
       category: product.category
     });
     toast({
@@ -232,6 +227,7 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-background">
       <SearchBar />
       <LanguageSwitcher />
+      <ThemeToggle />
 
       <header className="pt-28 pb-6 px-4">
         <div className="max-w-7xl mx-auto">
@@ -253,13 +249,13 @@ const ProductDetail = () => {
             <div className="space-y-4">
               <div className="glass clip-angle-lg overflow-hidden border border-primary/20 bg-foreground/5">
                 <img
-                  src={product.images[selectedImage]}
+                  src={images[selectedImage]}
                   alt={product.name}
                   className="w-full h-[500px] object-contain p-8"
                 />
               </div>
               <div className="grid grid-cols-4 gap-4">
-                {product.images.map((image, index) => (
+                {images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}

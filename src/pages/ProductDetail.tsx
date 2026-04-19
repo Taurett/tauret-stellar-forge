@@ -58,14 +58,14 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const { t, formatPrice } = useLanguage();
+  const { t, formatPrice, language } = useLanguage();
   const { theme } = useTheme();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
 
-  const product = productsData.find(p => p.id === Number(id));
+  const base = productsData.find(p => p.id === Number(id));
 
-  if (!product) {
+  if (!base) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <SearchBar />
@@ -78,6 +78,11 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  // Merge structural data with localised copy
+  const copy = getProductCopy(base.id, language);
+  const product = { ...base, ...copy };
+  const categoryLabel = t(CATEGORY_KEY[product.category] ?? 'categories.all');
 
   const images = product.imageKeys.map(k => getProductImage(k, theme));
 

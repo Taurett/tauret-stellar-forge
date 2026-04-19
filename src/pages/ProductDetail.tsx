@@ -8,6 +8,7 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
+import ProductCustomizer, { CustomizationData } from "@/components/ProductCustomizer";
 
 import tennisOutfit from "@/assets/products/tennis-outfit.jpg";
 import tennisOutfitDetail from "@/assets/products/tennis-outfit-detail.jpg";
@@ -107,6 +108,11 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
+  const [customization, setCustomization] = useState<CustomizationData>({
+    color: "neon-cyan",
+    design: null,
+    customImage: null,
+  });
 
   const product = productsData.find(p => p.id === Number(id));
 
@@ -138,7 +144,13 @@ const ProductDetail = () => {
       name: product.name,
       price: product.price,
       image: product.images[0],
-      category: product.category
+      category: product.category,
+      customization: {
+        color: customization.color,
+        design: customization.design,
+        customImage: customization.customImage,
+        size: selectedSize || undefined,
+      },
     });
     toast({
       title: "Added to cart",

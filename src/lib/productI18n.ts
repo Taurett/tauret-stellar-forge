@@ -109,6 +109,72 @@ const en: ProductDict = {
     fabric: '82% Recycled Polyester, 18% Elastane',
     features: ['Removable cups', 'Crossback straps', 'High support', 'Sweat-wicking'],
   },
+  28: {
+    name: 'Tennis Pro Skort',
+    description: 'Competition-ready tennis skort with built-in shorts and lightweight stretch fabric for quick changes of direction.',
+    fabric: '86% Recycled Polyester, 14% Elastane performance weave',
+    features: ['Built-in inner shorts', 'Ball pocket', '4-way stretch', 'Quick-dry finish'],
+  },
+  29: {
+    name: 'Padel Performance Shirt',
+    description: 'Breathable padel shirt designed for fast rallies, hot courts and all-day comfort during match play.',
+    fabric: 'Lightweight polyester mesh with sweat-wicking treatment',
+    features: ['Mesh ventilation panels', 'Quick-dry fabric', 'Athletic fit', 'Soft flat seams'],
+  },
+  30: {
+    name: 'Padel Skort',
+    description: 'Light, flexible padel skort with supportive inner shorts built for speed, coverage and confident movement.',
+    fabric: 'Performance stretch knit with moisture control',
+    features: ['Integrated shorts', 'Wide waistband', 'Side slit mobility', 'Breathable construction'],
+  },
+  31: {
+    name: 'Padel Tech Jacket',
+    description: 'Lightweight zip jacket for pre-match warmups and late-evening court sessions.',
+    fabric: 'Technical double-knit polyester with brushed inner face',
+    features: ['Full zip front', 'Zip pockets', 'Raglan sleeves', 'Light thermal comfort'],
+  },
+  32: {
+    name: 'Basketball Shooting Shirt',
+    description: 'Loose athletic top tuned for warmups, shooting drills and off-court wear.',
+    fabric: 'Breathable performance mesh polyester',
+    features: ['Sleeveless cut', 'Mesh side panels', 'Lightweight feel', 'Freedom of movement'],
+  },
+  33: {
+    name: 'Handball Training Shorts',
+    description: 'Durable handball shorts designed for hard sessions, fast breaks and repeated lateral movement.',
+    fabric: 'Abrasion-resistant polyester with stretch side inserts',
+    features: ['Elastic waist', 'Reinforced seams', 'Quick-dry build', 'Court-ready mobility'],
+  },
+  34: {
+    name: 'Handball Warmup Jacket',
+    description: 'Structured warmup jacket built to keep muscles ready before intense handball play.',
+    fabric: 'Performance tricot with soft brushed lining',
+    features: ['Full zip', 'Stand collar', 'Warmup comfort', 'Durable knit cuffs'],
+  },
+  35: {
+    name: 'Long-Sleeve Running Top',
+    description: 'Technical long-sleeve running layer for cool mornings, tempo work and transitional weather.',
+    fabric: 'Featherweight recycled polyester with elastane stretch',
+    features: ['Thumbhole cuffs', 'Breathable knit', 'Reflective details', 'Slim performance fit'],
+  },
+  36: {
+    name: 'Tactical Combat Shirt',
+    description: 'Airsoft-ready combat shirt with flexible body fabric and durable utility paneling.',
+    fabric: 'Cotton-poly ripstop panels with stretch performance torso',
+    features: ['Reinforced shoulders', 'Patch panels', 'Breathable body fabric', 'Utility sleeve pockets'],
+  },
+  37: {
+    name: 'Tactical Combat Pants',
+    description: 'Hard-wearing tactical pants built for movement, crawling and long field sessions.',
+    fabric: 'Ripstop utility weave with articulated knee panels',
+    features: ['Cargo pockets', 'Reinforced knees', 'Adjustable waist', 'Field-ready durability'],
+  },
+  38: {
+    name: 'Tactical Field Jacket',
+    description: 'Protective field jacket with utility storage and weather-ready coverage for outdoor airsoft play.',
+    fabric: 'Structured canvas shell with durable lining',
+    features: ['Multiple flap pockets', 'Protective collar', 'Storm placket', 'Utility fit'],
+  },
 };
 
 const ro: ProductDict = {
@@ -207,6 +273,72 @@ const ro: ProductDict = {
     description: 'Sutien sport cu susținere înaltă, bretele crossback și cupe detașabile. Conceput pentru antrenamente intense și yoga deopotrivă.',
     fabric: '82% Poliester reciclat, 18% Elastan',
     features: ['Cupe detașabile', 'Bretele crossback', 'Susținere înaltă', 'Evacuează transpirația'],
+  },
+  28: {
+    name: 'Skort Pro de Tenis',
+    description: 'Skort de competiție pentru tenis, cu pantaloni scurți integrați și material elastic ușor pentru schimbări rapide de direcție.',
+    fabric: '86% Poliester reciclat, 14% Elastan — țesătură performantă',
+    features: ['Pantaloni scurți interiori', 'Buzunar pentru minge', 'Elasticitate în 4 direcții', 'Uscare rapidă'],
+  },
+  29: {
+    name: 'Tricou de Performanță pentru Padel',
+    description: 'Tricou respirabil pentru padel, conceput pentru schimburi rapide, terenuri fierbinți și confort pe tot parcursul meciului.',
+    fabric: 'Mesh ușor din poliester cu tratament de evacuare a transpirației',
+    features: ['Panouri mesh de ventilație', 'Material cu uscare rapidă', 'Croială atletică', 'Cusături plate moi'],
+  },
+  30: {
+    name: 'Skort pentru Padel',
+    description: 'Skort ușor și flexibil pentru padel, cu pantaloni scurți interiori pentru susținere și libertate de mișcare.',
+    fabric: 'Tricot elastic performant cu control al umidității',
+    features: ['Pantaloni scurți integrați', 'Talie lată', 'Fantă laterală pentru mobilitate', 'Construcție respirabilă'],
+  },
+  31: {
+    name: 'Jachetă Tech pentru Padel',
+    description: 'Jachetă ușoară cu fermoar pentru încălzire înainte de meci și sesiuni de seară pe teren.',
+    fabric: 'Poliester tehnic double-knit cu interior ușor periat',
+    features: ['Fermoar integral', 'Buzunare cu fermoar', 'Mâneci raglan', 'Confort termic ușor'],
+  },
+  32: {
+    name: 'Tricou pentru Aruncări la Baschet',
+    description: 'Top atletic lejer pentru încălzire, exerciții de aruncare și purtare casual în afara terenului.',
+    fabric: 'Mesh respirabil din poliester performant',
+    features: ['Croială fără mâneci', 'Panouri laterale mesh', 'Senzație ușoară', 'Libertate de mișcare'],
+  },
+  33: {
+    name: 'Pantaloni Scurți de Antrenament pentru Handbal',
+    description: 'Pantaloni scurți rezistenți pentru handbal, construiți pentru sesiuni intense, contraatacuri rapide și mișcare laterală repetată.',
+    fabric: 'Poliester rezistent la abraziune cu inserții laterale elastice',
+    features: ['Talie elastică', 'Cusături întărite', 'Construcție cu uscare rapidă', 'Mobilitate pentru teren'],
+  },
+  34: {
+    name: 'Jachetă de Încălzire pentru Handbal',
+    description: 'Jachetă structurată de încălzire, concepută pentru a menține musculatura pregătită înaintea jocului intens de handbal.',
+    fabric: 'Tricot performant cu căptușeală moale periată',
+    features: ['Fermoar integral', 'Guler înalt', 'Confort la încălzire', 'Manșete tricotate rezistente'],
+  },
+  35: {
+    name: 'Bluză cu Mâneci Lungi pentru Alergare',
+    description: 'Strat tehnic pentru alergare în dimineți răcoroase, antrenamente tempo și vreme de tranziție.',
+    fabric: 'Poliester reciclat foarte ușor cu elastan',
+    features: ['Manșete cu orificiu pentru deget', 'Tricot respirabil', 'Detalii reflectorizante', 'Croială slim performantă'],
+  },
+  36: {
+    name: 'Cămașă Tactică de Luptă',
+    description: 'Cămașă tactică pregătită pentru airsoft, cu corp flexibil și panouri utilitare rezistente.',
+    fabric: 'Panouri ripstop din bumbac-poliester cu tors stretch performant',
+    features: ['Umeri întăriți', 'Panouri pentru patch-uri', 'Corp respirabil', 'Buzunare utilitare pe mâneci'],
+  },
+  37: {
+    name: 'Pantaloni Tactici de Luptă',
+    description: 'Pantaloni tactici rezistenți, construiți pentru mișcare, târâre și sesiuni lungi pe teren.',
+    fabric: 'Țesătură utilitară ripstop cu panouri articulate la genunchi',
+    features: ['Buzunare cargo', 'Genunchi întăriți', 'Talie ajustabilă', 'Durabilitate pentru teren'],
+  },
+  38: {
+    name: 'Jachetă Tactică de Teren',
+    description: 'Jachetă de teren protectoare, cu buzunare utilitare și acoperire potrivită pentru joc outdoor de airsoft.',
+    fabric: 'Canvas structurat cu căptușeală durabilă',
+    features: ['Buzunare multiple cu clapetă', 'Guler protector', 'Pată contra vântului', 'Croială utilitară'],
   },
 };
 

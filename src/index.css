@@ -257,6 +257,178 @@
     letter-spacing: 0;
     font-weight: 400;
   }
+
+  /* ==========================================================
+     MILITARY THEME — Olive drab, khaki, tactical black
+     ========================================================== */
+  [data-theme="military"] {
+    --background: 75 12% 14%;
+    --foreground: 60 25% 90%;
+
+    --card: 75 14% 18%;
+    --card-foreground: 60 25% 90%;
+
+    --popover: 75 14% 16%;
+    --popover-foreground: 60 25% 90%;
+
+    /* Olive drab — primary */
+    --primary: 75 35% 42%;
+    --primary-foreground: 60 30% 96%;
+    --primary-glow: 78 45% 55%;
+
+    /* Khaki tan — secondary */
+    --secondary: 40 30% 55%;
+    --secondary-foreground: 75 20% 12%;
+    --secondary-glow: 40 40% 68%;
+
+    --muted: 75 10% 22%;
+    --muted-foreground: 60 12% 68%;
+
+    --accent: 35 55% 50%;
+    --accent-foreground: 75 20% 12%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 60 25% 96%;
+
+    --border: 75 12% 28%;
+    --input: 75 12% 20%;
+    --ring: 75 35% 42%;
+
+    --radius: 0.125rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(75 35% 42%), hsl(40 30% 55%));
+    --gradient-neon: linear-gradient(90deg, hsl(75 35% 42%), hsl(35 55% 50%));
+    --gradient-aurora: linear-gradient(135deg, hsl(75 35% 42%) 0%, hsl(60 30% 40%) 50%, hsl(35 55% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(75 12% 14%) 0%, hsl(75 15% 10%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(75 14% 18% / 0.95), hsl(75 14% 14% / 0.85));
+
+    --shadow-neon-cyan: 0 6px 20px -4px hsl(75 35% 42% / 0.45);
+    --shadow-neon-magenta: 0 6px 20px -4px hsl(35 55% 50% / 0.4);
+    --shadow-elevated: 0 24px 48px -16px hsl(75 30% 4% / 0.6);
+    --shadow-card: 0 6px 18px hsl(75 30% 4% / 0.4);
+
+    --glass-bg: hsl(75 14% 18% / 0.75);
+    --glass-border: hsl(75 35% 42% / 0.3);
+
+    /* Stencil-feel display, utilitarian body */
+    --font-display: 'Orbitron', 'Impact', sans-serif;
+    --font-tech: 'Rajdhani', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 75 12% 14%;
+    --sidebar-foreground: 60 25% 90%;
+    --sidebar-primary: 75 35% 42%;
+    --sidebar-primary-foreground: 60 30% 96%;
+    --sidebar-accent: 75 10% 22%;
+    --sidebar-accent-foreground: 60 25% 90%;
+    --sidebar-border: 75 12% 28%;
+    --sidebar-ring: 75 35% 42%;
+  }
+
+  [data-theme="military"] body {
+    background-image:
+      radial-gradient(at 0% 0%, hsl(75 35% 42% / 0.18) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, hsl(35 55% 50% / 0.12) 0px, transparent 55%),
+      linear-gradient(hsl(60 25% 90% / 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(60 25% 90% / 0.025) 1px, transparent 1px);
+    background-size: auto, auto, 40px 40px, 40px 40px;
+  }
+
+  [data-theme="military"] h1,
+  [data-theme="military"] h2,
+  [data-theme="military"] h3,
+  [data-theme="military"] h4,
+  [data-theme="military"] h5,
+  [data-theme="military"] h6 {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  /* ==========================================================
+     RETRO THEME — Soviet poster: deep red, mustard, cream, black
+     ========================================================== */
+  [data-theme="retro"] {
+    --background: 38 40% 92%;
+    --foreground: 0 0% 10%;
+
+    --card: 40 50% 96%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 40 50% 95%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Soviet red — primary */
+    --primary: 358 75% 42%;
+    --primary-foreground: 38 50% 96%;
+    --primary-glow: 358 70% 55%;
+
+    /* Mustard yellow — secondary */
+    --secondary: 42 85% 52%;
+    --secondary-foreground: 0 0% 10%;
+    --secondary-glow: 42 90% 62%;
+
+    --muted: 38 30% 86%;
+    --muted-foreground: 0 0% 28%;
+
+    --accent: 358 75% 42%;
+    --accent-foreground: 38 50% 96%;
+
+    --destructive: 0 80% 38%;
+    --destructive-foreground: 38 50% 96%;
+
+    --border: 0 0% 18%;
+    --input: 38 35% 88%;
+    --ring: 358 75% 42%;
+
+    --radius: 0rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(358 75% 42%), hsl(42 85% 52%));
+    --gradient-neon: linear-gradient(90deg, hsl(358 75% 42%), hsl(42 85% 52%));
+    --gradient-aurora: linear-gradient(135deg, hsl(358 75% 42%) 0%, hsl(15 80% 48%) 50%, hsl(42 85% 52%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(38 40% 92%) 0%, hsl(38 35% 88%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(40 50% 96% / 0.95), hsl(38 40% 90% / 0.85));
+
+    --shadow-neon-cyan: 6px 6px 0 0 hsl(0 0% 10%);
+    --shadow-neon-magenta: 6px 6px 0 0 hsl(358 75% 42%);
+    --shadow-elevated: 8px 8px 0 0 hsl(0 0% 10%);
+    --shadow-card: 4px 4px 0 0 hsl(0 0% 10%);
+
+    --glass-bg: hsl(40 50% 96% / 0.92);
+    --glass-border: hsl(0 0% 10% / 0.85);
+
+    /* Bold propaganda headlines, slab body */
+    --font-display: 'DM Serif Display', 'Georgia', serif;
+    --font-tech: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 38 40% 92%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 358 75% 42%;
+    --sidebar-primary-foreground: 38 50% 96%;
+    --sidebar-accent: 38 30% 86%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 358 75% 42%;
+  }
+
+  [data-theme="retro"] body {
+    background-image:
+      radial-gradient(at 0% 0%, hsl(358 75% 42% / 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(42 85% 52% / 0.12) 0px, transparent 50%),
+      repeating-linear-gradient(45deg, transparent 0 24px, hsl(0 0% 10% / 0.025) 24px 25px);
+  }
+
+  [data-theme="retro"] h1,
+  [data-theme="retro"] h2,
+  [data-theme="retro"] h3,
+  [data-theme="retro"] h4,
+  [data-theme="retro"] h5,
+  [data-theme="retro"] h6 {
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
 }
 
 @layer base {

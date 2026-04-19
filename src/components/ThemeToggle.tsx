@@ -4,13 +4,15 @@ const themes: { value: Theme; label: string }[] = [
   { value: 'cyber', label: 'Cyber' },
   { value: 'wimbledon', label: 'Wimbledon' },
   { value: 'arid', label: 'Arid' },
+  { value: 'military', label: 'Military' },
+  { value: 'retro', label: 'Retro' },
 ];
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex gap-1 glass clip-angle p-1 border border-primary/30">
+    <div className="fixed bottom-6 left-6 z-50 flex flex-wrap gap-1 glass clip-angle p-1 border border-primary/30 max-w-[calc(100vw-3rem)]">
       {themes.map((t) => (
         <button
           key={t.value}

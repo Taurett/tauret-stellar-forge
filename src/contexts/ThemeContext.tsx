@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-export type Theme = 'cyber' | 'wimbledon' | 'arid';
+export type Theme = 'cyber' | 'wimbledon' | 'arid' | 'military' | 'retro';
 
 interface ThemeContextType {
   theme: Theme;
@@ -10,7 +10,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'tauret-theme';
-const VALID: Theme[] = ['cyber', 'wimbledon', 'arid'];
+const VALID: Theme[] = ['cyber', 'wimbledon', 'arid', 'military', 'retro'];
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => {

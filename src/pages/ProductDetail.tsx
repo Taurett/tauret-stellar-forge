@@ -160,7 +160,7 @@ const ProductDetail = () => {
             <div className="space-y-6">
               <div>
                 <Badge className="bg-gradient-neon text-primary-foreground font-tech text-[10px] uppercase tracking-[0.25em] mb-4 hover:bg-gradient-neon">
-                  {product.category}
+                  {categoryLabel}
                 </Badge>
                 <h1 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4 uppercase">
                   {product.name}
@@ -251,7 +251,7 @@ const ProductDetail = () => {
                 <div className="glass clip-angle-lg p-8 border border-primary/20">
                   <div className="space-y-1 font-tech">
                     {[
-                      { label: t('product.specs.category'), value: product.category.toUpperCase() },
+                      { label: t('product.specs.category'), value: categoryLabel.toUpperCase() },
                       { label: t('product.specs.material'), value: product.fabric },
                       { label: t('product.specs.sizes'),    value: product.sizes.join(', ') },
                       { label: t('product.specs.rating'),   value: `${product.rating}/5.0` },

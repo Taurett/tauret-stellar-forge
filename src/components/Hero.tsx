@@ -181,7 +181,7 @@ const Hero = () => {
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass clip-angle animate-fade-in">
           <Zap className="w-4 h-4 text-primary" />
           <span className="font-tech text-sm uppercase tracking-[0.3em] text-primary">
-            {t('hero.chip')}
+            {t(`hero.chip.${theme}`)}
           </span>
         </div>
 

@@ -152,6 +152,11 @@ const translations = {
 
     // Hero extras
     'hero.chip': 'Next-Gen Sportswear',
+    'hero.chip.cyber': 'Next-Gen Sportswear',
+    'hero.chip.wimbledon': 'Centre Court Heritage',
+    'hero.chip.arid': 'Built for the Wild',
+    'hero.chip.military': 'Mission-Ready Gear',
+    'hero.chip.retro': 'Sport for Everyone',
     'hero.exploreSports': 'Explore Sports',
     'hero.stats.sports': 'Sports',
     'hero.stats.products': 'Products',
@@ -318,6 +323,11 @@ const translations = {
 
     // Hero extras
     'hero.chip': 'Echipament Sportiv de Nouă Generație',
+    'hero.chip.cyber': 'Echipament Sportiv de Nouă Generație',
+    'hero.chip.wimbledon': 'Tradiție pe Centre Court',
+    'hero.chip.arid': 'Făcut pentru Sălbăticie',
+    'hero.chip.military': 'Echipament Tactic de Misiune',
+    'hero.chip.retro': 'Sport pentru toți',
     'hero.exploreSports': 'Explorează Sporturile',
     'hero.stats.sports': 'Sporturi',
     'hero.stats.products': 'Produse',

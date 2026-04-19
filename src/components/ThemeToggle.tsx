@@ -4,6 +4,8 @@ const themes: { value: Theme; label: string }[] = [
   { value: 'cyber', label: 'Cyber' },
   { value: 'wimbledon', label: 'Wimbledon' },
   { value: 'arid', label: 'Arid' },
+  { value: 'military', label: 'Military' },
+  { value: 'retro', label: 'Retro' },
 ];
 
 const ThemeToggle = () => {

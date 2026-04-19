@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,6 +86,91 @@
     /* Same — site is dark by default */
     --background: 230 35% 4%;
     --foreground: 180 20% 96%;
+  }
+
+  /* ==========================================================
+     WIMBLEDON THEME — Clean white, championship green, royal purple
+     ========================================================== */
+  [data-theme="wimbledon"] {
+    --background: 0 0% 100%;
+    --foreground: 155 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 155 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 50% 12%;
+
+    /* Championship green */
+    --primary: 152 100% 22%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 152 70% 35%;
+
+    /* Royal purple */
+    --secondary: 280 60% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 280 60% 50%;
+
+    --muted: 150 20% 96%;
+    --muted-foreground: 155 15% 38%;
+
+    --accent: 280 60% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 20% 88%;
+    --input: 150 20% 96%;
+    --ring: 152 100% 22%;
+
+    --radius: 0.375rem;
+
+    /* Refined gradients (subtle for clean look) */
+    --gradient-primary: linear-gradient(135deg, hsl(152 100% 22%), hsl(152 70% 35%));
+    --gradient-neon: linear-gradient(90deg, hsl(152 100% 22%), hsl(280 60% 35%));
+    --gradient-aurora: linear-gradient(135deg, hsl(152 100% 22%) 0%, hsl(155 80% 28%) 50%, hsl(280 60% 35%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(150 20% 98%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(0 0% 100% / 0.95), hsl(150 20% 98% / 0.85));
+
+    /* Soft shadows instead of neon */
+    --shadow-neon-cyan: 0 6px 20px -4px hsl(152 100% 22% / 0.25);
+    --shadow-neon-magenta: 0 6px 20px -4px hsl(280 60% 35% / 0.25);
+    --shadow-elevated: 0 24px 48px -16px hsl(155 50% 12% / 0.18);
+    --shadow-card: 0 4px 16px hsl(155 50% 12% / 0.08);
+
+    --glass-bg: hsl(0 0% 100% / 0.85);
+    --glass-border: hsl(152 100% 22% / 0.18);
+
+    /* Typography — refined serif for headings */
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-tech: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 155 50% 12%;
+    --sidebar-primary: 152 100% 22%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 20% 96%;
+    --sidebar-accent-foreground: 155 50% 12%;
+    --sidebar-border: 150 20% 88%;
+    --sidebar-ring: 152 100% 22%;
+  }
+
+  [data-theme="wimbledon"] body {
+    background-image:
+      radial-gradient(at 0% 0%, hsl(152 100% 22% / 0.04) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(280 60% 35% / 0.04) 0px, transparent 50%);
+  }
+
+  [data-theme="wimbledon"] h1,
+  [data-theme="wimbledon"] h2,
+  [data-theme="wimbledon"] h3,
+  [data-theme="wimbledon"] h4,
+  [data-theme="wimbledon"] h5,
+  [data-theme="wimbledon"] h6 {
+    letter-spacing: -0.01em;
+    font-weight: 700;
   }
 }
 

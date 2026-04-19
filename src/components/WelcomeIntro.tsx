@@ -12,6 +12,7 @@ const THEMES: { value: Theme; labelKey: string; descKey: string }[] = [
   { value: 'arid',      labelKey: 'intro.theme.arid.label',      descKey: 'intro.theme.arid.desc' },
   { value: 'military',  labelKey: 'intro.theme.military.label',  descKey: 'intro.theme.military.desc' },
   { value: 'retro',     labelKey: 'intro.theme.retro.label',     descKey: 'intro.theme.retro.desc' },
+  { value: 'avalanche', labelKey: 'intro.theme.avalanche.label', descKey: 'intro.theme.avalanche.desc' },
 ];
 
 const WelcomeIntro = () => {

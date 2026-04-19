@@ -12,7 +12,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
-import { getProductCopy } from "@/lib/productI18n";
+import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 
 interface ProductData {
   id: number;
@@ -55,17 +55,7 @@ const productsData: ProductData[] = [
   { id: 38, price: 119.99, imageKeys: ["airsoft-jacket", "airsoft-jacket"],              category: "airsoft",    rating: 4.8, reviews: 76, sizes: ["S","M","L","XL","XXL"] },
 ];
 
-const CATEGORY_KEY: Record<string, string> = {
-  basketball: 'categories.basketball',
-  football:   'categories.football',
-  tennis:     'categories.tennis',
-  padel:      'categories.padel',
-  handball:   'categories.handball',
-  cycling:    'categories.cycling',
-  running:    'categories.running',
-  gym:        'categories.gymFitness',
-  airsoft:    'categories.airsoft',
-};
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -92,10 +82,10 @@ const ProductDetail = () => {
     );
   }
 
-  // Merge structural data with localised copy
-  const copy = getProductCopy(base.id, language);
+  // Merge structural data with localised copy (theme-aware for Avalanche).
+  const copy = getProductCopy(base.id, language, theme);
   const product = { ...base, ...copy };
-  const categoryLabel = t(CATEGORY_KEY[product.category] ?? 'categories.all');
+  const categoryLabel = t(getCategoryLabelKey(product.category, theme));
 
   const images = product.imageKeys.map(k => getProductImage(k, theme));
 

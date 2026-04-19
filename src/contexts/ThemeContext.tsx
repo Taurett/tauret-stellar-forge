@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { getCookie, setCookie } from '@/lib/cookies';
 
-export type Theme = 'cyber' | 'wimbledon' | 'arid' | 'military' | 'retro';
+export type Theme = 'cyber' | 'wimbledon' | 'arid' | 'military' | 'retro' | 'avalanche';
 
 interface ThemeContextType {
   theme: Theme;
@@ -17,7 +17,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const COOKIE_KEY = 'tauret-theme';
 const CHOSEN_KEY = 'tauret-theme-chosen';
 const LEGACY_LS_KEY = 'tauret-theme';
-const VALID: Theme[] = ['cyber', 'wimbledon', 'arid', 'military', 'retro'];
+const VALID: Theme[] = ['cyber', 'wimbledon', 'arid', 'military', 'retro', 'avalanche'];
 
 const readInitialTheme = (): { theme: Theme; chosen: boolean } => {
   if (typeof window === 'undefined') return { theme: 'cyber', chosen: false };

@@ -344,11 +344,81 @@ const ro: ProductDict = {
 
 const dict: Record<Lang, ProductDict> = { en, ro };
 
-export const getProductCopy = (id: number, lang: Lang): ProductCopy => {
+// Theme-specific overrides. Right now only Avalanche relabels the airsoft trio
+// as Winter Sports gear; other themes fall back to the base dictionary.
+type ThemeKey = 'avalanche';
+const themeOverrides: Record<ThemeKey, Record<Lang, Partial<ProductDict>>> = {
+  avalanche: {
+    en: {
+      36: {
+        name: 'Thermal Base Layer Top',
+        description: 'Snow-day base layer that traps body heat and wicks sweat on the slopes.',
+        fabric: 'Brushed merino-blend knit with flatlock seams',
+        features: ['Thermal insulation', 'Moisture-wicking', 'Flatlock seams', 'Slim layering fit'],
+      },
+      37: {
+        name: 'Insulated Snow Pants',
+        description: 'Waterproof, insulated pants engineered for skiing, snowboarding and winter hikes.',
+        fabric: 'Waterproof shell with synthetic down insulation',
+        features: ['Waterproof 20K', 'Synthetic down fill', 'Reinforced cuffs', 'Articulated knees'],
+      },
+      38: {
+        name: 'Alpine Snow Jacket',
+        description: 'Insulated alpine shell with sealed seams and a helmet-compatible hood for deep winter days.',
+        fabric: 'Recycled ripstop shell with PrimaLoft® insulation',
+        features: ['Helmet hood', 'Sealed seams', 'Powder skirt', 'PrimaLoft® fill'],
+      },
+    },
+    ro: {
+      36: {
+        name: 'Bluză Termică First Layer',
+        description: 'Strat de bază pentru zilele de zăpadă, păstrează căldura și evacuează transpirația pe pârtie.',
+        fabric: 'Tricot mixt cu lână merinos periată și cusături flatlock',
+        features: ['Izolație termică', 'Evacuează transpirația', 'Cusături flatlock', 'Croială slim de stratificare'],
+      },
+      37: {
+        name: 'Pantaloni de Schi Izolați',
+        description: 'Pantaloni impermeabili și izolați, gândiți pentru schi, snowboard și ture de iarnă.',
+        fabric: 'Material exterior impermeabil cu izolație sintetică tip puf',
+        features: ['Impermeabili 20K', 'Umplutură puf sintetic', 'Manșete ranforsate', 'Genunchi articulați'],
+      },
+      38: {
+        name: 'Geacă Alpină de Schi',
+        description: 'Geacă alpină izolată, cu cusături sigilate și glugă compatibilă cu casca, pentru zile reci.',
+        fabric: 'Material reciclat ripstop cu izolație PrimaLoft®',
+        features: ['Glugă pentru cască', 'Cusături sigilate', 'Apărătoare de zăpadă', 'Umplutură PrimaLoft®'],
+      },
+    },
+  },
+};
+
+export const getProductCopy = (id: number, lang: Lang, theme?: string): ProductCopy => {
+  if (theme && theme in themeOverrides) {
+    const override = themeOverrides[theme as ThemeKey][lang]?.[id];
+    if (override) return override;
+  }
   return dict[lang][id] ?? dict.en[id] ?? {
     name: `Product #${id}`,
     description: '',
     fabric: '',
     features: [],
   };
+};
+
+/** Returns the i18n key for a category label, swapping airsoft → winterSports on Avalanche. */
+export const getCategoryLabelKey = (category: string, theme?: string): string => {
+  if (theme === 'avalanche' && category === 'airsoft') return 'categories.winterSports';
+  const map: Record<string, string> = {
+    tennis: 'categories.tennis',
+    padel: 'categories.padel',
+    football: 'categories.football',
+    basketball: 'categories.basketball',
+    handball: 'categories.handball',
+    cycling: 'categories.cycling',
+    running: 'categories.running',
+    gym: 'categories.gymFitness',
+    airsoft: 'categories.airsoft',
+    all: 'categories.all',
+  };
+  return map[category] ?? `categories.${category}`;
 };

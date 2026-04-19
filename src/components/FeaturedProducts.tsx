@@ -6,19 +6,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
-import { getProductCopy } from "@/lib/productI18n";
+import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 
-const CATEGORY_KEY: Record<string, string> = {
-  basketball: 'categories.basketball',
-  football:   'categories.football',
-  tennis:     'categories.tennis',
-  padel:      'categories.padel',
-  handball:   'categories.handball',
-  cycling:    'categories.cycling',
-  running:    'categories.running',
-  gym:        'categories.gymFitness',
-  airsoft:    'categories.airsoft',
-};
 
 const FeaturedProducts = () => {
   const { t, formatPrice, language } = useLanguage();
@@ -38,8 +27,8 @@ const FeaturedProducts = () => {
 
   const featuredProducts = featured.map(p => ({
     ...p,
-    name: getProductCopy(p.id, language).name,
-    category: t(CATEGORY_KEY[p.categoryId] ?? 'categories.all'),
+    name: getProductCopy(p.id, language, theme).name,
+    category: t(getCategoryLabelKey(p.categoryId, theme)),
   }));
 
   const handleAddToCart = (product: typeof featuredProducts[number]) => {

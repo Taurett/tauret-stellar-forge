@@ -360,10 +360,57 @@ const retroMap: Record<ProductImageKey, string> = {
   "airsoft-jacket": airsoftJacketR,
 };
 
+const avalancheModules = import.meta.glob("../assets/products/avalanche/*.jpg", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+const avalancheImage = (filename: string) =>
+  avalancheModules[`../assets/products/avalanche/${filename}`];
+
+const avalancheMap: Record<ProductImageKey, string> = {
+  "tennis-outfit": avalancheImage("tennis-outfit.jpg"),
+  "tennis-outfit-detail": avalancheImage("tennis-outfit.jpg"),
+  "tennis-skort": avalancheImage("tennis-skort.jpg"),
+  "tennis-polo": avalancheImage("tennis-polo.jpg"),
+  "padel-shirt": avalancheImage("padel-shirt.jpg"),
+  "padel-skort": avalancheImage("padel-skort.jpg"),
+  "padel-jacket": avalancheImage("padel-jacket.jpg"),
+  "football-jersey": avalancheImage("football-jersey.jpg"),
+  "football-jersey-detail": avalancheImage("football-jersey.jpg"),
+  "football-shorts": avalancheImage("football-shorts.jpg"),
+  "football-shorts-detail": avalancheImage("football-shorts.jpg"),
+  "goalkeeper-jersey": avalancheImage("goalkeeper-jersey.jpg"),
+  "basketball-jersey": avalancheImage("basketball-jersey.jpg"),
+  "basketball-jersey-detail": avalancheImage("basketball-jersey.jpg"),
+  "basketball-shooter": avalancheImage("basketball-shooter.jpg"),
+  "basketball-shorts": avalancheImage("basketball-shorts.jpg"),
+  "handball-jersey": avalancheImage("handball-jersey.jpg"),
+  "handball-jersey-detail": avalancheImage("handball-jersey.jpg"),
+  "handball-shorts": avalancheImage("handball-shorts.jpg"),
+  "handball-jacket": avalancheImage("handball-jacket.jpg"),
+  "cycling-jersey": avalancheImage("cycling-jersey.jpg"),
+  "cycling-jersey-detail": avalancheImage("cycling-jersey.jpg"),
+  "cycling-shorts": avalancheImage("cycling-shorts.jpg"),
+  "cycling-shorts-detail": avalancheImage("cycling-shorts.jpg"),
+  "cycling-jacket": avalancheImage("cycling-jacket.jpg"),
+  "running-tank": avalancheImage("running-tank.jpg"),
+  "running-leggings": avalancheImage("running-leggings.jpg"),
+  "running-longsleeve": avalancheImage("running-longsleeve.jpg"),
+  "gym-shirt": avalancheImage("gym-shirt.jpg"),
+  "gym-shirt-detail": avalancheImage("gym-shirt.jpg"),
+  "gym-hoodie": avalancheImage("gym-hoodie.jpg"),
+  "yoga-bra": avalancheImage("yoga-bra.jpg"),
+  "airsoft-shirt": avalancheImage("airsoft-shirt.jpg"),
+  "airsoft-pants": avalancheImage("airsoft-pants.jpg"),
+  "airsoft-jacket": avalancheImage("airsoft-jacket.jpg"),
+};
+
 export const getProductImage = (key: ProductImageKey, theme: Theme): string => {
   if (theme === "wimbledon") return wimbledonMap[key];
   if (theme === "arid") return aridMap[key];
   if (theme === "military") return militaryMap[key];
   if (theme === "retro") return retroMap[key];
+  if (theme === "avalanche") return avalancheMap[key];
   return cyberMap[key];
 };

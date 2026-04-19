@@ -13,6 +13,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { toast } from "@/hooks/use-toast";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
+import { getProductCopy } from "@/lib/productI18n";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{
@@ -50,14 +51,20 @@ const sportCategoryKeys = [
 
 const Shop = () => {
   const { addToCart } = useCart();
-  const { t, formatPrice } = useLanguage();
+  const { t, formatPrice, language } = useLanguage();
   const { theme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
   const sportCategories = sportCategoryKeys.map(c => ({ value: c.value, label: t(c.labelKey) }));
 
-  const handleAddToCart = (product: typeof products[number]) => {
+  // Localised product list — name pulled per-language at render.
+  const localisedProducts = products.map(p => ({
+    ...p,
+    name: getProductCopy(p.id, language).name,
+  }));
+
+  const handleAddToCart = (product: typeof localisedProducts[number]) => {
     addToCart({
       id: product.id,
       name: product.name,
@@ -71,7 +78,7 @@ const Shop = () => {
     });
   };
 
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = localisedProducts.filter(product => {
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;

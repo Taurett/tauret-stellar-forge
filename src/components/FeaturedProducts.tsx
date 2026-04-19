@@ -6,22 +6,39 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
+import { getProductCopy } from "@/lib/productI18n";
+
+const CATEGORY_KEY: Record<string, string> = {
+  basketball: 'categories.basketball',
+  football:   'categories.football',
+  tennis:     'categories.tennis',
+  handball:   'categories.handball',
+  cycling:    'categories.cycling',
+  running:    'categories.running',
+  gym:        'categories.gymFitness',
+};
 
 const FeaturedProducts = () => {
-  const { t, formatPrice } = useLanguage();
+  const { t, formatPrice, language } = useLanguage();
   const { addToCart } = useCart();
   const { theme } = useTheme();
 
-  const featuredProducts: Array<{
-    id: number; name: string; price: number; originalPrice: number;
+  const featured: Array<{
+    id: number; price: number; originalPrice: number;
     imageKey: ProductImageKey; rating: number; reviews: number;
-    badgeKey: string; category: string;
+    badgeKey: string; categoryId: string;
   }> = [
-    { id: 11, name: "Basketball Pro Jersey",      price: 89.99,  originalPrice: 109.99, imageKey: "basketball-jersey", rating: 4.8, reviews: 387, badgeKey: "featured.badge.bestseller", category: "Basketball" },
-    { id: 7,  name: "Pro Football Jersey",        price: 79.99,  originalPrice: 99.99,  imageKey: "football-jersey",   rating: 4.8, reviews: 445, badgeKey: "featured.badge.new",        category: "Football" },
-    { id: 18, name: "Compression Training Shirt", price: 59.99,  originalPrice: 79.99,  imageKey: "gym-shirt",         rating: 4.7, reviews: 334, badgeKey: "featured.badge.sale",       category: "Gym & Fitness" },
-    { id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99, originalPrice: 139.99, imageKey: "cycling-jersey",    rating: 4.8, reviews: 276, badgeKey: "featured.badge.limited",    category: "Cycling" },
+    { id: 11, price: 89.99,  originalPrice: 109.99, imageKey: "basketball-jersey", rating: 4.8, reviews: 387, badgeKey: "featured.badge.bestseller", categoryId: "basketball" },
+    { id: 7,  price: 79.99,  originalPrice: 99.99,  imageKey: "football-jersey",   rating: 4.8, reviews: 445, badgeKey: "featured.badge.new",        categoryId: "football"   },
+    { id: 18, price: 59.99,  originalPrice: 79.99,  imageKey: "gym-shirt",         rating: 4.7, reviews: 334, badgeKey: "featured.badge.sale",       categoryId: "gym"        },
+    { id: 14, price: 109.99, originalPrice: 139.99, imageKey: "cycling-jersey",    rating: 4.8, reviews: 276, badgeKey: "featured.badge.limited",    categoryId: "cycling"    },
   ];
+
+  const featuredProducts = featured.map(p => ({
+    ...p,
+    name: getProductCopy(p.id, language).name,
+    category: t(CATEGORY_KEY[p.categoryId] ?? 'categories.all'),
+  }));
 
   const handleAddToCart = (product: typeof featuredProducts[number]) => {
     addToCart({

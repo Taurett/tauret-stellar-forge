@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -171,6 +171,91 @@
   [data-theme="wimbledon"] h6 {
     letter-spacing: -0.01em;
     font-weight: 700;
+  }
+
+  /* ==========================================================
+     ARID SURVIVAL THEME — Sahara desert, sand + terracotta + olive
+     ========================================================== */
+  [data-theme="arid"] {
+    --background: 36 55% 90%;
+    --foreground: 25 35% 18%;
+
+    --card: 36 50% 94%;
+    --card-foreground: 25 35% 18%;
+
+    --popover: 36 55% 93%;
+    --popover-foreground: 25 35% 18%;
+
+    /* Terracotta — primary */
+    --primary: 16 70% 45%;
+    --primary-foreground: 40 60% 96%;
+    --primary-glow: 22 80% 58%;
+
+    /* Dark olive — secondary */
+    --secondary: 70 25% 30%;
+    --secondary-foreground: 40 60% 96%;
+    --secondary-glow: 70 30% 42%;
+
+    --muted: 36 35% 84%;
+    --muted-foreground: 25 20% 38%;
+
+    --accent: 35 80% 55%;
+    --accent-foreground: 25 40% 12%;
+
+    --destructive: 8 75% 45%;
+    --destructive-foreground: 40 60% 96%;
+
+    --border: 30 35% 75%;
+    --input: 36 40% 88%;
+    --ring: 16 70% 45%;
+
+    --radius: 0.25rem;
+
+    /* Warm earthy gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(16 70% 45%), hsl(35 80% 55%));
+    --gradient-neon: linear-gradient(90deg, hsl(16 70% 45%), hsl(35 80% 55%));
+    --gradient-aurora: linear-gradient(135deg, hsl(16 70% 45%) 0%, hsl(28 75% 52%) 35%, hsl(40 70% 58%) 65%, hsl(70 25% 35%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(36 55% 90%) 0%, hsl(34 50% 85%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(36 50% 94% / 0.95), hsl(34 45% 88% / 0.85));
+
+    --shadow-neon-cyan: 0 8px 24px -6px hsl(16 70% 45% / 0.35);
+    --shadow-neon-magenta: 0 8px 24px -6px hsl(70 25% 30% / 0.3);
+    --shadow-elevated: 0 24px 48px -16px hsl(25 50% 20% / 0.25);
+    --shadow-card: 0 6px 18px hsl(25 40% 25% / 0.12);
+
+    --glass-bg: hsl(36 50% 94% / 0.85);
+    --glass-border: hsl(16 70% 45% / 0.25);
+
+    /* Editorial serif headings, geometric sans body */
+    --font-display: 'DM Serif Display', 'Georgia', serif;
+    --font-tech: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --sidebar-background: 36 55% 90%;
+    --sidebar-foreground: 25 35% 18%;
+    --sidebar-primary: 16 70% 45%;
+    --sidebar-primary-foreground: 40 60% 96%;
+    --sidebar-accent: 36 35% 84%;
+    --sidebar-accent-foreground: 25 35% 18%;
+    --sidebar-border: 30 35% 75%;
+    --sidebar-ring: 16 70% 45%;
+  }
+
+  [data-theme="arid"] body {
+    background-image:
+      radial-gradient(at 0% 0%, hsl(35 80% 55% / 0.18) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, hsl(16 70% 45% / 0.12) 0px, transparent 55%),
+      radial-gradient(at 50% 50%, hsl(40 60% 70% / 0.1) 0px, transparent 60%);
+  }
+
+  [data-theme="arid"] h1,
+  [data-theme="arid"] h2,
+  [data-theme="arid"] h3,
+  [data-theme="arid"] h4,
+  [data-theme="arid"] h5,
+  [data-theme="arid"] h6 {
+    letter-spacing: 0;
+    font-weight: 400;
   }
 }
 

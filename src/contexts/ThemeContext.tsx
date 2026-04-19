@@ -1,40 +1,39 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-export type Theme = 'cyber' | 'wimbledon';
+export type Theme = 'cyber' | 'wimbledon' | 'arid';
 
 interface ThemeContextType {
   theme: Theme;
   setTheme: (t: Theme) => void;
-  toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'tauret-theme';
+const VALID: Theme[] = ['cyber', 'wimbledon', 'arid'];
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'cyber';
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return saved === 'wimbledon' ? 'wimbledon' : 'cyber';
+    const saved = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
+    return saved && VALID.includes(saved) ? saved : 'cyber';
   });
 
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    if (theme === 'wimbledon') {
-      root.classList.remove('dark');
-    } else {
+    if (theme === 'cyber') {
       root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
     }
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
   const setTheme = (t: Theme) => setThemeState(t);
-  const toggleTheme = () => setThemeState((prev) => (prev === 'cyber' ? 'wimbledon' : 'cyber'));
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

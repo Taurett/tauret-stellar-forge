@@ -1,5 +1,6 @@
 // Maps product image filenames to their per-theme variants.
-// Cyber set lives in src/assets/products/*, Wimbledon set in src/assets/products/wimbledon/*.
+// Cyber set lives in src/assets/products/*, Wimbledon set in src/assets/products/wimbledon/*,
+// Arid Survival set in src/assets/products/arid/*.
 
 import type { Theme } from "@/contexts/ThemeContext";
 
@@ -48,6 +49,24 @@ import runningLeggingsW from "@/assets/products/wimbledon/running-leggings.jpg";
 import gymShirtW from "@/assets/products/wimbledon/gym-shirt.jpg";
 import gymHoodieW from "@/assets/products/wimbledon/gym-hoodie.jpg";
 import yogaBraW from "@/assets/products/wimbledon/yoga-bra.jpg";
+
+// Arid imports
+import tennisOutfitA from "@/assets/products/arid/tennis-outfit.jpg";
+import tennisPoloA from "@/assets/products/arid/tennis-polo.jpg";
+import footballJerseyA from "@/assets/products/arid/football-jersey.jpg";
+import footballShortsA from "@/assets/products/arid/football-shorts.jpg";
+import goalkeeperJerseyA from "@/assets/products/arid/goalkeeper-jersey.jpg";
+import basketballJerseyA from "@/assets/products/arid/basketball-jersey.jpg";
+import basketballShortsA from "@/assets/products/arid/basketball-shorts.jpg";
+import handballJerseyA from "@/assets/products/arid/handball-jersey.jpg";
+import cyclingJerseyA from "@/assets/products/arid/cycling-jersey.jpg";
+import cyclingShortsA from "@/assets/products/arid/cycling-shorts.jpg";
+import cyclingJacketA from "@/assets/products/arid/cycling-jacket.jpg";
+import runningTankA from "@/assets/products/arid/running-tank.jpg";
+import runningLeggingsA from "@/assets/products/arid/running-leggings.jpg";
+import gymShirtA from "@/assets/products/arid/gym-shirt.jpg";
+import gymHoodieA from "@/assets/products/arid/gym-hoodie.jpg";
+import yogaBraA from "@/assets/products/arid/yoga-bra.jpg";
 
 export type ProductImageKey =
   | "tennis-outfit" | "tennis-outfit-detail"
@@ -122,6 +141,35 @@ const wimbledonMap: Record<ProductImageKey, string> = {
   "yoga-bra": yogaBraW,
 };
 
+const aridMap: Record<ProductImageKey, string> = {
+  "tennis-outfit": tennisOutfitA,
+  "tennis-outfit-detail": tennisOutfitA,
+  "tennis-polo": tennisPoloA,
+  "football-jersey": footballJerseyA,
+  "football-jersey-detail": footballJerseyA,
+  "football-shorts": footballShortsA,
+  "football-shorts-detail": footballShortsA,
+  "goalkeeper-jersey": goalkeeperJerseyA,
+  "basketball-jersey": basketballJerseyA,
+  "basketball-jersey-detail": basketballJerseyA,
+  "basketball-shorts": basketballShortsA,
+  "handball-jersey": handballJerseyA,
+  "handball-jersey-detail": handballJerseyA,
+  "cycling-jersey": cyclingJerseyA,
+  "cycling-jersey-detail": cyclingJerseyA,
+  "cycling-shorts": cyclingShortsA,
+  "cycling-shorts-detail": cyclingShortsA,
+  "cycling-jacket": cyclingJacketA,
+  "running-tank": runningTankA,
+  "running-leggings": runningLeggingsA,
+  "gym-shirt": gymShirtA,
+  "gym-shirt-detail": gymShirtA,
+  "gym-hoodie": gymHoodieA,
+  "yoga-bra": yogaBraA,
+};
+
 export const getProductImage = (key: ProductImageKey, theme: Theme): string => {
-  return theme === "wimbledon" ? wimbledonMap[key] : cyberMap[key];
+  if (theme === "wimbledon") return wimbledonMap[key];
+  if (theme === "arid") return aridMap[key];
+  return cyberMap[key];
 };

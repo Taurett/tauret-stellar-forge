@@ -68,6 +68,42 @@ import gymShirtA from "@/assets/products/arid/gym-shirt.jpg";
 import gymHoodieA from "@/assets/products/arid/gym-hoodie.jpg";
 import yogaBraA from "@/assets/products/arid/yoga-bra.jpg";
 
+// Military imports
+import tennisOutfitM from "@/assets/products/military/tennis-outfit.jpg";
+import tennisPoloM from "@/assets/products/military/tennis-polo.jpg";
+import footballJerseyM from "@/assets/products/military/football-jersey.jpg";
+import footballShortsM from "@/assets/products/military/football-shorts.jpg";
+import goalkeeperJerseyM from "@/assets/products/military/goalkeeper-jersey.jpg";
+import basketballJerseyM from "@/assets/products/military/basketball-jersey.jpg";
+import basketballShortsM from "@/assets/products/military/basketball-shorts.jpg";
+import handballJerseyM from "@/assets/products/military/handball-jersey.jpg";
+import cyclingJerseyM from "@/assets/products/military/cycling-jersey.jpg";
+import cyclingShortsM from "@/assets/products/military/cycling-shorts.jpg";
+import cyclingJacketM from "@/assets/products/military/cycling-jacket.jpg";
+import runningTankM from "@/assets/products/military/running-tank.jpg";
+import runningLeggingsM from "@/assets/products/military/running-leggings.jpg";
+import gymShirtM from "@/assets/products/military/gym-shirt.jpg";
+import gymHoodieM from "@/assets/products/military/gym-hoodie.jpg";
+import yogaBraM from "@/assets/products/military/yoga-bra.jpg";
+
+// Retro imports
+import tennisOutfitR from "@/assets/products/retro/tennis-outfit.jpg";
+import tennisPoloR from "@/assets/products/retro/tennis-polo.jpg";
+import footballJerseyR from "@/assets/products/retro/football-jersey.jpg";
+import footballShortsR from "@/assets/products/retro/football-shorts.jpg";
+import goalkeeperJerseyR from "@/assets/products/retro/goalkeeper-jersey.jpg";
+import basketballJerseyR from "@/assets/products/retro/basketball-jersey.jpg";
+import basketballShortsR from "@/assets/products/retro/basketball-shorts.jpg";
+import handballJerseyR from "@/assets/products/retro/handball-jersey.jpg";
+import cyclingJerseyR from "@/assets/products/retro/cycling-jersey.jpg";
+import cyclingShortsR from "@/assets/products/retro/cycling-shorts.jpg";
+import cyclingJacketR from "@/assets/products/retro/cycling-jacket.jpg";
+import runningTankR from "@/assets/products/retro/running-tank.jpg";
+import runningLeggingsR from "@/assets/products/retro/running-leggings.jpg";
+import gymShirtR from "@/assets/products/retro/gym-shirt.jpg";
+import gymHoodieR from "@/assets/products/retro/gym-hoodie.jpg";
+import yogaBraR from "@/assets/products/retro/yoga-bra.jpg";
+
 export type ProductImageKey =
   | "tennis-outfit" | "tennis-outfit-detail"
   | "tennis-polo"
@@ -168,8 +204,64 @@ const aridMap: Record<ProductImageKey, string> = {
   "yoga-bra": yogaBraA,
 };
 
+const militaryMap: Record<ProductImageKey, string> = {
+  "tennis-outfit": tennisOutfitM,
+  "tennis-outfit-detail": tennisOutfitM,
+  "tennis-polo": tennisPoloM,
+  "football-jersey": footballJerseyM,
+  "football-jersey-detail": footballJerseyM,
+  "football-shorts": footballShortsM,
+  "football-shorts-detail": footballShortsM,
+  "goalkeeper-jersey": goalkeeperJerseyM,
+  "basketball-jersey": basketballJerseyM,
+  "basketball-jersey-detail": basketballJerseyM,
+  "basketball-shorts": basketballShortsM,
+  "handball-jersey": handballJerseyM,
+  "handball-jersey-detail": handballJerseyM,
+  "cycling-jersey": cyclingJerseyM,
+  "cycling-jersey-detail": cyclingJerseyM,
+  "cycling-shorts": cyclingShortsM,
+  "cycling-shorts-detail": cyclingShortsM,
+  "cycling-jacket": cyclingJacketM,
+  "running-tank": runningTankM,
+  "running-leggings": runningLeggingsM,
+  "gym-shirt": gymShirtM,
+  "gym-shirt-detail": gymShirtM,
+  "gym-hoodie": gymHoodieM,
+  "yoga-bra": yogaBraM,
+};
+
+const retroMap: Record<ProductImageKey, string> = {
+  "tennis-outfit": tennisOutfitR,
+  "tennis-outfit-detail": tennisOutfitR,
+  "tennis-polo": tennisPoloR,
+  "football-jersey": footballJerseyR,
+  "football-jersey-detail": footballJerseyR,
+  "football-shorts": footballShortsR,
+  "football-shorts-detail": footballShortsR,
+  "goalkeeper-jersey": goalkeeperJerseyR,
+  "basketball-jersey": basketballJerseyR,
+  "basketball-jersey-detail": basketballJerseyR,
+  "basketball-shorts": basketballShortsR,
+  "handball-jersey": handballJerseyR,
+  "handball-jersey-detail": handballJerseyR,
+  "cycling-jersey": cyclingJerseyR,
+  "cycling-jersey-detail": cyclingJerseyR,
+  "cycling-shorts": cyclingShortsR,
+  "cycling-shorts-detail": cyclingShortsR,
+  "cycling-jacket": cyclingJacketR,
+  "running-tank": runningTankR,
+  "running-leggings": runningLeggingsR,
+  "gym-shirt": gymShirtR,
+  "gym-shirt-detail": gymShirtR,
+  "gym-hoodie": gymHoodieR,
+  "yoga-bra": yogaBraR,
+};
+
 export const getProductImage = (key: ProductImageKey, theme: Theme): string => {
   if (theme === "wimbledon") return wimbledonMap[key];
   if (theme === "arid") return aridMap[key];
+  if (theme === "military") return militaryMap[key];
+  if (theme === "retro") return retroMap[key];
   return cyberMap[key];
 };

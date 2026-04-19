@@ -258,6 +258,13 @@ const ProductDetail = () => {
                 Add to Cart
               </Button>
 
+              <ProductCustomizer
+                baseImage={product.images[0]}
+                productName={product.name}
+                value={customization}
+                onChange={setCustomization}
+              />
+
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-primary/20">
                 <div className="glass clip-angle p-4 text-center border border-primary/20">
                   <Truck className="h-6 w-6 text-primary mx-auto mb-2" strokeWidth={1.5} />

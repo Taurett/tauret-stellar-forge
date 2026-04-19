@@ -1,10 +1,7 @@
 // Maps product image filenames to their per-theme variants.
-// Cyber set lives in src/assets/products/*, Wimbledon set in src/assets/products/wimbledon/*,
-// Arid Survival set in src/assets/products/arid/*.
 
 import type { Theme } from "@/contexts/ThemeContext";
 
-// Cyber (default) imports
 import tennisOutfitC from "@/assets/products/tennis-outfit.jpg";
 import tennisPoloC from "@/assets/products/tennis-polo.jpg";
 import footballJerseyC from "@/assets/products/football-jersey.jpg";
@@ -21,8 +18,18 @@ import runningLeggingsC from "@/assets/products/running-leggings.jpg";
 import gymShirtC from "@/assets/products/gym-shirt.jpg";
 import gymHoodieC from "@/assets/products/gym-hoodie.jpg";
 import yogaBraC from "@/assets/products/yoga-bra.jpg";
+import tennisSkortC from "@/assets/products/tennis-skort.jpg";
+import padelShirtC from "@/assets/products/padel-shirt.jpg";
+import padelSkortC from "@/assets/products/padel-skort.jpg";
+import padelJacketC from "@/assets/products/padel-jacket.jpg";
+import basketballShooterC from "@/assets/products/basketball-shooter.jpg";
+import handballShortsC from "@/assets/products/handball-shorts.jpg";
+import handballJacketC from "@/assets/products/handball-jacket.jpg";
+import runningLongsleeveC from "@/assets/products/running-longsleeve.jpg";
+import airsoftShirtC from "@/assets/products/airsoft-shirt.jpg";
+import airsoftPantsC from "@/assets/products/airsoft-pants.jpg";
+import airsoftJacketC from "@/assets/products/airsoft-jacket.jpg";
 
-// Cyber detail imports
 import tennisOutfitDetailC from "@/assets/products/tennis-outfit-detail.jpg";
 import footballJerseyDetailC from "@/assets/products/football-jersey-detail.jpg";
 import footballShortsDetailC from "@/assets/products/football-shorts-detail.jpg";
@@ -32,7 +39,6 @@ import cyclingJerseyDetailC from "@/assets/products/cycling-jersey-detail.jpg";
 import cyclingShortsDetailC from "@/assets/products/cycling-shorts-detail.jpg";
 import gymShirtDetailC from "@/assets/products/gym-shirt-detail.jpg";
 
-// Wimbledon imports
 import tennisOutfitW from "@/assets/products/wimbledon/tennis-outfit.jpg";
 import tennisPoloW from "@/assets/products/wimbledon/tennis-polo.jpg";
 import footballJerseyW from "@/assets/products/wimbledon/football-jersey.jpg";
@@ -49,8 +55,18 @@ import runningLeggingsW from "@/assets/products/wimbledon/running-leggings.jpg";
 import gymShirtW from "@/assets/products/wimbledon/gym-shirt.jpg";
 import gymHoodieW from "@/assets/products/wimbledon/gym-hoodie.jpg";
 import yogaBraW from "@/assets/products/wimbledon/yoga-bra.jpg";
+import tennisSkortW from "@/assets/products/wimbledon/tennis-skort.jpg";
+import padelShirtW from "@/assets/products/wimbledon/padel-shirt.jpg";
+import padelSkortW from "@/assets/products/wimbledon/padel-skort.jpg";
+import padelJacketW from "@/assets/products/wimbledon/padel-jacket.jpg";
+import basketballShooterW from "@/assets/products/wimbledon/basketball-shooter.jpg";
+import handballShortsW from "@/assets/products/wimbledon/handball-shorts.jpg";
+import handballJacketW from "@/assets/products/wimbledon/handball-jacket.jpg";
+import runningLongsleeveW from "@/assets/products/wimbledon/running-longsleeve.jpg";
+import airsoftShirtW from "@/assets/products/wimbledon/airsoft-shirt.jpg";
+import airsoftPantsW from "@/assets/products/wimbledon/airsoft-pants.jpg";
+import airsoftJacketW from "@/assets/products/wimbledon/airsoft-jacket.jpg";
 
-// Arid imports
 import tennisOutfitA from "@/assets/products/arid/tennis-outfit.jpg";
 import tennisPoloA from "@/assets/products/arid/tennis-polo.jpg";
 import footballJerseyA from "@/assets/products/arid/football-jersey.jpg";
@@ -67,8 +83,18 @@ import runningLeggingsA from "@/assets/products/arid/running-leggings.jpg";
 import gymShirtA from "@/assets/products/arid/gym-shirt.jpg";
 import gymHoodieA from "@/assets/products/arid/gym-hoodie.jpg";
 import yogaBraA from "@/assets/products/arid/yoga-bra.jpg";
+import tennisSkortA from "@/assets/products/arid/tennis-skort.jpg";
+import padelShirtA from "@/assets/products/arid/padel-shirt.jpg";
+import padelSkortA from "@/assets/products/arid/padel-skort.jpg";
+import padelJacketA from "@/assets/products/arid/padel-jacket.jpg";
+import basketballShooterA from "@/assets/products/arid/basketball-shooter.jpg";
+import handballShortsA from "@/assets/products/arid/handball-shorts.jpg";
+import handballJacketA from "@/assets/products/arid/handball-jacket.jpg";
+import runningLongsleeveA from "@/assets/products/arid/running-longsleeve.jpg";
+import airsoftShirtA from "@/assets/products/arid/airsoft-shirt.jpg";
+import airsoftPantsA from "@/assets/products/arid/airsoft-pants.jpg";
+import airsoftJacketA from "@/assets/products/arid/airsoft-jacket.jpg";
 
-// Military imports
 import tennisOutfitM from "@/assets/products/military/tennis-outfit.jpg";
 import tennisPoloM from "@/assets/products/military/tennis-polo.jpg";
 import footballJerseyM from "@/assets/products/military/football-jersey.jpg";
@@ -85,8 +111,18 @@ import runningLeggingsM from "@/assets/products/military/running-leggings.jpg";
 import gymShirtM from "@/assets/products/military/gym-shirt.jpg";
 import gymHoodieM from "@/assets/products/military/gym-hoodie.jpg";
 import yogaBraM from "@/assets/products/military/yoga-bra.jpg";
+import tennisSkortM from "@/assets/products/military/tennis-skort.jpg";
+import padelShirtM from "@/assets/products/military/padel-shirt.jpg";
+import padelSkortM from "@/assets/products/military/padel-skort.jpg";
+import padelJacketM from "@/assets/products/military/padel-jacket.jpg";
+import basketballShooterM from "@/assets/products/military/basketball-shooter.jpg";
+import handballShortsM from "@/assets/products/military/handball-shorts.jpg";
+import handballJacketM from "@/assets/products/military/handball-jacket.jpg";
+import runningLongsleeveM from "@/assets/products/military/running-longsleeve.jpg";
+import airsoftShirtM from "@/assets/products/military/airsoft-shirt.jpg";
+import airsoftPantsM from "@/assets/products/military/airsoft-pants.jpg";
+import airsoftJacketM from "@/assets/products/military/airsoft-jacket.jpg";
 
-// Retro imports
 import tennisOutfitR from "@/assets/products/retro/tennis-outfit.jpg";
 import tennisPoloR from "@/assets/products/retro/tennis-polo.jpg";
 import footballJerseyR from "@/assets/products/retro/football-jersey.jpg";
@@ -103,29 +139,45 @@ import runningLeggingsR from "@/assets/products/retro/running-leggings.jpg";
 import gymShirtR from "@/assets/products/retro/gym-shirt.jpg";
 import gymHoodieR from "@/assets/products/retro/gym-hoodie.jpg";
 import yogaBraR from "@/assets/products/retro/yoga-bra.jpg";
+import tennisSkortR from "@/assets/products/retro/tennis-skort.jpg";
+import padelShirtR from "@/assets/products/retro/padel-shirt.jpg";
+import padelSkortR from "@/assets/products/retro/padel-skort.jpg";
+import padelJacketR from "@/assets/products/retro/padel-jacket.jpg";
+import basketballShooterR from "@/assets/products/retro/basketball-shooter.jpg";
+import handballShortsR from "@/assets/products/retro/handball-shorts.jpg";
+import handballJacketR from "@/assets/products/retro/handball-jacket.jpg";
+import runningLongsleeveR from "@/assets/products/retro/running-longsleeve.jpg";
+import airsoftShirtR from "@/assets/products/retro/airsoft-shirt.jpg";
+import airsoftPantsR from "@/assets/products/retro/airsoft-pants.jpg";
+import airsoftJacketR from "@/assets/products/retro/airsoft-jacket.jpg";
 
 export type ProductImageKey =
-  | "tennis-outfit" | "tennis-outfit-detail"
+  | "tennis-outfit" | "tennis-outfit-detail" | "tennis-skort"
   | "tennis-polo"
+  | "padel-shirt" | "padel-skort" | "padel-jacket"
   | "football-jersey" | "football-jersey-detail"
   | "football-shorts" | "football-shorts-detail"
   | "goalkeeper-jersey"
-  | "basketball-jersey" | "basketball-jersey-detail"
+  | "basketball-jersey" | "basketball-jersey-detail" | "basketball-shooter"
   | "basketball-shorts"
-  | "handball-jersey" | "handball-jersey-detail"
+  | "handball-jersey" | "handball-jersey-detail" | "handball-shorts" | "handball-jacket"
   | "cycling-jersey" | "cycling-jersey-detail"
   | "cycling-shorts" | "cycling-shorts-detail"
   | "cycling-jacket"
-  | "running-tank"
-  | "running-leggings"
+  | "running-tank" | "running-leggings" | "running-longsleeve"
   | "gym-shirt" | "gym-shirt-detail"
   | "gym-hoodie"
-  | "yoga-bra";
+  | "yoga-bra"
+  | "airsoft-shirt" | "airsoft-pants" | "airsoft-jacket";
 
 const cyberMap: Record<ProductImageKey, string> = {
   "tennis-outfit": tennisOutfitC,
   "tennis-outfit-detail": tennisOutfitDetailC,
+  "tennis-skort": tennisSkortC,
   "tennis-polo": tennisPoloC,
+  "padel-shirt": padelShirtC,
+  "padel-skort": padelSkortC,
+  "padel-jacket": padelJacketC,
   "football-jersey": footballJerseyC,
   "football-jersey-detail": footballJerseyDetailC,
   "football-shorts": footballShortsC,
@@ -133,9 +185,12 @@ const cyberMap: Record<ProductImageKey, string> = {
   "goalkeeper-jersey": goalkeeperJerseyC,
   "basketball-jersey": basketballJerseyC,
   "basketball-jersey-detail": basketballJerseyDetailC,
+  "basketball-shooter": basketballShooterC,
   "basketball-shorts": basketballShortsC,
   "handball-jersey": handballJerseyC,
   "handball-jersey-detail": handballJerseyDetailC,
+  "handball-shorts": handballShortsC,
+  "handball-jacket": handballJacketC,
   "cycling-jersey": cyclingJerseyC,
   "cycling-jersey-detail": cyclingJerseyDetailC,
   "cycling-shorts": cyclingShortsC,
@@ -143,17 +198,24 @@ const cyberMap: Record<ProductImageKey, string> = {
   "cycling-jacket": cyclingJacketC,
   "running-tank": runningTankC,
   "running-leggings": runningLeggingsC,
+  "running-longsleeve": runningLongsleeveC,
   "gym-shirt": gymShirtC,
   "gym-shirt-detail": gymShirtDetailC,
   "gym-hoodie": gymHoodieC,
   "yoga-bra": yogaBraC,
+  "airsoft-shirt": airsoftShirtC,
+  "airsoft-pants": airsoftPantsC,
+  "airsoft-jacket": airsoftJacketC,
 };
 
-// Wimbledon set re-uses the same image for the "detail" view since we only generated one per product.
 const wimbledonMap: Record<ProductImageKey, string> = {
   "tennis-outfit": tennisOutfitW,
   "tennis-outfit-detail": tennisOutfitW,
+  "tennis-skort": tennisSkortW,
   "tennis-polo": tennisPoloW,
+  "padel-shirt": padelShirtW,
+  "padel-skort": padelSkortW,
+  "padel-jacket": padelJacketW,
   "football-jersey": footballJerseyW,
   "football-jersey-detail": footballJerseyW,
   "football-shorts": footballShortsW,
@@ -161,9 +223,12 @@ const wimbledonMap: Record<ProductImageKey, string> = {
   "goalkeeper-jersey": goalkeeperJerseyW,
   "basketball-jersey": basketballJerseyW,
   "basketball-jersey-detail": basketballJerseyW,
+  "basketball-shooter": basketballShooterW,
   "basketball-shorts": basketballShortsW,
   "handball-jersey": handballJerseyW,
   "handball-jersey-detail": handballJerseyW,
+  "handball-shorts": handballShortsW,
+  "handball-jacket": handballJacketW,
   "cycling-jersey": cyclingJerseyW,
   "cycling-jersey-detail": cyclingJerseyW,
   "cycling-shorts": cyclingShortsW,
@@ -171,16 +236,24 @@ const wimbledonMap: Record<ProductImageKey, string> = {
   "cycling-jacket": cyclingJacketW,
   "running-tank": runningTankW,
   "running-leggings": runningLeggingsW,
+  "running-longsleeve": runningLongsleeveW,
   "gym-shirt": gymShirtW,
   "gym-shirt-detail": gymShirtW,
   "gym-hoodie": gymHoodieW,
   "yoga-bra": yogaBraW,
+  "airsoft-shirt": airsoftShirtW,
+  "airsoft-pants": airsoftPantsW,
+  "airsoft-jacket": airsoftJacketW,
 };
 
 const aridMap: Record<ProductImageKey, string> = {
   "tennis-outfit": tennisOutfitA,
   "tennis-outfit-detail": tennisOutfitA,
+  "tennis-skort": tennisSkortA,
   "tennis-polo": tennisPoloA,
+  "padel-shirt": padelShirtA,
+  "padel-skort": padelSkortA,
+  "padel-jacket": padelJacketA,
   "football-jersey": footballJerseyA,
   "football-jersey-detail": footballJerseyA,
   "football-shorts": footballShortsA,
@@ -188,9 +261,12 @@ const aridMap: Record<ProductImageKey, string> = {
   "goalkeeper-jersey": goalkeeperJerseyA,
   "basketball-jersey": basketballJerseyA,
   "basketball-jersey-detail": basketballJerseyA,
+  "basketball-shooter": basketballShooterA,
   "basketball-shorts": basketballShortsA,
   "handball-jersey": handballJerseyA,
   "handball-jersey-detail": handballJerseyA,
+  "handball-shorts": handballShortsA,
+  "handball-jacket": handballJacketA,
   "cycling-jersey": cyclingJerseyA,
   "cycling-jersey-detail": cyclingJerseyA,
   "cycling-shorts": cyclingShortsA,
@@ -198,16 +274,24 @@ const aridMap: Record<ProductImageKey, string> = {
   "cycling-jacket": cyclingJacketA,
   "running-tank": runningTankA,
   "running-leggings": runningLeggingsA,
+  "running-longsleeve": runningLongsleeveA,
   "gym-shirt": gymShirtA,
   "gym-shirt-detail": gymShirtA,
   "gym-hoodie": gymHoodieA,
   "yoga-bra": yogaBraA,
+  "airsoft-shirt": airsoftShirtA,
+  "airsoft-pants": airsoftPantsA,
+  "airsoft-jacket": airsoftJacketA,
 };
 
 const militaryMap: Record<ProductImageKey, string> = {
   "tennis-outfit": tennisOutfitM,
   "tennis-outfit-detail": tennisOutfitM,
+  "tennis-skort": tennisSkortM,
   "tennis-polo": tennisPoloM,
+  "padel-shirt": padelShirtM,
+  "padel-skort": padelSkortM,
+  "padel-jacket": padelJacketM,
   "football-jersey": footballJerseyM,
   "football-jersey-detail": footballJerseyM,
   "football-shorts": footballShortsM,
@@ -215,9 +299,12 @@ const militaryMap: Record<ProductImageKey, string> = {
   "goalkeeper-jersey": goalkeeperJerseyM,
   "basketball-jersey": basketballJerseyM,
   "basketball-jersey-detail": basketballJerseyM,
+  "basketball-shooter": basketballShooterM,
   "basketball-shorts": basketballShortsM,
   "handball-jersey": handballJerseyM,
   "handball-jersey-detail": handballJerseyM,
+  "handball-shorts": handballShortsM,
+  "handball-jacket": handballJacketM,
   "cycling-jersey": cyclingJerseyM,
   "cycling-jersey-detail": cyclingJerseyM,
   "cycling-shorts": cyclingShortsM,
@@ -225,16 +312,24 @@ const militaryMap: Record<ProductImageKey, string> = {
   "cycling-jacket": cyclingJacketM,
   "running-tank": runningTankM,
   "running-leggings": runningLeggingsM,
+  "running-longsleeve": runningLongsleeveM,
   "gym-shirt": gymShirtM,
   "gym-shirt-detail": gymShirtM,
   "gym-hoodie": gymHoodieM,
   "yoga-bra": yogaBraM,
+  "airsoft-shirt": airsoftShirtM,
+  "airsoft-pants": airsoftPantsM,
+  "airsoft-jacket": airsoftJacketM,
 };
 
 const retroMap: Record<ProductImageKey, string> = {
   "tennis-outfit": tennisOutfitR,
   "tennis-outfit-detail": tennisOutfitR,
+  "tennis-skort": tennisSkortR,
   "tennis-polo": tennisPoloR,
+  "padel-shirt": padelShirtR,
+  "padel-skort": padelSkortR,
+  "padel-jacket": padelJacketR,
   "football-jersey": footballJerseyR,
   "football-jersey-detail": footballJerseyR,
   "football-shorts": footballShortsR,
@@ -242,9 +337,12 @@ const retroMap: Record<ProductImageKey, string> = {
   "goalkeeper-jersey": goalkeeperJerseyR,
   "basketball-jersey": basketballJerseyR,
   "basketball-jersey-detail": basketballJerseyR,
+  "basketball-shooter": basketballShooterR,
   "basketball-shorts": basketballShortsR,
   "handball-jersey": handballJerseyR,
   "handball-jersey-detail": handballJerseyR,
+  "handball-shorts": handballShortsR,
+  "handball-jacket": handballJacketR,
   "cycling-jersey": cyclingJerseyR,
   "cycling-jersey-detail": cyclingJerseyR,
   "cycling-shorts": cyclingShortsR,
@@ -252,10 +350,14 @@ const retroMap: Record<ProductImageKey, string> = {
   "cycling-jacket": cyclingJacketR,
   "running-tank": runningTankR,
   "running-leggings": runningLeggingsR,
+  "running-longsleeve": runningLongsleeveR,
   "gym-shirt": gymShirtR,
   "gym-shirt-detail": gymShirtR,
   "gym-hoodie": gymHoodieR,
   "yoga-bra": yogaBraR,
+  "airsoft-shirt": airsoftShirtR,
+  "airsoft-pants": airsoftPantsR,
+  "airsoft-jacket": airsoftJacketR,
 };
 
 export const getProductImage = (key: ProductImageKey, theme: Theme): string => {

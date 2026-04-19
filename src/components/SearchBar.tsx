@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Filter, Heart, ShoppingCart, User } from "lucide-react";
+import { Search, Heart, ShoppingCart, User, Menu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
-import tauretLogo from "@/assets/tauret-logo-official.jpg";
+import tauretLogo from "@/assets/tauret-logo-futuristic.png";
 
 const SearchBar = () => {
   const { t } = useLanguage();
@@ -20,60 +20,51 @@ const SearchBar = () => {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-border sticky top-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Brand */}
-          <div className="flex items-center">
-            <div className="flex items-center space-x-3">
-              <img 
-                src={tauretLogo} 
-                alt="Tauret Logo" 
-                className="w-10 h-10 object-contain"
-              />
-              <h1 className="text-2xl font-bold text-primary">TAURET</h1>
-            </div>
-          </div>
+        <div className="flex items-center justify-between h-20 gap-4">
+          {/* Logo — large and prominent */}
+          <Link to="/" className="flex items-center shrink-0 group">
+            <img
+              src={tauretLogo}
+              alt="TAURET"
+              className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_0_15px_hsl(var(--primary)/0.6)] group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.9)] transition-all duration-500"
+            />
+          </Link>
 
-          {/* Search Bar */}
-          <div className="flex-1 max-w-2xl mx-8">
-            <form onSubmit={handleSearch} className="relative">
+          {/* Search */}
+          <div className="hidden md:flex flex-1 max-w-xl mx-4">
+            <form onSubmit={handleSearch} className="relative w-full">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/70" />
               <Input
                 type="text"
                 placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-4 pr-12 h-10"
+                className="w-full pl-11 pr-4 h-11 bg-input/60 border-primary/20 text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-primary/30 font-tech tracking-wide"
               />
-              <Button
-                type="submit"
-                size="sm"
-                className="absolute right-1 top-1 h-8 w-8 p-0"
-              >
-                <Search className="h-4 w-4" />
-              </Button>
             </form>
           </div>
 
-          {/* Action Icons */}
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
-              <Filter className="h-5 w-5" />
+          {/* Actions */}
+          <div className="flex items-center gap-1 md:gap-2 shrink-0">
+            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary md:hidden">
+              <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary hidden sm:inline-flex">
               <Heart className="h-5 w-5" />
             </Button>
             <Link to="/cart">
-              <Button variant="ghost" size="sm" className="relative">
+              <Button variant="ghost" size="icon" className="relative hover:bg-primary/10 hover:text-primary">
                 <ShoppingCart className="h-5 w-5" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 bg-gradient-neon text-primary-foreground text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center font-tech shadow-neon-cyan">
                     {getTotalItems()}
                   </span>
                 )}
               </Button>
             </Link>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary hidden sm:inline-flex">
               <User className="h-5 w-5" />
             </Button>
           </div>

@@ -1,84 +1,85 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, MapPin } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4 bg-gray-900">
-      <div className="max-w-4xl mx-auto">
+    <section className="relative py-32 px-4">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+
+      <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent uppercase">
-            {t('contact.title')}
+          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Contact</div>
+          <h2 className="font-display text-5xl md:text-7xl font-black mb-6">
+            <span className="text-aurora">{t('contact.title')}</span>
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="font-tech text-lg text-muted-foreground tracking-wide">
             {t('contact.subtitle')}
           </p>
         </div>
-        
-        <Card className="bg-black border-red-600/30">
-          <CardContent className="p-8">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-red-500 font-bold mb-2 uppercase tracking-wide">{t('contact.name')}</label>
-                  <Input 
-                    className="bg-gray-800 border-red-600/50 text-white focus:border-red-500 focus:ring-red-500/20 rounded-none"
-                    placeholder={t('contact.namePlaceholder')}
-                  />
-                </div>
-                <div>
-                  <label className="block text-red-500 font-bold mb-2 uppercase tracking-wide">{t('contact.email')}</label>
-                  <Input 
-                    type="email"
-                    className="bg-gray-800 border-red-600/50 text-white focus:border-red-500 focus:ring-red-500/20 rounded-none"
-                    placeholder={t('contact.emailPlaceholder')}
-                  />
-                </div>
-              </div>
-              
+
+        <div className="glass clip-angle-lg p-8 md:p-12 border border-primary/20">
+          <form className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-red-500 font-bold mb-2 uppercase tracking-wide">{t('contact.message')}</label>
-                <Textarea 
-                  className="bg-gray-800 border-red-600/50 text-white focus:border-red-500 focus:ring-red-500/20 min-h-32 rounded-none"
-                  placeholder={t('contact.messagePlaceholder')}
+                <label className="block font-tech text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                  {t('contact.name')}
+                </label>
+                <Input
+                  className="bg-input/60 border-primary/20 text-foreground focus-visible:border-primary focus-visible:ring-primary/30 h-12"
+                  placeholder={t('contact.namePlaceholder')}
                 />
               </div>
-              
-              <div className="text-center">
-                <Button 
-                  size="lg"
-                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-none transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-600/25 uppercase tracking-wider"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('contact.sendMessage')}
-                </Button>
+              <div>
+                <label className="block font-tech text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                  {t('contact.email')}
+                </label>
+                <Input
+                  type="email"
+                  className="bg-input/60 border-primary/20 text-foreground focus-visible:border-primary focus-visible:ring-primary/30 h-12"
+                  placeholder={t('contact.emailPlaceholder')}
+                />
               </div>
-            </form>
-          </CardContent>
-        </Card>
-        
+            </div>
+
+            <div>
+              <label className="block font-tech text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                {t('contact.message')}
+              </label>
+              <Textarea
+                className="bg-input/60 border-primary/20 text-foreground focus-visible:border-primary focus-visible:ring-primary/30 min-h-32"
+                placeholder={t('contact.messagePlaceholder')}
+              />
+            </div>
+
+            <div className="text-center pt-4">
+              <Button
+                size="lg"
+                className="bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest px-12 py-6 clip-angle hover:shadow-neon-cyan transition-all duration-500"
+              >
+                <Send className="w-4 h-4 mr-2" />
+                {t('contact.sendMessage')}
+              </Button>
+            </div>
+          </form>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <div className="text-center">
-            <Mail className="w-8 h-8 text-red-500 mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-red-500 mb-2 uppercase">{t('contact.emailLabel')}</h4>
-            <p className="text-gray-300">info@tauret.com</p>
-          </div>
-          <div className="text-center">
-            <MessageCircle className="w-8 h-8 text-red-500 mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-red-500 mb-2 uppercase">{t('contact.support')}</h4>
-            <p className="text-gray-300">{t('contact.supportDesc')}</p>
-          </div>
-          <div className="text-center">
-            <MapPin className="w-8 h-8 text-red-500 mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-red-500 mb-2 uppercase">{t('contact.trainingCenter')}</h4>
-            <p className="text-gray-300">{t('contact.trainingCenterDesc')}</p>
-          </div>
+          {[
+            { icon: Mail,          title: t('contact.emailLabel'),    value: 'info@tauret.com' },
+            { icon: MessageCircle, title: t('contact.support'),       value: t('contact.supportDesc') },
+            { icon: MapPin,        title: t('contact.trainingCenter'), value: t('contact.trainingCenterDesc') },
+          ].map(({ icon: Icon, title, value }, idx) => (
+            <div key={idx} className="glass clip-angle p-6 text-center border border-primary/20">
+              <Icon className="w-7 h-7 text-primary mx-auto mb-3" strokeWidth={1.5} />
+              <h4 className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-2">{title}</h4>
+              <p className="text-foreground text-sm">{value}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

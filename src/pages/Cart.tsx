@@ -13,10 +13,12 @@ const CATEGORY_KEY: Record<string, string> = {
   basketball: 'categories.basketball',
   football:   'categories.football',
   tennis:     'categories.tennis',
+  padel:      'categories.padel',
   handball:   'categories.handball',
   cycling:    'categories.cycling',
   running:    'categories.running',
   gym:        'categories.gymFitness',
+  airsoft:    'categories.airsoft',
 };
 
 const Cart = () => {

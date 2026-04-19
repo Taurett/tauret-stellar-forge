@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -66,8 +67,26 @@ const Shop = () => {
   const { addToCart } = useCart();
   const { t, formatPrice, language } = useLanguage();
   const { theme } = useTheme();
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get("category") ?? "all";
+  const validCategories = sportCategoryKeys.map(c => c.value);
+  const initialCategory = validCategories.includes(categoryParam) ? categoryParam : "all";
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Sync URL → state when the query string changes (e.g., user clicks another sport link).
+  useEffect(() => {
+    const next = searchParams.get("category") ?? "all";
+    setSelectedCategory(validCategories.includes(next) ? next : "all");
+  }, [searchParams]);
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    const params = new URLSearchParams(searchParams);
+    if (value === "all") params.delete("category");
+    else params.set("category", value);
+    setSearchParams(params, { replace: true });
+  };
 
   const sportCategories = sportCategoryKeys.map(c => ({ value: c.value, label: t(c.labelKey) }));
 
@@ -136,7 +155,7 @@ const Shop = () => {
                 className="pl-11 bg-input/60 border-primary/20 text-foreground placeholder:text-muted-foreground/70 h-11 focus-visible:border-primary focus-visible:ring-primary/30"
               />
             </div>
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+            <Select value={selectedCategory} onValueChange={handleCategoryChange}>
               <SelectTrigger className="w-full md:w-[220px] bg-input/60 border-primary/20 text-foreground h-11 font-tech uppercase tracking-wider text-sm">
                 <SelectValue placeholder={t('shop.filterPlaceholder')} />
               </SelectTrigger>

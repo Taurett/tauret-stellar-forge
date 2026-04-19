@@ -186,6 +186,25 @@ const translations = {
     // About / Contact kickers
     'about.kicker': '// About',
     'contact.kicker': '// Contact',
+
+    // Welcome intro modal (shown on first visit)
+    'intro.kicker': '// Welcome to Tauret',
+    'intro.title': 'Wear it more. Live it louder.',
+    'intro.story': 'Tauret was born from a simple idea: the clothes you love are the clothes you actually wear. We design premium sportswear in distinct visual worlds — pick the one that feels like you, and we will dress your whole experience in it.',
+    'intro.pickPrompt': 'Choose your style',
+    'intro.pickHint': 'You can change it any time from the bottom-left switcher.',
+    'intro.continue': 'Enter Tauret',
+    'intro.skip': 'Skip',
+    'intro.theme.cyber.label': 'Cyber',
+    'intro.theme.cyber.desc': 'Deep space neon — bold, electric, after-dark.',
+    'intro.theme.wimbledon.label': 'Wimbledon',
+    'intro.theme.wimbledon.desc': 'Crisp greens and whites — timeless court energy.',
+    'intro.theme.arid.label': 'Arid',
+    'intro.theme.arid.desc': 'Warm desert tones — earthy, grounded, bright.',
+    'intro.theme.military.label': 'Military',
+    'intro.theme.military.desc': 'Tactical olive — disciplined and strong.',
+    'intro.theme.retro.label': 'Retro',
+    'intro.theme.retro.desc': 'Sun-faded 70s palette — playful and nostalgic.',
   },
   ro: {
     // Hero section
@@ -357,6 +376,25 @@ const translations = {
     // About / Contact kickers
     'about.kicker': '// Despre',
     'contact.kicker': '// Contact',
+
+    // Welcome intro modal (afișat la prima vizită)
+    'intro.kicker': '// Bun venit la Tauret',
+    'intro.title': 'Poartă-le mai des. Trăiește-le mai intens.',
+    'intro.story': 'Tauret s-a născut dintr-o idee simplă: hainele pe care le iubești sunt cele pe care le porți cu adevărat. Creăm îmbrăcăminte sport premium în mai multe lumi vizuale — alege-o pe cea care te reprezintă, iar noi îți îmbrăcăm întreaga experiență în ea.',
+    'intro.pickPrompt': 'Alege-ți stilul',
+    'intro.pickHint': 'Îl poți schimba oricând din selectorul din colțul stânga-jos.',
+    'intro.continue': 'Intră în Tauret',
+    'intro.skip': 'Omite',
+    'intro.theme.cyber.label': 'Cyber',
+    'intro.theme.cyber.desc': 'Neon spațial — îndrăzneț, electric, nocturn.',
+    'intro.theme.wimbledon.label': 'Wimbledon',
+    'intro.theme.wimbledon.desc': 'Verde și alb crocant — energie de teren atemporală.',
+    'intro.theme.arid.label': 'Arid',
+    'intro.theme.arid.desc': 'Tonuri calde de deșert — pământii, luminoase.',
+    'intro.theme.military.label': 'Military',
+    'intro.theme.military.desc': 'Verde tactic — disciplinat și puternic.',
+    'intro.theme.retro.label': 'Retro',
+    'intro.theme.retro.desc': 'Paletă anii ’70 — jucăuș și nostalgic.',
   }
 };
 

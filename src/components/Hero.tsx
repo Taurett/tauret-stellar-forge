@@ -27,7 +27,7 @@ const Hero = () => {
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass clip-angle animate-fade-in">
           <Zap className="w-4 h-4 text-primary" />
           <span className="font-tech text-sm uppercase tracking-[0.3em] text-primary">
-            Next-Gen Sportswear
+            {t('hero.chip')}
           </span>
         </div>
 
@@ -63,16 +63,16 @@ const Hero = () => {
             onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
             className="glass border-primary/30 text-foreground font-tech font-bold uppercase tracking-widest px-10 py-6 text-base clip-angle hover:border-primary hover:text-primary hover:shadow-neon-cyan transition-all duration-500"
           >
-            Explore Sports
+            {t('hero.exploreSports')}
           </Button>
         </div>
 
         {/* Stats strip */}
         <div className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
           {[
-            { value: '08', label: 'Sports' },
-            { value: '50+', label: 'Products' },
-            { value: '24/7', label: 'Support' },
+            { value: '08',  label: t('hero.stats.sports') },
+            { value: '50+', label: t('hero.stats.products') },
+            { value: '24/7', label: t('hero.stats.support') },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-aurora mb-1">{stat.value}</div>

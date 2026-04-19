@@ -32,10 +32,10 @@ const SportCategories = () => {
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <div className="inline-block font-tech text-xs uppercase tracking-[0.4em] text-primary mb-4">
-            // Categories
+            {t('categories.kicker')}
           </div>
           <h2 className="font-display text-5xl md:text-7xl font-black mb-6">
-            <span className="text-aurora">SHOP BY SPORT</span>
+            <span className="text-aurora">{t('categories.heading')}</span>
           </h2>
           <p className="font-tech text-lg text-muted-foreground max-w-2xl mx-auto tracking-wide">
             {t('categories.subtitle')}
@@ -63,7 +63,7 @@ const SportCategories = () => {
                     {category.name}
                   </h3>
                   <div className="font-tech text-[10px] uppercase tracking-[0.3em] text-muted-foreground mt-2">
-                    Explore →
+                    {t('categories.explore')}
                   </div>
                 </div>
               </button>

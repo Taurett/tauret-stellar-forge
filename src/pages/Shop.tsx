@@ -23,9 +23,9 @@ const products: Array<{
 }> = [
   { id: 3,  name: "Tennis Athletic Dress",         price: 79.99,  imageKey: "tennis-outfit",       category: "tennis",     rating: 4.7, reviews: 189 },
   { id: 20, name: "Tennis Performance Polo",       price: 64.99,  imageKey: "tennis-polo",         category: "tennis",     rating: 4.6, reviews: 142 },
-  { id: 28, name: "Tennis Pro Skort",              price: 59.99,  imageKey: "tennis-skort",        category: "tennis",     rating: 4.7, reviews: 164 },
+  { id: 28, name: "Tennis Pro Skirt",              price: 59.99,  imageKey: "tennis-skort",        category: "tennis",     rating: 4.7, reviews: 164 },
   { id: 29, name: "Padel Performance Shirt",       price: 62.99,  imageKey: "padel-shirt",         category: "padel",      rating: 4.7, reviews: 118 },
-  { id: 30, name: "Padel Skort",                   price: 57.99,  imageKey: "padel-skort",         category: "padel",      rating: 4.6, reviews: 96 },
+  { id: 30, name: "Padel Skirt",                   price: 57.99,  imageKey: "padel-skort",         category: "padel",      rating: 4.6, reviews: 96 },
   { id: 31, name: "Padel Tech Jacket",             price: 94.99,  imageKey: "padel-jacket",        category: "padel",      rating: 4.8, reviews: 87 },
   { id: 7,  name: "Pro Football Jersey",           price: 79.99,  imageKey: "football-jersey",     category: "football",   rating: 4.8, reviews: 445 },
   { id: 9,  name: "Football Training Shorts",      price: 49.99,  imageKey: "football-shorts",     category: "football",   rating: 4.7, reviews: 312 },

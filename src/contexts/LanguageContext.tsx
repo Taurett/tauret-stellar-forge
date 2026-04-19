@@ -149,6 +149,38 @@ const translations = {
     // Toasts
     'toast.added': 'Added to cart',
     'toast.addedDesc': 'has been added to your cart.',
+
+    // Hero extras
+    'hero.chip': 'Next-Gen Sportswear',
+    'hero.exploreSports': 'Explore Sports',
+    'hero.stats.sports': 'Sports',
+    'hero.stats.products': 'Products',
+    'hero.stats.support': 'Support',
+
+    // Categories extras
+    'categories.kicker': '// Categories',
+    'categories.heading': 'SHOP BY SPORT',
+    'categories.explore': 'Explore →',
+
+    // Promotions badges
+    'promotions.sale.badge': 'UP TO 70% OFF',
+    'promotions.newArrivals.badge': 'JUST DROPPED',
+    'promotions.limitedTime.badge': 'LIMITED',
+
+    // Features kicker
+    'features.kicker': '// Engineered',
+
+    // Featured extras
+    'featured.kicker': '// Curated',
+    'featured.heading': 'FEATURED GEAR',
+    'featured.badge.bestseller': 'BESTSELLER',
+    'featured.badge.new': 'NEW',
+    'featured.badge.sale': 'SALE',
+    'featured.badge.limited': 'LIMITED',
+
+    // About / Contact kickers
+    'about.kicker': '// About',
+    'contact.kicker': '// Contact',
   },
   ro: {
     // Hero section
@@ -283,6 +315,38 @@ const translations = {
     // Toasts
     'toast.added': 'Adăugat în coș',
     'toast.addedDesc': 'a fost adăugat în coșul tău.',
+
+    // Hero extras
+    'hero.chip': 'Echipament Sportiv de Nouă Generație',
+    'hero.exploreSports': 'Explorează Sporturile',
+    'hero.stats.sports': 'Sporturi',
+    'hero.stats.products': 'Produse',
+    'hero.stats.support': 'Suport',
+
+    // Categories extras
+    'categories.kicker': '// Categorii',
+    'categories.heading': 'CUMPĂRĂ DUPĂ SPORT',
+    'categories.explore': 'Explorează →',
+
+    // Promotions badges
+    'promotions.sale.badge': 'PÂNĂ LA 70% REDUCERE',
+    'promotions.newArrivals.badge': 'TOCMAI SOSITE',
+    'promotions.limitedTime.badge': 'LIMITAT',
+
+    // Features kicker
+    'features.kicker': '// Inginerie',
+
+    // Featured extras
+    'featured.kicker': '// Selectate',
+    'featured.heading': 'ECHIPAMENT RECOMANDAT',
+    'featured.badge.bestseller': 'BESTSELLER',
+    'featured.badge.new': 'NOU',
+    'featured.badge.sale': 'REDUCERE',
+    'featured.badge.limited': 'LIMITAT',
+
+    // About / Contact kickers
+    'about.kicker': '// Despre',
+    'contact.kicker': '// Contact',
   }
 };
 

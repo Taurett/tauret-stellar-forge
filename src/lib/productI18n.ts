@@ -110,8 +110,8 @@ const en: ProductDict = {
     features: ['Removable cups', 'Crossback straps', 'High support', 'Sweat-wicking'],
   },
   28: {
-    name: 'Tennis Pro Skort',
-    description: 'Competition-ready tennis skort with built-in shorts and lightweight stretch fabric for quick changes of direction.',
+    name: 'Tennis Pro Skirt',
+    description: 'Competition-ready tennis skirt with built-in shorts and lightweight stretch fabric for quick changes of direction.',
     fabric: '86% Recycled Polyester, 14% Elastane performance weave',
     features: ['Built-in inner shorts', 'Ball pocket', '4-way stretch', 'Quick-dry finish'],
   },
@@ -122,8 +122,8 @@ const en: ProductDict = {
     features: ['Mesh ventilation panels', 'Quick-dry fabric', 'Athletic fit', 'Soft flat seams'],
   },
   30: {
-    name: 'Padel Skort',
-    description: 'Light, flexible padel skort with supportive inner shorts built for speed, coverage and confident movement.',
+    name: 'Padel Skirt',
+    description: 'Light, flexible padel skirt with supportive inner shorts built for speed, coverage and confident movement.',
     fabric: 'Performance stretch knit with moisture control',
     features: ['Integrated shorts', 'Wide waistband', 'Side slit mobility', 'Breathable construction'],
   },
@@ -275,8 +275,8 @@ const ro: ProductDict = {
     features: ['Cupe detașabile', 'Bretele crossback', 'Susținere înaltă', 'Evacuează transpirația'],
   },
   28: {
-    name: 'Skort Pro de Tenis',
-    description: 'Skort de competiție pentru tenis, cu pantaloni scurți integrați și material elastic ușor pentru schimbări rapide de direcție.',
+    name: 'Fustă Pro de Tenis',
+    description: 'Fustă de competiție pentru tenis, cu pantaloni scurți integrați și material elastic ușor pentru schimbări rapide de direcție.',
     fabric: '86% Poliester reciclat, 14% Elastan — țesătură performantă',
     features: ['Pantaloni scurți interiori', 'Buzunar pentru minge', 'Elasticitate în 4 direcții', 'Uscare rapidă'],
   },
@@ -287,8 +287,8 @@ const ro: ProductDict = {
     features: ['Panouri mesh de ventilație', 'Material cu uscare rapidă', 'Croială atletică', 'Cusături plate moi'],
   },
   30: {
-    name: 'Skort pentru Padel',
-    description: 'Skort ușor și flexibil pentru padel, cu pantaloni scurți interiori pentru susținere și libertate de mișcare.',
+    name: 'Fustă pentru Padel',
+    description: 'Fustă ușoară și flexibilă pentru padel, cu pantaloni scurți interiori pentru susținere și libertate de mișcare.',
     fabric: 'Tricot elastic performant cu control al umidității',
     features: ['Pantaloni scurți integrați', 'Talie lată', 'Fantă laterală pentru mobilitate', 'Construcție respirabilă'],
   },

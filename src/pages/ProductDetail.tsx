@@ -25,6 +25,14 @@ import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
 import cyclingShortsDetail from "@/assets/products/cycling-shorts-detail.jpg";
 import gymShirt from "@/assets/products/gym-shirt.jpg";
 import gymShirtDetail from "@/assets/products/gym-shirt-detail.jpg";
+import tennisPolo from "@/assets/products/tennis-polo.jpg";
+import goalkeeperJersey from "@/assets/products/goalkeeper-jersey.jpg";
+import basketballShorts from "@/assets/products/basketball-shorts.jpg";
+import runningTank from "@/assets/products/running-tank.jpg";
+import runningLeggings from "@/assets/products/running-leggings.jpg";
+import gymHoodie from "@/assets/products/gym-hoodie.jpg";
+import yogaBra from "@/assets/products/yoga-bra.jpg";
+import cyclingJacket from "@/assets/products/cycling-jacket.jpg";
 
 const productsData = [
   {

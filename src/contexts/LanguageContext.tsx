@@ -206,6 +206,8 @@ const translations = {
     'intro.theme.military.desc': 'Tactical olive — disciplined and strong.',
     'intro.theme.retro.label': 'Retro',
     'intro.theme.retro.desc': 'Sun-faded 70s palette — playful and nostalgic.',
+    'intro.theme.avalanche.label': 'Avalanche',
+    'intro.theme.avalanche.desc': 'Glacier whites and ice blue — alpine, crisp, fresh.',
   },
   ro: {
     // Hero section
@@ -397,6 +399,8 @@ const translations = {
     'intro.theme.military.desc': 'Verde tactic — disciplinat și puternic.',
     'intro.theme.retro.label': 'Retro',
     'intro.theme.retro.desc': 'Paletă anii ’70 — jucăuș și nostalgic.',
+    'intro.theme.avalanche.label': 'Avalanche',
+    'intro.theme.avalanche.desc': 'Alb glaciar și albastru de gheață — alpin, curat, proaspăt.',
   }
 };
 

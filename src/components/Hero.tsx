@@ -1,18 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Trophy, Sun, Shield } from "lucide-react";
+import { ArrowRight, Zap, Trophy, Sun, Shield, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import heroBg from "@/assets/futuristic-hero-bg.jpg";
 import heroWimbledon from "@/assets/hero-wimbledon.jpg";
 import heroArid from "@/assets/hero-arid.jpg";
 import heroMilitary from "@/assets/hero-military.jpg";
+import heroRetro from "@/assets/hero-retro.jpg";
 
 const HERO_BG: Record<string, string> = {
   cyber: heroBg,
   wimbledon: heroWimbledon,
   arid: heroArid,
   military: heroMilitary,
-  retro: heroBg,
+  retro: heroRetro,
 };
 
 const Hero = () => {
@@ -24,6 +25,7 @@ const Hero = () => {
   const isWimbledon = theme === 'wimbledon';
   const isArid = theme === 'arid';
   const isMilitary = theme === 'military';
+  const isRetro = theme === 'retro';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -64,7 +66,20 @@ const Hero = () => {
             />
           </>
         )}
-        {!isCyber && !isWimbledon && !isArid && !isMilitary && (
+        {isRetro && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/45 to-background" />
+            {/* Diagonal poster stripes */}
+            <div
+              className="absolute inset-0 opacity-25 mix-blend-multiply"
+              style={{
+                backgroundImage:
+                  'repeating-linear-gradient(45deg, transparent 0 28px, hsl(var(--foreground) / 0.08) 28px 30px)',
+              }}
+            />
+          </>
+        )}
+        {!isCyber && !isWimbledon && !isArid && !isMilitary && !isRetro && (
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         )}
       </div>
@@ -129,6 +144,37 @@ const Hero = () => {
           </div>
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2 font-tech text-[10px] tracking-[0.4em] text-muted-foreground/80">
             ★ ★ ★  TACTICAL DIVISION  ★ ★ ★
+          </div>
+        </>
+      )}
+
+      {/* Retro: Soviet propaganda accents */}
+      {isRetro && (
+        <>
+          {/* Big red star top-left */}
+          <div className="absolute top-28 left-8 text-primary animate-float">
+            <Star className="w-14 h-14 fill-current" strokeWidth={1} />
+          </div>
+          {/* Hammer & sickle glyph top-right */}
+          <div className="hidden md:flex absolute top-28 right-10 items-center gap-3 text-primary">
+            <span className="font-display text-5xl leading-none">☭</span>
+            <div className="font-tech text-[10px] uppercase tracking-[0.4em] text-foreground/80">
+              Pyatiletka<br/>1925—2025
+            </div>
+          </div>
+          {/* Diagonal banner ribbon */}
+          <div className="hidden md:block absolute top-44 -left-12 rotate-[-8deg] bg-primary text-primary-foreground font-display font-black text-xs uppercase tracking-[0.3em] px-16 py-2 shadow-card">
+            ★ Workers of Sport, Unite ★
+          </div>
+          {/* Bottom slogan strip */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 font-display font-black text-xs uppercase tracking-[0.4em] text-foreground/90">
+            <span className="text-primary">★</span>
+            <span>Forward to Victory</span>
+            <span className="text-primary">★</span>
+          </div>
+          {/* Constructivist corner block */}
+          <div className="absolute bottom-6 right-6 w-16 h-16 bg-secondary border-2 border-foreground flex items-center justify-center font-display font-black text-2xl text-foreground">
+            T
           </div>
         </>
       )}

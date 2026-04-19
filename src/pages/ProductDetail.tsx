@@ -55,17 +55,7 @@ const productsData: ProductData[] = [
   { id: 38, price: 119.99, imageKeys: ["airsoft-jacket", "airsoft-jacket"],              category: "airsoft",    rating: 4.8, reviews: 76, sizes: ["S","M","L","XL","XXL"] },
 ];
 
-const CATEGORY_KEY: Record<string, string> = {
-  basketball: 'categories.basketball',
-  football:   'categories.football',
-  tennis:     'categories.tennis',
-  padel:      'categories.padel',
-  handball:   'categories.handball',
-  cycling:    'categories.cycling',
-  running:    'categories.running',
-  gym:        'categories.gymFitness',
-  airsoft:    'categories.airsoft',
-};
+
 
 const ProductDetail = () => {
   const { id } = useParams();

@@ -12,7 +12,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
-import { getProductCopy } from "@/lib/productI18n";
+import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 
 interface ProductData {
   id: number;
@@ -92,10 +92,10 @@ const ProductDetail = () => {
     );
   }
 
-  // Merge structural data with localised copy
-  const copy = getProductCopy(base.id, language);
+  // Merge structural data with localised copy (theme-aware for Avalanche).
+  const copy = getProductCopy(base.id, language, theme);
   const product = { ...base, ...copy };
-  const categoryLabel = t(CATEGORY_KEY[product.category] ?? 'categories.all');
+  const categoryLabel = t(getCategoryLabelKey(product.category, theme));
 
   const images = product.imageKeys.map(k => getProductImage(k, theme));
 

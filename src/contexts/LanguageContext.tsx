@@ -186,6 +186,25 @@ const translations = {
     // About / Contact kickers
     'about.kicker': '// About',
     'contact.kicker': '// Contact',
+
+    // Welcome intro modal (shown on first visit)
+    'intro.kicker': '// Welcome to Tauret',
+    'intro.title': 'Wear it more. Live it louder.',
+    'intro.story': 'Tauret was born from a simple idea: the clothes you love are the clothes you actually wear. We design premium sportswear in distinct visual worlds — pick the one that feels like you, and we will dress your whole experience in it.',
+    'intro.pickPrompt': 'Choose your style',
+    'intro.pickHint': 'You can change it any time from the bottom-left switcher.',
+    'intro.continue': 'Enter Tauret',
+    'intro.skip': 'Skip',
+    'intro.theme.cyber.label': 'Cyber',
+    'intro.theme.cyber.desc': 'Deep space neon — bold, electric, after-dark.',
+    'intro.theme.wimbledon.label': 'Wimbledon',
+    'intro.theme.wimbledon.desc': 'Crisp greens and whites — timeless court energy.',
+    'intro.theme.arid.label': 'Arid',
+    'intro.theme.arid.desc': 'Warm desert tones — earthy, grounded, bright.',
+    'intro.theme.military.label': 'Military',
+    'intro.theme.military.desc': 'Tactical olive — disciplined and strong.',
+    'intro.theme.retro.label': 'Retro',
+    'intro.theme.retro.desc': 'Sun-faded 70s palette — playful and nostalgic.',
   },
   ro: {
     // Hero section

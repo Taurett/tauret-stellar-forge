@@ -12,167 +12,47 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
+import { getProductCopy } from "@/lib/productI18n";
 
 interface ProductData {
   id: number;
-  name: string;
   price: number;
   imageKeys: ProductImageKey[];
-  category: string;
+  category: string;       // category id, used to look up i18n label
   rating: number;
   reviews: number;
-  description: string;
-  fabric: string;
-  features: string[];
   sizes: string[];
 }
 
+// Structural data only — name/description/fabric/features come from productI18n
 const productsData: ProductData[] = [
-  {
-    id: 3, name: "Tennis Athletic Dress", price: 79.99,
-    imageKeys: ["tennis-outfit", "tennis-outfit-detail"], category: "tennis",
-    rating: 4.7, reviews: 189,
-    description: "Lightweight and breathable tennis dress with moisture-wicking technology. Perfect for intense matches and training sessions.",
-    fabric: "88% Polyester, 12% Spandex — Moisture-wicking mesh fabric",
-    features: ["Built-in shorts", "UV Protection 50+", "Anti-odor technology", "4-way stretch"],
-    sizes: ["XS", "S", "M", "L", "XL"]
-  },
-  {
-    id: 7, name: "Pro Football Jersey", price: 79.99,
-    imageKeys: ["football-jersey", "football-jersey-detail"], category: "football",
-    rating: 4.8, reviews: 445,
-    description: "Professional-grade football jersey with advanced moisture management. Designed for peak performance on the field.",
-    fabric: "100% Recycled Polyester with Dri-FIT technology",
-    features: ["Moisture-wicking", "Breathable mesh panels", "Athletic fit", "Machine washable"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 9, name: "Football Training Shorts", price: 49.99,
-    imageKeys: ["football-shorts", "football-shorts-detail"], category: "football",
-    rating: 4.7, reviews: 312,
-    description: "Lightweight training shorts with elastic waistband and quick-dry fabric. Essential for any football player.",
-    fabric: "100% Polyester with moisture-wicking finish",
-    features: ["Elastic waistband", "Side pockets", "Quick-dry", "Lightweight construction"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 11, name: "Basketball Pro Jersey", price: 89.99,
-    imageKeys: ["basketball-jersey", "basketball-jersey-detail"], category: "basketball",
-    rating: 4.8, reviews: 387,
-    description: "Authentic basketball jersey with breathable mesh construction. Perfect for game day or casual wear.",
-    fabric: "100% Polyester double-knit mesh",
-    features: ["Breathable mesh", "Tackle twill graphics", "Straight hem", "Official team styling"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 12, name: "Handball Team Jersey", price: 69.99,
-    imageKeys: ["handball-jersey", "handball-jersey-detail"], category: "handball",
-    rating: 4.7, reviews: 234,
-    description: "High-performance handball jersey with excellent ventilation and comfort for intense matches.",
-    fabric: "Polyester blend with ClimaCool technology",
-    features: ["Moisture management", "Ventilated design", "Ergonomic fit", "Durable construction"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99,
-    imageKeys: ["cycling-jersey", "cycling-jersey-detail"], category: "cycling",
-    rating: 4.8, reviews: 276,
-    description: "Aerodynamic cycling jersey with race-fit design. Features advanced fabric technology for optimal performance.",
-    fabric: "Italian Lycra with compression zones",
-    features: ["Race fit", "3 rear pockets", "Full-length zipper", "Silicone gripper"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 16, name: "Cycling Bib Shorts", price: 99.99,
-    imageKeys: ["cycling-shorts", "cycling-shorts-detail"], category: "cycling",
-    rating: 4.7, reviews: 289,
-    description: "Premium cycling bib shorts with Italian chamois pad. Designed for long-distance comfort and performance.",
-    fabric: "Compression Lycra with 4-way stretch",
-    features: ["Italian chamois pad", "Mesh bib straps", "Flat-lock seams", "Leg grippers"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 18, name: "Compression Training Shirt", price: 59.99,
-    imageKeys: ["gym-shirt", "gym-shirt-detail"], category: "gym",
-    rating: 4.7, reviews: 334,
-    description: "Compression training shirt that supports muscles and enhances performance. Perfect for any workout.",
-    fabric: "80% Nylon, 20% Spandex compression fabric",
-    features: ["Muscle support", "Quick-dry", "4-way stretch", "Flatlock seams"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 20, name: "Tennis Performance Polo", price: 64.99,
-    imageKeys: ["tennis-polo", "tennis-polo"], category: "tennis",
-    rating: 4.6, reviews: 142,
-    description: "Classic-cut tennis polo with futuristic neon trims. Engineered for fast play with breathable, moisture-wicking fabric.",
-    fabric: "92% Polyester, 8% Elastane — Smooth-touch piqué knit",
-    features: ["Reflective neon piping", "UV Protection 50+", "Athletic fit", "Anti-odor finish"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 21, name: "Goalkeeper Long-Sleeve Jersey", price: 94.99,
-    imageKeys: ["goalkeeper-jersey", "goalkeeper-jersey"], category: "football",
-    rating: 4.9, reviews: 198,
-    description: "Long-sleeve goalkeeper jersey with padded forearms and high-grip torso panels. Built for the keepers who own the box.",
-    fabric: "Recycled Polyester with foam-padded elbows",
-    features: ["Elbow padding", "Grip torso print", "Ergonomic sleeves", "Breathable mesh back"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 22, name: "Basketball Court Shorts", price: 54.99,
-    imageKeys: ["basketball-shorts", "basketball-shorts"], category: "basketball",
-    rating: 4.7, reviews: 256,
-    description: "Lightweight basketball shorts with above-the-knee cut and elastic waistband. Designed for explosive movement on the court.",
-    fabric: "100% Polyester woven dazzle fabric",
-    features: ["Elastic drawcord waist", "Side pockets", "Above-knee length", "Quick-dry"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 23, name: "Cycling Windbreaker Jacket", price: 129.99,
-    imageKeys: ["cycling-jacket", "cycling-jacket"], category: "cycling",
-    rating: 4.8, reviews: 167,
-    description: "Ultra-light packable cycling windbreaker with reflective panels for low-light visibility. Your shield against wind and chill.",
-    fabric: "Ripstop nylon with DWR water-repellent coating",
-    features: ["Packable design", "Reflective accents", "Rear vent", "Drop tail hem"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 24, name: "Aero Running Tank", price: 44.99,
-    imageKeys: ["running-tank", "running-tank"], category: "running",
-    rating: 4.6, reviews: 203,
-    description: "Featherweight running tank with laser-cut ventilation. Engineered for hot days and fast splits.",
-    fabric: "Recycled Polyester mesh with mineral cooling yarn",
-    features: ["Laser-cut vents", "Reflective logo", "Anti-chafe seams", "Lightweight feel"],
-    sizes: ["XS", "S", "M", "L", "XL"]
-  },
-  {
-    id: 25, name: "Compression Running Leggings", price: 74.99,
-    imageKeys: ["running-leggings", "running-leggings"], category: "running",
-    rating: 4.8, reviews: 312,
-    description: "High-rise compression leggings with sculpting seams and a hidden waistband pocket. Built for distance.",
-    fabric: "78% Nylon, 22% Spandex — 4-way compression",
-    features: ["Hidden waist pocket", "Sculpting seams", "Squat-proof", "Reflective accents"],
-    sizes: ["XS", "S", "M", "L", "XL"]
-  },
-  {
-    id: 26, name: "Tech Fleece Gym Hoodie", price: 89.99,
-    imageKeys: ["gym-hoodie", "gym-hoodie"], category: "gym",
-    rating: 4.8, reviews: 421,
-    description: "Tech fleece hoodie with brushed interior, kangaroo pocket and full-zip front. Pre and post-session warmth, refined.",
-    fabric: "Tech fleece — 65% Cotton, 35% Polyester",
-    features: ["Full-zip front", "Brushed interior", "Kangaroo pocket", "Ribbed cuffs and hem"],
-    sizes: ["S", "M", "L", "XL", "XXL"]
-  },
-  {
-    id: 27, name: "High-Support Sports Bra", price: 49.99,
-    imageKeys: ["yoga-bra", "yoga-bra"], category: "gym",
-    rating: 4.7, reviews: 287,
-    description: "High-support sports bra with crossback straps and removable cups. Engineered for high-impact training and yoga flow alike.",
-    fabric: "82% Recycled Polyester, 18% Elastane",
-    features: ["Removable cups", "Crossback straps", "High support", "Sweat-wicking"],
-    sizes: ["XS", "S", "M", "L", "XL"]
-  }
+  { id: 3,  price: 79.99,  imageKeys: ["tennis-outfit", "tennis-outfit-detail"],         category: "tennis",     rating: 4.7, reviews: 189, sizes: ["XS","S","M","L","XL"] },
+  { id: 7,  price: 79.99,  imageKeys: ["football-jersey", "football-jersey-detail"],     category: "football",   rating: 4.8, reviews: 445, sizes: ["S","M","L","XL","XXL"] },
+  { id: 9,  price: 49.99,  imageKeys: ["football-shorts", "football-shorts-detail"],     category: "football",   rating: 4.7, reviews: 312, sizes: ["S","M","L","XL","XXL"] },
+  { id: 11, price: 89.99,  imageKeys: ["basketball-jersey", "basketball-jersey-detail"], category: "basketball", rating: 4.8, reviews: 387, sizes: ["S","M","L","XL","XXL"] },
+  { id: 12, price: 69.99,  imageKeys: ["handball-jersey", "handball-jersey-detail"],     category: "handball",   rating: 4.7, reviews: 234, sizes: ["S","M","L","XL","XXL"] },
+  { id: 14, price: 109.99, imageKeys: ["cycling-jersey", "cycling-jersey-detail"],       category: "cycling",    rating: 4.8, reviews: 276, sizes: ["XS","S","M","L","XL","XXL"] },
+  { id: 16, price: 99.99,  imageKeys: ["cycling-shorts", "cycling-shorts-detail"],       category: "cycling",    rating: 4.7, reviews: 289, sizes: ["XS","S","M","L","XL","XXL"] },
+  { id: 18, price: 59.99,  imageKeys: ["gym-shirt", "gym-shirt-detail"],                 category: "gym",        rating: 4.7, reviews: 334, sizes: ["S","M","L","XL","XXL"] },
+  { id: 20, price: 64.99,  imageKeys: ["tennis-polo", "tennis-polo"],                    category: "tennis",     rating: 4.6, reviews: 142, sizes: ["XS","S","M","L","XL","XXL"] },
+  { id: 21, price: 94.99,  imageKeys: ["goalkeeper-jersey", "goalkeeper-jersey"],        category: "football",   rating: 4.9, reviews: 198, sizes: ["S","M","L","XL","XXL"] },
+  { id: 22, price: 54.99,  imageKeys: ["basketball-shorts", "basketball-shorts"],        category: "basketball", rating: 4.7, reviews: 256, sizes: ["S","M","L","XL","XXL"] },
+  { id: 23, price: 129.99, imageKeys: ["cycling-jacket", "cycling-jacket"],              category: "cycling",    rating: 4.8, reviews: 167, sizes: ["XS","S","M","L","XL","XXL"] },
+  { id: 24, price: 44.99,  imageKeys: ["running-tank", "running-tank"],                  category: "running",    rating: 4.6, reviews: 203, sizes: ["XS","S","M","L","XL"] },
+  { id: 25, price: 74.99,  imageKeys: ["running-leggings", "running-leggings"],          category: "running",    rating: 4.8, reviews: 312, sizes: ["XS","S","M","L","XL"] },
+  { id: 26, price: 89.99,  imageKeys: ["gym-hoodie", "gym-hoodie"],                      category: "gym",        rating: 4.8, reviews: 421, sizes: ["S","M","L","XL","XXL"] },
+  { id: 27, price: 49.99,  imageKeys: ["yoga-bra", "yoga-bra"],                          category: "gym",        rating: 4.7, reviews: 287, sizes: ["XS","S","M","L","XL"] },
 ];
+
+const CATEGORY_KEY: Record<string, string> = {
+  basketball: 'categories.basketball',
+  football:   'categories.football',
+  tennis:     'categories.tennis',
+  handball:   'categories.handball',
+  cycling:    'categories.cycling',
+  running:    'categories.running',
+  gym:        'categories.gymFitness',
+};
 
 const ProductDetail = () => {
   const { id } = useParams();

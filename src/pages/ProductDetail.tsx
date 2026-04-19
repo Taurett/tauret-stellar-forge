@@ -10,22 +10,22 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
 import ProductCustomizer, { CustomizationData } from "@/components/ProductCustomizer";
 
-import tennisOutfit from "@/assets/products/tennis-outfit.jpg";
-import tennisOutfitDetail from "@/assets/products/tennis-outfit-detail.jpg";
-import footballJersey from "@/assets/products/football-jersey.jpg";
-import footballJerseyDetail from "@/assets/products/football-jersey-detail.jpg";
-import footballShorts from "@/assets/products/football-shorts.jpg";
-import footballShortsDetail from "@/assets/products/football-shorts-detail.jpg";
-import basketballJersey from "@/assets/products/basketball-jersey.jpg";
-import basketballJerseyDetail from "@/assets/products/basketball-jersey-detail.jpg";
-import handballJersey from "@/assets/products/handball-jersey.jpg";
-import handballJerseyDetail from "@/assets/products/handball-jersey-detail.jpg";
-import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
-import cyclingJerseyDetail from "@/assets/products/cycling-jersey-detail.jpg";
-import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
-import cyclingShortsDetail from "@/assets/products/cycling-shorts-detail.jpg";
-import gymShirt from "@/assets/products/gym-shirt.jpg";
-import gymShirtDetail from "@/assets/products/gym-shirt-detail.jpg";
+import tennisOutfit from "@/assets/products/tennis-outfit.png";
+import tennisOutfitDetail from "@/assets/products/tennis-outfit-detail.png";
+import footballJersey from "@/assets/products/football-jersey.png";
+import footballJerseyDetail from "@/assets/products/football-jersey-detail.png";
+import footballShorts from "@/assets/products/football-shorts.png";
+import footballShortsDetail from "@/assets/products/football-shorts-detail.png";
+import basketballJersey from "@/assets/products/basketball-jersey.png";
+import basketballJerseyDetail from "@/assets/products/basketball-jersey-detail.png";
+import handballJersey from "@/assets/products/handball-jersey.png";
+import handballJerseyDetail from "@/assets/products/handball-jersey-detail.png";
+import cyclingJersey from "@/assets/products/cycling-jersey.png";
+import cyclingJerseyDetail from "@/assets/products/cycling-jersey-detail.png";
+import cyclingShorts from "@/assets/products/cycling-shorts.png";
+import cyclingShortsDetail from "@/assets/products/cycling-shorts-detail.png";
+import gymShirt from "@/assets/products/gym-shirt.png";
+import gymShirtDetail from "@/assets/products/gym-shirt-detail.png";
 
 const productsData = [
   {

@@ -1,82 +1,91 @@
-
 import { Button } from "@/components/ui/button";
-import { Zap, Target, Trophy, Play } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import tauretLogo from "@/assets/tauret-logo-official.jpg";
-import sportsHeroBg from "@/assets/sports-hero-bg.jpg";
+import heroBg from "@/assets/futuristic-hero-bg.jpg";
 
 const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background layers */}
       <div className="absolute inset-0">
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${sportsHeroBg})` }}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBg})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 grid-bg animate-grid-drift opacity-40" />
       </div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute top-20 left-10 text-primary/20 animate-pulse">
-        <Trophy size={80} className="animate-[fade-in_2s_ease-out]" />
-      </div>
-      <div className="absolute bottom-32 right-16 text-primary/20 animate-pulse delay-1000">
-        <Target size={60} className="animate-[fade-in_2s_ease-out_1s]" />
-      </div>
-      <div className="absolute top-1/3 right-20 text-primary/15 animate-pulse delay-500">
-        <Zap size={100} className="animate-[fade-in_2s_ease-out_0.5s]" />
-      </div>
-      
+      {/* Floating neon orbs */}
+      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[120px] animate-float" />
+      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '2s' }} />
+
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
-        {/* Main Title */}
-        <h1 className="text-7xl md:text-9xl font-bold mb-6 bg-gradient-to-r from-primary via-cyan-300 to-primary bg-clip-text text-transparent animate-[fade-in_1s_ease-out_0.3s] animate-[scale-in_0.8s_ease-out_0.3s]">
-          TAURET
+        {/* Tag chip */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass clip-angle animate-fade-in">
+          <Zap className="w-4 h-4 text-primary" />
+          <span className="font-tech text-sm uppercase tracking-[0.3em] text-primary">
+            Next-Gen Sportswear
+          </span>
+        </div>
+
+        {/* Main wordmark */}
+        <h1 className="font-display text-7xl md:text-[10rem] font-black mb-6 leading-none animate-fade-in-up">
+          <span className="text-aurora">TAURET</span>
         </h1>
-        
+
         {/* Tagline */}
-        <div className="animate-[fade-in_1s_ease-out_0.6s]">
-          <p className="text-2xl md:text-4xl text-white mb-4 leading-relaxed font-bold tracking-wide">
-            {t('hero.tagline')}
-          </p>
-        </div>
-        
+        <p className="font-tech text-2xl md:text-4xl text-foreground mb-6 tracking-[0.15em] uppercase animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          {t('hero.tagline')}
+        </p>
+
         {/* Description */}
-        <div className="animate-[fade-in_1s_ease-out_0.9s]">
-          <p className="text-lg md:text-xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto">
-            {t('hero.description')}
-          </p>
-        </div>
-        
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-[fade-in_1s_ease-out_1.2s]">
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-primary to-cyan-600 hover:from-cyan-600 hover:to-primary text-white font-bold px-12 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/25 uppercase tracking-wider group"
-            onClick={() => window.location.href = '/shop'}
-          >
-            <Play className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
-            {t('hero.shopCollection')}
-          </Button>
-          
-          <Button 
-            variant="outline" 
+        <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          {t('hero.description')}
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <Button
             size="lg"
-            className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 uppercase tracking-wider backdrop-blur-sm bg-white/10"
+            onClick={() => window.location.href = '/shop'}
+            className="group relative bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest px-10 py-6 text-base clip-angle hover:shadow-neon-cyan transition-all duration-500 border-0"
+          >
+            {t('hero.shopCollection')}
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="lg"
             onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+            className="glass border-primary/30 text-foreground font-tech font-bold uppercase tracking-widest px-10 py-6 text-base clip-angle hover:border-primary hover:text-primary hover:shadow-neon-cyan transition-all duration-500"
           >
             Explore Sports
           </Button>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
-          </div>
+        {/* Stats strip */}
+        <div className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+          {[
+            { value: '08', label: 'Sports' },
+            { value: '50+', label: 'Products' },
+            { value: '24/7', label: 'Support' },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="font-display text-4xl md:text-5xl font-bold text-aurora mb-1">{stat.value}</div>
+              <div className="font-tech text-xs uppercase tracking-[0.25em] text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

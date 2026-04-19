@@ -1,7 +1,5 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Star, Heart, ShoppingCart } from "lucide-react";
+import { Star, ShoppingCart, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
@@ -30,169 +28,81 @@ const FeaturedProducts = () => {
   };
 
   const featuredProducts = [
-    {
-      id: 11,
-      name: "Basketball Pro Jersey",
-      price: 89.99,
-      originalPrice: 109.99,
-      image: basketballJersey,
-      rating: 4.8,
-      reviews: 387,
-      badge: "BESTSELLER",
-      category: "Basketball"
-    },
-    {
-      id: 7,
-      name: "Pro Football Jersey",
-      price: 79.99,
-      originalPrice: 99.99,
-      image: footballJersey,
-      rating: 4.8,
-      reviews: 445,
-      badge: "NEW",
-      category: "Football"
-    },
-    {
-      id: 18,
-      name: "Compression Training Shirt",
-      price: 59.99,
-      originalPrice: 79.99,
-      image: gymShirt,
-      rating: 4.7,
-      reviews: 334,
-      badge: "SALE",
-      category: "Gym & Fitness"
-    },
-    {
-      id: 14,
-      name: "Aerodynamic Cycling Jersey",
-      price: 109.99,
-      originalPrice: 139.99,
-      image: cyclingJersey,
-      rating: 4.8,
-      reviews: 276,
-      badge: "LIMITED",
-      category: "Cycling"
-    }
+    { id: 11, name: "Basketball Pro Jersey", price: 89.99, originalPrice: 109.99, image: basketballJersey, rating: 4.8, reviews: 387, badge: "BESTSELLER", category: "Basketball" },
+    { id: 7,  name: "Pro Football Jersey",   price: 79.99, originalPrice: 99.99,  image: footballJersey,   rating: 4.8, reviews: 445, badge: "NEW",        category: "Football" },
+    { id: 18, name: "Compression Training Shirt", price: 59.99, originalPrice: 79.99, image: gymShirt, rating: 4.7, reviews: 334, badge: "SALE",   category: "Gym & Fitness" },
+    { id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99, originalPrice: 139.99, image: cyclingJersey, rating: 4.8, reviews: 276, badge: "LIMITED", category: "Cycling" },
   ];
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`h-4 w-4 ${
-          i < Math.floor(rating) 
-            ? 'text-yellow-400 fill-current' 
-            : 'text-gray-300'
-        }`}
-      />
-    ));
-  };
-
-  const getBadgeVariant = (badge: string) => {
-    switch (badge) {
-      case 'SALE':
-        return 'destructive';
-      case 'NEW':
-        return 'default';
-      case 'BESTSELLER':
-        return 'secondary';
-      case 'LIMITED':
-        default:
-        return 'outline';
-    }
-  };
-
   return (
-    <section className="py-16 px-4">
+    <section className="relative py-32 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            {t('featured.title')}
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            {t('featured.subtitle')}
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-4">
+          <div>
+            <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Curated</div>
+            <h2 className="font-display text-5xl md:text-7xl font-black">
+              <span className="text-aurora">FEATURED GEAR</span>
+            </h2>
+          </div>
+          <Link to="/shop" className="font-tech text-sm uppercase tracking-[0.25em] text-primary hover:text-primary-glow inline-flex items-center gap-2 group">
+            {t('featured.viewAll')}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
-            <Card key={product.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden">
-                  <Link to={`/product/${product.id}`}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </Link>
-                  <Badge 
-                    className="absolute top-2 left-2"
-                    variant={getBadgeVariant(product.badge)}
-                  >
+            <div
+              key={product.id}
+              className="group relative glass clip-angle-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-neon-cyan"
+            >
+              <Link to={`/product/${product.id}`}>
+                <div className="relative bg-foreground/5 aspect-square overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-background/80 backdrop-blur-sm border border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em] text-primary">
                     {product.badge}
-                  </Badge>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="absolute top-2 right-2 h-8 w-8 p-0 bg-white/80 hover:bg-white"
-                  >
-                    <Heart className="h-4 w-4" />
-                  </Button>
-                </div>
-                
-                <div className="p-4">
-                  <Badge variant="outline" className="mb-2 text-xs">
-                    {product.category}
-                  </Badge>
-                  
-                  <Link to={`/product/${product.id}`}>
-                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {product.name}
-                    </h3>
-                  </Link>
-                  
-                  <div className="flex items-center mb-2">
-                    <div className="flex items-center">
-                      {renderStars(product.rating)}
-                    </div>
-                    <span className="text-sm text-muted-foreground ml-2">
-                      ({product.reviews})
-                    </span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <span className="text-lg font-bold text-foreground">
-                      ${product.price}
-                    </span>
-                    {product.originalPrice > product.price && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        ${product.originalPrice}
-                      </span>
-                    )}
                   </div>
                 </div>
-              </CardContent>
-              
-              <CardFooter className="p-4 pt-0">
-                <Button className="w-full" onClick={() => handleAddToCart(product)}>
-                  <ShoppingCart className="h-4 w-4 mr-2" />
+              </Link>
+
+              <div className="p-5">
+                <div className="font-tech text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
+                  {product.category}
+                </div>
+                <Link to={`/product/${product.id}`}>
+                  <h3 className="font-display font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 min-h-[3rem]">
+                    {product.name}
+                  </h3>
+                </Link>
+
+                <div className="flex items-center gap-1 mb-3">
+                  <Star className="w-3.5 h-3.5 fill-primary text-primary" />
+                  <span className="font-tech text-xs text-foreground">{product.rating}</span>
+                  <span className="font-tech text-xs text-muted-foreground">({product.reviews})</span>
+                </div>
+
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="font-display font-bold text-2xl text-foreground">${product.price}</span>
+                  {product.originalPrice > product.price && (
+                    <span className="font-tech text-sm text-muted-foreground line-through">${product.originalPrice}</span>
+                  )}
+                </div>
+
+                <Button
+                  onClick={() => handleAddToCart(product)}
+                  className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan transition-all clip-angle"
+                >
+                  <ShoppingCart className="w-4 h-4 mr-2" />
                   {t('featured.addToCart')}
                 </Button>
-              </CardFooter>
-            </Card>
+              </div>
+            </div>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={() => window.location.href = '/shop'}
-          >
-            {t('featured.viewAll')}
-          </Button>
         </div>
       </div>
     </section>

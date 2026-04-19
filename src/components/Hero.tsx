@@ -1,18 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Trophy, Sun, Shield } from "lucide-react";
+import { ArrowRight, Zap, Trophy, Sun, Shield, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import heroBg from "@/assets/futuristic-hero-bg.jpg";
 import heroWimbledon from "@/assets/hero-wimbledon.jpg";
 import heroArid from "@/assets/hero-arid.jpg";
 import heroMilitary from "@/assets/hero-military.jpg";
+import heroRetro from "@/assets/hero-retro.jpg";
 
 const HERO_BG: Record<string, string> = {
   cyber: heroBg,
   wimbledon: heroWimbledon,
   arid: heroArid,
   military: heroMilitary,
-  retro: heroBg,
+  retro: heroRetro,
 };
 
 const Hero = () => {
@@ -24,6 +25,7 @@ const Hero = () => {
   const isWimbledon = theme === 'wimbledon';
   const isArid = theme === 'arid';
   const isMilitary = theme === 'military';
+  const isRetro = theme === 'retro';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -64,7 +66,20 @@ const Hero = () => {
             />
           </>
         )}
-        {!isCyber && !isWimbledon && !isArid && !isMilitary && (
+        {isRetro && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/45 to-background" />
+            {/* Diagonal poster stripes */}
+            <div
+              className="absolute inset-0 opacity-25 mix-blend-multiply"
+              style={{
+                backgroundImage:
+                  'repeating-linear-gradient(45deg, transparent 0 28px, hsl(var(--foreground) / 0.08) 28px 30px)',
+              }}
+            />
+          </>
+        )}
+        {!isCyber && !isWimbledon && !isArid && !isMilitary && !isRetro && (
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         )}
       </div>

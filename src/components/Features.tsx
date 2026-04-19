@@ -19,7 +19,7 @@ const Features = () => {
 
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Engineered</div>
+          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('features.kicker')}</div>
           <h2 className="font-display text-5xl md:text-7xl font-black mb-6">
             <span className="text-aurora">{t('features.title')}</span>
           </h2>

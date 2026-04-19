@@ -17,7 +17,7 @@ const About = () => {
 
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// About</div>
+          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('about.kicker')}</div>
           <h2 className="font-display text-5xl md:text-7xl font-black mb-6">
             <span className="text-aurora">{t('about.title')}</span>
           </h2>

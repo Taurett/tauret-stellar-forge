@@ -13,7 +13,7 @@ const Contact = () => {
 
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Contact</div>
+          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('contact.kicker')}</div>
           <h2 className="font-display text-5xl md:text-7xl font-black mb-6">
             <span className="text-aurora">{t('contact.title')}</span>
           </h2>

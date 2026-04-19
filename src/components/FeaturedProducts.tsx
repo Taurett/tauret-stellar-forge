@@ -28,10 +28,10 @@ const FeaturedProducts = () => {
   };
 
   const featuredProducts = [
-    { id: 11, name: "Basketball Pro Jersey", price: 89.99, originalPrice: 109.99, image: basketballJersey, rating: 4.8, reviews: 387, badge: "BESTSELLER", category: "Basketball" },
-    { id: 7,  name: "Pro Football Jersey",   price: 79.99, originalPrice: 99.99,  image: footballJersey,   rating: 4.8, reviews: 445, badge: "NEW",        category: "Football" },
-    { id: 18, name: "Compression Training Shirt", price: 59.99, originalPrice: 79.99, image: gymShirt, rating: 4.7, reviews: 334, badge: "SALE",   category: "Gym & Fitness" },
-    { id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99, originalPrice: 139.99, image: cyclingJersey, rating: 4.8, reviews: 276, badge: "LIMITED", category: "Cycling" },
+    { id: 11, name: "Basketball Pro Jersey", price: 89.99, originalPrice: 109.99, image: basketballJersey, rating: 4.8, reviews: 387, badgeKey: "featured.badge.bestseller", category: "Basketball" },
+    { id: 7,  name: "Pro Football Jersey",   price: 79.99, originalPrice: 99.99,  image: footballJersey,   rating: 4.8, reviews: 445, badgeKey: "featured.badge.new",        category: "Football" },
+    { id: 18, name: "Compression Training Shirt", price: 59.99, originalPrice: 79.99, image: gymShirt, rating: 4.7, reviews: 334, badgeKey: "featured.badge.sale",   category: "Gym & Fitness" },
+    { id: 14, name: "Aerodynamic Cycling Jersey", price: 109.99, originalPrice: 139.99, image: cyclingJersey, rating: 4.8, reviews: 276, badgeKey: "featured.badge.limited", category: "Cycling" },
   ];
 
   return (
@@ -39,9 +39,9 @@ const FeaturedProducts = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-4">
           <div>
-            <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Curated</div>
+            <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('featured.kicker')}</div>
             <h2 className="font-display text-5xl md:text-7xl font-black">
-              <span className="text-aurora">FEATURED GEAR</span>
+              <span className="text-aurora">{t('featured.heading')}</span>
             </h2>
           </div>
           <Link to="/shop" className="font-tech text-sm uppercase tracking-[0.25em] text-primary hover:text-primary-glow inline-flex items-center gap-2 group">
@@ -65,7 +65,7 @@ const FeaturedProducts = () => {
                     className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute top-3 left-3 px-2.5 py-1 bg-background/80 backdrop-blur-sm border border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em] text-primary">
-                    {product.badge}
+                    {t(product.badgeKey)}
                   </div>
                 </div>
               </Link>

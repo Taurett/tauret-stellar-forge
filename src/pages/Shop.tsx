@@ -88,7 +88,10 @@ const Shop = () => {
     setSearchParams(params, { replace: true });
   };
 
-  const sportCategories = sportCategoryKeys.map(c => ({ value: c.value, label: t(c.labelKey) }));
+  const sportCategories = sportCategoryKeys.map(c => ({
+    value: c.value,
+    label: t(getCategoryLabelKey(c.value, theme)),
+  }));
 
   // Localised product list — name pulled per-language at render (theme-aware for Avalanche).
   const localisedProducts = products.map(p => ({

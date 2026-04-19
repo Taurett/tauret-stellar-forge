@@ -8,10 +8,12 @@ import SearchBar from "@/components/SearchBar";
 import SportCategories from "@/components/SportCategories";
 import PromotionalBanner from "@/components/PromotionalBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import WelcomeIntro from "@/components/WelcomeIntro";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <WelcomeIntro />
       <SearchBar />
       <LanguageSwitcher />
       <ThemeToggle />

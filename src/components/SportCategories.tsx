@@ -9,9 +9,11 @@ import {
   Flame
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 const SportCategories = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const categories = [
     { id: 'tennis',     name: t('categories.tennis'),     icon: CircleDot },

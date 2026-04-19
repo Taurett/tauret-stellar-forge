@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems } = useCart();
+  const { t, formatPrice } = useLanguage();
 
   const Header = ({ title }: { title: string }) => (
     <header className="relative pt-32 pb-12 px-4 overflow-hidden">
@@ -15,9 +17,9 @@ const Cart = () => {
       <div className="relative max-w-7xl mx-auto">
         <Link to="/" className="inline-flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em] text-primary hover:text-primary-glow transition-colors mb-6">
           <ArrowLeft className="w-3 h-3" />
-          Back to Home
+          {t('shop.backHome')}
         </Link>
-        <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Cart</div>
+        <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('cart.kicker')}</div>
         <h1 className="font-display text-5xl md:text-7xl font-black">
           <span className="text-aurora">{title}</span>
         </h1>
@@ -30,20 +32,20 @@ const Cart = () => {
       <div className="min-h-screen bg-background">
         <SearchBar />
         <LanguageSwitcher />
-        <Header title="EMPTY" />
+        <Header title={t('cart.empty')} />
 
         <div className="flex flex-col items-center justify-center py-24 px-4">
           <div className="glass clip-angle-lg p-12 border border-primary/20 max-w-md text-center">
             <ShoppingBag className="h-20 w-20 text-primary/40 mb-6 mx-auto" strokeWidth={1.2} />
             <h2 className="font-display text-2xl font-bold text-foreground mb-3 uppercase tracking-wide">
-              Your cart awaits
+              {t('cart.emptyTitle')}
             </h2>
             <p className="text-muted-foreground mb-8">
-              Start shopping and fill it with elite gear.
+              {t('cart.emptyDesc')}
             </p>
             <Link to="/shop">
               <Button className="bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan">
-                Browse Catalog
+                {t('cart.browse')}
               </Button>
             </Link>
           </div>
@@ -52,11 +54,15 @@ const Cart = () => {
     );
   }
 
+  const subtotal = getTotalPrice();
+  const tax = subtotal * 0.1;
+  const total = subtotal * 1.1;
+
   return (
     <div className="min-h-screen bg-background">
       <SearchBar />
       <LanguageSwitcher />
-      <Header title={`CART · ${getTotalItems()}`} />
+      <Header title={`${t('cart.title')} · ${getTotalItems()}`} />
 
       <div className="max-w-7xl mx-auto px-4 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -74,7 +80,7 @@ const Cart = () => {
                       {item.category}
                     </Badge>
                     <p className="font-display text-xl text-foreground font-bold mt-2">
-                      ${item.price.toFixed(2)}
+                      {formatPrice(item.price)}
                     </p>
                   </div>
                   <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
@@ -116,27 +122,27 @@ const Cart = () => {
           {/* Summary */}
           <div className="lg:col-span-1">
             <div className="glass clip-angle-lg p-6 border border-primary/20 sticky top-28">
-              <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-4">// Summary</div>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-6 uppercase">Order Total</h3>
+              <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-4">{t('cart.summary')}</div>
+              <h3 className="font-display text-2xl font-bold text-foreground mb-6 uppercase">{t('cart.orderTotal')}</h3>
 
               <div className="space-y-3 font-tech text-sm">
                 <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">Subtotal</span>
-                  <span className="text-foreground">${getTotalPrice().toFixed(2)}</span>
+                  <span className="uppercase tracking-wider">{t('cart.subtotal')}</span>
+                  <span className="text-foreground">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">Shipping</span>
-                  <span className="text-primary">Free</span>
+                  <span className="uppercase tracking-wider">{t('cart.shipping')}</span>
+                  <span className="text-primary">{t('cart.free')}</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">Tax</span>
-                  <span className="text-foreground">${(getTotalPrice() * 0.1).toFixed(2)}</span>
+                  <span className="uppercase tracking-wider">{t('cart.tax')}</span>
+                  <span className="text-foreground">{formatPrice(tax)}</span>
                 </div>
                 <div className="border-t border-primary/20 pt-4 mt-4">
                   <div className="flex justify-between items-baseline">
-                    <span className="font-tech text-xs uppercase tracking-[0.25em] text-muted-foreground">Total</span>
+                    <span className="font-tech text-xs uppercase tracking-[0.25em] text-muted-foreground">{t('cart.total')}</span>
                     <span className="font-display text-3xl font-bold text-aurora">
-                      ${(getTotalPrice() * 1.1).toFixed(2)}
+                      {formatPrice(total)}
                     </span>
                   </div>
                 </div>
@@ -144,11 +150,11 @@ const Cart = () => {
 
               <div className="space-y-3 mt-6">
                 <Button className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan py-6">
-                  Checkout
+                  {t('cart.checkout')}
                 </Button>
                 <Link to="/shop" className="block">
                   <Button variant="outline" className="w-full glass border-primary/30 text-foreground hover:text-primary hover:border-primary font-tech uppercase tracking-widest clip-angle">
-                    Keep Shopping
+                    {t('cart.keepShopping')}
                   </Button>
                 </Link>
               </div>

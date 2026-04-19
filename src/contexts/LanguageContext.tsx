@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'ro';
@@ -7,7 +6,14 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  /** Format a base EUR price into the active currency (EUR for en, RON for ro). */
+  formatPrice: (priceEur: number) => string;
+  /** Currency code currently active. */
+  currency: 'EUR' | 'RON';
 }
+
+// Approximate fixed exchange rate. Adjust here if needed.
+const EUR_TO_RON = 4.98;
 
 const translations = {
   en: {
@@ -16,7 +22,7 @@ const translations = {
     'hero.description': 'Premium sports apparel and equipment for athletes across all disciplines.',
     'hero.shopCollection': 'Shop Collection',
     'hero.viewCatalog': 'View Catalog',
-    
+
     // Categories section
     'categories.title': 'Shop by Sport',
     'categories.subtitle': 'Find the perfect gear for your favorite activities',
@@ -26,9 +32,11 @@ const translations = {
     'categories.basketball': 'Basketball',
     'categories.handball': 'Handball',
     'categories.cycling': 'Cycling',
+    'categories.running': 'Running',
     'categories.gymFitness': 'Gym & Fitness',
     'categories.airsoft': 'Airsoft',
-    
+    'categories.all': 'All Sports',
+
     // Promotions section
     'promotions.sale.title': 'Flash Sale',
     'promotions.sale.description': 'Limited time offers on premium sports equipment',
@@ -39,16 +47,16 @@ const translations = {
     'promotions.limitedTime.title': 'Limited Edition',
     'promotions.limitedTime.description': 'Exclusive collections while stocks last',
     'promotions.limitedTime.cta': 'Shop Now',
-    
+
     // Search section
     'search.placeholder': 'Search for products, brands, sports...',
-    
+
     // Featured section
     'featured.title': 'Featured Products',
     'featured.subtitle': 'Handpicked essentials for every athlete',
     'featured.addToCart': 'Add to Cart',
     'featured.viewAll': 'View All Products',
-    
+
     // Features section
     'features.title': 'Built for Athletes',
     'features.subtitle': 'Every piece of SportElite gear is engineered for peak performance across all sports disciplines.',
@@ -64,7 +72,7 @@ const translations = {
     'features.warriorSpiritDesc': 'Bold designs that embody the dedication and competitive spirit of true athletes.',
     'features.elitePerformance': 'Elite Performance',
     'features.elitePerformanceDesc': 'Premium fabrics and technology for superior moisture management and durability.',
-    
+
     // About section
     'about.title': 'The SportElite Story',
     'about.subtitle': 'Born from the passion for sports and the relentless pursuit of excellence. SportElite represents the dedication that drives every athlete to achieve greatness.',
@@ -75,7 +83,7 @@ const translations = {
     'about.warriorCommunity': 'Athlete Community',
     'about.warriorCommunityDesc': 'Join thousands of athletes across football, basketball, running, tennis, and more who trust SportElite for their training and competition needs.',
     'about.quote': 'In competition, every second counts. Every move matters. SportElite gear gives you the edge you need to excel.',
-    
+
     // Contact section
     'contact.title': 'Join the Team',
     'contact.subtitle': 'Ready to elevate your performance? Get in touch with the SportElite team and unlock your potential.',
@@ -91,6 +99,56 @@ const translations = {
     'contact.supportDesc': '24/7 Athlete Support',
     'contact.trainingCenter': 'Performance Center',
     'contact.trainingCenterDesc': 'Professional Gear Testing',
+
+    // Shop page
+    'shop.backHome': 'Back to Home',
+    'shop.kicker': '// Catalog',
+    'shop.title': 'SHOP',
+    'shop.subtitle': 'Premium clothing for elite athletes',
+    'shop.searchPlaceholder': 'Search products...',
+    'shop.filterPlaceholder': 'Filter by sport',
+    'shop.noResults': 'No products found.',
+    'shop.addToCart': 'Add to Cart',
+
+    // Product detail
+    'product.backShop': 'Back to Shop',
+    'product.notFound': 'Product not found',
+    'product.selectSize': '// Select Size',
+    'product.reviews': 'reviews',
+    'product.freeShipping': 'Free Shipping',
+    'product.returns': '30-Day Returns',
+    'product.tabs.details': 'Details',
+    'product.tabs.specs': 'Specifications',
+    'product.material': '// Material & Fabric',
+    'product.keyFeatures': '// Key Features',
+    'product.specs.category': 'Category',
+    'product.specs.material': 'Material',
+    'product.specs.sizes': 'Available Sizes',
+    'product.specs.rating': 'Rating',
+    'product.addToCart': 'Add to Cart',
+    'product.pleaseSelectSize': 'Please select a size',
+    'product.pleaseSelectSizeDesc': 'Choose a size before adding to cart.',
+
+    // Cart page
+    'cart.kicker': '// Cart',
+    'cart.empty': 'EMPTY',
+    'cart.emptyTitle': 'Your cart awaits',
+    'cart.emptyDesc': 'Start shopping and fill it with elite gear.',
+    'cart.browse': 'Browse Catalog',
+    'cart.title': 'CART',
+    'cart.summary': '// Summary',
+    'cart.orderTotal': 'Order Total',
+    'cart.subtotal': 'Subtotal',
+    'cart.shipping': 'Shipping',
+    'cart.free': 'Free',
+    'cart.tax': 'Tax',
+    'cart.total': 'Total',
+    'cart.checkout': 'Checkout',
+    'cart.keepShopping': 'Keep Shopping',
+
+    // Toasts
+    'toast.added': 'Added to cart',
+    'toast.addedDesc': 'has been added to your cart.',
   },
   ro: {
     // Hero section
@@ -98,7 +156,7 @@ const translations = {
     'hero.description': 'Îmbrăcăminte și echipament sportiv premium pentru atleți din toate disciplinele.',
     'hero.shopCollection': 'Vezi Colecția',
     'hero.viewCatalog': 'Vezi Catalogul',
-    
+
     // Categories section
     'categories.title': 'Cumpără după Sport',
     'categories.subtitle': 'Găsește echipamentul perfect pentru activitățile tale favorite',
@@ -108,9 +166,11 @@ const translations = {
     'categories.basketball': 'Baschet',
     'categories.handball': 'Handbal',
     'categories.cycling': 'Ciclism',
+    'categories.running': 'Alergare',
     'categories.gymFitness': 'Sală & Fitness',
     'categories.airsoft': 'Airsoft',
-    
+    'categories.all': 'Toate Sporturile',
+
     // Promotions section
     'promotions.sale.title': 'Ofertă Flash',
     'promotions.sale.description': 'Oferte pe timp limitat pentru echipament sportiv premium',
@@ -121,16 +181,16 @@ const translations = {
     'promotions.limitedTime.title': 'Ediție Limitată',
     'promotions.limitedTime.description': 'Colecții exclusive cât timp există în stoc',
     'promotions.limitedTime.cta': 'Cumpără Acum',
-    
+
     // Search section
     'search.placeholder': 'Caută produse, branduri, sporturi...',
-    
+
     // Featured section
     'featured.title': 'Produse Recomandate',
     'featured.subtitle': 'Esențiale alese cu grijă pentru fiecare atlet',
     'featured.addToCart': 'Adaugă în Coș',
     'featured.viewAll': 'Vezi Toate Produsele',
-    
+
     // Features section
     'features.title': 'Construit pentru Atleți',
     'features.subtitle': 'Fiecare piesă SportElite este proiectată pentru performanță maximă în toate disciplinele sportive.',
@@ -146,7 +206,7 @@ const translations = {
     'features.warriorSpiritDesc': 'Modele îndrăznețe care întruchipează dedicarea și spiritul competitiv al adevăraților atleți.',
     'features.elitePerformance': 'Performanță de Elită',
     'features.elitePerformanceDesc': 'Materiale premium și tehnologie pentru managementul superior al umidității și durabilitate.',
-    
+
     // About section
     'about.title': 'Povestea SportElite',
     'about.subtitle': 'Născut din pasiunea pentru sport și căutarea neîncetată a excelenței. SportElite reprezintă dedicarea care îi determină pe fiecare atlet să atingă măreția.',
@@ -157,7 +217,7 @@ const translations = {
     'about.warriorCommunity': 'Comunitatea Atleților',
     'about.warriorCommunityDesc': 'Alătură-te miilor de atleți din fotbal, baschet, alergare, tenis și multe altele care au încredere în SportElite pentru nevoile lor de antrenament și competiție.',
     'about.quote': 'În competiție, fiecare secundă contează. Fiecare mișcare importă. Echipamentul SportElite îți oferă avantajul de care ai nevoie pentru a excela.',
-    
+
     // Contact section
     'contact.title': 'Alătură-te Echipei',
     'contact.subtitle': 'Gata să îți ridici performanța? Ia legătura cu echipa SportElite și dezlănțuie-ți potențialul.',
@@ -173,6 +233,56 @@ const translations = {
     'contact.supportDesc': 'Suport pentru Atleți 24/7',
     'contact.trainingCenter': 'Centrul de Performanță',
     'contact.trainingCenterDesc': 'Testare Profesională a Echipamentului',
+
+    // Shop page
+    'shop.backHome': 'Înapoi Acasă',
+    'shop.kicker': '// Catalog',
+    'shop.title': 'MAGAZIN',
+    'shop.subtitle': 'Îmbrăcăminte premium pentru atleți de elită',
+    'shop.searchPlaceholder': 'Caută produse...',
+    'shop.filterPlaceholder': 'Filtrează după sport',
+    'shop.noResults': 'Nu s-au găsit produse.',
+    'shop.addToCart': 'Adaugă în Coș',
+
+    // Product detail
+    'product.backShop': 'Înapoi la Magazin',
+    'product.notFound': 'Produs negăsit',
+    'product.selectSize': '// Alege Mărimea',
+    'product.reviews': 'recenzii',
+    'product.freeShipping': 'Livrare Gratuită',
+    'product.returns': 'Retur 30 de Zile',
+    'product.tabs.details': 'Detalii',
+    'product.tabs.specs': 'Specificații',
+    'product.material': '// Material & Țesătură',
+    'product.keyFeatures': '// Caracteristici Cheie',
+    'product.specs.category': 'Categorie',
+    'product.specs.material': 'Material',
+    'product.specs.sizes': 'Mărimi Disponibile',
+    'product.specs.rating': 'Rating',
+    'product.addToCart': 'Adaugă în Coș',
+    'product.pleaseSelectSize': 'Te rugăm să alegi o mărime',
+    'product.pleaseSelectSizeDesc': 'Alege o mărime înainte de a adăuga în coș.',
+
+    // Cart page
+    'cart.kicker': '// Coș',
+    'cart.empty': 'GOL',
+    'cart.emptyTitle': 'Coșul tău te așteaptă',
+    'cart.emptyDesc': 'Începe să cumperi și umple-l cu echipament de elită.',
+    'cart.browse': 'Vezi Catalogul',
+    'cart.title': 'COȘ',
+    'cart.summary': '// Sumar',
+    'cart.orderTotal': 'Total Comandă',
+    'cart.subtotal': 'Subtotal',
+    'cart.shipping': 'Livrare',
+    'cart.free': 'Gratuită',
+    'cart.tax': 'TVA',
+    'cart.total': 'Total',
+    'cart.checkout': 'Finalizează Comanda',
+    'cart.keepShopping': 'Continuă Cumpărăturile',
+
+    // Toasts
+    'toast.added': 'Adăugat în coș',
+    'toast.addedDesc': 'a fost adăugat în coșul tău.',
   }
 };
 
@@ -185,8 +295,27 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return translations[language][key] || key;
   };
 
+  const currency: 'EUR' | 'RON' = language === 'ro' ? 'RON' : 'EUR';
+
+  const formatPrice = (priceEur: number): string => {
+    if (language === 'ro') {
+      const ron = priceEur * EUR_TO_RON;
+      // Romanian convention: "199,99 lei"
+      const formatted = ron.toLocaleString('ro-RO', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+      return `${formatted} lei`;
+    }
+    const formatted = priceEur.toLocaleString('en-IE', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    return `€${formatted}`;
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, formatPrice, currency }}>
       {children}
     </LanguageContext.Provider>
   );

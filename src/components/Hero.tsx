@@ -159,10 +159,6 @@ const Hero = () => {
           <div className="hidden md:block absolute top-28 right-10 font-tech text-[10px] uppercase tracking-[0.4em] text-foreground/80 text-right">
             Ediția specială<br/>Nr. 042
           </div>
-          {/* Diagonal banner ribbon */}
-          <div className="hidden md:block absolute top-44 -left-12 rotate-[-8deg] bg-primary text-primary-foreground font-display font-black text-xs uppercase tracking-[0.3em] px-16 py-2 shadow-card">
-            ★ Sport pentru toți ★
-          </div>
           {/* Bottom slogan strip */}
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 font-display font-black text-xs uppercase tracking-[0.4em] text-foreground/90">
             <span className="text-primary">★</span>

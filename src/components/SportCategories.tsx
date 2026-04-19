@@ -6,14 +6,24 @@ import {
   Target,
   Activity,
   Trophy,
-  Flame
+  Flame,
+  Snowflake,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 const SportCategories = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const navigate = useNavigate();
+
+  // Avalanche theme swaps the Airsoft tile for a Winter Sports tile (label + icon),
+  // while keeping the underlying category id so the rest of the catalog/route works.
+  const isAvalanche = theme === 'avalanche';
+  const lastTile = isAvalanche
+    ? { id: 'airsoft', name: t('categories.winterSports'), icon: Snowflake }
+    : { id: 'airsoft', name: t('categories.airsoft'),      icon: Target };
 
   const categories = [
     { id: 'tennis',     name: t('categories.tennis'),     icon: CircleDot },
@@ -23,7 +33,7 @@ const SportCategories = () => {
     { id: 'handball',   name: t('categories.handball'),   icon: Flame },
     { id: 'cycling',    name: t('categories.cycling'),    icon: Bike },
     { id: 'gym',        name: t('categories.gymFitness'), icon: Dumbbell },
-    { id: 'airsoft',    name: t('categories.airsoft'),    icon: Target },
+    lastTile,
   ];
 
   return (

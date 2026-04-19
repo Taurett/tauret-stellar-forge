@@ -148,6 +148,37 @@ const Hero = () => {
         </>
       )}
 
+      {/* Retro: Soviet propaganda accents */}
+      {isRetro && (
+        <>
+          {/* Big red star top-left */}
+          <div className="absolute top-28 left-8 text-primary animate-float">
+            <Star className="w-14 h-14 fill-current" strokeWidth={1} />
+          </div>
+          {/* Hammer & sickle glyph top-right */}
+          <div className="hidden md:flex absolute top-28 right-10 items-center gap-3 text-primary">
+            <span className="font-display text-5xl leading-none">☭</span>
+            <div className="font-tech text-[10px] uppercase tracking-[0.4em] text-foreground/80">
+              Pyatiletka<br/>1925—2025
+            </div>
+          </div>
+          {/* Diagonal banner ribbon */}
+          <div className="hidden md:block absolute top-44 -left-12 rotate-[-8deg] bg-primary text-primary-foreground font-display font-black text-xs uppercase tracking-[0.3em] px-16 py-2 shadow-card">
+            ★ Workers of Sport, Unite ★
+          </div>
+          {/* Bottom slogan strip */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 font-display font-black text-xs uppercase tracking-[0.4em] text-foreground/90">
+            <span className="text-primary">★</span>
+            <span>Forward to Victory</span>
+            <span className="text-primary">★</span>
+          </div>
+          {/* Constructivist corner block */}
+          <div className="absolute bottom-6 right-6 w-16 h-16 bg-secondary border-2 border-foreground flex items-center justify-center font-display font-black text-2xl text-foreground">
+            T
+          </div>
+        </>
+      )}
+
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         {/* Tag chip */}
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 glass clip-angle animate-fade-in">

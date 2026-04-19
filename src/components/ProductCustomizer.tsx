@@ -146,35 +146,76 @@ const ProductCustomizer = ({ baseImage, productName, value, onChange }: ProductC
           <div>
             <div className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-3">// Live Preview</div>
             <div className="relative glass clip-angle-lg overflow-hidden border border-primary/30 bg-foreground/5 aspect-square max-h-80 mx-auto">
+              {/* Base product image */}
               <img
                 src={baseImage}
                 alt={productName}
                 className="absolute inset-0 w-full h-full object-contain p-6"
               />
-              {/* Color tint overlay */}
+              {/* Color tint — masked to the shirt silhouette using the product image */}
               <div
-                className="absolute inset-0 mix-blend-multiply pointer-events-none"
-                style={{ backgroundColor: selectedColor.hex, opacity: 0.55 }}
-              />
+                className="absolute inset-0 p-6 pointer-events-none mix-blend-multiply"
+                style={{
+                  WebkitMaskImage: `url(${baseImage})`,
+                  maskImage: `url(${baseImage})`,
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  maskPosition: "center",
+                  WebkitMaskSize: "contain",
+                  maskSize: "contain",
+                }}
+              >
+                <div className="w-full h-full" style={{ backgroundColor: selectedColor.hex, opacity: 0.7 }} />
+              </div>
               <div
-                className="absolute inset-0 mix-blend-screen pointer-events-none"
-                style={{ backgroundColor: selectedColor.hex, opacity: 0.25 }}
-              />
-              {/* Design overlay */}
-              {selectedPreset && (
+                className="absolute inset-0 p-6 pointer-events-none mix-blend-screen"
+                style={{
+                  WebkitMaskImage: `url(${baseImage})`,
+                  maskImage: `url(${baseImage})`,
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  maskPosition: "center",
+                  WebkitMaskSize: "contain",
+                  maskSize: "contain",
+                }}
+              >
+                <div className="w-full h-full" style={{ backgroundColor: selectedColor.hex, opacity: 0.2 }} />
+              </div>
+              {/* Design overlay — also masked to the shirt silhouette */}
+              {(selectedPreset || (value.customImage && value.design === "custom")) && (
                 <div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 pointer-events-none"
-                  style={{ color: selectedColor.hex === "#0a0a14" ? "#00f0ff" : "#0a0a14" }}
+                  className="absolute inset-0 p-6 pointer-events-none"
+                  style={{
+                    WebkitMaskImage: `url(${baseImage})`,
+                    maskImage: `url(${baseImage})`,
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskPosition: "center",
+                    WebkitMaskSize: "contain",
+                    maskSize: "contain",
+                  }}
                 >
-                  {selectedPreset.svg}
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {selectedPreset && (
+                      <div
+                        className="w-2/5 h-2/5"
+                        style={{ color: selectedColor.hex === "#0a0a14" ? "#00f0ff" : "#0a0a14" }}
+                      >
+                        {selectedPreset.svg}
+                      </div>
+                    )}
+                    {value.customImage && value.design === "custom" && (
+                      <img
+                        src={value.customImage}
+                        alt="Custom design"
+                        className="w-2/5 h-2/5 object-contain"
+                      />
+                    )}
+                  </div>
                 </div>
-              )}
-              {value.customImage && value.design === "custom" && (
-                <img
-                  src={value.customImage}
-                  alt="Custom design"
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 object-contain pointer-events-none drop-shadow-[0_0_12px_rgba(0,240,255,0.6)]"
-                />
               )}
             </div>
           </div>

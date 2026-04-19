@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Trophy, Sun, Shield, Star } from "lucide-react";
+import { ArrowRight, Zap, Trophy, Sun, Shield } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import heroBg from "@/assets/futuristic-hero-bg.jpg";

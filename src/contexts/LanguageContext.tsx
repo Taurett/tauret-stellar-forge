@@ -376,6 +376,25 @@ const translations = {
     // About / Contact kickers
     'about.kicker': '// Despre',
     'contact.kicker': '// Contact',
+
+    // Welcome intro modal (afișat la prima vizită)
+    'intro.kicker': '// Bun venit la Tauret',
+    'intro.title': 'Poartă-le mai des. Trăiește-le mai intens.',
+    'intro.story': 'Tauret s-a născut dintr-o idee simplă: hainele pe care le iubești sunt cele pe care le porți cu adevărat. Creăm îmbrăcăminte sport premium în mai multe lumi vizuale — alege-o pe cea care te reprezintă, iar noi îți îmbrăcăm întreaga experiență în ea.',
+    'intro.pickPrompt': 'Alege-ți stilul',
+    'intro.pickHint': 'Îl poți schimba oricând din selectorul din colțul stânga-jos.',
+    'intro.continue': 'Intră în Tauret',
+    'intro.skip': 'Omite',
+    'intro.theme.cyber.label': 'Cyber',
+    'intro.theme.cyber.desc': 'Neon spațial — îndrăzneț, electric, nocturn.',
+    'intro.theme.wimbledon.label': 'Wimbledon',
+    'intro.theme.wimbledon.desc': 'Verde și alb crocant — energie de teren atemporală.',
+    'intro.theme.arid.label': 'Arid',
+    'intro.theme.arid.desc': 'Tonuri calde de deșert — pământii, luminoase.',
+    'intro.theme.military.label': 'Military',
+    'intro.theme.military.desc': 'Verde tactic — disciplinat și puternic.',
+    'intro.theme.retro.label': 'Retro',
+    'intro.theme.retro.desc': 'Paletă anii ’70 — jucăuș și nostalgic.',
   }
 };
 

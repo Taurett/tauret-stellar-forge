@@ -14,7 +14,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { toast } from "@/hooks/use-toast";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
-import { getProductCopy } from "@/lib/productI18n";
+import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{
@@ -90,10 +90,10 @@ const Shop = () => {
 
   const sportCategories = sportCategoryKeys.map(c => ({ value: c.value, label: t(c.labelKey) }));
 
-  // Localised product list — name pulled per-language at render.
+  // Localised product list — name pulled per-language at render (theme-aware for Avalanche).
   const localisedProducts = products.map(p => ({
     ...p,
-    name: getProductCopy(p.id, language).name,
+    name: getProductCopy(p.id, language, theme).name,
   }));
 
   const handleAddToCart = (product: typeof localisedProducts[number]) => {

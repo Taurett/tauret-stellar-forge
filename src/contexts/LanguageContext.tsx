@@ -35,6 +35,7 @@ const translations = {
     'categories.running': 'Running',
     'categories.gymFitness': 'Gym & Fitness',
     'categories.airsoft': 'Airsoft',
+    'categories.winterSports': 'Winter Sports',
     'categories.all': 'All Sports',
 
     // Promotions section
@@ -225,6 +226,7 @@ const translations = {
     'categories.running': 'Alergare',
     'categories.gymFitness': 'Sală & Fitness',
     'categories.airsoft': 'Airsoft',
+    'categories.winterSports': 'Sporturi de Iarnă',
     'categories.all': 'Toate Sporturile',
 
     // Promotions section

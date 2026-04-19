@@ -25,6 +25,14 @@ import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
 import cyclingShortsDetail from "@/assets/products/cycling-shorts-detail.jpg";
 import gymShirt from "@/assets/products/gym-shirt.jpg";
 import gymShirtDetail from "@/assets/products/gym-shirt-detail.jpg";
+import tennisPolo from "@/assets/products/tennis-polo.jpg";
+import goalkeeperJersey from "@/assets/products/goalkeeper-jersey.jpg";
+import basketballShorts from "@/assets/products/basketball-shorts.jpg";
+import runningTank from "@/assets/products/running-tank.jpg";
+import runningLeggings from "@/assets/products/running-leggings.jpg";
+import gymHoodie from "@/assets/products/gym-hoodie.jpg";
+import yogaBra from "@/assets/products/yoga-bra.jpg";
+import cyclingJacket from "@/assets/products/cycling-jacket.jpg";
 
 const productsData = [
   {
@@ -98,6 +106,78 @@ const productsData = [
     fabric: "80% Nylon, 20% Spandex compression fabric",
     features: ["Muscle support", "Quick-dry", "4-way stretch", "Flatlock seams"],
     sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 20, name: "Tennis Performance Polo", price: 64.99,
+    images: [tennisPolo, tennisPolo], category: "tennis",
+    rating: 4.6, reviews: 142,
+    description: "Classic-cut tennis polo with futuristic neon trims. Engineered for fast play with breathable, moisture-wicking fabric.",
+    fabric: "92% Polyester, 8% Elastane — Smooth-touch piqué knit",
+    features: ["Reflective neon piping", "UV Protection 50+", "Athletic fit", "Anti-odor finish"],
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 21, name: "Goalkeeper Long-Sleeve Jersey", price: 94.99,
+    images: [goalkeeperJersey, goalkeeperJersey], category: "football",
+    rating: 4.9, reviews: 198,
+    description: "Long-sleeve goalkeeper jersey with padded forearms and high-grip torso panels. Built for the keepers who own the box.",
+    fabric: "Recycled Polyester with foam-padded elbows",
+    features: ["Elbow padding", "Grip torso print", "Ergonomic sleeves", "Breathable mesh back"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 22, name: "Basketball Court Shorts", price: 54.99,
+    images: [basketballShorts, basketballShorts], category: "basketball",
+    rating: 4.7, reviews: 256,
+    description: "Lightweight basketball shorts with above-the-knee cut and elastic waistband. Designed for explosive movement on the court.",
+    fabric: "100% Polyester woven dazzle fabric",
+    features: ["Elastic drawcord waist", "Side pockets", "Above-knee length", "Quick-dry"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 23, name: "Cycling Windbreaker Jacket", price: 129.99,
+    images: [cyclingJacket, cyclingJacket], category: "cycling",
+    rating: 4.8, reviews: 167,
+    description: "Ultra-light packable cycling windbreaker with reflective panels for low-light visibility. Your shield against wind and chill.",
+    fabric: "Ripstop nylon with DWR water-repellent coating",
+    features: ["Packable design", "Reflective accents", "Rear vent", "Drop tail hem"],
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 24, name: "Aero Running Tank", price: 44.99,
+    images: [runningTank, runningTank], category: "running",
+    rating: 4.6, reviews: 203,
+    description: "Featherweight running tank with laser-cut ventilation. Engineered for hot days and fast splits.",
+    fabric: "Recycled Polyester mesh with mineral cooling yarn",
+    features: ["Laser-cut vents", "Reflective logo", "Anti-chafe seams", "Lightweight feel"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 25, name: "Compression Running Leggings", price: 74.99,
+    images: [runningLeggings, runningLeggings], category: "running",
+    rating: 4.8, reviews: 312,
+    description: "High-rise compression leggings with sculpting seams and a hidden waistband pocket. Built for distance.",
+    fabric: "78% Nylon, 22% Spandex — 4-way compression",
+    features: ["Hidden waist pocket", "Sculpting seams", "Squat-proof", "Reflective accents"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: 26, name: "Tech Fleece Gym Hoodie", price: 89.99,
+    images: [gymHoodie, gymHoodie], category: "gym",
+    rating: 4.8, reviews: 421,
+    description: "Tech fleece hoodie with brushed interior, kangaroo pocket and full-zip front. Pre and post-session warmth, refined.",
+    fabric: "Tech fleece — 65% Cotton, 35% Polyester",
+    features: ["Full-zip front", "Brushed interior", "Kangaroo pocket", "Ribbed cuffs and hem"],
+    sizes: ["S", "M", "L", "XL", "XXL"]
+  },
+  {
+    id: 27, name: "High-Support Sports Bra", price: 49.99,
+    images: [yogaBra, yogaBra], category: "gym",
+    rating: 4.7, reviews: 287,
+    description: "High-support sports bra with crossback straps and removable cups. Engineered for high-impact training and yoga flow alike.",
+    fabric: "82% Recycled Polyester, 18% Elastane",
+    features: ["Removable cups", "Crossback straps", "High support", "Sweat-wicking"],
+    sizes: ["XS", "S", "M", "L", "XL"]
   }
 ];
 

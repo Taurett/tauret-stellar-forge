@@ -18,17 +18,33 @@ import handballJersey from "@/assets/products/handball-jersey.jpg";
 import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
 import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
 import gymShirt from "@/assets/products/gym-shirt.jpg";
+import tennisPolo from "@/assets/products/tennis-polo.jpg";
+import goalkeeperJersey from "@/assets/products/goalkeeper-jersey.jpg";
+import basketballShorts from "@/assets/products/basketball-shorts.jpg";
+import runningTank from "@/assets/products/running-tank.jpg";
+import runningLeggings from "@/assets/products/running-leggings.jpg";
+import gymHoodie from "@/assets/products/gym-hoodie.jpg";
+import yogaBra from "@/assets/products/yoga-bra.jpg";
+import cyclingJacket from "@/assets/products/cycling-jacket.jpg";
 
 // Clothing-only catalog
 const products = [
   { id: 3,  name: "Tennis Athletic Dress",        price: 79.99,  image: tennisOutfit,      category: "tennis",     rating: 4.7, reviews: 189 },
+  { id: 20, name: "Tennis Performance Polo",      price: 64.99,  image: tennisPolo,        category: "tennis",     rating: 4.6, reviews: 142 },
   { id: 7,  name: "Pro Football Jersey",          price: 79.99,  image: footballJersey,    category: "football",   rating: 4.8, reviews: 445 },
   { id: 9,  name: "Football Training Shorts",     price: 49.99,  image: footballShorts,    category: "football",   rating: 4.7, reviews: 312 },
+  { id: 21, name: "Goalkeeper Long-Sleeve Jersey",price: 94.99,  image: goalkeeperJersey,  category: "football",   rating: 4.9, reviews: 198 },
   { id: 11, name: "Basketball Pro Jersey",        price: 89.99,  image: basketballJersey,  category: "basketball", rating: 4.8, reviews: 387 },
+  { id: 22, name: "Basketball Court Shorts",      price: 54.99,  image: basketballShorts,  category: "basketball", rating: 4.7, reviews: 256 },
   { id: 12, name: "Handball Team Jersey",         price: 69.99,  image: handballJersey,    category: "handball",   rating: 4.7, reviews: 234 },
   { id: 14, name: "Aerodynamic Cycling Jersey",   price: 109.99, image: cyclingJersey,     category: "cycling",    rating: 4.8, reviews: 276 },
   { id: 16, name: "Cycling Bib Shorts",           price: 99.99,  image: cyclingShorts,     category: "cycling",    rating: 4.7, reviews: 289 },
+  { id: 23, name: "Cycling Windbreaker Jacket",   price: 129.99, image: cyclingJacket,     category: "cycling",    rating: 4.8, reviews: 167 },
+  { id: 24, name: "Aero Running Tank",            price: 44.99,  image: runningTank,       category: "running",    rating: 4.6, reviews: 203 },
+  { id: 25, name: "Compression Running Leggings", price: 74.99,  image: runningLeggings,   category: "running",    rating: 4.8, reviews: 312 },
   { id: 18, name: "Compression Training Shirt",   price: 59.99,  image: gymShirt,          category: "gym",        rating: 4.7, reviews: 334 },
+  { id: 26, name: "Tech Fleece Gym Hoodie",       price: 89.99,  image: gymHoodie,         category: "gym",        rating: 4.8, reviews: 421 },
+  { id: 27, name: "High-Support Sports Bra",      price: 49.99,  image: yogaBra,           category: "gym",        rating: 4.7, reviews: 287 },
 ];
 
 const sportCategories = [
@@ -38,6 +54,7 @@ const sportCategories = [
   { value: "basketball", label: "Basketball" },
   { value: "handball", label: "Handball" },
   { value: "cycling", label: "Cycling" },
+  { value: "running", label: "Running" },
   { value: "gym", label: "Gym & Fitness" },
 ];
 

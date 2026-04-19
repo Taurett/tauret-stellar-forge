@@ -10,14 +10,14 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
 import { toast } from "@/hooks/use-toast";
 
-import tennisOutfit from "@/assets/products/tennis-outfit.jpg";
-import footballJersey from "@/assets/products/football-jersey.jpg";
-import footballShorts from "@/assets/products/football-shorts.jpg";
-import basketballJersey from "@/assets/products/basketball-jersey.jpg";
-import handballJersey from "@/assets/products/handball-jersey.jpg";
-import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
-import cyclingShorts from "@/assets/products/cycling-shorts.jpg";
-import gymShirt from "@/assets/products/gym-shirt.jpg";
+import tennisOutfit from "@/assets/products/tennis-outfit.png";
+import footballJersey from "@/assets/products/football-jersey.png";
+import footballShorts from "@/assets/products/football-shorts.png";
+import basketballJersey from "@/assets/products/basketball-jersey.png";
+import handballJersey from "@/assets/products/handball-jersey.png";
+import cyclingJersey from "@/assets/products/cycling-jersey.png";
+import cyclingShorts from "@/assets/products/cycling-shorts.png";
+import gymShirt from "@/assets/products/gym-shirt.png";
 
 // Clothing-only catalog
 const products = [

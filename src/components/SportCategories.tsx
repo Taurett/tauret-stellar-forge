@@ -50,7 +50,7 @@ const SportCategories = () => {
             return (
               <button
                 key={category.id}
-                onClick={() => window.location.href = `/shop?category=${category.id}`}
+                onClick={() => navigate(`/shop?category=${category.id}`)}
                 className="group relative glass clip-angle-lg p-8 text-center transition-all duration-500 hover:shadow-neon-cyan hover:-translate-y-2 border border-primary/20 hover:border-primary/60"
                 style={{ animationDelay: `${idx * 80}ms` }}
               >

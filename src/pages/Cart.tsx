@@ -3,27 +3,17 @@ import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
-import { getProductCopy } from "@/lib/productI18n";
-
-const CATEGORY_KEY: Record<string, string> = {
-  basketball: 'categories.basketball',
-  football:   'categories.football',
-  tennis:     'categories.tennis',
-  padel:      'categories.padel',
-  handball:   'categories.handball',
-  cycling:    'categories.cycling',
-  running:    'categories.running',
-  gym:        'categories.gymFitness',
-  airsoft:    'categories.airsoft',
-};
+import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems } = useCart();
   const { t, formatPrice, language } = useLanguage();
+  const { theme } = useTheme();
 
   const Header = ({ title }: { title: string }) => (
     <header className="relative pt-32 pb-12 px-4 overflow-hidden">
@@ -88,12 +78,12 @@ const Cart = () => {
               <div key={item.id} className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
                 <div className="flex items-center gap-4">
                   <div className="bg-foreground/5 w-24 h-24 shrink-0 flex items-center justify-center">
-                    <img src={item.image} alt={getProductCopy(item.id, language).name} className="w-full h-full object-contain p-2" />
+                    <img src={item.image} alt={getProductCopy(item.id, language, theme).name} className="w-full h-full object-contain p-2" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-display font-bold text-foreground text-lg truncate">{getProductCopy(item.id, language).name}</h3>
+                    <h3 className="font-display font-bold text-foreground text-lg truncate">{getProductCopy(item.id, language, theme).name}</h3>
                     <Badge variant="outline" className="mt-1 text-primary border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em]">
-                      {t(CATEGORY_KEY[item.category] ?? 'categories.all')}
+                      {t(getCategoryLabelKey(item.category, theme))}
                     </Badge>
                     <p className="font-display text-xl text-foreground font-bold mt-2">
                       {formatPrice(item.price)}

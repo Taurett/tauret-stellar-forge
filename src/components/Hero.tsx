@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Trophy, Sun, Shield, Star } from "lucide-react";
+import { ArrowRight, Zap, Trophy, Sun, Shield } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import heroBg from "@/assets/futuristic-hero-bg.jpg";
@@ -148,28 +148,25 @@ const Hero = () => {
         </>
       )}
 
-      {/* Retro: Soviet propaganda accents */}
+      {/* Retro: vintage Eastern European poster accents (no political symbols) */}
       {isRetro && (
         <>
-          {/* Big red star top-left */}
-          <div className="absolute top-28 left-8 text-primary animate-float">
-            <Star className="w-14 h-14 fill-current" strokeWidth={1} />
+          {/* Top-left date stamp */}
+          <div className="hidden md:block absolute top-28 left-10 font-display font-black text-xs uppercase tracking-[0.4em] text-foreground/80 border-2 border-foreground px-3 py-1 bg-secondary">
+            EST. 1925 — Vol. LXXVII
           </div>
-          {/* Hammer & sickle glyph top-right */}
-          <div className="hidden md:flex absolute top-28 right-10 items-center gap-3 text-primary">
-            <span className="font-display text-5xl leading-none">☭</span>
-            <div className="font-tech text-[10px] uppercase tracking-[0.4em] text-foreground/80">
-              Pyatiletka<br/>1925—2025
-            </div>
+          {/* Top-right edition tag */}
+          <div className="hidden md:block absolute top-28 right-10 font-tech text-[10px] uppercase tracking-[0.4em] text-foreground/80 text-right">
+            Ediția specială<br/>Nr. 042
           </div>
           {/* Diagonal banner ribbon */}
           <div className="hidden md:block absolute top-44 -left-12 rotate-[-8deg] bg-primary text-primary-foreground font-display font-black text-xs uppercase tracking-[0.3em] px-16 py-2 shadow-card">
-            ★ Workers of Sport, Unite ★
+            ★ Sport pentru toți ★
           </div>
           {/* Bottom slogan strip */}
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3 font-display font-black text-xs uppercase tracking-[0.4em] text-foreground/90">
             <span className="text-primary">★</span>
-            <span>Forward to Victory</span>
+            <span>Înainte spre victorie</span>
             <span className="text-primary">★</span>
           </div>
           {/* Constructivist corner block */}

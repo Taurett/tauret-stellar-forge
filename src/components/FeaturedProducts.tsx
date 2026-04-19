@@ -4,10 +4,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
-import basketballJersey from "@/assets/products/basketball-jersey.png";
-import cyclingJersey from "@/assets/products/cycling-jersey.png";
-import footballJersey from "@/assets/products/football-jersey.png";
-import gymShirt from "@/assets/products/gym-shirt.png";
+import basketballJersey from "@/assets/products/basketball-jersey.jpg";
+import cyclingJersey from "@/assets/products/cycling-jersey.jpg";
+import footballJersey from "@/assets/products/football-jersey.jpg";
+import gymShirt from "@/assets/products/gym-shirt.jpg";
 
 const FeaturedProducts = () => {
   const { t } = useLanguage();

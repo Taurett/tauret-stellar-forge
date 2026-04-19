@@ -1,12 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export interface CartCustomization {
-  color?: string;
-  design?: string | null;
-  customImage?: string | null;
-  size?: string;
-}
-
 export interface CartItem {
   id: number;
   name: string;
@@ -14,7 +7,6 @@ export interface CartItem {
   image: string;
   category: string;
   quantity: number;
-  customization?: CartCustomization;
 }
 
 interface CartContextType {

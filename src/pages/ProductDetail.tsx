@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ShoppingCart, ArrowLeft, Star, Truck, RefreshCw } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { toast } from "@/hooks/use-toast";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
@@ -185,6 +186,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { t, formatPrice } = useLanguage();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -195,9 +197,9 @@ const ProductDetail = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <SearchBar />
         <div className="glass clip-angle-lg p-12 border border-primary/20 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-6 uppercase">Product not found</h2>
+          <h2 className="font-display text-3xl font-bold text-foreground mb-6 uppercase">{t('product.notFound')}</h2>
           <Button onClick={() => navigate("/shop")} className="bg-gradient-neon text-primary-foreground font-tech uppercase tracking-widest clip-angle">
-            Back to Shop
+            {t('product.backShop')}
           </Button>
         </div>
       </div>
@@ -207,8 +209,8 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product.sizes && product.sizes.length > 0 && !selectedSize) {
       toast({
-        title: "Please select a size",
-        description: "Choose a size before adding to cart.",
+        title: t('product.pleaseSelectSize'),
+        description: t('product.pleaseSelectSizeDesc'),
         variant: "destructive"
       });
       return;
@@ -221,8 +223,8 @@ const ProductDetail = () => {
       category: product.category
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('toast.added'),
+      description: `${product.name} ${t('toast.addedDesc')}`,
     });
   };
 
@@ -239,7 +241,7 @@ const ProductDetail = () => {
             className="text-primary hover:text-primary-glow hover:bg-primary/10 font-tech uppercase tracking-[0.25em] text-xs"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Shop
+            {t('product.backShop')}
           </Button>
         </div>
       </header>
@@ -287,9 +289,9 @@ const ProductDetail = () => {
                     <Star className="h-5 w-5 fill-primary text-primary" />
                     <span className="font-tech font-bold text-foreground">{product.rating}</span>
                   </div>
-                  <span className="font-tech text-muted-foreground">({product.reviews} reviews)</span>
+                  <span className="font-tech text-muted-foreground">({product.reviews} {t('product.reviews')})</span>
                 </div>
-                <p className="font-display text-5xl font-bold text-aurora mb-6">${product.price}</p>
+                <p className="font-display text-5xl font-bold text-aurora mb-6">{formatPrice(product.price)}</p>
               </div>
 
               <div className="border-t border-primary/20 pt-6">
@@ -298,7 +300,7 @@ const ProductDetail = () => {
 
               {product.sizes && product.sizes.length > 0 && (
                 <div>
-                  <h3 className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-4">// Select Size</h3>
+                  <h3 className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-4">{t('product.selectSize')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.sizes.map((size) => (
                       <button
@@ -323,17 +325,17 @@ const ProductDetail = () => {
                 className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-base py-7 clip-angle hover:shadow-neon-cyan transition-all"
               >
                 <ShoppingCart className="h-5 w-5 mr-2" />
-                Add to Cart
+                {t('product.addToCart')}
               </Button>
 
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-primary/20">
                 <div className="glass clip-angle p-4 text-center border border-primary/20">
                   <Truck className="h-6 w-6 text-primary mx-auto mb-2" strokeWidth={1.5} />
-                  <p className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">Free Shipping</p>
+                  <p className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">{t('product.freeShipping')}</p>
                 </div>
                 <div className="glass clip-angle p-4 text-center border border-primary/20">
                   <RefreshCw className="h-6 w-6 text-primary mx-auto mb-2" strokeWidth={1.5} />
-                  <p className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">30-Day Returns</p>
+                  <p className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">{t('product.returns')}</p>
                 </div>
               </div>
             </div>
@@ -343,17 +345,17 @@ const ProductDetail = () => {
             <Tabs defaultValue="details" className="w-full">
               <TabsList className="glass border border-primary/20 p-1">
                 <TabsTrigger value="details" className="font-tech uppercase tracking-wider data-[state=active]:bg-gradient-neon data-[state=active]:text-primary-foreground">
-                  Details
+                  {t('product.tabs.details')}
                 </TabsTrigger>
                 <TabsTrigger value="specs" className="font-tech uppercase tracking-wider data-[state=active]:bg-gradient-neon data-[state=active]:text-primary-foreground">
-                  Specifications
+                  {t('product.tabs.specs')}
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="details" className="mt-6">
                 <div className="glass clip-angle-lg p-8 border border-primary/20">
-                  <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">// Material & Fabric</div>
+                  <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">{t('product.material')}</div>
                   <p className="text-muted-foreground mb-8">{product.fabric}</p>
-                  <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">// Key Features</div>
+                  <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">{t('product.keyFeatures')}</div>
                   <ul className="space-y-2">
                     {product.features.map((feature, idx) => (
                       <li key={idx} className="text-foreground flex items-start font-tech">
@@ -368,10 +370,10 @@ const ProductDetail = () => {
                 <div className="glass clip-angle-lg p-8 border border-primary/20">
                   <div className="space-y-1 font-tech">
                     {[
-                      { label: 'Category', value: product.category.toUpperCase() },
-                      { label: 'Material', value: product.fabric },
-                      { label: 'Available Sizes', value: product.sizes.join(', ') },
-                      { label: 'Rating', value: `${product.rating}/5.0` },
+                      { label: t('product.specs.category'), value: product.category.toUpperCase() },
+                      { label: t('product.specs.material'), value: product.fabric },
+                      { label: t('product.specs.sizes'),    value: product.sizes.join(', ') },
+                      { label: t('product.specs.rating'),   value: `${product.rating}/5.0` },
                     ].map((row) => (
                       <div key={row.label} className="flex justify-between py-3 border-b border-primary/10 last:border-0 gap-4">
                         <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">{row.label}</span>

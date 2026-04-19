@@ -10,7 +10,7 @@ import footballJersey from "@/assets/products/football-jersey.jpg";
 import gymShirt from "@/assets/products/gym-shirt.jpg";
 
 const FeaturedProducts = () => {
-  const { t } = useLanguage();
+  const { t, formatPrice } = useLanguage();
   const { addToCart } = useCart();
 
   const handleAddToCart = (product: any) => {
@@ -22,8 +22,8 @@ const FeaturedProducts = () => {
       category: product.category
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('toast.added'),
+      description: `${product.name} ${t('toast.addedDesc')}`,
     });
   };
 
@@ -87,9 +87,9 @@ const FeaturedProducts = () => {
                 </div>
 
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="font-display font-bold text-2xl text-foreground">${product.price}</span>
+                  <span className="font-display font-bold text-2xl text-foreground">{formatPrice(product.price)}</span>
                   {product.originalPrice > product.price && (
-                    <span className="font-tech text-sm text-muted-foreground line-through">${product.originalPrice}</span>
+                    <span className="font-tech text-sm text-muted-foreground line-through">{formatPrice(product.originalPrice)}</span>
                   )}
                 </div>
 

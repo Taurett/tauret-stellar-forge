@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Search, ShoppingCart, Star, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SearchBar from "@/components/SearchBar";
@@ -47,21 +48,24 @@ const products = [
   { id: 27, name: "High-Support Sports Bra",      price: 49.99,  image: yogaBra,           category: "gym",        rating: 4.7, reviews: 287 },
 ];
 
-const sportCategories = [
-  { value: "all", label: "All Sports" },
-  { value: "tennis", label: "Tennis" },
-  { value: "football", label: "Football" },
-  { value: "basketball", label: "Basketball" },
-  { value: "handball", label: "Handball" },
-  { value: "cycling", label: "Cycling" },
-  { value: "running", label: "Running" },
-  { value: "gym", label: "Gym & Fitness" },
+const sportCategoryKeys = [
+  { value: "all",        labelKey: "categories.all" },
+  { value: "tennis",     labelKey: "categories.tennis" },
+  { value: "football",   labelKey: "categories.football" },
+  { value: "basketball", labelKey: "categories.basketball" },
+  { value: "handball",   labelKey: "categories.handball" },
+  { value: "cycling",    labelKey: "categories.cycling" },
+  { value: "running",    labelKey: "categories.running" },
+  { value: "gym",        labelKey: "categories.gymFitness" },
 ];
 
 const Shop = () => {
   const { addToCart } = useCart();
+  const { t, formatPrice } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const sportCategories = sportCategoryKeys.map(c => ({ value: c.value, label: t(c.labelKey) }));
 
   const handleAddToCart = (product: any) => {
     addToCart({
@@ -72,8 +76,8 @@ const Shop = () => {
       category: product.category
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('toast.added'),
+      description: `${product.name} ${t('toast.addedDesc')}`,
     });
   };
 
@@ -96,14 +100,14 @@ const Shop = () => {
         <div className="relative max-w-7xl mx-auto">
           <Link to="/" className="inline-flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em] text-primary hover:text-primary-glow transition-colors mb-6">
             <ArrowLeft className="w-3 h-3" />
-            Back to Home
+            {t('shop.backHome')}
           </Link>
-          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">// Catalog</div>
+          <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('shop.kicker')}</div>
           <h1 className="font-display text-5xl md:text-7xl font-black mb-4">
-            <span className="text-aurora">SHOP</span>
+            <span className="text-aurora">{t('shop.title')}</span>
           </h1>
           <p className="font-tech text-lg text-muted-foreground tracking-wide">
-            Premium clothing for elite athletes
+            {t('shop.subtitle')}
           </p>
         </div>
       </header>
@@ -115,7 +119,7 @@ const Shop = () => {
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/70 h-4 w-4" />
               <Input
-                placeholder="Search products..."
+                placeholder={t('shop.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-11 bg-input/60 border-primary/20 text-foreground placeholder:text-muted-foreground/70 h-11 focus-visible:border-primary focus-visible:ring-primary/30"
@@ -123,7 +127,7 @@ const Shop = () => {
             </div>
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <SelectTrigger className="w-full md:w-[220px] bg-input/60 border-primary/20 text-foreground h-11 font-tech uppercase tracking-wider text-sm">
-                <SelectValue placeholder="Filter by sport" />
+                <SelectValue placeholder={t('shop.filterPlaceholder')} />
               </SelectTrigger>
               <SelectContent className="bg-popover border-primary/30">
                 {sportCategories.map((category) => (
@@ -171,13 +175,13 @@ const Shop = () => {
                     <span className="font-tech text-xs text-foreground">{product.rating}</span>
                     <span className="font-tech text-xs text-muted-foreground">({product.reviews})</span>
                   </div>
-                  <p className="font-display text-2xl font-bold text-foreground mb-4">${product.price}</p>
+                  <p className="font-display text-2xl font-bold text-foreground mb-4">{formatPrice(product.price)}</p>
                   <Button
                     onClick={() => handleAddToCart(product)}
                     className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan clip-angle"
                   >
                     <ShoppingCart className="h-4 w-4 mr-2" />
-                    Add to Cart
+                    {t('shop.addToCart')}
                   </Button>
                 </div>
               </div>
@@ -186,7 +190,7 @@ const Shop = () => {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-20 glass clip-angle-lg border border-primary/20">
-              <p className="font-tech text-muted-foreground uppercase tracking-wider">No products found.</p>
+              <p className="font-tech text-muted-foreground uppercase tracking-wider">{t('shop.noResults')}</p>
             </div>
           )}
         </div>

@@ -277,22 +277,22 @@ const Hero = () => {
         </div>
 
         {/* Stats strip */}
-        <div className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+        <div className="grid grid-cols-3 gap-3 sm:gap-8 mt-12 sm:mt-20 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
           {[
             { value: '08',  label: t('hero.stats.sports') },
             { value: '50+', label: t('hero.stats.products') },
             { value: '24/7', label: t('hero.stats.support') },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-display text-4xl md:text-5xl font-bold text-aurora mb-1">{stat.value}</div>
-              <div className="font-tech text-xs uppercase tracking-[0.25em] text-muted-foreground">{stat.label}</div>
+              <div className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-aurora mb-1">{stat.value}</div>
+              <div className="font-tech text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+      {/* Scroll indicator — hidden on small screens to avoid overlap */}
+      <div className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
         <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>

@@ -158,6 +158,7 @@ const translations = {
     'hero.chip.arid': 'Built for the Wild',
     'hero.chip.military': 'Mission-Ready Apparel',
     'hero.chip.retro': 'Sport for Everyone',
+    'hero.chip.avalanche': 'Alpine Performance Gear',
     'hero.exploreSports': 'Explore Sports',
     'hero.stats.sports': 'Sports',
     'hero.stats.products': 'Products',

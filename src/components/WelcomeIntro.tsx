@@ -42,7 +42,7 @@ const WelcomeIntro = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-3xl border-primary/30 bg-background/95 backdrop-blur-xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-3xl border-primary/30 bg-background/70 backdrop-blur-2xl max-h-[90vh] overflow-y-auto">
         <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-2">
           {t('intro.kicker')}
         </div>

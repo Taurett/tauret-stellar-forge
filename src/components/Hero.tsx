@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Trophy, Sun, Shield } from "lucide-react";
+import { ArrowRight, Zap, Trophy, Sun, Shield, Snowflake, Mountain } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import heroBg from "@/assets/futuristic-hero-bg.jpg";
@@ -7,6 +7,7 @@ import heroWimbledon from "@/assets/hero-wimbledon.jpg";
 import heroArid from "@/assets/hero-arid.jpg";
 import heroMilitary from "@/assets/hero-military.jpg";
 import heroRetro from "@/assets/hero-retro.jpg";
+import heroAvalanche from "@/assets/hero-avalanche.jpg";
 
 const HERO_BG: Record<string, string> = {
   cyber: heroBg,
@@ -14,6 +15,7 @@ const HERO_BG: Record<string, string> = {
   arid: heroArid,
   military: heroMilitary,
   retro: heroRetro,
+  avalanche: heroAvalanche,
 };
 
 const Hero = () => {
@@ -26,6 +28,7 @@ const Hero = () => {
   const isArid = theme === 'arid';
   const isMilitary = theme === 'military';
   const isRetro = theme === 'retro';
+  const isAvalanche = theme === 'avalanche';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -79,7 +82,23 @@ const Hero = () => {
             />
           </>
         )}
-        {!isCyber && !isWimbledon && !isArid && !isMilitary && !isRetro && (
+        {isAvalanche && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background" />
+            {/* Cool icy mist haze */}
+            <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary/10 to-transparent" />
+            {/* Subtle snowfall dots */}
+            <div
+              className="absolute inset-0 opacity-40 pointer-events-none"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 20% 30%, hsl(var(--foreground) / 0.35) 1px, transparent 1.5px), radial-gradient(circle at 70% 60%, hsl(var(--foreground) / 0.25) 1px, transparent 1.5px), radial-gradient(circle at 40% 80%, hsl(var(--foreground) / 0.3) 1px, transparent 1.5px)',
+                backgroundSize: '120px 120px, 90px 90px, 160px 160px',
+              }}
+            />
+          </>
+        )}
+        {!isCyber && !isWimbledon && !isArid && !isMilitary && !isRetro && !isAvalanche && (
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         )}
       </div>
@@ -144,6 +163,46 @@ const Hero = () => {
           </div>
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2 font-tech text-[10px] tracking-[0.4em] text-muted-foreground/80">
             ★ ★ ★  TACTICAL DIVISION  ★ ★ ★
+          </div>
+        </>
+      )}
+
+      {/* Avalanche: alpine peaks + snowflake accents */}
+      {isAvalanche && (
+        <>
+          {/* Foreground mountain silhouette */}
+          <svg
+            className="absolute bottom-0 inset-x-0 w-full h-48 md:h-64 text-primary/25"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+            fill="currentColor"
+          >
+            <path d="M0,320 L0,180 L160,80 L260,160 L380,40 L520,200 L640,120 L780,220 L900,90 L1040,200 L1180,110 L1300,210 L1440,140 L1440,320 Z" />
+          </svg>
+          {/* Mid-layer ridge */}
+          <svg
+            className="absolute bottom-0 inset-x-0 w-full h-32 md:h-40 text-secondary/30"
+            viewBox="0 0 1440 200"
+            preserveAspectRatio="none"
+            fill="currentColor"
+          >
+            <path d="M0,200 L0,120 L180,60 L320,140 L480,70 L640,150 L820,80 L980,140 L1160,70 L1320,150 L1440,100 L1440,200 Z" />
+          </svg>
+          {/* Top-left peak icon */}
+          <div className="hidden md:flex absolute top-28 left-10 items-center gap-2 text-primary/70 animate-float">
+            <Mountain className="w-10 h-10" strokeWidth={1.5} />
+            <span className="font-tech text-[10px] uppercase tracking-[0.3em]">ALT. 4,478m</span>
+          </div>
+          {/* Top-right snowflake */}
+          <div
+            className="hidden md:block absolute top-32 right-12 text-foreground/60 animate-float"
+            style={{ animationDelay: '1.5s' }}
+          >
+            <Snowflake className="w-16 h-16" strokeWidth={1} />
+          </div>
+          {/* Coordinates label */}
+          <div className="hidden md:block absolute top-40 left-10 mt-12 text-secondary/60 font-tech text-[10px] uppercase tracking-[0.4em]">
+            45.8326° N — 6.8652° E
           </div>
         </>
       )}

@@ -132,7 +132,11 @@ const Shop = () => {
     name: getProductCopy(p.id, language, theme).name,
   }));
 
-  const handleAddToCart = (product: typeof localisedProducts[number]) => {
+  // Product whose size still needs to be picked before adding to cart.
+  const [pendingProduct, setPendingProduct] = useState<typeof localisedProducts[number] | null>(null);
+  const [pendingSize, setPendingSize] = useState<string | null>(null);
+
+  const addProductToCart = (product: typeof localisedProducts[number], size: string) => {
     addToCart({
       id: product.id,
       name: product.name,
@@ -140,11 +144,25 @@ const Shop = () => {
       image: getProductImage(product.imageKey, theme),
       category: product.category,
       theme,
+      size,
     });
     toast({
       title: t('toast.added'),
       description: `${product.name} ${t('toast.addedDesc')}`,
     });
+  };
+
+  const handleAddToCart = (product: typeof localisedProducts[number]) => {
+    // Always require an explicit size choice from the shop grid.
+    setPendingProduct(product);
+    setPendingSize(null);
+  };
+
+  const handleConfirmSize = () => {
+    if (!pendingProduct || !pendingSize) return;
+    addProductToCart(pendingProduct, pendingSize);
+    setPendingProduct(null);
+    setPendingSize(null);
   };
 
   const filteredProducts = localisedProducts.filter(product => {

@@ -11,6 +11,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowLeft, Loader2 } from "lucide-react";
+import { useSeo } from "@/hooks/useSeo";
 
 const emailSchema = z.string().trim().email({ message: "Invalid email" }).max(255);
 const passwordSchema = z.string().min(6, { message: "Password must be at least 6 characters" }).max(72);

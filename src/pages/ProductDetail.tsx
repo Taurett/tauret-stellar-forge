@@ -14,6 +14,7 @@ import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
+import { useSeo } from "@/hooks/useSeo";
 
 interface ProductData {
   id: number;

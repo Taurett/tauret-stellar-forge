@@ -17,6 +17,7 @@ import { toast } from "@/hooks/use-toast";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
+import { useSeo } from "@/hooks/useSeo";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{

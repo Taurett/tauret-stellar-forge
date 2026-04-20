@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
 import tauretLogo from "@/assets/tauret-logo-futuristic.png";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const SearchBar = () => {
   const { t } = useLanguage();

@@ -89,9 +89,10 @@ const ProductDetail = () => {
   const categoryLabel = t(getCategoryLabelKey(product.category, theme));
 
   const images = product.imageKeys.map(k => getProductImage(k, theme));
+  const availableSizes = getSizesFor(product.id);
 
   const handleAddToCart = () => {
-    if (product.sizes && product.sizes.length > 0 && !selectedSize) {
+    if (availableSizes.length > 0 && !selectedSize) {
       toast({
         title: t('product.pleaseSelectSize'),
         description: t('product.pleaseSelectSizeDesc'),
@@ -185,11 +186,11 @@ const ProductDetail = () => {
                 <p className="text-muted-foreground text-base leading-relaxed">{product.description}</p>
               </div>
 
-              {product.sizes && product.sizes.length > 0 && (
+              {availableSizes.length > 0 && (
                 <div>
                   <h3 className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-4">{t('product.selectSize')}</h3>
                   <div className="flex flex-wrap gap-2">
-                    {product.sizes.map((size) => (
+                    {availableSizes.map((size) => (
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
@@ -259,7 +260,7 @@ const ProductDetail = () => {
                     {[
                       { label: t('product.specs.category'), value: categoryLabel.toUpperCase() },
                       { label: t('product.specs.material'), value: product.fabric },
-                      { label: t('product.specs.sizes'),    value: product.sizes.join(', ') },
+                      { label: t('product.specs.sizes'),    value: availableSizes.join(', ') },
                       { label: t('product.specs.rating'),   value: `${product.rating}/5.0` },
                     ].map((row) => (
                       <div key={row.label} className="flex justify-between py-3 border-b border-primary/10 last:border-0 gap-4">

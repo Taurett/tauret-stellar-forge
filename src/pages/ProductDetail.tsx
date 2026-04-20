@@ -143,6 +143,8 @@ const ProductDetail = () => {
                 <img
                   src={images[selectedImage]}
                   alt={product.name}
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-[500px] object-contain p-8"
                 />
               </div>
@@ -157,7 +159,7 @@ const ProductDetail = () => {
                         : "border border-primary/20 hover:border-primary/50"
                     }`}
                   >
-                    <img src={image} alt="" className="w-full h-24 object-contain p-2" />
+                    <img src={image} alt="" loading="lazy" decoding="async" className="w-full h-24 object-contain p-2" />
                   </button>
                 ))}
               </div>

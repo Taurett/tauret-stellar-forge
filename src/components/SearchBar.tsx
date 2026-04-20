@@ -30,6 +30,10 @@ const SearchBar = () => {
             <img
               src={tauretLogo}
               alt="TAURET"
+              width="56"
+              height="56"
+              decoding="async"
+              fetchPriority="high"
               className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_0_15px_hsl(var(--primary)/0.6)] group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.9)] transition-all duration-500"
             />
           </Link>

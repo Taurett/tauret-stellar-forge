@@ -1,4 +1,18 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+
+const CART_STORAGE_KEY = 'tauret.cart.v1';
+
+const readStoredCart = (): CartItem[] => {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = window.localStorage.getItem(CART_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as CartItem[]) : [];
+  } catch {
+    return [];
+  }
+};
 
 export interface CartItem {
   cartKey: string;          // unique line identity (productId + theme + size)
@@ -36,7 +50,18 @@ export const buildCartKey = (id: number, theme?: string, size?: string) =>
   `${id}::${theme ?? 'default'}::${size ?? 'one-size'}`;
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  // Lazy initializer hydrates from localStorage on first render so the cart
+  // survives reloads and tab restarts without flashing an empty state.
+  const [items, setItems] = useState<CartItem[]>(() => readStoredCart());
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+    } catch {
+      // ignore quota / privacy-mode errors
+    }
+  }, [items]);
 
   const addToCart: CartContextType['addToCart'] = (product) => {
     const cartKey = product.cartKey ?? buildCartKey(product.id, product.theme, product.size);

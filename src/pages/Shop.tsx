@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Search, ShoppingCart, Star, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -49,6 +50,38 @@ const products: Array<{
   { id: 37, name: "Tactical Combat Pants",         price: 89.99,  imageKey: "airsoft-pants",       category: "airsoft",    rating: 4.8, reviews: 99 },
   { id: 38, name: "Tactical Field Jacket",         price: 119.99, imageKey: "airsoft-jacket",      category: "airsoft",    rating: 4.8, reviews: 76 },
 ];
+
+// Mirrors the size matrix used on the product detail page.
+const productSizes: Record<number, string[]> = {
+  3: ["XS","S","M","L","XL"],
+  20: ["XS","S","M","L","XL","XXL"],
+  28: ["XS","S","M","L","XL"],
+  29: ["XS","S","M","L","XL"],
+  30: ["XS","S","M","L","XL"],
+  31: ["XS","S","M","L","XL","XXL"],
+  7:  ["S","M","L","XL","XXL"],
+  9:  ["S","M","L","XL","XXL"],
+  21: ["S","M","L","XL","XXL"],
+  11: ["S","M","L","XL","XXL"],
+  22: ["S","M","L","XL","XXL"],
+  32: ["S","M","L","XL","XXL"],
+  12: ["S","M","L","XL","XXL"],
+  33: ["S","M","L","XL","XXL"],
+  34: ["S","M","L","XL","XXL"],
+  14: ["XS","S","M","L","XL","XXL"],
+  16: ["XS","S","M","L","XL","XXL"],
+  23: ["XS","S","M","L","XL","XXL"],
+  24: ["XS","S","M","L","XL"],
+  25: ["XS","S","M","L","XL"],
+  35: ["XS","S","M","L","XL"],
+  18: ["S","M","L","XL","XXL"],
+  26: ["S","M","L","XL","XXL"],
+  27: ["XS","S","M","L","XL"],
+  36: ["S","M","L","XL","XXL"],
+  37: ["S","M","L","XL","XXL"],
+  38: ["S","M","L","XL","XXL"],
+};
+const getSizesFor = (id: number) => productSizes[id] ?? ["S","M","L","XL"];
 
 const sportCategoryKeys = [
   { value: "all",        labelKey: "categories.all" },
@@ -99,7 +132,11 @@ const Shop = () => {
     name: getProductCopy(p.id, language, theme).name,
   }));
 
-  const handleAddToCart = (product: typeof localisedProducts[number]) => {
+  // Product whose size still needs to be picked before adding to cart.
+  const [pendingProduct, setPendingProduct] = useState<typeof localisedProducts[number] | null>(null);
+  const [pendingSize, setPendingSize] = useState<string | null>(null);
+
+  const addProductToCart = (product: typeof localisedProducts[number], size: string) => {
     addToCart({
       id: product.id,
       name: product.name,
@@ -107,11 +144,25 @@ const Shop = () => {
       image: getProductImage(product.imageKey, theme),
       category: product.category,
       theme,
+      size,
     });
     toast({
       title: t('toast.added'),
       description: `${product.name} ${t('toast.addedDesc')}`,
     });
+  };
+
+  const handleAddToCart = (product: typeof localisedProducts[number]) => {
+    // Always require an explicit size choice from the shop grid.
+    setPendingProduct(product);
+    setPendingSize(null);
+  };
+
+  const handleConfirmSize = () => {
+    if (!pendingProduct || !pendingSize) return;
+    addProductToCart(pendingProduct, pendingSize);
+    setPendingProduct(null);
+    setPendingSize(null);
   };
 
   const filteredProducts = localisedProducts.filter(product => {
@@ -232,6 +283,55 @@ const Shop = () => {
           )}
         </div>
       </section>
+
+      {/* Size selector — opens when user clicks "Add to Cart" without choosing a size yet. */}
+      <Dialog
+        open={!!pendingProduct}
+        onOpenChange={(open) => { if (!open) { setPendingProduct(null); setPendingSize(null); } }}
+      >
+        <DialogContent className="bg-background/95 backdrop-blur-xl border border-primary/30 clip-angle-lg max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl uppercase tracking-wider text-aurora">
+              {t('product.selectSize')}
+            </DialogTitle>
+            <DialogDescription className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {pendingProduct?.name}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 my-4">
+            {pendingProduct && getSizesFor(pendingProduct.id).map((size) => {
+              const isActive = pendingSize === size;
+              return (
+                <button
+                  key={size}
+                  type="button"
+                  onClick={() => setPendingSize(size)}
+                  aria-pressed={isActive}
+                  className={`h-11 font-tech font-bold text-sm uppercase tracking-wider border transition-all clip-angle ${
+                    isActive
+                      ? 'border-primary bg-primary/15 text-primary shadow-neon-cyan'
+                      : 'border-primary/20 text-foreground hover:border-primary/60 hover:bg-primary/5'
+                  }`}
+                >
+                  {size}
+                </button>
+              );
+            })}
+          </div>
+
+          <DialogFooter>
+            <Button
+              onClick={handleConfirmSize}
+              disabled={!pendingSize}
+              className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan clip-angle disabled:opacity-50"
+            >
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {t('shop.addToCart')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

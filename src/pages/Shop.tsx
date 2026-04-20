@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Search, ShoppingCart, Star, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -49,6 +50,38 @@ const products: Array<{
   { id: 37, name: "Tactical Combat Pants",         price: 89.99,  imageKey: "airsoft-pants",       category: "airsoft",    rating: 4.8, reviews: 99 },
   { id: 38, name: "Tactical Field Jacket",         price: 119.99, imageKey: "airsoft-jacket",      category: "airsoft",    rating: 4.8, reviews: 76 },
 ];
+
+// Mirrors the size matrix used on the product detail page.
+const productSizes: Record<number, string[]> = {
+  3: ["XS","S","M","L","XL"],
+  20: ["XS","S","M","L","XL","XXL"],
+  28: ["XS","S","M","L","XL"],
+  29: ["XS","S","M","L","XL"],
+  30: ["XS","S","M","L","XL"],
+  31: ["XS","S","M","L","XL","XXL"],
+  7:  ["S","M","L","XL","XXL"],
+  9:  ["S","M","L","XL","XXL"],
+  21: ["S","M","L","XL","XXL"],
+  11: ["S","M","L","XL","XXL"],
+  22: ["S","M","L","XL","XXL"],
+  32: ["S","M","L","XL","XXL"],
+  12: ["S","M","L","XL","XXL"],
+  33: ["S","M","L","XL","XXL"],
+  34: ["S","M","L","XL","XXL"],
+  14: ["XS","S","M","L","XL","XXL"],
+  16: ["XS","S","M","L","XL","XXL"],
+  23: ["XS","S","M","L","XL","XXL"],
+  24: ["XS","S","M","L","XL"],
+  25: ["XS","S","M","L","XL"],
+  35: ["XS","S","M","L","XL"],
+  18: ["S","M","L","XL","XXL"],
+  26: ["S","M","L","XL","XXL"],
+  27: ["XS","S","M","L","XL"],
+  36: ["S","M","L","XL","XXL"],
+  37: ["S","M","L","XL","XXL"],
+  38: ["S","M","L","XL","XXL"],
+};
+const getSizesFor = (id: number) => productSizes[id] ?? ["S","M","L","XL"];
 
 const sportCategoryKeys = [
   { value: "all",        labelKey: "categories.all" },

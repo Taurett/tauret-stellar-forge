@@ -49,6 +49,10 @@ const SearchBar = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-1 md:gap-2 shrink-0">
+            {/* Mobile-only theme picker (desktop uses the floating bar) */}
+            <div className="md:hidden">
+              <ThemeToggle variant="inline" />
+            </div>
             <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary md:hidden">
               <Search className="h-5 w-5" />
             </Button>

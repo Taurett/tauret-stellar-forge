@@ -214,8 +214,11 @@ const Cart = () => {
             <div className="glass clip-angle-lg border border-primary/20 p-2 sm:p-4">
               <StripeEmbeddedCheckout
                 items={items
-                  .map((i) => ({ priceId: getStripePriceId(i.id), quantity: i.quantity }))
-                  .filter((i): i is CheckoutLineItem => !!i.priceId)}
+                  .map((i): CheckoutLineItem | null => {
+                    const priceId = getStripePriceId(i.id);
+                    return priceId ? { priceId, quantity: i.quantity } : null;
+                  })
+                  .filter((i): i is CheckoutLineItem => i !== null)}
                 customerEmail={user?.email}
                 userId={user?.id}
                 returnUrl={`${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`}

@@ -19,13 +19,13 @@ const translations = {
   en: {
     // Hero section
     'hero.tagline': 'ELEVATE YOUR GAME',
-    'hero.description': 'Premium sports apparel and equipment for athletes across all disciplines.',
+    'hero.description': 'Premium sportswear for athletes across every discipline.',
     'hero.shopCollection': 'Shop Collection',
     'hero.viewCatalog': 'View Catalog',
 
     // Categories section
     'categories.title': 'Shop by Sport',
-    'categories.subtitle': 'Find the perfect gear for your favorite activities',
+    'categories.subtitle': 'Find the perfect apparel for your favorite activities',
     'categories.tennis': 'Tennis',
     'categories.padel': 'Padel',
     'categories.football': 'Football',
@@ -43,7 +43,7 @@ const translations = {
     'promotions.sale.description': 'Limited time offers on premium sports equipment',
     'promotions.sale.cta': 'Shop Sale',
     'promotions.newArrivals.title': 'New Arrivals',
-    'promotions.newArrivals.description': 'Latest gear from top brands',
+    'promotions.newArrivals.description': 'Latest pieces from top designers',
     'promotions.newArrivals.cta': 'Explore New',
     'promotions.limitedTime.title': 'Limited Edition',
     'promotions.limitedTime.description': 'Exclusive collections while stocks last',
@@ -60,13 +60,13 @@ const translations = {
 
     // Features section
     'features.title': 'Built for Athletes',
-    'features.subtitle': 'Every piece of SportElite gear is engineered for peak performance across all sports disciplines.',
+    'features.subtitle': 'Every piece of Tauret apparel is engineered for peak performance across all sports disciplines.',
     'features.combatProtection': 'Advanced Protection',
     'features.combatProtectionDesc': 'Cutting-edge materials and ergonomic design to protect you during intense training and competition.',
     'features.lightningSpeed': 'Enhanced Mobility',
     'features.lightningSpeedDesc': 'Lightweight, flexible designs that optimize your movement and performance in any sport.',
     'features.championQuality': 'Champion Quality',
-    'features.championQualityDesc': 'Professional-grade gear trusted by elite athletes and champions across all sports.',
+    'features.championQualityDesc': 'Professional-grade apparel trusted by elite athletes and champions across all sports.',
     'features.precisionFit': 'Precision Fit',
     'features.precisionFitDesc': 'Anatomically designed cuts and sizing for optimal comfort and performance during training.',
     'features.warriorSpirit': 'Athletic Excellence',
@@ -75,19 +75,19 @@ const translations = {
     'features.elitePerformanceDesc': 'Premium fabrics and technology for superior moisture management and durability.',
 
     // About section
-    'about.title': 'The SportElite Story',
-    'about.subtitle': 'Born from the passion for sports and the relentless pursuit of excellence. SportElite represents the dedication that drives every athlete to achieve greatness.',
+    'about.title': 'The Tauret Story',
+    'about.subtitle': 'Born from the passion for sports and the relentless pursuit of excellence. Tauret represents the dedication that drives every athlete to achieve greatness.',
     'about.mission': 'Our Mission',
-    'about.missionDesc': 'To equip athletes with premium gear that enhances performance, provides protection, and embodies the spirit of sporting excellence.',
+    'about.missionDesc': 'To outfit athletes in premium apparel that enhances performance, provides protection, and embodies the spirit of sporting excellence.',
     'about.fightingSpirit': 'Competitive Spirit',
-    'about.fightingSpiritDesc': 'Every SportElite product is infused with the passion and dedication of athletes who strive for excellence.',
+    'about.fightingSpiritDesc': 'Every Tauret product is infused with the passion and dedication of athletes who strive for excellence.',
     'about.warriorCommunity': 'Athlete Community',
-    'about.warriorCommunityDesc': 'Join thousands of athletes across football, basketball, running, tennis, and more who trust SportElite for their training and competition needs.',
-    'about.quote': 'In competition, every second counts. Every move matters. SportElite gear gives you the edge you need to excel.',
+    'about.warriorCommunityDesc': 'Join thousands of athletes across football, basketball, running, tennis, and more who trust Tauret for their training and competition needs.',
+    'about.quote': 'In competition, every second counts. Every move matters. Tauret apparel gives you the edge you need to excel.',
 
     // Contact section
     'contact.title': 'Join the Team',
-    'contact.subtitle': 'Ready to elevate your performance? Get in touch with the SportElite team and unlock your potential.',
+    'contact.subtitle': 'Ready to elevate your performance? Get in touch with the Tauret team and unlock your potential.',
     'contact.name': 'Name',
     'contact.email': 'Email',
     'contact.message': 'Message',
@@ -99,7 +99,7 @@ const translations = {
     'contact.support': 'Support',
     'contact.supportDesc': '24/7 Athlete Support',
     'contact.trainingCenter': 'Performance Center',
-    'contact.trainingCenterDesc': 'Professional Gear Testing',
+    'contact.trainingCenterDesc': 'Professional Apparel Testing',
 
     // Shop page
     'shop.backHome': 'Back to Home',
@@ -134,7 +134,7 @@ const translations = {
     'cart.kicker': '// Cart',
     'cart.empty': 'EMPTY',
     'cart.emptyTitle': 'Your cart awaits',
-    'cart.emptyDesc': 'Start shopping and fill it with elite gear.',
+    'cart.emptyDesc': 'Start shopping and fill it with elite apparel.',
     'cart.browse': 'Browse Catalog',
     'cart.title': 'CART',
     'cart.summary': '// Summary',
@@ -156,7 +156,7 @@ const translations = {
     'hero.chip.cyber': 'Next-Gen Sportswear',
     'hero.chip.wimbledon': 'Centre Court Heritage',
     'hero.chip.arid': 'Built for the Wild',
-    'hero.chip.military': 'Mission-Ready Gear',
+    'hero.chip.military': 'Mission-Ready Apparel',
     'hero.chip.retro': 'Sport for Everyone',
     'hero.exploreSports': 'Explore Sports',
     'hero.stats.sports': 'Sports',
@@ -178,7 +178,7 @@ const translations = {
 
     // Featured extras
     'featured.kicker': '// Curated',
-    'featured.heading': 'FEATURED GEAR',
+    'featured.heading': 'FEATURED PIECES',
     'featured.badge.bestseller': 'BESTSELLER',
     'featured.badge.new': 'NEW',
     'featured.badge.sale': 'SALE',
@@ -193,7 +193,7 @@ const translations = {
     'intro.title': 'Wear it more. Live it louder.',
     'intro.story': 'Tauret was born from a simple idea: the clothes you love are the clothes you actually wear. We design premium sportswear in distinct visual worlds — pick the one that feels like you, and we will dress your whole experience in it.',
     'intro.pickPrompt': 'Choose your style',
-    'intro.pickHint': 'You can change it any time from the bottom-left switcher.',
+    'intro.pickHint': 'You can change it any time from the theme switcher.',
     'intro.continue': 'Enter Tauret',
     'intro.skip': 'Skip',
     'intro.theme.cyber.label': 'Cyber',
@@ -212,13 +212,13 @@ const translations = {
   ro: {
     // Hero section
     'hero.tagline': 'RIDICĂ-ȚI JOCUL LA NIVEL SUPERIOR',
-    'hero.description': 'Îmbrăcăminte și echipament sportiv premium pentru atleți din toate disciplinele.',
+    'hero.description': 'Îmbrăcăminte sport premium pentru atleți din toate disciplinele.',
     'hero.shopCollection': 'Vezi Colecția',
     'hero.viewCatalog': 'Vezi Catalogul',
 
     // Categories section
     'categories.title': 'Cumpără după Sport',
-    'categories.subtitle': 'Găsește echipamentul perfect pentru activitățile tale favorite',
+    'categories.subtitle': 'Găsește piesa perfectă pentru activitățile tale favorite',
     'categories.tennis': 'Tenis',
     'categories.padel': 'Padel',
     'categories.football': 'Fotbal',
@@ -253,13 +253,13 @@ const translations = {
 
     // Features section
     'features.title': 'Construit pentru Atleți',
-    'features.subtitle': 'Fiecare piesă SportElite este proiectată pentru performanță maximă în toate disciplinele sportive.',
+    'features.subtitle': 'Fiecare piesă Tauret este proiectată pentru performanță maximă în toate disciplinele sportive.',
     'features.combatProtection': 'Protecție Avansată',
     'features.combatProtectionDesc': 'Materiale de ultimă generație și design ergonomic pentru a te proteja în timpul antrenamentelor intense și competițiilor.',
     'features.lightningSpeed': 'Mobilitate Îmbunătățită',
     'features.lightningSpeedDesc': 'Modele ușoare și flexibile care îți optimizează mișcarea și performanța în orice sport.',
     'features.championQuality': 'Calitate de Campion',
-    'features.championQualityDesc': 'Echipament de calitate profesională în care au încredere atleții de elită și campionii din toate sporturile.',
+    'features.championQualityDesc': 'Îmbrăcăminte de calitate profesională în care au încredere atleții de elită și campionii din toate sporturile.',
     'features.precisionFit': 'Ajustare Precisă',
     'features.precisionFitDesc': 'Tăieturi și dimensiuni proiectate anatomic pentru confort și performanță optimă în timpul antrenamentului.',
     'features.warriorSpirit': 'Excelență Atletică',
@@ -268,19 +268,19 @@ const translations = {
     'features.elitePerformanceDesc': 'Materiale premium și tehnologie pentru managementul superior al umidității și durabilitate.',
 
     // About section
-    'about.title': 'Povestea SportElite',
-    'about.subtitle': 'Născut din pasiunea pentru sport și căutarea neîncetată a excelenței. SportElite reprezintă dedicarea care îi determină pe fiecare atlet să atingă măreția.',
+    'about.title': 'Povestea Tauret',
+    'about.subtitle': 'Născut din pasiunea pentru sport și căutarea neîncetată a excelenței. Tauret reprezintă dedicarea care îi determină pe fiecare atlet să atingă măreția.',
     'about.mission': 'Misiunea Noastră',
-    'about.missionDesc': 'Să echipăm atleții cu echipament premium care îmbunătățește performanța, oferă protecție și întruchipează spiritul excelenței sportive.',
+    'about.missionDesc': 'Să îmbrăcăm atleții în îmbrăcăminte premium care îmbunătățește performanța, oferă protecție și întruchipează spiritul excelenței sportive.',
     'about.fightingSpirit': 'Spiritul Competitiv',
-    'about.fightingSpiritDesc': 'Fiecare produs SportElite este impregnат cu pasiunea și dedicarea atleților care se străduiesc pentru excelență.',
+    'about.fightingSpiritDesc': 'Fiecare produs Tauret este impregnат cu pasiunea și dedicarea atleților care se străduiesc pentru excelență.',
     'about.warriorCommunity': 'Comunitatea Atleților',
-    'about.warriorCommunityDesc': 'Alătură-te miilor de atleți din fotbal, baschet, alergare, tenis și multe altele care au încredere în SportElite pentru nevoile lor de antrenament și competiție.',
-    'about.quote': 'În competiție, fiecare secundă contează. Fiecare mișcare importă. Echipamentul SportElite îți oferă avantajul de care ai nevoie pentru a excela.',
+    'about.warriorCommunityDesc': 'Alătură-te miilor de atleți din fotbal, baschet, alergare, tenis și multe altele care au încredere în Tauret pentru nevoile lor de antrenament și competiție.',
+    'about.quote': 'În competiție, fiecare secundă contează. Fiecare mișcare importă. Îmbrăcămintea Tauret îți oferă avantajul de care ai nevoie pentru a excela.',
 
     // Contact section
     'contact.title': 'Alătură-te Echipei',
-    'contact.subtitle': 'Gata să îți ridici performanța? Ia legătura cu echipa SportElite și dezlănțuie-ți potențialul.',
+    'contact.subtitle': 'Gata să îți ridici performanța? Ia legătura cu echipa Tauret și dezlănțuie-ți potențialul.',
     'contact.name': 'Nume',
     'contact.email': 'Email',
     'contact.message': 'Mesaj',
@@ -292,7 +292,7 @@ const translations = {
     'contact.support': 'Suport',
     'contact.supportDesc': 'Suport pentru Atleți 24/7',
     'contact.trainingCenter': 'Centrul de Performanță',
-    'contact.trainingCenterDesc': 'Testare Profesională a Echipamentului',
+    'contact.trainingCenterDesc': 'Testare Profesională a Îmbrăcămintei',
 
     // Shop page
     'shop.backHome': 'Înapoi Acasă',
@@ -327,7 +327,7 @@ const translations = {
     'cart.kicker': '// Coș',
     'cart.empty': 'GOL',
     'cart.emptyTitle': 'Coșul tău te așteaptă',
-    'cart.emptyDesc': 'Începe să cumperi și umple-l cu echipament de elită.',
+    'cart.emptyDesc': 'Începe să cumperi și umple-l cu piese de elită.',
     'cart.browse': 'Vezi Catalogul',
     'cart.title': 'COȘ',
     'cart.summary': '// Sumar',
@@ -371,7 +371,7 @@ const translations = {
 
     // Featured extras
     'featured.kicker': '// Selectate',
-    'featured.heading': 'ECHIPAMENT RECOMANDAT',
+    'featured.heading': 'PIESE RECOMANDATE',
     'featured.badge.bestseller': 'BESTSELLER',
     'featured.badge.new': 'NOU',
     'featured.badge.sale': 'REDUCERE',
@@ -386,7 +386,7 @@ const translations = {
     'intro.title': 'Poartă-le mai des. Trăiește-le mai intens.',
     'intro.story': 'Tauret s-a născut dintr-o idee simplă: hainele pe care le iubești sunt cele pe care le porți cu adevărat. Creăm îmbrăcăminte sport premium în mai multe lumi vizuale — alege-o pe cea care te reprezintă, iar noi îți îmbrăcăm întreaga experiență în ea.',
     'intro.pickPrompt': 'Alege-ți stilul',
-    'intro.pickHint': 'Îl poți schimba oricând din selectorul din colțul stânga-jos.',
+    'intro.pickHint': 'Îl poți schimba oricând din selectorul de teme.',
     'intro.continue': 'Intră în Tauret',
     'intro.skip': 'Omite',
     'intro.theme.cyber.label': 'Cyber',

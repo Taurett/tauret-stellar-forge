@@ -92,6 +92,35 @@ const ProductDetail = () => {
   const images = product.imageKeys.map(k => getProductImage(k, theme));
   const availableSizes = getSizesFor(product.id);
 
+  // Per-product SEO + JSON-LD Product schema for rich Google results.
+  useSeo({
+    title: `${product.name} · TAURET`,
+    description: `${product.name} — ${categoryLabel}. Premium TAURET sportswear engineered for elite performance.`,
+    canonical: `/product/${product.id}`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.name,
+      category: categoryLabel,
+      image:
+        typeof window !== "undefined"
+          ? `${window.location.origin}${images[0]}`
+          : images[0],
+      brand: { "@type": "Brand", name: "TAURET" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: product.rating,
+        reviewCount: product.reviews,
+      },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: product.price,
+        availability: "https://schema.org/InStock",
+      },
+    },
+  });
+
   const handleAddToCart = () => {
     if (availableSizes.length > 0 && !selectedSize) {
       toast({

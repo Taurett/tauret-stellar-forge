@@ -78,6 +78,14 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [searchTerm, setSearchTerm] = useState("");
 
+  useSeo({
+    title: "Shop · TAURET — Premium Sportswear",
+    description:
+      "Browse TAURET's full collection of premium sportswear: tennis, padel, football, basketball, handball, cycling, running, gym & airsoft.",
+    canonical: "/shop",
+  });
+
+
   // Sync URL → state when the query string changes (e.g., user clicks another sport link).
   useEffect(() => {
     const next = searchParams.get("category") ?? "all";

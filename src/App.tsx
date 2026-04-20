@@ -1,4 +1,4 @@
-
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,16 +8,23 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { CartProvider } from "@/contexts/CartContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
-import Index from "./pages/Index";
-import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
-import ProductDetail from "./pages/ProductDetail";
-import Auth from "./pages/Auth";
-import CheckoutReturn from "./pages/CheckoutReturn";
-import NotFound from "./pages/NotFound";
 import { PaymentTestModeBanner } from "./components/PaymentTestModeBanner";
 
+// Code-split routes — keeps the initial bundle (Index/landing) lean.
+const Index           = lazy(() => import("./pages/Index"));
+const Shop            = lazy(() => import("./pages/Shop"));
+const Cart            = lazy(() => import("./pages/Cart"));
+const ProductDetail   = lazy(() => import("./pages/ProductDetail"));
+const Auth            = lazy(() => import("./pages/Auth"));
+const CheckoutReturn  = lazy(() => import("./pages/CheckoutReturn"));
+const NotFound        = lazy(() => import("./pages/NotFound"));
+
 const queryClient = new QueryClient();
+
+// Minimal route fallback — matches the dark base background to avoid flash.
+const RouteFallback = () => (
+  <div className="min-h-screen bg-background" aria-hidden="true" />
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -30,16 +37,18 @@ const App = () => (
                 <PaymentTestModeBanner />
                 <Toaster />
                 <Sonner />
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/shop" element={<Shop />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/product/:id" element={<ProductDetail />} />
-                  <Route path="/auth" element={<Auth />} />
-                  <Route path="/checkout/return" element={<CheckoutReturn />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+                <Suspense fallback={<RouteFallback />}>
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/product/:id" element={<ProductDetail />} />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route path="/checkout/return" element={<CheckoutReturn />} />
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
               </TooltipProvider>
             </CartProvider>
           </AuthProvider>

@@ -371,7 +371,7 @@ const translations = {
 
     // Featured extras
     'featured.kicker': '// Selectate',
-    'featured.heading': 'ECHIPAMENT RECOMANDAT',
+    'featured.heading': 'PIESE RECOMANDATE',
     'featured.badge.bestseller': 'BESTSELLER',
     'featured.badge.new': 'NOU',
     'featured.badge.sale': 'REDUCERE',
@@ -386,7 +386,7 @@ const translations = {
     'intro.title': 'Poartă-le mai des. Trăiește-le mai intens.',
     'intro.story': 'Tauret s-a născut dintr-o idee simplă: hainele pe care le iubești sunt cele pe care le porți cu adevărat. Creăm îmbrăcăminte sport premium în mai multe lumi vizuale — alege-o pe cea care te reprezintă, iar noi îți îmbrăcăm întreaga experiență în ea.',
     'intro.pickPrompt': 'Alege-ți stilul',
-    'intro.pickHint': 'Îl poți schimba oricând din selectorul din colțul stânga-jos.',
+    'intro.pickHint': 'Îl poți schimba oricând din selectorul de teme.',
     'intro.continue': 'Intră în Tauret',
     'intro.skip': 'Omite',
     'intro.theme.cyber.label': 'Cyber',

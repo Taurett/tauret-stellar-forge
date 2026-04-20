@@ -91,16 +91,23 @@ const Shop = () => {
     setSearchParams(params, { replace: true });
   };
 
-  const sportCategories = sportCategoryKeys.map(c => ({
-    value: c.value,
-    label: t(getCategoryLabelKey(c.value, theme)),
-  }));
+  // Recompute only when language/theme change.
+  const sportCategories = useMemo(
+    () => sportCategoryKeys.map(c => ({
+      value: c.value,
+      label: t(getCategoryLabelKey(c.value, theme)),
+    })),
+    [t, theme],
+  );
 
   // Localised product list — name pulled per-language at render (theme-aware for Avalanche).
-  const localisedProducts = products.map(p => ({
-    ...p,
-    name: getProductCopy(p.id, language, theme).name,
-  }));
+  const localisedProducts = useMemo(
+    () => products.map(p => ({
+      ...p,
+      name: getProductCopy(p.id, language, theme).name,
+    })),
+    [language, theme],
+  );
 
   // Product whose size still needs to be picked before adding to cart.
   const [pendingProduct, setPendingProduct] = useState<typeof localisedProducts[number] | null>(null);
@@ -135,11 +142,14 @@ const Shop = () => {
     setPendingSize(null);
   };
 
-  const filteredProducts = localisedProducts.filter(product => {
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProducts = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return localisedProducts.filter(product => {
+      const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+      const matchesSearch = product.name.toLowerCase().includes(term);
+      return matchesCategory && matchesSearch;
+    });
+  }, [localisedProducts, selectedCategory, searchTerm]);
 
   return (
     <div className="min-h-screen bg-background">

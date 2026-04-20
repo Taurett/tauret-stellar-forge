@@ -534,6 +534,50 @@
     background-attachment: fixed;
   }
 
+  /* Smooth theme transitions — colors & backgrounds ease over ~600ms.
+     Excluded: transform/opacity (preserves micro-interactions like hover scale,
+     popovers, motion components) and shadows (keeps neon glows snappy on hover). */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: background-color 600ms ease,
+                background-image 600ms ease,
+                border-color 600ms ease,
+                color 600ms ease,
+                fill 600ms ease,
+                stroke 600ms ease !important;
+  }
+
+  /* Crossfade overlay shown over the page during a theme switch. */
+  .theme-fade-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: hsl(var(--background));
+    opacity: 0;
+    transition: opacity 350ms ease;
+  }
+  .theme-fade-overlay.is-active {
+    opacity: 0.55;
+  }
+
+  /* Respect users who prefer reduced motion — disable fade & long transitions. */
+  @media (prefers-reduced-motion: reduce) {
+    html.theme-transitioning,
+    html.theme-transitioning *,
+    html.theme-transitioning *::before,
+    html.theme-transitioning *::after {
+      transition: none !important;
+    }
+    .theme-fade-overlay,
+    .theme-fade-overlay.is-active {
+      opacity: 0 !important;
+      transition: none !important;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: 0.02em;

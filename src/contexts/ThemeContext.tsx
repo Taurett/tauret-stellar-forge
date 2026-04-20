@@ -48,10 +48,59 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     try { window.localStorage.setItem(LEGACY_LS_KEY, theme); } catch { /* noop */ }
   }, [theme]);
 
-  const setTheme = (t: Theme) => setThemeState(t);
+  /**
+   * Smoothly transition into a new theme:
+   *  - Fades a soft overlay in (~350ms) to soften high-contrast jumps
+   *    (e.g. dark → light), helpful for light-sensitivity / epilepsy.
+   *  - Adds `theme-transitioning` so colors/backgrounds ease (~600ms) instead
+   *    of snapping. Removed afterwards so micro-interactions stay snappy.
+   *  - Skipped entirely under `prefers-reduced-motion: reduce`.
+   */
+  const applyThemeWithTransition = (next: Theme) => {
+    if (typeof window === 'undefined' || next === theme) {
+      setThemeState(next);
+      return;
+    }
+
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      setThemeState(next);
+      return;
+    }
+
+    const root = document.documentElement;
+    let overlay = document.getElementById('theme-fade-overlay') as HTMLDivElement | null;
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'theme-fade-overlay';
+      overlay.className = 'theme-fade-overlay';
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(overlay);
+    }
+
+    root.classList.add('theme-transitioning');
+    // Force reflow so the transition picks up the initial opacity.
+    void overlay.offsetWidth;
+    overlay.classList.add('is-active');
+
+    // Swap the theme mid-fade so the change happens behind the dimmed overlay.
+    window.setTimeout(() => {
+      setThemeState(next);
+    }, 180);
+
+    window.setTimeout(() => {
+      overlay?.classList.remove('is-active');
+    }, 360);
+
+    window.setTimeout(() => {
+      root.classList.remove('theme-transitioning');
+    }, 750);
+  };
+
+  const setTheme = (t: Theme) => applyThemeWithTransition(t);
 
   const confirmTheme = (t: Theme) => {
-    setThemeState(t);
+    applyThemeWithTransition(t);
     setCookie(CHOSEN_KEY, '1');
     setHasChosenTheme(true);
   };

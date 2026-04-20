@@ -83,18 +83,18 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     void overlay.offsetWidth;
     overlay.classList.add('is-active');
 
-    // Swap the theme mid-fade so the change happens behind the dimmed overlay.
+    // Swap the theme quickly behind the gentle dim so it feels responsive.
     window.setTimeout(() => {
       setThemeState(next);
-    }, 180);
+    }, 90);
 
     window.setTimeout(() => {
       overlay?.classList.remove('is-active');
-    }, 360);
+    }, 220);
 
     window.setTimeout(() => {
       root.classList.remove('theme-transitioning');
-    }, 750);
+    }, 480);
   };
 
   const setTheme = (t: Theme) => applyThemeWithTransition(t);

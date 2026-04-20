@@ -1,19 +1,22 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export interface CartItem {
-  id: number;
+  cartKey: string;          // unique line identity (productId + theme + size)
+  id: number;               // product id (used for Stripe price mapping)
   name: string;
   price: number;
   image: string;
   category: string;
+  theme?: string;           // visual theme variant the user added
+  size?: string;            // selected size (if applicable)
   quantity: number;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: Omit<CartItem, 'quantity'>) => void;
-  removeFromCart: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
+  addToCart: (product: Omit<CartItem, 'quantity' | 'cartKey'> & { cartKey?: string }) => void;
+  removeFromCart: (cartKey: string) => void;
+  updateQuantity: (cartKey: string, quantity: number) => void;
   clearCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
@@ -29,38 +32,42 @@ export const useCart = () => {
   return context;
 };
 
+export const buildCartKey = (id: number, theme?: string, size?: string) =>
+  `${id}::${theme ?? 'default'}::${size ?? 'one-size'}`;
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addToCart = (product: Omit<CartItem, 'quantity'>) => {
+  const addToCart: CartContextType['addToCart'] = (product) => {
+    const cartKey = product.cartKey ?? buildCartKey(product.id, product.theme, product.size);
     setItems(currentItems => {
-      const existingItem = currentItems.find(item => item.id === product.id);
-      
+      const existingItem = currentItems.find(item => item.cartKey === cartKey);
+
       if (existingItem) {
         return currentItems.map(item =>
-          item.id === product.id
+          item.cartKey === cartKey
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      
-      return [...currentItems, { ...product, quantity: 1 }];
+
+      return [...currentItems, { ...product, cartKey, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (id: number) => {
-    setItems(currentItems => currentItems.filter(item => item.id !== id));
+  const removeFromCart = (cartKey: string) => {
+    setItems(currentItems => currentItems.filter(item => item.cartKey !== cartKey));
   };
 
-  const updateQuantity = (id: number, quantity: number) => {
+  const updateQuantity = (cartKey: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(id);
+      removeFromCart(cartKey);
       return;
     }
-    
+
     setItems(currentItems =>
       currentItems.map(item =>
-        item.id === id ? { ...item, quantity } : item
+        item.cartKey === cartKey ? { ...item, quantity } : item
       )
     );
   };

@@ -37,7 +37,8 @@ const FeaturedProducts = () => {
       name: product.name,
       price: product.price,
       image: getProductImage(product.imageKey, theme),
-      category: product.category
+      category: product.category,
+      theme,
     });
     toast({
       title: t('toast.added'),

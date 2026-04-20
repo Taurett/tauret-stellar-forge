@@ -103,7 +103,9 @@ const ProductDetail = () => {
       name: product.name,
       price: product.price,
       image: images[0],
-      category: product.category
+      category: product.category,
+      theme,
+      size: selectedSize || undefined,
     });
     toast({
       title: t('toast.added'),

@@ -103,16 +103,28 @@ const Cart = () => {
           {/* Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
+              <div key={item.cartKey} className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
                 <div className="flex items-center gap-4">
                   <div className="bg-foreground/5 w-24 h-24 shrink-0 flex items-center justify-center">
-                    <img src={item.image} alt={getProductCopy(item.id, language, theme).name} className="w-full h-full object-contain p-2" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-contain p-2" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-display font-bold text-foreground text-lg truncate">{getProductCopy(item.id, language, theme).name}</h3>
-                    <Badge variant="outline" className="mt-1 text-primary border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em]">
-                      {t(getCategoryLabelKey(item.category, theme))}
-                    </Badge>
+                    <h3 className="font-display font-bold text-foreground text-lg truncate">{item.name}</h3>
+                    <div className="flex flex-wrap items-center gap-2 mt-1">
+                      <Badge variant="outline" className="text-primary border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em]">
+                        {t(getCategoryLabelKey(item.category, theme))}
+                      </Badge>
+                      {item.theme && (
+                        <Badge variant="outline" className="text-accent border-accent/40 font-tech text-[10px] uppercase tracking-[0.2em]">
+                          {t(`theme.${item.theme}`) !== `theme.${item.theme}` ? t(`theme.${item.theme}`) : item.theme}
+                        </Badge>
+                      )}
+                      {item.size && (
+                        <Badge variant="outline" className="text-foreground/80 border-foreground/30 font-tech text-[10px] uppercase tracking-[0.2em]">
+                          {(t('cart.size') !== 'cart.size' ? t('cart.size') : 'Size')}: {item.size}
+                        </Badge>
+                      )}
+                    </div>
                     <p className="font-display text-xl text-foreground font-bold mt-2">
                       {formatPrice(item.price)}
                     </p>
@@ -122,7 +134,7 @@ const Cart = () => {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() => updateQuantity(item.cartKey, item.quantity - 1)}
                         className="h-7 w-7 hover:bg-primary/10 hover:text-primary"
                       >
                         <Minus className="h-3 w-3" />
@@ -133,7 +145,7 @@ const Cart = () => {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() => updateQuantity(item.cartKey, item.quantity + 1)}
                         className="h-7 w-7 hover:bg-primary/10 hover:text-primary"
                       >
                         <Plus className="h-3 w-3" />
@@ -142,7 +154,7 @@ const Cart = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.cartKey)}
                       className="h-9 w-9 text-destructive hover:bg-destructive/10"
                     >
                       <Trash2 className="h-4 w-4" />

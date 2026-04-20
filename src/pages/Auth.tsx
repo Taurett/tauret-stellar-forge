@@ -24,6 +24,13 @@ const Auth = () => {
   const [tab, setTab] = useState<"signin" | "signup">("signin");
   const [submitting, setSubmitting] = useState(false);
 
+  useSeo({
+    title: "Sign in · TAURET",
+    description: "Sign in or create your TAURET account.",
+    canonical: "/auth",
+    noindex: true,
+  });
+
   useEffect(() => {
     if (!loading && user) navigate("/", { replace: true });
   }, [user, loading, navigate]);

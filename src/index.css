@@ -534,22 +534,21 @@
     background-attachment: fixed;
   }
 
-  /* Smooth theme transitions — colors & backgrounds ease over ~600ms.
-     Excluded: transform/opacity (preserves micro-interactions like hover scale,
-     popovers, motion components) and shadows (keeps neon glows snappy on hover). */
+  /* Smooth theme transitions — colors ease ~280ms with a soft curve.
+     Excluded: background-image (gradients can't tween, makes it feel laggy),
+     transform/opacity/shadow (keep micro-interactions snappy). */
   html.theme-transitioning,
   html.theme-transitioning *,
   html.theme-transitioning *::before,
   html.theme-transitioning *::after {
-    transition: background-color 600ms ease,
-                background-image 600ms ease,
-                border-color 600ms ease,
-                color 600ms ease,
-                fill 600ms ease,
-                stroke 600ms ease !important;
+    transition: background-color 280ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 280ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 280ms cubic-bezier(0.4, 0, 0.2, 1),
+                fill 280ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke 280ms cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
-  /* Crossfade overlay shown over the page during a theme switch. */
+  /* Subtle crossfade overlay — quick gentle dim during a theme switch. */
   .theme-fade-overlay {
     position: fixed;
     inset: 0;
@@ -557,10 +556,11 @@
     z-index: 9999;
     background: hsl(var(--background));
     opacity: 0;
-    transition: opacity 350ms ease;
+    transition: opacity 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
   }
   .theme-fade-overlay.is-active {
-    opacity: 0.55;
+    opacity: 0.35;
   }
 
   /* Respect users who prefer reduced motion — disable fade & long transitions. */

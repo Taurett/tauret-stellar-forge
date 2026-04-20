@@ -9,6 +9,7 @@ import SportCategories from "@/components/SportCategories";
 import PromotionalBanner from "@/components/PromotionalBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import WelcomeIntro from "@/components/WelcomeIntro";
+import UserMenu from "@/components/UserMenu";
 
 const Index = () => {
   return (
@@ -17,6 +18,9 @@ const Index = () => {
       <SearchBar />
       <LanguageSwitcher />
       <ThemeToggle />
+      <div className="fixed top-4 right-4 z-50">
+        <UserMenu />
+      </div>
       <Hero />
       <SportCategories />
       <PromotionalBanner />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +16,7 @@ import SearchBar from "@/components/SearchBar";
 import { toast } from "@/hooks/use-toast";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
+import { getSizesFor } from "@/lib/productSizes";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{
@@ -51,37 +52,6 @@ const products: Array<{
   { id: 38, name: "Tactical Field Jacket",         price: 119.99, imageKey: "airsoft-jacket",      category: "airsoft",    rating: 4.8, reviews: 76 },
 ];
 
-// Mirrors the size matrix used on the product detail page.
-const productSizes: Record<number, string[]> = {
-  3: ["XS","S","M","L","XL"],
-  20: ["XS","S","M","L","XL","XXL"],
-  28: ["XS","S","M","L","XL"],
-  29: ["XS","S","M","L","XL"],
-  30: ["XS","S","M","L","XL"],
-  31: ["XS","S","M","L","XL","XXL"],
-  7:  ["S","M","L","XL","XXL"],
-  9:  ["S","M","L","XL","XXL"],
-  21: ["S","M","L","XL","XXL"],
-  11: ["S","M","L","XL","XXL"],
-  22: ["S","M","L","XL","XXL"],
-  32: ["S","M","L","XL","XXL"],
-  12: ["S","M","L","XL","XXL"],
-  33: ["S","M","L","XL","XXL"],
-  34: ["S","M","L","XL","XXL"],
-  14: ["XS","S","M","L","XL","XXL"],
-  16: ["XS","S","M","L","XL","XXL"],
-  23: ["XS","S","M","L","XL","XXL"],
-  24: ["XS","S","M","L","XL"],
-  25: ["XS","S","M","L","XL"],
-  35: ["XS","S","M","L","XL"],
-  18: ["S","M","L","XL","XXL"],
-  26: ["S","M","L","XL","XXL"],
-  27: ["XS","S","M","L","XL"],
-  36: ["S","M","L","XL","XXL"],
-  37: ["S","M","L","XL","XXL"],
-  38: ["S","M","L","XL","XXL"],
-};
-const getSizesFor = (id: number) => productSizes[id] ?? ["S","M","L","XL"];
 
 const sportCategoryKeys = [
   { value: "all",        labelKey: "categories.all" },
@@ -121,16 +91,23 @@ const Shop = () => {
     setSearchParams(params, { replace: true });
   };
 
-  const sportCategories = sportCategoryKeys.map(c => ({
-    value: c.value,
-    label: t(getCategoryLabelKey(c.value, theme)),
-  }));
+  // Recompute only when language/theme change.
+  const sportCategories = useMemo(
+    () => sportCategoryKeys.map(c => ({
+      value: c.value,
+      label: t(getCategoryLabelKey(c.value, theme)),
+    })),
+    [t, theme],
+  );
 
   // Localised product list — name pulled per-language at render (theme-aware for Avalanche).
-  const localisedProducts = products.map(p => ({
-    ...p,
-    name: getProductCopy(p.id, language, theme).name,
-  }));
+  const localisedProducts = useMemo(
+    () => products.map(p => ({
+      ...p,
+      name: getProductCopy(p.id, language, theme).name,
+    })),
+    [language, theme],
+  );
 
   // Product whose size still needs to be picked before adding to cart.
   const [pendingProduct, setPendingProduct] = useState<typeof localisedProducts[number] | null>(null);
@@ -165,11 +142,14 @@ const Shop = () => {
     setPendingSize(null);
   };
 
-  const filteredProducts = localisedProducts.filter(product => {
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProducts = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return localisedProducts.filter(product => {
+      const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+      const matchesSearch = product.name.toLowerCase().includes(term);
+      return matchesCategory && matchesSearch;
+    });
+  }, [localisedProducts, selectedCategory, searchTerm]);
 
   return (
     <div className="min-h-screen bg-background">

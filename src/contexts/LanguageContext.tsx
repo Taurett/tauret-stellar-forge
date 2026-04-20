@@ -151,6 +151,26 @@ const translations = {
     'toast.added': 'Added to cart',
     'toast.addedDesc': 'has been added to your cart.',
 
+    // Auth
+    'auth.heading': 'Enter the Arena',
+    'auth.signIn': 'Sign In',
+    'auth.signUp': 'Sign Up',
+    'auth.signOut': 'Sign Out',
+    'auth.email': 'Email',
+    'auth.password': 'Password',
+    'auth.name': 'Display name',
+    'auth.createAccount': 'Create Account',
+    'auth.continueGoogle': 'Continue with Google',
+    'auth.or': 'or',
+    'auth.account': 'Account',
+    'auth.backHome': 'Back to home',
+    'auth.welcomeBack': 'Welcome back, athlete.',
+    'auth.accountCreated': 'Account created. Welcome to Tauret!',
+    'auth.signedOut': 'Signed out',
+    'auth.signInFailed': 'Sign in failed',
+    'auth.signUpFailed': 'Sign up failed',
+    'auth.invalidInput': 'Invalid input',
+
     // Hero extras
     'hero.chip': 'Next-Gen Sportswear',
     'hero.chip.cyber': 'Next-Gen Sportswear',
@@ -344,6 +364,26 @@ const translations = {
     // Toasts
     'toast.added': 'Adăugat în coș',
     'toast.addedDesc': 'a fost adăugat în coșul tău.',
+
+    // Auth
+    'auth.heading': 'Intră în Arenă',
+    'auth.signIn': 'Autentificare',
+    'auth.signUp': 'Înregistrare',
+    'auth.signOut': 'Deconectare',
+    'auth.email': 'Email',
+    'auth.password': 'Parolă',
+    'auth.name': 'Nume afișat',
+    'auth.createAccount': 'Creează cont',
+    'auth.continueGoogle': 'Continuă cu Google',
+    'auth.or': 'sau',
+    'auth.account': 'Cont',
+    'auth.backHome': 'Înapoi acasă',
+    'auth.welcomeBack': 'Bine ai revenit, atletule.',
+    'auth.accountCreated': 'Cont creat. Bine ai venit la Tauret!',
+    'auth.signedOut': 'Deconectat',
+    'auth.signInFailed': 'Autentificare eșuată',
+    'auth.signUpFailed': 'Înregistrare eșuată',
+    'auth.invalidInput': 'Date invalide',
 
     // Hero extras
     'hero.chip': 'Echipament Sportiv de Nouă Generație',

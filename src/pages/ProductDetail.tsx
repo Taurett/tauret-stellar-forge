@@ -13,6 +13,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
+import { getSizesFor } from "@/lib/productSizes";
 
 interface ProductData {
   id: number;
@@ -21,38 +22,38 @@ interface ProductData {
   category: string;       // category id, used to look up i18n label
   rating: number;
   reviews: number;
-  sizes: string[];
 }
 
-// Structural data only — name/description/fabric/features come from productI18n
+// Structural data only — name/description/fabric/features come from productI18n,
+// available sizes come from productSizes.
 const productsData: ProductData[] = [
-  { id: 3,  price: 79.99,  imageKeys: ["tennis-outfit", "tennis-outfit-detail"],         category: "tennis",     rating: 4.7, reviews: 189, sizes: ["XS","S","M","L","XL"] },
-  { id: 20, price: 64.99,  imageKeys: ["tennis-polo", "tennis-polo"],                    category: "tennis",     rating: 4.6, reviews: 142, sizes: ["XS","S","M","L","XL","XXL"] },
-  { id: 28, price: 59.99,  imageKeys: ["tennis-skort", "tennis-skort"],                  category: "tennis",     rating: 4.7, reviews: 164, sizes: ["XS","S","M","L","XL"] },
-  { id: 29, price: 62.99,  imageKeys: ["padel-shirt", "padel-shirt"],                    category: "padel",      rating: 4.7, reviews: 118, sizes: ["XS","S","M","L","XL"] },
-  { id: 30, price: 57.99,  imageKeys: ["padel-skort", "padel-skort"],                    category: "padel",      rating: 4.6, reviews: 96, sizes: ["XS","S","M","L","XL"] },
-  { id: 31, price: 94.99,  imageKeys: ["padel-jacket", "padel-jacket"],                  category: "padel",      rating: 4.8, reviews: 87, sizes: ["XS","S","M","L","XL","XXL"] },
-  { id: 7,  price: 79.99,  imageKeys: ["football-jersey", "football-jersey-detail"],     category: "football",   rating: 4.8, reviews: 445, sizes: ["S","M","L","XL","XXL"] },
-  { id: 9,  price: 49.99,  imageKeys: ["football-shorts", "football-shorts-detail"],     category: "football",   rating: 4.7, reviews: 312, sizes: ["S","M","L","XL","XXL"] },
-  { id: 21, price: 94.99,  imageKeys: ["goalkeeper-jersey", "goalkeeper-jersey"],        category: "football",   rating: 4.9, reviews: 198, sizes: ["S","M","L","XL","XXL"] },
-  { id: 11, price: 89.99,  imageKeys: ["basketball-jersey", "basketball-jersey-detail"], category: "basketball", rating: 4.8, reviews: 387, sizes: ["S","M","L","XL","XXL"] },
-  { id: 22, price: 54.99,  imageKeys: ["basketball-shorts", "basketball-shorts"],        category: "basketball", rating: 4.7, reviews: 256, sizes: ["S","M","L","XL","XXL"] },
-  { id: 32, price: 64.99,  imageKeys: ["basketball-shooter", "basketball-shooter"],      category: "basketball", rating: 4.6, reviews: 143, sizes: ["S","M","L","XL","XXL"] },
-  { id: 12, price: 69.99,  imageKeys: ["handball-jersey", "handball-jersey-detail"],     category: "handball",   rating: 4.7, reviews: 234, sizes: ["S","M","L","XL","XXL"] },
-  { id: 33, price: 51.99,  imageKeys: ["handball-shorts", "handball-shorts"],            category: "handball",   rating: 4.6, reviews: 121, sizes: ["S","M","L","XL","XXL"] },
-  { id: 34, price: 84.99,  imageKeys: ["handball-jacket", "handball-jacket"],            category: "handball",   rating: 4.7, reviews: 92, sizes: ["S","M","L","XL","XXL"] },
-  { id: 14, price: 109.99, imageKeys: ["cycling-jersey", "cycling-jersey-detail"],       category: "cycling",    rating: 4.8, reviews: 276, sizes: ["XS","S","M","L","XL","XXL"] },
-  { id: 16, price: 99.99,  imageKeys: ["cycling-shorts", "cycling-shorts-detail"],       category: "cycling",    rating: 4.7, reviews: 289, sizes: ["XS","S","M","L","XL","XXL"] },
-  { id: 23, price: 129.99, imageKeys: ["cycling-jacket", "cycling-jacket"],              category: "cycling",    rating: 4.8, reviews: 167, sizes: ["XS","S","M","L","XL","XXL"] },
-  { id: 24, price: 44.99,  imageKeys: ["running-tank", "running-tank"],                  category: "running",    rating: 4.6, reviews: 203, sizes: ["XS","S","M","L","XL"] },
-  { id: 25, price: 74.99,  imageKeys: ["running-leggings", "running-leggings"],          category: "running",    rating: 4.8, reviews: 312, sizes: ["XS","S","M","L","XL"] },
-  { id: 35, price: 58.99,  imageKeys: ["running-longsleeve", "running-longsleeve"],      category: "running",    rating: 4.7, reviews: 154, sizes: ["XS","S","M","L","XL"] },
-  { id: 18, price: 59.99,  imageKeys: ["gym-shirt", "gym-shirt-detail"],                 category: "gym",        rating: 4.7, reviews: 334, sizes: ["S","M","L","XL","XXL"] },
-  { id: 26, price: 89.99,  imageKeys: ["gym-hoodie", "gym-hoodie"],                      category: "gym",        rating: 4.8, reviews: 421, sizes: ["S","M","L","XL","XXL"] },
-  { id: 27, price: 49.99,  imageKeys: ["yoga-bra", "yoga-bra"],                          category: "gym",        rating: 4.7, reviews: 287, sizes: ["XS","S","M","L","XL"] },
-  { id: 36, price: 72.99,  imageKeys: ["airsoft-shirt", "airsoft-shirt"],                category: "airsoft",    rating: 4.7, reviews: 108, sizes: ["S","M","L","XL","XXL"] },
-  { id: 37, price: 89.99,  imageKeys: ["airsoft-pants", "airsoft-pants"],                category: "airsoft",    rating: 4.8, reviews: 99, sizes: ["S","M","L","XL","XXL"] },
-  { id: 38, price: 119.99, imageKeys: ["airsoft-jacket", "airsoft-jacket"],              category: "airsoft",    rating: 4.8, reviews: 76, sizes: ["S","M","L","XL","XXL"] },
+  { id: 3,  price: 79.99,  imageKeys: ["tennis-outfit", "tennis-outfit-detail"],         category: "tennis",     rating: 4.7, reviews: 189 },
+  { id: 20, price: 64.99,  imageKeys: ["tennis-polo", "tennis-polo"],                    category: "tennis",     rating: 4.6, reviews: 142 },
+  { id: 28, price: 59.99,  imageKeys: ["tennis-skort", "tennis-skort"],                  category: "tennis",     rating: 4.7, reviews: 164 },
+  { id: 29, price: 62.99,  imageKeys: ["padel-shirt", "padel-shirt"],                    category: "padel",      rating: 4.7, reviews: 118 },
+  { id: 30, price: 57.99,  imageKeys: ["padel-skort", "padel-skort"],                    category: "padel",      rating: 4.6, reviews: 96 },
+  { id: 31, price: 94.99,  imageKeys: ["padel-jacket", "padel-jacket"],                  category: "padel",      rating: 4.8, reviews: 87 },
+  { id: 7,  price: 79.99,  imageKeys: ["football-jersey", "football-jersey-detail"],     category: "football",   rating: 4.8, reviews: 445 },
+  { id: 9,  price: 49.99,  imageKeys: ["football-shorts", "football-shorts-detail"],     category: "football",   rating: 4.7, reviews: 312 },
+  { id: 21, price: 94.99,  imageKeys: ["goalkeeper-jersey", "goalkeeper-jersey"],        category: "football",   rating: 4.9, reviews: 198 },
+  { id: 11, price: 89.99,  imageKeys: ["basketball-jersey", "basketball-jersey-detail"], category: "basketball", rating: 4.8, reviews: 387 },
+  { id: 22, price: 54.99,  imageKeys: ["basketball-shorts", "basketball-shorts"],        category: "basketball", rating: 4.7, reviews: 256 },
+  { id: 32, price: 64.99,  imageKeys: ["basketball-shooter", "basketball-shooter"],      category: "basketball", rating: 4.6, reviews: 143 },
+  { id: 12, price: 69.99,  imageKeys: ["handball-jersey", "handball-jersey-detail"],     category: "handball",   rating: 4.7, reviews: 234 },
+  { id: 33, price: 51.99,  imageKeys: ["handball-shorts", "handball-shorts"],            category: "handball",   rating: 4.6, reviews: 121 },
+  { id: 34, price: 84.99,  imageKeys: ["handball-jacket", "handball-jacket"],            category: "handball",   rating: 4.7, reviews: 92 },
+  { id: 14, price: 109.99, imageKeys: ["cycling-jersey", "cycling-jersey-detail"],       category: "cycling",    rating: 4.8, reviews: 276 },
+  { id: 16, price: 99.99,  imageKeys: ["cycling-shorts", "cycling-shorts-detail"],       category: "cycling",    rating: 4.7, reviews: 289 },
+  { id: 23, price: 129.99, imageKeys: ["cycling-jacket", "cycling-jacket"],              category: "cycling",    rating: 4.8, reviews: 167 },
+  { id: 24, price: 44.99,  imageKeys: ["running-tank", "running-tank"],                  category: "running",    rating: 4.6, reviews: 203 },
+  { id: 25, price: 74.99,  imageKeys: ["running-leggings", "running-leggings"],          category: "running",    rating: 4.8, reviews: 312 },
+  { id: 35, price: 58.99,  imageKeys: ["running-longsleeve", "running-longsleeve"],      category: "running",    rating: 4.7, reviews: 154 },
+  { id: 18, price: 59.99,  imageKeys: ["gym-shirt", "gym-shirt-detail"],                 category: "gym",        rating: 4.7, reviews: 334 },
+  { id: 26, price: 89.99,  imageKeys: ["gym-hoodie", "gym-hoodie"],                      category: "gym",        rating: 4.8, reviews: 421 },
+  { id: 27, price: 49.99,  imageKeys: ["yoga-bra", "yoga-bra"],                          category: "gym",        rating: 4.7, reviews: 287 },
+  { id: 36, price: 72.99,  imageKeys: ["airsoft-shirt", "airsoft-shirt"],                category: "airsoft",    rating: 4.7, reviews: 108 },
+  { id: 37, price: 89.99,  imageKeys: ["airsoft-pants", "airsoft-pants"],                category: "airsoft",    rating: 4.8, reviews: 99 },
+  { id: 38, price: 119.99, imageKeys: ["airsoft-jacket", "airsoft-jacket"],              category: "airsoft",    rating: 4.8, reviews: 76 },
 ];
 
 

@@ -2,16 +2,21 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme, type Theme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import heroCyber from "@/assets/futuristic-hero-bg.jpg";
+import heroWimbledon from "@/assets/hero-wimbledon.jpg";
+import heroArid from "@/assets/hero-arid.jpg";
+import heroMilitary from "@/assets/hero-military.jpg";
+import heroRetro from "@/assets/hero-retro.jpg";
+import heroAvalanche from "@/assets/hero-avalanche.jpg";
 
-// Each theme card uses its own data-theme override so the swatch previews
-// the actual look of that theme regardless of the currently active one.
-const THEMES: { value: Theme; labelKey: string; descKey: string }[] = [
-  { value: 'cyber',     labelKey: 'intro.theme.cyber.label',     descKey: 'intro.theme.cyber.desc' },
-  { value: 'wimbledon', labelKey: 'intro.theme.wimbledon.label', descKey: 'intro.theme.wimbledon.desc' },
-  { value: 'arid',      labelKey: 'intro.theme.arid.label',      descKey: 'intro.theme.arid.desc' },
-  { value: 'military',  labelKey: 'intro.theme.military.label',  descKey: 'intro.theme.military.desc' },
-  { value: 'retro',     labelKey: 'intro.theme.retro.label',     descKey: 'intro.theme.retro.desc' },
-  { value: 'avalanche', labelKey: 'intro.theme.avalanche.label', descKey: 'intro.theme.avalanche.desc' },
+// Each card previews the actual hero background image of that theme.
+const THEMES: { value: Theme; labelKey: string; descKey: string; image: string }[] = [
+  { value: 'cyber',     labelKey: 'intro.theme.cyber.label',     descKey: 'intro.theme.cyber.desc',     image: heroCyber },
+  { value: 'wimbledon', labelKey: 'intro.theme.wimbledon.label', descKey: 'intro.theme.wimbledon.desc', image: heroWimbledon },
+  { value: 'arid',      labelKey: 'intro.theme.arid.label',      descKey: 'intro.theme.arid.desc',      image: heroArid },
+  { value: 'military',  labelKey: 'intro.theme.military.label',  descKey: 'intro.theme.military.desc',  image: heroMilitary },
+  { value: 'retro',     labelKey: 'intro.theme.retro.label',     descKey: 'intro.theme.retro.desc',     image: heroRetro },
+  { value: 'avalanche', labelKey: 'intro.theme.avalanche.label', descKey: 'intro.theme.avalanche.desc', image: heroAvalanche },
 ];
 
 const WelcomeIntro = () => {
@@ -86,11 +91,15 @@ const WelcomeIntro = () => {
                       : 'border-primary/20 hover:border-primary/60'
                   }`}
                 >
-                  {/* Swatch rendered inside its own data-theme to preview accurately. */}
-                  <div data-theme={opt.value} className="relative h-16 rounded-sm overflow-hidden mb-2 border border-primary/20">
-                    <div className="absolute inset-0 bg-background" />
-                    <div className="absolute inset-0 bg-gradient-neon opacity-80" />
-                    <div className="absolute bottom-1 left-1 right-1 h-1.5 rounded-full bg-primary" />
+                  {/* Theme background preview */}
+                  <div className="relative h-16 rounded-sm overflow-hidden mb-2 border border-primary/20">
+                    <img
+                      src={opt.image}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                   </div>
                   <div className="font-display font-bold text-sm uppercase tracking-wider text-foreground">
                     {t(opt.labelKey)}

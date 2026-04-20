@@ -7,6 +7,7 @@ import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
 import tauretLogo from "@/assets/tauret-logo-futuristic.png";
 import ThemeToggle from "@/components/ThemeToggle";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const SearchBar = () => {
   const { t } = useLanguage();
@@ -49,7 +50,10 @@ const SearchBar = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-1 md:gap-2 shrink-0">
-            {/* Mobile-only theme picker (desktop uses the floating bar) */}
+            {/* Mobile-only language + theme pickers (desktop uses floating bars) */}
+            <div className="md:hidden">
+              <LanguageSwitcher variant="inline" />
+            </div>
             <div className="md:hidden">
               <ThemeToggle variant="inline" />
             </div>

@@ -19,7 +19,7 @@ const translations = {
   en: {
     // Hero section
     'hero.tagline': 'ELEVATE YOUR GAME',
-    'hero.description': 'Premium sports apparel and equipment for athletes across all disciplines.',
+    'hero.description': 'Premium sportswear for athletes across every discipline.',
     'hero.shopCollection': 'Shop Collection',
     'hero.viewCatalog': 'View Catalog',
 
@@ -178,7 +178,7 @@ const translations = {
 
     // Featured extras
     'featured.kicker': '// Curated',
-    'featured.heading': 'FEATURED GEAR',
+    'featured.heading': 'FEATURED PIECES',
     'featured.badge.bestseller': 'BESTSELLER',
     'featured.badge.new': 'NEW',
     'featured.badge.sale': 'SALE',
@@ -193,7 +193,7 @@ const translations = {
     'intro.title': 'Wear it more. Live it louder.',
     'intro.story': 'Tauret was born from a simple idea: the clothes you love are the clothes you actually wear. We design premium sportswear in distinct visual worlds — pick the one that feels like you, and we will dress your whole experience in it.',
     'intro.pickPrompt': 'Choose your style',
-    'intro.pickHint': 'You can change it any time from the bottom-left switcher.',
+    'intro.pickHint': 'You can change it any time from the theme switcher.',
     'intro.continue': 'Enter Tauret',
     'intro.skip': 'Skip',
     'intro.theme.cyber.label': 'Cyber',
@@ -212,7 +212,7 @@ const translations = {
   ro: {
     // Hero section
     'hero.tagline': 'RIDICĂ-ȚI JOCUL LA NIVEL SUPERIOR',
-    'hero.description': 'Îmbrăcăminte și echipament sportiv premium pentru atleți din toate disciplinele.',
+    'hero.description': 'Îmbrăcăminte sport premium pentru atleți din toate disciplinele.',
     'hero.shopCollection': 'Vezi Colecția',
     'hero.viewCatalog': 'Vezi Catalogul',
 

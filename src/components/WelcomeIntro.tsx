@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useTheme, type Theme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -21,14 +20,23 @@ const WelcomeIntro = () => {
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState<Theme>(theme);
 
-  // Only auto-open on first visit (no cookie yet). Defer one tick so the page
-  // renders behind the modal first.
+  // Only auto-open on first visit (no cookie yet).
   useEffect(() => {
     if (!hasChosenTheme) {
       const id = window.setTimeout(() => setOpen(true), 250);
       return () => window.clearTimeout(id);
     }
   }, [hasChosenTheme]);
+
+  // Lock body scroll while the intro is open.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [open]);
+
+  if (!open) return null;
 
   const handlePreview = (next: Theme) => {
     setPending(next);
@@ -41,24 +49,29 @@ const WelcomeIntro = () => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-3xl border-primary/30 bg-background/95 backdrop-blur-xl max-h-[90vh] overflow-y-auto">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('intro.title')}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto bg-background/30 backdrop-blur-[2px] animate-fade-in"
+    >
+      <div className="relative w-full max-w-3xl my-auto border border-primary/30 bg-background/70 backdrop-blur-2xl shadow-2xl rounded-lg p-6 max-h-[90vh] overflow-y-auto">
         <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-2">
           {t('intro.kicker')}
         </div>
-        <DialogTitle className="font-display text-3xl md:text-4xl font-black text-aurora">
+        <h2 className="font-display text-3xl md:text-4xl font-black text-aurora">
           {t('intro.title')}
-        </DialogTitle>
-        <DialogDescription className="font-tech text-sm md:text-base text-muted-foreground leading-relaxed">
+        </h2>
+        <p className="font-tech text-sm md:text-base text-muted-foreground leading-relaxed mt-2">
           {t('intro.story')}
-        </DialogDescription>
+        </p>
 
         <div className="mt-4">
           <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-3">
             {t('intro.pickPrompt')}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
             {THEMES.map((opt) => {
               const isActive = pending === opt.value;
               return (
@@ -110,8 +123,8 @@ const WelcomeIntro = () => {
             {t('intro.continue')}
           </Button>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 };
 

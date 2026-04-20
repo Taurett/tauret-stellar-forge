@@ -17,6 +17,7 @@ import { toast } from "@/hooks/use-toast";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
+import { useSeo } from "@/hooks/useSeo";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{
@@ -76,6 +77,14 @@ const Shop = () => {
   const initialCategory = validCategories.includes(categoryParam) ? categoryParam : "all";
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [searchTerm, setSearchTerm] = useState("");
+
+  useSeo({
+    title: "Shop · TAURET — Premium Sportswear",
+    description:
+      "Browse TAURET's full collection of premium sportswear: tennis, padel, football, basketball, handball, cycling, running, gym & airsoft.",
+    canonical: "/shop",
+  });
+
 
   // Sync URL → state when the query string changes (e.g., user clicks another sport link).
   useEffect(() => {

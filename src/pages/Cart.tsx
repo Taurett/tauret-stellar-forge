@@ -1,44 +1,51 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, X } from "lucide-react";
+import { ShoppingBag, ArrowLeft } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
-import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
+import CartItemRow from "@/components/cart/CartItemRow";
+import CartSummary from "@/components/cart/CartSummary";
+import CheckoutModal from "@/components/cart/CheckoutModal";
 import { getStripePriceId } from "@/lib/productPricing";
-import { StripeEmbeddedCheckout, CheckoutLineItem } from "@/components/StripeEmbeddedCheckout";
+import { getProductCopy } from "@/lib/productI18n";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useSeo } from "@/hooks/useSeo";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems } = useCart();
-  const { t, formatPrice, language } = useLanguage();
+  const { t, language } = useLanguage();
   const { theme } = useTheme();
   const { user } = useAuth();
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
+  useSeo({
+    title: `${t("cart.title")} · TAURET`,
+    description: "Review your TAURET cart and check out securely.",
+    canonical: "/cart",
+    noindex: true, // cart is user-specific, no SEO value
+  });
+
   const handleCheckout = () => {
-    const lineItems: CheckoutLineItem[] = [];
     const skipped: string[] = [];
+    let payable = 0;
     for (const item of items) {
-      const priceId = getStripePriceId(item.id);
-      if (priceId) {
-        lineItems.push({ priceId, quantity: item.quantity });
-      } else {
-        skipped.push(getProductCopy(item.id, language, theme).name);
-      }
+      if (getStripePriceId(item.id)) payable++;
+      else skipped.push(getProductCopy(item.id, language, theme).name);
     }
-    if (lineItems.length === 0) {
+    if (payable === 0) {
       toast.error(t("cart.noPayable") || "No payable items in cart.");
       return;
     }
     if (skipped.length > 0) {
-      toast.warning(`${t("cart.someSkipped") || "Some items unavailable for checkout"}: ${skipped.join(", ")}`);
+      toast.warning(
+        `${t("cart.someSkipped") || "Some items unavailable for checkout"}: ${skipped.join(", ")}`
+      );
     }
     setCheckoutOpen(true);
   };
@@ -47,11 +54,16 @@ const Cart = () => {
     <header className="relative pt-32 pb-12 px-4 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="relative max-w-7xl mx-auto">
-        <Link to="/" className="inline-flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em] text-primary hover:text-primary-glow transition-colors mb-6">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em] text-primary hover:text-primary-glow transition-colors mb-6"
+        >
           <ArrowLeft className="w-3 h-3" />
-          {t('shop.backHome')}
+          {t("shop.backHome")}
         </Link>
-        <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">{t('cart.kicker')}</div>
+        <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">
+          {t("cart.kicker")}
+        </div>
         <h1 className="font-display text-5xl md:text-7xl font-black">
           <span className="text-aurora">{title}</span>
         </h1>
@@ -65,20 +77,21 @@ const Cart = () => {
         <SearchBar />
         <LanguageSwitcher />
         <ThemeToggle />
-        <Header title={t('cart.empty')} />
+        <Header title={t("cart.empty")} />
 
         <div className="flex flex-col items-center justify-center py-24 px-4">
           <div className="glass clip-angle-lg p-12 border border-primary/20 max-w-md text-center">
-            <ShoppingBag className="h-20 w-20 text-primary/40 mb-6 mx-auto" strokeWidth={1.2} />
+            <ShoppingBag
+              className="h-20 w-20 text-primary/40 mb-6 mx-auto"
+              strokeWidth={1.2}
+            />
             <h2 className="font-display text-2xl font-bold text-foreground mb-3 uppercase tracking-wide">
-              {t('cart.emptyTitle')}
+              {t("cart.emptyTitle")}
             </h2>
-            <p className="text-muted-foreground mb-8">
-              {t('cart.emptyDesc')}
-            </p>
+            <p className="text-muted-foreground mb-8">{t("cart.emptyDesc")}</p>
             <Link to="/shop">
               <Button className="bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan">
-                {t('cart.browse')}
+                {t("cart.browse")}
               </Button>
             </Link>
           </div>
@@ -87,158 +100,39 @@ const Cart = () => {
     );
   }
 
-  const subtotal = getTotalPrice();
-  const tax = subtotal * 0.1;
-  const total = subtotal * 1.1;
-
   return (
     <div className="min-h-screen bg-background">
       <SearchBar />
       <LanguageSwitcher />
       <ThemeToggle />
-      <Header title={`${t('cart.title')} · ${getTotalItems()}`} />
+      <Header title={`${t("cart.title")} · ${getTotalItems()}`} />
 
       <div className="max-w-7xl mx-auto px-4 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
-              <div key={item.cartKey} className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
-                <div className="flex items-center gap-4">
-                  <div className="bg-foreground/5 w-24 h-24 shrink-0 flex items-center justify-center">
-                    <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="w-full h-full object-contain p-2" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display font-bold text-foreground text-lg truncate">{item.name}</h3>
-                    <div className="flex flex-wrap items-center gap-2 mt-1">
-                      <Badge variant="outline" className="text-primary border-primary/40 font-tech text-[10px] uppercase tracking-[0.2em]">
-                        {t(getCategoryLabelKey(item.category, theme))}
-                      </Badge>
-                      {item.theme && (
-                        <Badge variant="outline" className="text-accent border-accent/40 font-tech text-[10px] uppercase tracking-[0.2em]">
-                          {t(`theme.${item.theme}`) !== `theme.${item.theme}` ? t(`theme.${item.theme}`) : item.theme}
-                        </Badge>
-                      )}
-                      {item.size && (
-                        <Badge variant="outline" className="text-foreground/80 border-foreground/30 font-tech text-[10px] uppercase tracking-[0.2em]">
-                          {(t('cart.size') !== 'cart.size' ? t('cart.size') : 'Size')}: {item.size}
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="font-display text-xl text-foreground font-bold mt-2">
-                      {formatPrice(item.price)}
-                    </p>
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
-                    <div className="flex items-center gap-2 glass px-2 py-1 border border-primary/20">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => updateQuantity(item.cartKey, item.quantity - 1)}
-                        className="h-7 w-7 hover:bg-primary/10 hover:text-primary"
-                      >
-                        <Minus className="h-3 w-3" />
-                      </Button>
-                      <span className="font-tech font-bold text-foreground min-w-[2ch] text-center">
-                        {item.quantity}
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => updateQuantity(item.cartKey, item.quantity + 1)}
-                        className="h-7 w-7 hover:bg-primary/10 hover:text-primary"
-                      >
-                        <Plus className="h-3 w-3" />
-                      </Button>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => removeFromCart(item.cartKey)}
-                      className="h-9 w-9 text-destructive hover:bg-destructive/10"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <CartItemRow
+                key={item.cartKey}
+                item={item}
+                onIncrement={updateQuantity}
+                onRemove={removeFromCart}
+              />
             ))}
           </div>
 
-          {/* Summary */}
           <div className="lg:col-span-1">
-            <div className="glass clip-angle-lg p-6 border border-primary/20 sticky top-28">
-              <div className="font-tech text-xs uppercase tracking-[0.3em] text-primary mb-4">{t('cart.summary')}</div>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-6 uppercase">{t('cart.orderTotal')}</h3>
-
-              <div className="space-y-3 font-tech text-sm">
-                <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">{t('cart.subtotal')}</span>
-                  <span className="text-foreground">{formatPrice(subtotal)}</span>
-                </div>
-                <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">{t('cart.shipping')}</span>
-                  <span className="text-primary">{t('cart.free')}</span>
-                </div>
-                <div className="flex justify-between text-muted-foreground">
-                  <span className="uppercase tracking-wider">{t('cart.tax')}</span>
-                  <span className="text-foreground">{formatPrice(tax)}</span>
-                </div>
-                <div className="border-t border-primary/20 pt-4 mt-4">
-                  <div className="flex justify-between items-baseline">
-                    <span className="font-tech text-xs uppercase tracking-[0.25em] text-muted-foreground">{t('cart.total')}</span>
-                    <span className="font-display text-3xl font-bold text-aurora">
-                      {formatPrice(total)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-3 mt-6">
-                <Button
-                  onClick={handleCheckout}
-                  className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan py-6"
-                >
-                  {t('cart.checkout')}
-                </Button>
-                <Link to="/shop" className="block">
-                  <Button variant="outline" className="w-full glass border-primary/30 text-foreground hover:text-primary hover:border-primary font-tech uppercase tracking-widest clip-angle">
-                    {t('cart.keepShopping')}
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            <CartSummary subtotal={getTotalPrice()} onCheckout={handleCheckout} />
           </div>
         </div>
       </div>
 
-      {checkoutOpen && (
-        <div className="fixed inset-0 z-[200] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl my-8">
-            <button
-              onClick={() => setCheckoutOpen(false)}
-              className="absolute -top-12 right-0 text-foreground hover:text-primary transition-colors flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em]"
-              aria-label="Close checkout"
-            >
-              <X className="w-4 h-4" />
-              {t('cart.close') || 'Close'}
-            </button>
-            <div className="glass clip-angle-lg border border-primary/20 p-2 sm:p-4">
-              <StripeEmbeddedCheckout
-                items={items
-                  .map((i): CheckoutLineItem | null => {
-                    const priceId = getStripePriceId(i.id);
-                    return priceId ? { priceId, quantity: i.quantity } : null;
-                  })
-                  .filter((i): i is CheckoutLineItem => i !== null)}
-                customerEmail={user?.email}
-                userId={user?.id}
-                returnUrl={`${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <CheckoutModal
+        open={checkoutOpen}
+        onClose={() => setCheckoutOpen(false)}
+        items={items}
+        customerEmail={user?.email}
+        userId={user?.id}
+      />
     </div>
   );
 };

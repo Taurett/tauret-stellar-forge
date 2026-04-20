@@ -14,6 +14,7 @@ import SearchBar from "@/components/SearchBar";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
+import { useSeo } from "@/hooks/useSeo";
 
 interface ProductData {
   id: number;
@@ -69,7 +70,49 @@ const ProductDetail = () => {
 
   const base = productsData.find(p => p.id === Number(id));
 
-  if (!base) {
+  // Theme/copy/derived values — safe even when base is missing (we guard below).
+  const copy = base ? getProductCopy(base.id, language, theme) : null;
+  const product = base && copy ? { ...base, ...copy } : null;
+  const categoryLabel = product ? t(getCategoryLabelKey(product.category, theme)) : "";
+  const images = product ? product.imageKeys.map(k => getProductImage(k, theme)) : [];
+  const availableSizes = product ? getSizesFor(product.id) : [];
+
+  // Per-product SEO + JSON-LD Product schema for rich Google results.
+  // Hook MUST run on every render — call it before any early return.
+  useSeo({
+    title: product ? `${product.name} · TAURET` : "Product not found · TAURET",
+    description: product
+      ? `${product.name} — ${categoryLabel}. Premium TAURET sportswear engineered for elite performance.`
+      : "This product is no longer available.",
+    canonical: product ? `/product/${product.id}` : "/shop",
+    noindex: !product,
+    jsonLd: product
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.name,
+          category: categoryLabel,
+          image:
+            typeof window !== "undefined"
+              ? `${window.location.origin}${images[0]}`
+              : images[0],
+          brand: { "@type": "Brand", name: "TAURET" },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: product.rating,
+            reviewCount: product.reviews,
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: product.price,
+            availability: "https://schema.org/InStock",
+          },
+        }
+      : undefined,
+  });
+
+  if (!base || !product) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <SearchBar />
@@ -82,14 +125,6 @@ const ProductDetail = () => {
       </div>
     );
   }
-
-  // Merge structural data with localised copy (theme-aware for Avalanche).
-  const copy = getProductCopy(base.id, language, theme);
-  const product = { ...base, ...copy };
-  const categoryLabel = t(getCategoryLabelKey(product.category, theme));
-
-  const images = product.imageKeys.map(k => getProductImage(k, theme));
-  const availableSizes = getSizesFor(product.id);
 
   const handleAddToCart = () => {
     if (availableSizes.length > 0 && !selectedSize) {

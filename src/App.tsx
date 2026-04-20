@@ -9,6 +9,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PaymentTestModeBanner } from "./components/PaymentTestModeBanner";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Code-split routes — keeps the initial bundle (Index/landing) lean.
 const Index           = lazy(() => import("./pages/Index"));
@@ -37,18 +38,20 @@ const App = () => (
                 <PaymentTestModeBanner />
                 <Toaster />
                 <Sonner />
-                <Suspense fallback={<RouteFallback />}>
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/product/:id" element={<ProductDetail />} />
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/checkout/return" element={<CheckoutReturn />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </Suspense>
+                <ErrorBoundary>
+                  <Suspense fallback={<RouteFallback />}>
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/shop" element={<Shop />} />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route path="/product/:id" element={<ProductDetail />} />
+                      <Route path="/auth" element={<Auth />} />
+                      <Route path="/checkout/return" element={<CheckoutReturn />} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
+                </ErrorBoundary>
               </TooltipProvider>
             </CartProvider>
           </AuthProvider>

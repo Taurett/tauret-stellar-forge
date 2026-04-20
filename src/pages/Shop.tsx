@@ -283,6 +283,55 @@ const Shop = () => {
           )}
         </div>
       </section>
+
+      {/* Size selector — opens when user clicks "Add to Cart" without choosing a size yet. */}
+      <Dialog
+        open={!!pendingProduct}
+        onOpenChange={(open) => { if (!open) { setPendingProduct(null); setPendingSize(null); } }}
+      >
+        <DialogContent className="bg-background/95 backdrop-blur-xl border border-primary/30 clip-angle-lg max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl uppercase tracking-wider text-aurora">
+              {t('product.selectSize')}
+            </DialogTitle>
+            <DialogDescription className="font-tech text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              {pendingProduct?.name}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 my-4">
+            {pendingProduct && getSizesFor(pendingProduct.id).map((size) => {
+              const isActive = pendingSize === size;
+              return (
+                <button
+                  key={size}
+                  type="button"
+                  onClick={() => setPendingSize(size)}
+                  aria-pressed={isActive}
+                  className={`h-11 font-tech font-bold text-sm uppercase tracking-wider border transition-all clip-angle ${
+                    isActive
+                      ? 'border-primary bg-primary/15 text-primary shadow-neon-cyan'
+                      : 'border-primary/20 text-foreground hover:border-primary/60 hover:bg-primary/5'
+                  }`}
+                >
+                  {size}
+                </button>
+              );
+            })}
+          </div>
+
+          <DialogFooter>
+            <Button
+              onClick={handleConfirmSize}
+              disabled={!pendingSize}
+              className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan clip-angle disabled:opacity-50"
+            >
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              {t('shop.addToCart')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

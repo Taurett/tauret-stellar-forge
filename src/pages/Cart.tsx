@@ -106,7 +106,7 @@ const Cart = () => {
               <div key={item.cartKey} className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
                 <div className="flex items-center gap-4">
                   <div className="bg-foreground/5 w-24 h-24 shrink-0 flex items-center justify-center">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-contain p-2" />
+                    <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="w-full h-full object-contain p-2" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-display font-bold text-foreground text-lg truncate">{item.name}</h3>

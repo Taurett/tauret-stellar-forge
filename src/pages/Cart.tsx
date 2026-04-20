@@ -1,19 +1,47 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
+import { getStripePriceId } from "@/lib/productPricing";
+import { StripeEmbeddedCheckout, CheckoutLineItem } from "@/components/StripeEmbeddedCheckout";
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems } = useCart();
   const { t, formatPrice, language } = useLanguage();
   const { theme } = useTheme();
+  const { user } = useAuth();
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+
+  const handleCheckout = () => {
+    const lineItems: CheckoutLineItem[] = [];
+    const skipped: string[] = [];
+    for (const item of items) {
+      const priceId = getStripePriceId(item.id);
+      if (priceId) {
+        lineItems.push({ priceId, quantity: item.quantity });
+      } else {
+        skipped.push(getProductCopy(item.id, language, theme).name);
+      }
+    }
+    if (lineItems.length === 0) {
+      toast.error(t("cart.noPayable") || "No payable items in cart.");
+      return;
+    }
+    if (skipped.length > 0) {
+      toast.warning(`${t("cart.someSkipped") || "Some items unavailable for checkout"}: ${skipped.join(", ")}`);
+    }
+    setCheckoutOpen(true);
+  };
 
   const Header = ({ title }: { title: string }) => (
     <header className="relative pt-32 pb-12 px-4 overflow-hidden">
@@ -155,7 +183,10 @@ const Cart = () => {
               </div>
 
               <div className="space-y-3 mt-6">
-                <Button className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan py-6">
+                <Button
+                  onClick={handleCheckout}
+                  className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle hover:shadow-neon-cyan py-6"
+                >
                   {t('cart.checkout')}
                 </Button>
                 <Link to="/shop" className="block">
@@ -168,6 +199,31 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      {checkoutOpen && (
+        <div className="fixed inset-0 z-[200] bg-background/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl my-8">
+            <button
+              onClick={() => setCheckoutOpen(false)}
+              className="absolute -top-12 right-0 text-foreground hover:text-primary transition-colors flex items-center gap-2 font-tech text-xs uppercase tracking-[0.25em]"
+              aria-label="Close checkout"
+            >
+              <X className="w-4 h-4" />
+              {t('cart.close') || 'Close'}
+            </button>
+            <div className="glass clip-angle-lg border border-primary/20 p-2 sm:p-4">
+              <StripeEmbeddedCheckout
+                items={items
+                  .map((i) => ({ priceId: getStripePriceId(i.id), quantity: i.quantity }))
+                  .filter((i): i is CheckoutLineItem => !!i.priceId)}
+                customerEmail={user?.email}
+                userId={user?.id}
+                returnUrl={`${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

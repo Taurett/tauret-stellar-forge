@@ -1,5 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
+import { useSeo } from "@/hooks/useSeo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -11,16 +13,33 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
+  useSeo({
+    title: "404 — Page Not Found · TAURET",
+    description: "The page you're looking for doesn't exist on TAURET.",
+    canonical: location.pathname,
+    noindex: true,
+  });
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <main className="min-h-screen flex items-center justify-center bg-background px-4 relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30" aria-hidden="true" />
+      <div className="relative glass clip-angle-lg border border-primary/20 p-10 max-w-md text-center">
+        <div className="font-tech text-xs uppercase tracking-[0.4em] text-primary mb-3">
+          Signal Lost
+        </div>
+        <h1 className="font-display text-7xl font-black text-aurora mb-3">404</h1>
+        <p className="text-muted-foreground mb-8">
+          This route doesn't exist. Let's get you back on track.
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest clip-angle px-6 py-3 text-xs hover:shadow-neon-cyan transition-shadow"
+        >
+          <ArrowLeft className="w-3 h-3" />
+          Return Home
+        </Link>
       </div>
-    </div>
+    </main>
   );
 };
 

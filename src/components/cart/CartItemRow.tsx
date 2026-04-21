@@ -37,14 +37,12 @@ const CartItemRow = ({ item, onIncrement, onRemove }: CartItemRowProps) => {
             >
               {t(getCategoryLabelKey(item.category, theme))}
             </Badge>
-            {item.theme && (
+            {item.theme && THEME_LABEL_KEY[item.theme as Theme] && (
               <Badge
                 variant="outline"
                 className="text-accent border-accent/40 font-tech text-[10px] uppercase tracking-[0.2em]"
               >
-                {t(`theme.${item.theme}`) !== `theme.${item.theme}`
-                  ? t(`theme.${item.theme}`)
-                  : item.theme}
+                {t(THEME_LABEL_KEY[item.theme as Theme])}
               </Badge>
             )}
             {item.size && (
@@ -52,7 +50,7 @@ const CartItemRow = ({ item, onIncrement, onRemove }: CartItemRowProps) => {
                 variant="outline"
                 className="text-foreground/80 border-foreground/30 font-tech text-[10px] uppercase tracking-[0.2em]"
               >
-                {(t("cart.size") !== "cart.size" ? t("cart.size") : "Size")}: {item.size}
+                {t("cart.size")}: {item.size}
               </Badge>
             )}
           </div>

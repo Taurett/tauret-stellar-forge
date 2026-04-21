@@ -91,6 +91,9 @@ const ProductDetail = () => {
           "@context": "https://schema.org",
           "@type": "Product",
           name: product.name,
+          description: product.description,
+          sku: `TAURET-${product.id}`,
+          mpn: `TAURET-${product.id}`,
           category: categoryLabel,
           image:
             typeof window !== "undefined"
@@ -104,9 +107,15 @@ const ProductDetail = () => {
           },
           offers: {
             "@type": "Offer",
+            url:
+              typeof window !== "undefined"
+                ? `${window.location.origin}/product/${product.id}`
+                : `/product/${product.id}`,
             priceCurrency: "USD",
             price: product.price,
             availability: "https://schema.org/InStock",
+            itemCondition: "https://schema.org/NewCondition",
+            priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
           },
         }
       : undefined,

@@ -406,9 +406,12 @@ export const getProductCopy = (id: number, lang: Lang, theme?: string): ProductC
 };
 
 /** Returns the i18n key for a category label, swapping airsoft → winterSports on Avalanche. */
-export const getCategoryLabelKey = (category: string, theme?: string): string => {
+export const getCategoryLabelKey = (
+  category: string,
+  theme?: string,
+): import("@/contexts/LanguageContext").TKey => {
   if (theme === 'avalanche' && category === 'airsoft') return 'categories.winterSports';
-  const map: Record<string, string> = {
+  const map: Record<string, import("@/contexts/LanguageContext").TKey> = {
     tennis: 'categories.tennis',
     padel: 'categories.padel',
     football: 'categories.football',
@@ -420,5 +423,6 @@ export const getCategoryLabelKey = (category: string, theme?: string): string =>
     airsoft: 'categories.airsoft',
     all: 'categories.all',
   };
-  return map[category] ?? `categories.${category}`;
+  // Unknown categories are coerced — caller still sees the raw key as fallback.
+  return (map[category] ?? `categories.${category}`) as import("@/contexts/LanguageContext").TKey;
 };

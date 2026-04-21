@@ -152,11 +152,31 @@ const translations = {
     'cart.tax': 'Tax',
     'cart.total': 'Total',
     'cart.checkout': 'Checkout',
+    'cart.checkoutDescription': 'Complete your purchase securely via Stripe.',
     'cart.keepShopping': 'Keep Shopping',
+    'cart.size': 'Size',
+    'cart.noPayable': 'No payable items in cart.',
+    'cart.someSkipped': 'Some items unavailable for checkout',
 
     // Toasts
     'toast.added': 'Added to cart',
     'toast.addedDesc': 'has been added to your cart.',
+
+    // Theme labels (used as cart item meta + a11y)
+    'theme.cyber': 'Cyber',
+    'theme.wimbledon': 'Wimbledon',
+    'theme.arid': 'Arid',
+    'theme.military': 'Military',
+    'theme.retro': 'Retro',
+    'theme.avalanche': 'Avalanche',
+
+    // Checkout return page
+    'checkout.return.kicker': 'Order Confirmed',
+    'checkout.return.title': 'Payment Complete',
+    'checkout.return.desc': "Thanks for your order! We'll send a confirmation email shortly.",
+    'checkout.return.noSession': 'No order found',
+    'checkout.return.continue': 'Continue Shopping',
+    'checkout.return.home': 'Home',
 
     // Auth
     'auth.heading': 'Enter the Arena',
@@ -366,11 +386,31 @@ const translations = {
     'cart.tax': 'TVA',
     'cart.total': 'Total',
     'cart.checkout': 'Finalizează Comanda',
+    'cart.checkoutDescription': 'Finalizează comanda în siguranță prin Stripe.',
     'cart.keepShopping': 'Continuă Cumpărăturile',
+    'cart.size': 'Mărime',
+    'cart.noPayable': 'Niciun produs plătibil în coș.',
+    'cart.someSkipped': 'Unele produse nu sunt disponibile pentru plată',
 
     // Toasts
     'toast.added': 'Adăugat în coș',
     'toast.addedDesc': 'a fost adăugat în coșul tău.',
+
+    // Theme labels
+    'theme.cyber': 'Cyber',
+    'theme.wimbledon': 'Wimbledon',
+    'theme.arid': 'Arid',
+    'theme.military': 'Military',
+    'theme.retro': 'Retro',
+    'theme.avalanche': 'Avalanche',
+
+    // Checkout return page
+    'checkout.return.kicker': 'Comandă Confirmată',
+    'checkout.return.title': 'Plată Finalizată',
+    'checkout.return.desc': 'Mulțumim pentru comandă! Vei primi un email de confirmare în scurt timp.',
+    'checkout.return.noSession': 'Nicio comandă găsită',
+    'checkout.return.continue': 'Continuă Cumpărăturile',
+    'checkout.return.home': 'Acasă',
 
     // Auth
     'auth.heading': 'Intră în Arenă',

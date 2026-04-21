@@ -2,10 +2,16 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'ro';
 
+// `TKey` is auto-derived from the English dictionary below — adding a new
+// translation key here makes it instantly available (and required) at every
+// `t(...)` call site. Misspellings become compile-time errors.
+export type TKey = keyof typeof translations['en'];
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  /** Translate a known key. Falls back to the key string if a translation is missing. */
+  t: (key: TKey) => string;
   /** Format a base EUR price into the active currency (EUR for en, RON for ro). */
   formatPrice: (priceEur: number) => string;
   /** Currency code currently active. */
@@ -14,6 +20,7 @@ interface LanguageContextType {
 
 // Approximate fixed exchange rate. Adjust here if needed.
 const EUR_TO_RON = 4.98;
+
 
 const translations = {
   en: {
@@ -450,8 +457,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('en');
 
-  const t = (key: string): string => {
-    return translations[language][key] || key;
+  const t = (key: TKey): string => {
+    // The Romanian dictionary is a partial mirror of English — fall back
+    // to the English string (then to the key) when a translation is missing.
+    const dict = translations[language] as Record<string, string>;
+    const en = translations.en as Record<string, string>;
+    return dict[key] ?? en[key] ?? key;
   };
 
   const currency: 'EUR' | 'RON' = language === 'ro' ? 'RON' : 'EUR';

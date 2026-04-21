@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme, type Theme } from "@/contexts/ThemeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, type TKey } from "@/contexts/LanguageContext";
 import heroCyber from "@/assets/futuristic-hero-bg.jpg";
 import heroWimbledon from "@/assets/hero-wimbledon.jpg";
 import heroArid from "@/assets/hero-arid.jpg";
@@ -10,7 +10,7 @@ import heroRetro from "@/assets/hero-retro.jpg";
 import heroAvalanche from "@/assets/hero-avalanche.jpg";
 
 // Each card previews the actual hero background image of that theme.
-const THEMES: { value: Theme; labelKey: string; descKey: string; image: string }[] = [
+const THEMES: { value: Theme; labelKey: TKey; descKey: TKey; image: string }[] = [
   { value: 'cyber',     labelKey: 'intro.theme.cyber.label',     descKey: 'intro.theme.cyber.desc',     image: heroCyber },
   { value: 'wimbledon', labelKey: 'intro.theme.wimbledon.label', descKey: 'intro.theme.wimbledon.desc', image: heroWimbledon },
   { value: 'arid',      labelKey: 'intro.theme.arid.label',      descKey: 'intro.theme.arid.desc',      image: heroArid },

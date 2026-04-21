@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Star, ShoppingCart, ArrowRight } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, type TKey } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { toast } from "@/hooks/use-toast";
@@ -17,7 +17,7 @@ const FeaturedProducts = () => {
   const featured: Array<{
     id: number; price: number; originalPrice: number;
     imageKey: ProductImageKey; rating: number; reviews: number;
-    badgeKey: string; categoryId: string;
+    badgeKey: TKey; categoryId: string;
   }> = [
     { id: 11, price: 89.99,  originalPrice: 109.99, imageKey: "basketball-jersey", rating: 4.8, reviews: 387, badgeKey: "featured.badge.bestseller", categoryId: "basketball" },
     { id: 7,  price: 79.99,  originalPrice: 99.99,  imageKey: "football-jersey",   rating: 4.8, reviews: 445, badgeKey: "featured.badge.new",        categoryId: "football"   },

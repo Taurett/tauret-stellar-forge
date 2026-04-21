@@ -2,9 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { CartItem } from "@/contexts/CartContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage, type TKey } from "@/contexts/LanguageContext";
+import { useTheme, type Theme } from "@/contexts/ThemeContext";
 import { getCategoryLabelKey } from "@/lib/productI18n";
+
+// Static map keeps the `theme.*` lookup type-safe (vs a template literal).
+const THEME_LABEL_KEY: Record<Theme, TKey> = {
+  cyber: "theme.cyber",
+  wimbledon: "theme.wimbledon",
+  arid: "theme.arid",
+  military: "theme.military",
+  retro: "theme.retro",
+  avalanche: "theme.avalanche",
+};
 
 interface CartItemRowProps {
   item: CartItem;
@@ -15,6 +25,8 @@ interface CartItemRowProps {
 const CartItemRow = ({ item, onIncrement, onRemove }: CartItemRowProps) => {
   const { t, formatPrice } = useLanguage();
   const { theme } = useTheme();
+
+  const themeKey = item.theme ? THEME_LABEL_KEY[item.theme as Theme] : undefined;
 
   return (
     <div className="glass clip-angle p-5 border border-primary/20 hover:border-primary/50 transition-all">
@@ -37,12 +49,12 @@ const CartItemRow = ({ item, onIncrement, onRemove }: CartItemRowProps) => {
             >
               {t(getCategoryLabelKey(item.category, theme))}
             </Badge>
-            {item.theme && THEME_LABEL_KEY[item.theme as Theme] && (
+            {themeKey && (
               <Badge
                 variant="outline"
                 className="text-accent border-accent/40 font-tech text-[10px] uppercase tracking-[0.2em]"
               >
-                {t(THEME_LABEL_KEY[item.theme as Theme])}
+                {t(themeKey)}
               </Badge>
             )}
             {item.size && (

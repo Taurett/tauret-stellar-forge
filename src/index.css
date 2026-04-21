@@ -563,7 +563,9 @@
     opacity: 0.35;
   }
 
-  /* Respect users who prefer reduced motion — disable fade & long transitions. */
+  /* Respect users who prefer reduced motion — globally neutralise decorative
+     motion (theme fades, hero floats, fade-ins, grid drift, scroll indicators
+     and welcome intro animations) while keeping interactive feedback functional. */
   @media (prefers-reduced-motion: reduce) {
     html.theme-transitioning,
     html.theme-transitioning *,
@@ -575,6 +577,15 @@
     .theme-fade-overlay.is-active {
       opacity: 0 !important;
       transition: none !important;
+    }
+    /* Neutralise long-running and entrance animations across the app. */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      animation-delay: 0ms !important;
+      scroll-behavior: auto !important;
     }
   }
 

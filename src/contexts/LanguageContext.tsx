@@ -177,6 +177,7 @@ const translations = {
     'checkout.return.noSession': 'No order found',
     'checkout.return.continue': 'Continue Shopping',
     'checkout.return.home': 'Home',
+    'checkout.return.print': 'Print / Save PDF',
 
     // Auth
     'auth.heading': 'Enter the Arena',
@@ -411,6 +412,7 @@ const translations = {
     'checkout.return.noSession': 'Nicio comandă găsită',
     'checkout.return.continue': 'Continuă Cumpărăturile',
     'checkout.return.home': 'Acasă',
+    'checkout.return.print': 'Tipărește / Salvează PDF',
 
     // Auth
     'auth.heading': 'Intră în Arenă',

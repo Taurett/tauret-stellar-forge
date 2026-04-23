@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Heart, ShoppingCart, User, Menu } from "lucide-react";
+import { Search, Heart, ShoppingCart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
 import tauretLogo from "@/assets/tauret-logo-futuristic.png";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import UserMenu from "@/components/UserMenu";
 
 const SearchBar = () => {
   const { t } = useLanguage();
@@ -77,9 +78,7 @@ const SearchBar = () => {
                 )}
               </Button>
             </Link>
-            <Button variant="ghost" size="icon" className="hover:bg-primary/10 hover:text-primary hidden sm:inline-flex">
-              <User className="h-5 w-5" />
-            </Button>
+            <UserMenu />
           </div>
         </div>
       </div>

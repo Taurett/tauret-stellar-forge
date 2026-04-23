@@ -22,10 +22,10 @@ const UserMenu = () => {
 
   if (!user) {
     return (
-      <Button asChild size="sm" variant="outline" className="font-tech text-xs uppercase tracking-[0.2em] border-primary/40 hover:border-primary">
-        <Link to="/auth">
-          <LogIn className="w-3.5 h-3.5 mr-1.5" />
-          {t("auth.signIn")}
+      <Button asChild size="sm" variant="outline" className="font-tech text-xs uppercase tracking-[0.2em] border-primary/40 hover:border-primary px-2 sm:px-3">
+        <Link to="/auth" aria-label={t("auth.signIn")}>
+          <LogIn className="w-3.5 h-3.5 sm:mr-1.5" />
+          <span className="hidden sm:inline">{t("auth.signIn")}</span>
         </Link>
       </Button>
     );
@@ -45,11 +45,11 @@ const UserMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="font-tech text-xs uppercase tracking-[0.2em] border-primary/40 hover:border-primary">
-          <span className="w-5 h-5 rounded-full bg-gradient-neon text-primary-foreground flex items-center justify-center text-[10px] font-bold mr-1.5">
+        <Button variant="outline" size="sm" className="font-tech text-xs uppercase tracking-[0.2em] border-primary/40 hover:border-primary px-2 sm:px-3" aria-label={t("auth.account")}>
+          <span className="w-5 h-5 rounded-full bg-gradient-neon text-primary-foreground flex items-center justify-center text-[10px] font-bold sm:mr-1.5">
             {initials}
           </span>
-          {t("auth.account")}
+          <span className="hidden sm:inline">{t("auth.account")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">

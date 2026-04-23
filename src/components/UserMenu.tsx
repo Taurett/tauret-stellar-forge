@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, User as UserIcon, LogIn } from "lucide-react";
+import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { toast } from "@/hooks/use-toast";
 
 const UserMenu = () => {
   const { user, signOut, loading } = useAuth();
   const { t } = useLanguage();
+  const { isAdmin } = useIsAdmin();
   const navigate = useNavigate();
 
   if (loading) return null;
@@ -57,6 +59,22 @@ const UserMenu = () => {
           <div className="font-bold truncate">{user.user_metadata?.display_name || user.email}</div>
           <div className="text-muted-foreground truncate font-normal">{user.email}</div>
         </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to="/orders">
+            <Package className="w-4 h-4 mr-2" />
+            My Orders
+          </Link>
+        </DropdownMenuItem>
+        {isAdmin && (
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link to="/admin/orders">
+              <ShieldCheck className="w-4 h-4 mr-2" />
+              Admin · Orders
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
           <LogOut className="w-4 h-4 mr-2" />

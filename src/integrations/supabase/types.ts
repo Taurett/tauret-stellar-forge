@@ -14,6 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          product_id: number | null
+          product_name: string
+          quantity: number
+          stripe_price_id: string | null
+          subtotal: number
+          unit_amount: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          product_id?: number | null
+          product_name: string
+          quantity?: number
+          stripe_price_id?: string | null
+          subtotal?: number
+          unit_amount?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          product_id?: number | null
+          product_name?: string
+          quantity?: number
+          stripe_price_id?: string | null
+          subtotal?: number
+          unit_amount?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          amount_total: number
+          created_at: string
+          currency: string
+          customer_email: string | null
+          environment: string
+          id: string
+          metadata: Json | null
+          status: string
+          stripe_session_id: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          amount_total?: number
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          environment?: string
+          id?: string
+          metadata?: Json | null
+          status?: string
+          stripe_session_id: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          amount_total?: number
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          environment?: string
+          id?: string
+          metadata?: Json | null
+          status?: string
+          stripe_session_id?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

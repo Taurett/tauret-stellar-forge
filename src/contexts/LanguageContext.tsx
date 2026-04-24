@@ -257,6 +257,76 @@ const translations = {
     'intro.theme.retro.desc': 'Sun-faded 70s palette — playful and nostalgic.',
     'intro.theme.avalanche.label': 'Avalanche',
     'intro.theme.avalanche.desc': 'Glacier whites and ice blue — alpine, crisp, fresh.',
+
+    // Wishlist
+    'wishlist.kicker': '// Saved',
+    'wishlist.title': 'Wishlist',
+    'wishlist.empty': 'No favourites yet — tap the heart on any product to save it.',
+    'wishlist.add': 'Save to wishlist',
+    'wishlist.remove': 'Remove from wishlist',
+    'wishlist.added': 'Saved to wishlist',
+    'wishlist.removed': 'Removed from wishlist',
+    'wishlist.viewProduct': 'View product',
+    'wishlist.menu': 'Wishlist',
+
+    // Reviews
+    'reviews.heading': 'Customer Reviews',
+    'reviews.empty': 'No reviews yet. Be the first to share your experience.',
+    'reviews.write': 'Write a review',
+    'reviews.signInToReview': 'Sign in to write a review',
+    'reviews.rating': 'Rating',
+    'reviews.title': 'Title (optional)',
+    'reviews.body': 'Your review',
+    'reviews.bodyPlaceholder': 'How does it fit? How does it perform?',
+    'reviews.photos': 'Add photos (up to 4)',
+    'reviews.submit': 'Submit review',
+    'reviews.submitting': 'Submitting…',
+    'reviews.pendingNotice': 'Thanks! Your review is pending approval.',
+    'reviews.yourPending': 'Your review is awaiting approval.',
+    'reviews.basedOn': 'Based on',
+    'reviews.reviewsLower': 'reviews',
+
+    // Size guide
+    'sizeGuide.button': 'Size Guide',
+    'sizeGuide.title': 'Size Guide',
+    'sizeGuide.intro': 'Body measurements in centimetres. If you are between sizes, size up for a relaxed fit.',
+    'sizeGuide.col.size': 'Size',
+    'sizeGuide.col.chest': 'Chest',
+    'sizeGuide.col.waist': 'Waist',
+    'sizeGuide.col.hip': 'Hip',
+
+    // Related & recently viewed
+    'related.title': 'Complete the Look',
+    'recent.title': 'Recently Viewed',
+
+    // Order tracking
+    'tracking.title': 'Shipment',
+    'tracking.status.processing': 'Processing',
+    'tracking.status.shipped': 'Shipped',
+    'tracking.status.delivered': 'Delivered',
+    'tracking.status.cancelled': 'Cancelled',
+    'tracking.carrier': 'Carrier',
+    'tracking.number': 'Tracking number',
+    'tracking.track': 'Track package',
+    'tracking.shippedOn': 'Shipped on',
+    'tracking.deliveredOn': 'Delivered on',
+
+    // Guest checkout
+    'guest.heading': 'Checkout as guest',
+    'guest.subheading': 'No account needed. Add your email and we’ll send the receipt there.',
+    'guest.emailLabel': 'Email for the receipt',
+    'guest.continue': 'Continue to payment',
+    'guest.signInInstead': 'Sign in instead',
+    'guest.linkNotice': 'If you sign up later with this email, this order will appear in your account.',
+
+    // Admin extras
+    'admin.reviews.menu': 'Admin · Reviews',
+    'admin.reviews.title': 'Review Moderation',
+    'admin.reviews.empty': 'Nothing pending.',
+    'admin.reviews.approve': 'Approve',
+    'admin.reviews.reject': 'Reject',
+    'admin.shipment.update': 'Update shipment',
+    'admin.shipment.saved': 'Shipment updated',
   },
   ro: {
     // Hero section

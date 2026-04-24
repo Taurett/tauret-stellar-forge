@@ -130,8 +130,8 @@ const Cart = () => {
         open={checkoutOpen}
         onClose={() => setCheckoutOpen(false)}
         items={items}
-        customerEmail={user?.email}
-        userId={user?.id}
+        customerEmail={user?.email ?? undefined}
+        userId={user?.id ?? undefined}
       />
     </div>
   );

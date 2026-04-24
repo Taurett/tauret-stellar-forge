@@ -60,43 +60,106 @@ export type Database = {
       }
       orders: {
         Row: {
+          admin_notes: string | null
           amount_total: number
+          carrier: string | null
           created_at: string
           currency: string
           customer_email: string | null
+          delivered_at: string | null
           environment: string
           id: string
           metadata: Json | null
+          shipment_status: string
+          shipped_at: string | null
           status: string
           stripe_session_id: string
+          tracking_number: string | null
+          tracking_url: string | null
           updated_at: string
           user_id: string | null
         }
         Insert: {
+          admin_notes?: string | null
           amount_total?: number
+          carrier?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
+          delivered_at?: string | null
           environment?: string
           id?: string
           metadata?: Json | null
+          shipment_status?: string
+          shipped_at?: string | null
           status?: string
           stripe_session_id: string
+          tracking_number?: string | null
+          tracking_url?: string | null
           updated_at?: string
           user_id?: string | null
         }
         Update: {
+          admin_notes?: string | null
           amount_total?: number
+          carrier?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
+          delivered_at?: string | null
           environment?: string
           id?: string
           metadata?: Json | null
+          shipment_status?: string
+          shipped_at?: string | null
           status?: string
           stripe_session_id?: string
+          tracking_number?: string | null
+          tracking_url?: string | null
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      product_reviews: {
+        Row: {
+          body: string
+          created_at: string
+          display_name: string | null
+          id: string
+          photo_urls: string[]
+          product_id: number
+          rating: number
+          status: Database["public"]["Enums"]["review_status"]
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          photo_urls?: string[]
+          product_id: number
+          rating: number
+          status?: Database["public"]["Enums"]["review_status"]
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          photo_urls?: string[]
+          product_id?: number
+          rating?: number
+          status?: Database["public"]["Enums"]["review_status"]
+          title?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -148,6 +211,27 @@ export type Database = {
         }
         Relationships: []
       }
+      wishlists: {
+        Row: {
+          created_at: string
+          id: string
+          product_id: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          product_id: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          product_id?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -163,6 +247,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      review_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -291,6 +376,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      review_status: ["pending", "approved", "rejected"],
     },
   },
 } as const

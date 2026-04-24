@@ -561,6 +561,76 @@ const translations = {
     'intro.theme.retro.desc': 'Paletă anii ’70 — jucăuș și nostalgic.',
     'intro.theme.avalanche.label': 'Avalanche',
     'intro.theme.avalanche.desc': 'Alb glaciar și albastru de gheață — alpin, curat, proaspăt.',
+
+    // Wishlist
+    'wishlist.kicker': '// Salvate',
+    'wishlist.title': 'Favorite',
+    'wishlist.empty': 'Nu ai favorite încă — apasă inima pe orice produs pentru a-l salva.',
+    'wishlist.add': 'Salvează la favorite',
+    'wishlist.remove': 'Șterge de la favorite',
+    'wishlist.added': 'Salvat la favorite',
+    'wishlist.removed': 'Șters de la favorite',
+    'wishlist.viewProduct': 'Vezi produsul',
+    'wishlist.menu': 'Favorite',
+
+    // Reviews
+    'reviews.heading': 'Recenzii Clienți',
+    'reviews.empty': 'Nicio recenzie încă. Fii primul care împărtășește experiența.',
+    'reviews.write': 'Scrie o recenzie',
+    'reviews.signInToReview': 'Autentifică-te pentru a lăsa o recenzie',
+    'reviews.rating': 'Notă',
+    'reviews.title': 'Titlu (opțional)',
+    'reviews.body': 'Recenzia ta',
+    'reviews.bodyPlaceholder': 'Cum se potrivește? Cum se comportă?',
+    'reviews.photos': 'Adaugă poze (max. 4)',
+    'reviews.submit': 'Trimite recenzia',
+    'reviews.submitting': 'Se trimite…',
+    'reviews.pendingNotice': 'Mulțumim! Recenzia așteaptă aprobarea.',
+    'reviews.yourPending': 'Recenzia ta așteaptă aprobarea.',
+    'reviews.basedOn': 'Pe baza a',
+    'reviews.reviewsLower': 'recenzii',
+
+    // Size guide
+    'sizeGuide.button': 'Ghid Mărimi',
+    'sizeGuide.title': 'Ghid de Mărimi',
+    'sizeGuide.intro': 'Măsurătorile corpului în centimetri. Dacă ești între două mărimi, alege mărimea mai mare pentru un fit lejer.',
+    'sizeGuide.col.size': 'Mărime',
+    'sizeGuide.col.chest': 'Piept',
+    'sizeGuide.col.waist': 'Talie',
+    'sizeGuide.col.hip': 'Șold',
+
+    // Related & recently viewed
+    'related.title': 'Completează Ținuta',
+    'recent.title': 'Vizualizate Recent',
+
+    // Order tracking
+    'tracking.title': 'Livrare',
+    'tracking.status.processing': 'În procesare',
+    'tracking.status.shipped': 'Expediat',
+    'tracking.status.delivered': 'Livrat',
+    'tracking.status.cancelled': 'Anulat',
+    'tracking.carrier': 'Curier',
+    'tracking.number': 'Număr AWB',
+    'tracking.track': 'Urmărește colet',
+    'tracking.shippedOn': 'Expediat în',
+    'tracking.deliveredOn': 'Livrat în',
+
+    // Guest checkout
+    'guest.heading': 'Comandă ca invitat',
+    'guest.subheading': 'Fără cont. Adaugă email-ul tău și îți trimitem chitanța.',
+    'guest.emailLabel': 'Email pentru chitanță',
+    'guest.continue': 'Continuă către plată',
+    'guest.signInInstead': 'Autentifică-te în schimb',
+    'guest.linkNotice': 'Dacă te înregistrezi mai târziu cu acest email, comanda va apărea în contul tău.',
+
+    // Admin extras
+    'admin.reviews.menu': 'Admin · Recenzii',
+    'admin.reviews.title': 'Moderare Recenzii',
+    'admin.reviews.empty': 'Nimic în așteptare.',
+    'admin.reviews.approve': 'Aprobă',
+    'admin.reviews.reject': 'Respinge',
+    'admin.shipment.update': 'Actualizează livrarea',
+    'admin.shipment.saved': 'Livrare actualizată',
   }
 };
 

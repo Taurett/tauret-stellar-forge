@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck } from "lucide-react";
+import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck, Heart, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -60,20 +60,34 @@ const UserMenu = () => {
           <div className="text-muted-foreground truncate font-normal">{user.email}</div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link to="/orders">
             <Package className="w-4 h-4 mr-2" />
             My Orders
           </Link>
         </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to="/wishlist">
+            <Heart className="w-4 h-4 mr-2" />
+            {t("wishlist.menu")}
+          </Link>
+        </DropdownMenuItem>
         {isAdmin && (
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link to="/admin/orders">
-              <ShieldCheck className="w-4 h-4 mr-2" />
-              Admin · Orders
-            </Link>
-          </DropdownMenuItem>
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/orders">
+                <ShieldCheck className="w-4 h-4 mr-2" />
+                Admin · Orders
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/reviews">
+                <MessageSquare className="w-4 h-4 mr-2" />
+                {t("admin.reviews.menu")}
+              </Link>
+            </DropdownMenuItem>
+          </>
         )}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">

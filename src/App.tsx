@@ -21,6 +21,8 @@ const CheckoutReturn  = lazy(() => import("./pages/CheckoutReturn"));
 const Orders          = lazy(() => import("./pages/Orders"));
 const OrderDetail     = lazy(() => import("./pages/OrderDetail"));
 const AdminOrders     = lazy(() => import("./pages/AdminOrders"));
+const Wishlist        = lazy(() => import("./pages/Wishlist"));
+const AdminReviews    = lazy(() => import("./pages/AdminReviews"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -53,6 +55,8 @@ const App = () => (
                       <Route path="/orders" element={<Orders />} />
                       <Route path="/orders/:id" element={<OrderDetail />} />
                       <Route path="/admin/orders" element={<AdminOrders />} />
+                      <Route path="/admin/reviews" element={<AdminReviews />} />
+                      <Route path="/wishlist" element={<Wishlist />} />
                       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                       <Route path="*" element={<NotFound />} />
                     </Routes>

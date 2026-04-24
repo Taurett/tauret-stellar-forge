@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,9 +11,15 @@ import { toast } from "@/hooks/use-toast";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
+import WishlistHeart from "@/components/WishlistHeart";
+import SizeGuide from "@/components/SizeGuide";
+import RelatedProducts from "@/components/RelatedProducts";
+import RecentlyViewed from "@/components/RecentlyViewed";
+import ProductReviews from "@/components/ProductReviews";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { useSeo } from "@/hooks/useSeo";
 
 interface ProductData {
@@ -65,10 +71,16 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const { t, formatPrice, language } = useLanguage();
   const { theme } = useTheme();
+  const { track: trackRecent } = useRecentlyViewed();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
 
   const base = productsData.find(p => p.id === Number(id));
+
+  // Push every visited product into the recently-viewed strip.
+  useEffect(() => {
+    if (base) trackRecent(base.id);
+  }, [base, trackRecent]);
 
   // Theme/copy/derived values — safe even when base is missing (we guard below).
   const copy = base ? getProductCopy(base.id, language, theme) : null;

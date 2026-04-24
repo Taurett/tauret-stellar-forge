@@ -42,7 +42,9 @@ serve(async (req) => {
     const lookupKeys = (items as LineItemInput[]).map((i) => i.priceId);
     const prices = await stripe.prices.list({ lookup_keys: lookupKeys, limit: 100 });
 
-    const priceMap = new Map(prices.data.map((p) => [p.lookup_key, p]));
+    const priceMap = new Map<string, { id: string }>(
+      prices.data.map((p: { id: string; lookup_key: string | null }) => [p.lookup_key ?? "", { id: p.id }])
+    );
     const line_items = (items as LineItemInput[]).map((i) => {
       const price = priceMap.get(i.priceId);
       if (!price) throw new Error(`Price not found: ${i.priceId}`);

@@ -224,9 +224,12 @@ const ProductDetail = () => {
             {/* Info */}
             <div className="space-y-6">
               <div>
-                <Badge className="bg-gradient-neon text-primary-foreground font-tech text-[10px] uppercase tracking-[0.25em] mb-4 hover:bg-gradient-neon">
-                  {categoryLabel}
-                </Badge>
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <Badge className="bg-gradient-neon text-primary-foreground font-tech text-[10px] uppercase tracking-[0.25em] hover:bg-gradient-neon">
+                    {categoryLabel}
+                  </Badge>
+                  <WishlistHeart productId={product.id} productName={product.name} size="md" />
+                </div>
                 <h1 className="font-display text-4xl md:text-5xl font-black text-foreground mb-4 uppercase">
                   {product.name}
                 </h1>
@@ -246,7 +249,10 @@ const ProductDetail = () => {
 
               {availableSizes.length > 0 && (
                 <div>
-                  <h3 className="font-tech text-xs uppercase tracking-[0.25em] text-primary mb-4">{t('product.selectSize')}</h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-tech text-xs uppercase tracking-[0.25em] text-primary">{t('product.selectSize')}</h3>
+                    <SizeGuide availableSizes={availableSizes} />
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {availableSizes.map((size) => (
                       <button
@@ -331,6 +337,15 @@ const ProductDetail = () => {
               </TabsContent>
             </Tabs>
           </div>
+
+          {/* Reviews */}
+          <ProductReviews productId={product.id} />
+
+          {/* Related products (same category) */}
+          <RelatedProducts currentId={product.id} category={product.category} />
+
+          {/* Recently viewed (excludes current) */}
+          <RecentlyViewed excludeId={product.id} />
         </div>
       </section>
     </div>

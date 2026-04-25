@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck, Heart, MessageSquare } from "lucide-react";
+import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck, Heart, MessageSquare, Boxes, Truck, RotateCcw, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -76,16 +76,22 @@ const UserMenu = () => {
           <>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild className="cursor-pointer">
-              <Link to="/admin/orders">
-                <ShieldCheck className="w-4 h-4 mr-2" />
-                Admin · Orders
-              </Link>
+              <Link to="/admin/analytics"><BarChart3 className="w-4 h-4 mr-2" /> {t("admin.analytics.menu")}</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className="cursor-pointer">
-              <Link to="/admin/reviews">
-                <MessageSquare className="w-4 h-4 mr-2" />
-                {t("admin.reviews.menu")}
-              </Link>
+              <Link to="/admin/orders"><ShieldCheck className="w-4 h-4 mr-2" /> Admin · Orders</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/inventory"><Boxes className="w-4 h-4 mr-2" /> {t("admin.inventory.menu")}</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/shipping"><Truck className="w-4 h-4 mr-2" /> {t("admin.shipping.menu")}</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/returns"><RotateCcw className="w-4 h-4 mr-2" /> {t("admin.returns.menu")}</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link to="/admin/reviews"><MessageSquare className="w-4 h-4 mr-2" /> {t("admin.reviews.menu")}</Link>
             </DropdownMenuItem>
           </>
         )}

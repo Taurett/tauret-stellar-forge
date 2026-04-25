@@ -21,6 +21,10 @@ const CheckoutReturn  = lazy(() => import("./pages/CheckoutReturn"));
 const Orders          = lazy(() => import("./pages/Orders"));
 const OrderDetail     = lazy(() => import("./pages/OrderDetail"));
 const AdminOrders     = lazy(() => import("./pages/AdminOrders"));
+const AdminInventory  = lazy(() => import("./pages/AdminInventory"));
+const AdminShipping   = lazy(() => import("./pages/AdminShipping"));
+const AdminReturns    = lazy(() => import("./pages/AdminReturns"));
+const AdminAnalytics  = lazy(() => import("./pages/AdminAnalytics"));
 const Wishlist        = lazy(() => import("./pages/Wishlist"));
 const AdminReviews    = lazy(() => import("./pages/AdminReviews"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
@@ -55,6 +59,10 @@ const App = () => (
                       <Route path="/orders" element={<Orders />} />
                       <Route path="/orders/:id" element={<OrderDetail />} />
                       <Route path="/admin/orders" element={<AdminOrders />} />
+                      <Route path="/admin/inventory" element={<AdminInventory />} />
+                      <Route path="/admin/shipping" element={<AdminShipping />} />
+                      <Route path="/admin/returns" element={<AdminReturns />} />
+                      <Route path="/admin/analytics" element={<AdminAnalytics />} />
                       <Route path="/admin/reviews" element={<AdminReviews />} />
                       <Route path="/wishlist" element={<Wishlist />} />
                       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

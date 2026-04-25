@@ -11,13 +11,20 @@ interface LineItemInput {
   quantity?: number;
 }
 
+interface ShippingInput {
+  zoneId?: string;
+  zoneName?: string;
+  amountCents?: number;
+  currency?: string;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { items, customerEmail, userId, returnUrl, environment } = await req.json();
+    const { items, customerEmail, userId, returnUrl, environment, shipping } = await req.json();
 
     if (!Array.isArray(items) || items.length === 0) {
       return new Response(JSON.stringify({ error: "items array is required" }), {
@@ -43,7 +50,7 @@ serve(async (req) => {
     const prices = await stripe.prices.list({ lookup_keys: lookupKeys, limit: 100 });
 
     const priceMap = new Map<string, { id: string }>(
-      prices.data.map((p: { id: string; lookup_key: string | null }) => [p.lookup_key ?? "", { id: p.id }])
+      prices.data.map((p: { id: string; lookup_key: string | null }) => [p.lookup_key ?? "", { id: p.id }]),
     );
     const line_items = (items as LineItemInput[]).map((i) => {
       const price = priceMap.get(i.priceId);
@@ -51,13 +58,37 @@ serve(async (req) => {
       return { price: price.id, quantity: i.quantity || 1 };
     });
 
+    // Optional shipping option — converted into a Stripe shipping_rate_data entry.
+    const shippingOptions = (() => {
+      const s = shipping as ShippingInput | undefined;
+      if (!s || typeof s.amountCents !== "number" || s.amountCents < 0) return undefined;
+      return [
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: {
+              amount: Math.round(s.amountCents),
+              currency: (s.currency || "usd").toLowerCase(),
+            },
+            display_name: s.zoneName || "Shipping",
+          },
+        },
+      ];
+    })();
+
+    const metadata: Record<string, string> = {};
+    if (userId) metadata.userId = userId;
+    if (shipping?.zoneId) metadata.shipping_zone_id = shipping.zoneId;
+    if (shipping?.zoneName) metadata.shipping_zone_name = shipping.zoneName;
+
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
       ui_mode: "embedded",
       return_url: returnUrl || `${req.headers.get("origin")}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
       ...(customerEmail && { customer_email: customerEmail }),
-      ...(userId && { metadata: { userId } }),
+      ...(Object.keys(metadata).length > 0 && { metadata }),
+      ...(shippingOptions && { shipping_options: shippingOptions }),
     });
 
     return new Response(JSON.stringify({ clientSecret: session.client_secret }), {

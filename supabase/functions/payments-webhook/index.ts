@@ -66,6 +66,10 @@ serve(async (req) => {
       });
 
       const userId = session.metadata?.userId || null;
+      const shippingZoneId = session.metadata?.shipping_zone_id || null;
+      const shippingZoneName = session.metadata?.shipping_zone_name || null;
+      const shippingAmount = full.shipping_cost?.amount_total ?? 0;
+      const shippingAddress = session.shipping_details?.address ?? session.customer_details?.address ?? null;
       const lineItems = full.line_items?.data ?? [];
 
       // Upsert order (idempotent on stripe_session_id)
@@ -81,6 +85,10 @@ serve(async (req) => {
             status: session.payment_status === "paid" ? "completed" : (session.payment_status || "pending"),
             environment: env,
             metadata: session.metadata ?? {},
+            shipping_zone_id: shippingZoneId,
+            shipping_zone_name: shippingZoneName,
+            shipping_amount: shippingAmount,
+            shipping_address: shippingAddress,
           },
           { onConflict: "stripe_session_id" },
         )

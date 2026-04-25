@@ -103,7 +103,7 @@ const CheckoutModal = ({
           </DialogDescription>
         </VisuallyHidden>
 
-        {!showStripe ? (
+        {!emailReady ? (
           <form onSubmit={handleGuestContinue} className="p-4 sm:p-6 space-y-5">
             <div>
               <div className="font-tech text-[10px] uppercase tracking-[0.4em] text-primary mb-2">
@@ -155,12 +155,25 @@ const CheckoutModal = ({
               </Link>
             </div>
           </form>
+        ) : !showStripe ? (
+          <div className="p-4 sm:p-6 space-y-5">
+            <div>
+              <div className="font-tech text-[10px] uppercase tracking-[0.4em] text-primary mb-2">
+                // {t("shipping.choose")}
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl font-black mb-2">
+                <span className="text-aurora">{t("shipping.choose")}</span>
+              </h2>
+            </div>
+            <ShippingZoneSelector selectedZoneId={shippingZone?.id ?? null} onChange={setShippingZone} />
+          </div>
         ) : (
           <StripeEmbeddedCheckout
             items={lineItems}
             customerEmail={effectiveEmail}
             userId={userId}
             returnUrl={`${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`}
+            shipping={shippingPayload}
           />
         )}
       </DialogContent>

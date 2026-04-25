@@ -81,7 +81,8 @@ const CheckoutModal = ({
   };
 
   const effectiveEmail = customerEmail ?? guestEmailConfirmed ?? undefined;
-  const showStripe = (!isGuest || !!guestEmailConfirmed) && !!shippingZone;
+  const emailReady = !isGuest || !!guestEmailConfirmed;
+  const showStripe = emailReady && !!shippingZone;
   const shippingPayload: CheckoutShipping | undefined = shippingZone
     ? {
         zoneId: shippingZone.id,

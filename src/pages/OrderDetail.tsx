@@ -11,6 +11,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import OrderReceipt, { ReceiptOrder } from "@/components/OrderReceipt";
+import ReturnRequestPanel from "@/components/ReturnRequestPanel";
 import { useSeo } from "@/hooks/useSeo";
 
 const OrderDetail = () => {
@@ -68,7 +69,10 @@ const OrderDetail = () => {
             </Link>
           </div>
         ) : (
-          <OrderReceipt order={order} />
+          <>
+            <OrderReceipt order={order} />
+            <ReturnRequestPanel orderId={order.id} customerEmail={order.customer_email ?? null} />
+          </>
         )}
       </main>
     </div>

@@ -16,10 +16,13 @@ import SizeGuide from "@/components/SizeGuide";
 import RelatedProducts from "@/components/RelatedProducts";
 import RecentlyViewed from "@/components/RecentlyViewed";
 import ProductReviews from "@/components/ProductReviews";
+import VariantPicker from "@/components/VariantPicker";
+import StockBadge from "@/components/StockBadge";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
+import { useProductVariants } from "@/hooks/useProductVariants";
 import { useSeo } from "@/hooks/useSeo";
 
 interface ProductData {
@@ -74,6 +77,7 @@ const ProductDetail = () => {
   const { track: trackRecent } = useRecentlyViewed();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
   const base = productsData.find(p => p.id === Number(id));
 
@@ -88,6 +92,18 @@ const ProductDetail = () => {
   const categoryLabel = product ? t(getCategoryLabelKey(product.category, theme)) : "";
   const images = product ? product.imageKeys.map(k => getProductImage(k, theme)) : [];
   const availableSizes = product ? getSizesFor(product.id) : [];
+
+  // Admin-defined variants (color/material/size + stock). Optional — if
+  // none exist for the product, the legacy size-only flow is used.
+  const { variants } = useProductVariants(base?.id ?? null);
+  const selectedVariant = variants.find((v) => v.id === selectedVariantId) ?? null;
+  // Aggregate stock for the product (sum of all active variants).
+  const totalStock = variants
+    .filter((v) => v.is_active)
+    .reduce((s, v) => s + v.stock_count, 0);
+  const hasVariants = variants.length > 0;
+  const isOutOfStock = hasVariants && totalStock === 0;
+  const lowThresholdAgg = variants[0]?.low_stock_threshold ?? 5;
 
   // Per-product SEO + JSON-LD Product schema for rich Google results.
   // Hook MUST run on every render — call it before any early return.

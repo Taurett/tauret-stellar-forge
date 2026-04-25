@@ -256,12 +256,23 @@ const ProductDetail = () => {
                   </div>
                   <span className="font-tech text-muted-foreground">({product.reviews} {t('product.reviews')})</span>
                 </div>
-                <p className="font-display text-5xl font-bold text-aurora mb-6">{formatPrice(product.price)}</p>
+                <div className="flex items-center gap-3 mb-6 flex-wrap">
+                  <p className="font-display text-5xl font-bold text-aurora">{formatPrice(product.price)}</p>
+                  {hasVariants && <StockBadge stock={selectedVariant?.stock_count ?? totalStock} lowThreshold={lowThresholdAgg} />}
+                </div>
               </div>
 
               <div className="border-t border-primary/20 pt-6">
                 <p className="text-muted-foreground text-base leading-relaxed">{product.description}</p>
               </div>
+
+              {hasVariants && (
+                <VariantPicker
+                  variants={variants}
+                  selectedVariantId={selectedVariantId}
+                  onSelect={setSelectedVariantId}
+                />
+              )}
 
               {availableSizes.length > 0 && (
                 <div>
@@ -290,10 +301,11 @@ const ProductDetail = () => {
               <Button
                 size="lg"
                 onClick={handleAddToCart}
-                className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-base py-7 clip-angle hover:shadow-neon-cyan transition-all"
+                disabled={isOutOfStock}
+                className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-base py-7 clip-angle hover:shadow-neon-cyan transition-all disabled:opacity-50"
               >
                 <ShoppingCart className="h-5 w-5 mr-2" />
-                {t('product.addToCart')}
+                {isOutOfStock ? (t("stock.out") || "Out of stock") : t('product.addToCart')}
               </Button>
 
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-primary/20">

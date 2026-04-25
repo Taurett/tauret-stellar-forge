@@ -7,11 +7,19 @@ export interface CheckoutLineItem {
   quantity?: number;
 }
 
+export interface CheckoutShipping {
+  zoneId: string;
+  zoneName: string;
+  amountCents: number;
+  currency: string;
+}
+
 interface StripeEmbeddedCheckoutProps {
   items: CheckoutLineItem[];
   customerEmail?: string;
   userId?: string;
   returnUrl?: string;
+  shipping?: CheckoutShipping;
 }
 
 export function StripeEmbeddedCheckout({
@@ -19,6 +27,7 @@ export function StripeEmbeddedCheckout({
   customerEmail,
   userId,
   returnUrl,
+  shipping,
 }: StripeEmbeddedCheckoutProps) {
   const fetchClientSecret = async (): Promise<string> => {
     const { data, error } = await supabase.functions.invoke("create-checkout", {
@@ -28,6 +37,7 @@ export function StripeEmbeddedCheckout({
         userId,
         returnUrl,
         environment: getStripeEnvironment(),
+        ...(shipping && { shipping }),
       },
     });
     if (error || !data?.clientSecret) {

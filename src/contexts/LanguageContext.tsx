@@ -327,6 +327,34 @@ const translations = {
     'admin.reviews.reject': 'Reject',
     'admin.shipment.update': 'Update shipment',
     'admin.shipment.saved': 'Shipment updated',
+    'admin.inventory.menu': 'Admin · Inventory',
+    'admin.shipping.menu': 'Admin · Shipping',
+    'admin.returns.menu': 'Admin · Returns',
+    'admin.analytics.menu': 'Admin · Analytics',
+
+    // Variants
+    'variant.color': 'Color',
+    'variant.material': 'Material',
+
+    // Stock
+    'stock.out': 'Out of stock',
+    'stock.low': 'Only {n} left',
+    'stock.inStock': 'In stock',
+
+    // Shipping
+    'shipping.choose': 'Shipping',
+    'shipping.line': 'Shipping',
+
+    // Returns
+    'returns.title': 'Return request',
+    'returns.startTitle': 'Start a return',
+    'returns.startBlurb': "Tell us what went wrong and we'll process your return as soon as possible.",
+    'returns.reason': 'Reason',
+    'returns.details': 'Details',
+    'returns.photos': 'Photos (up to 3)',
+    'returns.submit': 'Submit return request',
+    'returns.submitted': 'Return request submitted',
+    'returns.refundedNotice': 'Your refund has been processed. It may take 5-10 business days to appear.',
   },
   ro: {
     // Hero section
@@ -631,6 +659,34 @@ const translations = {
     'admin.reviews.reject': 'Respinge',
     'admin.shipment.update': 'Actualizează livrarea',
     'admin.shipment.saved': 'Livrare actualizată',
+    'admin.inventory.menu': 'Admin · Stoc',
+    'admin.shipping.menu': 'Admin · Livrare',
+    'admin.returns.menu': 'Admin · Retururi',
+    'admin.analytics.menu': 'Admin · Statistici',
+
+    // Variants
+    'variant.color': 'Culoare',
+    'variant.material': 'Material',
+
+    // Stock
+    'stock.out': 'Stoc epuizat',
+    'stock.low': 'Doar {n} rămase',
+    'stock.inStock': 'În stoc',
+
+    // Shipping
+    'shipping.choose': 'Livrare',
+    'shipping.line': 'Livrare',
+
+    // Returns
+    'returns.title': 'Cerere de retur',
+    'returns.startTitle': 'Inițiază un retur',
+    'returns.startBlurb': 'Spune-ne ce s-a întâmplat și vom procesa returul cât mai repede.',
+    'returns.reason': 'Motiv',
+    'returns.details': 'Detalii',
+    'returns.photos': 'Fotografii (până la 3)',
+    'returns.submit': 'Trimite cererea',
+    'returns.submitted': 'Cererea a fost trimisă',
+    'returns.refundedNotice': 'Rambursarea a fost procesată. Pot trece 5-10 zile lucrătoare.',
   }
 };
 

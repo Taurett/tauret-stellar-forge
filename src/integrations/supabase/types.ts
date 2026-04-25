@@ -25,6 +25,8 @@ export type Database = {
           stripe_price_id: string | null
           subtotal: number
           unit_amount: number
+          variant_id: string | null
+          variant_label: string | null
         }
         Insert: {
           created_at?: string
@@ -36,6 +38,8 @@ export type Database = {
           stripe_price_id?: string | null
           subtotal?: number
           unit_amount?: number
+          variant_id?: string | null
+          variant_label?: string | null
         }
         Update: {
           created_at?: string
@@ -47,6 +51,8 @@ export type Database = {
           stripe_price_id?: string | null
           subtotal?: number
           unit_amount?: number
+          variant_id?: string | null
+          variant_label?: string | null
         }
         Relationships: [
           {
@@ -72,6 +78,10 @@ export type Database = {
           metadata: Json | null
           shipment_status: string
           shipped_at: string | null
+          shipping_address: Json | null
+          shipping_amount: number
+          shipping_zone_id: string | null
+          shipping_zone_name: string | null
           status: string
           stripe_session_id: string
           tracking_number: string | null
@@ -92,6 +102,10 @@ export type Database = {
           metadata?: Json | null
           shipment_status?: string
           shipped_at?: string | null
+          shipping_address?: Json | null
+          shipping_amount?: number
+          shipping_zone_id?: string | null
+          shipping_zone_name?: string | null
           status?: string
           stripe_session_id: string
           tracking_number?: string | null
@@ -112,6 +126,10 @@ export type Database = {
           metadata?: Json | null
           shipment_status?: string
           shipped_at?: string | null
+          shipping_address?: Json | null
+          shipping_amount?: number
+          shipping_zone_id?: string | null
+          shipping_zone_name?: string | null
           status?: string
           stripe_session_id?: string
           tracking_number?: string | null
@@ -163,6 +181,60 @@ export type Database = {
         }
         Relationships: []
       }
+      product_variants: {
+        Row: {
+          color: string | null
+          color_hex: string | null
+          created_at: string
+          id: string
+          image_url: string | null
+          is_active: boolean
+          low_stock_threshold: number
+          material: string | null
+          price_override: number | null
+          product_id: number
+          size: string | null
+          sku: string | null
+          sort_order: number
+          stock_count: number
+          updated_at: string
+        }
+        Insert: {
+          color?: string | null
+          color_hex?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          low_stock_threshold?: number
+          material?: string | null
+          price_override?: number | null
+          product_id: number
+          size?: string | null
+          sku?: string | null
+          sort_order?: number
+          stock_count?: number
+          updated_at?: string
+        }
+        Update: {
+          color?: string | null
+          color_hex?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          low_stock_threshold?: number
+          material?: string | null
+          price_override?: number | null
+          product_id?: number
+          size?: string | null
+          sku?: string | null
+          sort_order?: number
+          stock_count?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -187,6 +259,99 @@ export type Database = {
           id?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      return_requests: {
+        Row: {
+          admin_notes: string | null
+          created_at: string
+          customer_email: string | null
+          details: string | null
+          id: string
+          order_id: string
+          photo_urls: string[]
+          reason: string
+          refund_amount_cents: number | null
+          refund_reference: string | null
+          resolved_at: string | null
+          status: Database["public"]["Enums"]["return_status"]
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string
+          customer_email?: string | null
+          details?: string | null
+          id?: string
+          order_id: string
+          photo_urls?: string[]
+          reason: string
+          refund_amount_cents?: number | null
+          refund_reference?: string | null
+          resolved_at?: string | null
+          status?: Database["public"]["Enums"]["return_status"]
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string
+          customer_email?: string | null
+          details?: string | null
+          id?: string
+          order_id?: string
+          photo_urls?: string[]
+          reason?: string
+          refund_amount_cents?: number | null
+          refund_reference?: string | null
+          resolved_at?: string | null
+          status?: Database["public"]["Enums"]["return_status"]
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      shipping_zones: {
+        Row: {
+          country_codes: string[]
+          created_at: string
+          currency: string
+          description: string | null
+          estimated_days: string | null
+          flat_rate_cents: number
+          id: string
+          is_active: boolean
+          name: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          country_codes?: string[]
+          created_at?: string
+          currency?: string
+          description?: string | null
+          estimated_days?: string | null
+          flat_rate_cents?: number
+          id?: string
+          is_active?: boolean
+          name: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          country_codes?: string[]
+          created_at?: string
+          currency?: string
+          description?: string | null
+          estimated_days?: string | null
+          flat_rate_cents?: number
+          id?: string
+          is_active?: boolean
+          name?: string
+          sort_order?: number
+          updated_at?: string
         }
         Relationships: []
       }
@@ -247,6 +412,12 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      return_status:
+        | "requested"
+        | "approved"
+        | "rejected"
+        | "refunded"
+        | "cancelled"
       review_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
@@ -376,6 +547,13 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      return_status: [
+        "requested",
+        "approved",
+        "rejected",
+        "refunded",
+        "cancelled",
+      ],
       review_status: ["pending", "approved", "rejected"],
     },
   },

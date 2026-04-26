@@ -203,7 +203,7 @@ const AIChatWidget = () => {
           </div>
 
           {/* Messages */}
-          <ScrollArea className="flex-1 px-4 py-3" viewportRef={scrollRef}>
+          <div ref={scrollRef} className="flex-1 px-4 py-3 overflow-y-auto">
             {messages.length === 0 ? (
               <div className="text-center py-8 space-y-3">
                 <Sparkles className="w-10 h-10 text-primary mx-auto" />
@@ -232,7 +232,7 @@ const AIChatWidget = () => {
                 ))}
               </div>
             )}
-          </ScrollArea>
+          </div>
 
           {/* Input */}
           <form

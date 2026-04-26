@@ -125,6 +125,9 @@ const Shop = () => {
   const [pendingProduct, setPendingProduct] = useState<typeof localisedProducts[number] | null>(null);
   const [pendingSize, setPendingSize] = useState<string | null>(null);
 
+  // Quick-view modal target.
+  const [quickViewId, setQuickViewId] = useState<number | null>(null);
+
   const addProductToCart = (product: typeof localisedProducts[number], size: string) => {
     addToCart({
       id: product.id,

@@ -57,10 +57,22 @@ const Index = () => {
       <About />
       <Contact />
 
-      <footer className="border-t border-primary/20 py-8 text-center">
-        <p className="font-tech text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          © 2025 TAURET — Engineered for Athletes
-        </p>
+      <footer className="border-t border-primary/20 py-10 px-4">
+        <div className="max-w-5xl mx-auto space-y-6">
+          <TrustBadges variant="row" />
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-tech text-[11px] uppercase tracking-[0.25em]">
+            <a href="/help" className="text-muted-foreground hover:text-primary transition-colors">
+              {t('footer.help')}
+            </a>
+            <span className="text-primary/30" aria-hidden="true">·</span>
+            <a href="/help#shipping" className="text-muted-foreground hover:text-primary transition-colors">
+              {t('footer.shipping')}
+            </a>
+          </div>
+          <p className="font-tech text-xs uppercase tracking-[0.3em] text-muted-foreground text-center">
+            © 2025 TAURET — Engineered for Athletes
+          </p>
+        </div>
       </footer>
     </div>
   );

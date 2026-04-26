@@ -16,10 +16,6 @@ import { useSeo } from "@/hooks/useSeo";
 
 const Index = () => {
   const { t } = useLanguage();
-
-import { useSeo } from "@/hooks/useSeo";
-
-const Index = () => {
   useSeo({
     title: "TAURET — Futuristic Sportswear for Elite Athletes",
     description:

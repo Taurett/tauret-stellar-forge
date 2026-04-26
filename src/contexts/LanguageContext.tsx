@@ -417,6 +417,55 @@ const translations = {
     // Footer
     'footer.help': 'Help & FAQ',
     'footer.shipping': 'Shipping & Returns',
+
+    // Mobile bottom nav
+    'nav.home': 'Home',
+    'nav.shop': 'Shop',
+    'nav.cart': 'Cart',
+    'nav.wishlist': 'Saved',
+    'nav.account': 'Account',
+
+    // AI Chat assistant
+    'chat.title': 'AI Assistant',
+    'chat.welcome': 'Ask me about products, sizing, shipping or returns.',
+    'chat.placeholder': 'Type your question...',
+    'chat.clear': 'Clear',
+    'chat.error': "Sorry — I couldn't reach the assistant. Please try again.",
+    'chat.open': 'Open chat assistant',
+
+    // Quick view
+    'quickview.title': 'Quick View',
+    'quickview.viewFullDetails': 'View Full Details',
+    'quickview.selectSize': 'Select Size',
+
+    // Compare
+    'compare.title': 'Compare Products',
+    'compare.subtitle': 'Side-by-side comparison of up to 4 products.',
+    'compare.empty': 'No products to compare yet. Add some from the shop.',
+    'compare.add': 'Compare',
+    'compare.remove': 'Remove',
+    'compare.added': 'Added to compare',
+    'compare.removed': 'Removed from compare',
+    'compare.full': 'You can compare up to 4 products',
+    'compare.viewAll': 'View comparison',
+    'compare.clearAll': 'Clear all',
+    'compare.feature.price': 'Price',
+    'compare.feature.rating': 'Rating',
+    'compare.feature.reviews': 'Reviews',
+    'compare.feature.category': 'Category',
+    'compare.feature.sizes': 'Available sizes',
+    'compare.feature.material': 'Material',
+    'compare.feature.features': 'Key features',
+
+    // Back-in-stock
+    'restock.title': 'Notify me when back in stock',
+    'restock.desc': "We'll email you the moment this is restocked.",
+    'restock.placeholder': 'your@email.com',
+    'restock.cta': 'Notify me',
+    'restock.success': "You're on the list. We'll email you as soon as it's available.",
+    'restock.already': 'You are already subscribed for this item.',
+    'restock.invalidEmail': 'Please enter a valid email address.',
+    'restock.error': 'Something went wrong. Please try again.',
   },
   ro: {
     // Hero section

@@ -9,6 +9,13 @@ import SportCategories from "@/components/SportCategories";
 import PromotionalBanner from "@/components/PromotionalBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import WelcomeIntro from "@/components/WelcomeIntro";
+import TrustBadges from "@/components/TrustBadges";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+import { useSeo } from "@/hooks/useSeo";
+
+const Index = () => {
+  const { t } = useLanguage();
 
 import { useSeo } from "@/hooks/useSeo";
 

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck, Heart, MessageSquare, Boxes, Truck, RotateCcw, BarChart3 } from "lucide-react";
+import { LogOut, User as UserIcon, LogIn, Package, ShieldCheck, Heart, MessageSquare, Boxes, Truck, RotateCcw, BarChart3, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -70,6 +70,12 @@ const UserMenu = () => {
           <Link to="/wishlist">
             <Heart className="w-4 h-4 mr-2" />
             {t("wishlist.menu")}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to="/help">
+            <HelpCircle className="w-4 h-4 mr-2" />
+            {t("help.menu")}
           </Link>
         </DropdownMenuItem>
         {isAdmin && (

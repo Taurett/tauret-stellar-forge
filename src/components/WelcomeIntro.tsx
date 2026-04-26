@@ -25,12 +25,19 @@ const WelcomeIntro = () => {
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState<Theme>(theme);
 
-  // Only auto-open on first visit (no cookie yet).
+  // Only auto-open on the very first visit (no cookie yet).
+  // Re-check the cookie inside the timeout in case it was set between mount
+  // and the timer firing (e.g. fast remounts, route transitions).
   useEffect(() => {
-    if (!hasChosenTheme) {
-      const id = window.setTimeout(() => setOpen(true), 250);
-      return () => window.clearTimeout(id);
-    }
+    if (hasChosenTheme) return;
+    if (getCookie('tauret-theme-chosen') === '1') return;
+    const id = window.setTimeout(() => {
+      // Final guard: cookie may have been written just now.
+      if (getCookie('tauret-theme-chosen') !== '1') {
+        setOpen(true);
+      }
+    }, 250);
+    return () => window.clearTimeout(id);
   }, [hasChosenTheme]);
 
   // Lock body scroll while the intro is open.

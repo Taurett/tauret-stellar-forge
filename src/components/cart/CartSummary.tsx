@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import TrustBadges from "@/components/TrustBadges";
 
 interface CartSummaryProps {
   subtotal: number;
@@ -62,6 +63,8 @@ const CartSummary = ({ subtotal, onCheckout }: CartSummaryProps) => {
           </Button>
         </Link>
       </div>
+
+      <TrustBadges variant="grid" className="mt-6" />
     </div>
   );
 };

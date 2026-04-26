@@ -232,6 +232,12 @@ const Shop = () => {
                   key={product.id}
                   className="group relative glass clip-angle-lg overflow-hidden border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-neon-cyan"
                 >
+                  {/* Top-right action stack — wishlist + compare. Always tappable. */}
+                  <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                    <WishlistHeart productId={product.id} productName={product.name} size="sm" />
+                    <CompareToggle productId={product.id} productName={product.name} />
+                  </div>
+
                   <Link to={`/product/${product.id}`}>
                     <div className="relative bg-foreground/5 aspect-square overflow-hidden">
                       <img
@@ -246,6 +252,17 @@ const Shop = () => {
                     </div>
                   </Link>
 
+                  {/* Quick view overlay — appears on hover (desktop) and as a dedicated tap zone on mobile via the button below. */}
+                  <button
+                    type="button"
+                    onClick={() => setQuickViewId(product.id)}
+                    aria-label={`${t('quickview.title')}: ${product.name}`}
+                    className="absolute inset-x-0 bottom-[140px] mx-auto w-fit z-10 px-4 py-2 bg-background/90 backdrop-blur-sm border border-primary/40 text-primary font-tech text-[10px] uppercase tracking-[0.25em] clip-angle opacity-0 group-hover:opacity-100 hover:bg-background hover:border-primary transition-all duration-300 flex items-center gap-2"
+                  >
+                    <Eye className="h-3.5 w-3.5" />
+                    {t('quickview.title')}
+                  </button>
+
                   <div className="p-5">
                     <Link to={`/product/${product.id}`}>
                       <h3 className="font-display font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 min-h-[3rem]">
@@ -258,13 +275,24 @@ const Shop = () => {
                       <span className="font-tech text-xs text-muted-foreground">({product.reviews})</span>
                     </div>
                     <p className="font-display text-2xl font-bold text-foreground mb-4">{formatPrice(product.price)}</p>
-                    <Button
-                      onClick={() => handleAddToCart(product)}
-                      className="w-full bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan clip-angle"
-                    >
-                      <ShoppingCart className="h-4 w-4 mr-2" />
-                      {t('shop.addToCart')}
-                    </Button>
+                    <div className="grid grid-cols-[1fr_auto] gap-2">
+                      <Button
+                        onClick={() => handleAddToCart(product)}
+                        className="bg-gradient-neon text-primary-foreground font-tech font-bold uppercase tracking-widest text-xs hover:shadow-neon-cyan clip-angle"
+                      >
+                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        {t('shop.addToCart')}
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => setQuickViewId(product.id)}
+                        aria-label={t('quickview.title')}
+                        className="border-primary/40 hover:border-primary clip-angle px-3 md:hidden"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               );

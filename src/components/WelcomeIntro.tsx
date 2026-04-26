@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme, type Theme } from "@/contexts/ThemeContext";
 import { useLanguage, type TKey } from "@/contexts/LanguageContext";
+import { getCookie } from "@/lib/cookies";
 import heroCyber from "@/assets/futuristic-hero-bg.jpg";
 import heroWimbledon from "@/assets/hero-wimbledon.jpg";
 import heroArid from "@/assets/hero-arid.jpg";

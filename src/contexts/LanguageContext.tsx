@@ -417,6 +417,55 @@ const translations = {
     // Footer
     'footer.help': 'Help & FAQ',
     'footer.shipping': 'Shipping & Returns',
+
+    // Mobile bottom nav
+    'nav.home': 'Home',
+    'nav.shop': 'Shop',
+    'nav.cart': 'Cart',
+    'nav.wishlist': 'Saved',
+    'nav.account': 'Account',
+
+    // AI Chat assistant
+    'chat.title': 'AI Assistant',
+    'chat.welcome': 'Ask me about products, sizing, shipping or returns.',
+    'chat.placeholder': 'Type your question...',
+    'chat.clear': 'Clear',
+    'chat.error': "Sorry — I couldn't reach the assistant. Please try again.",
+    'chat.open': 'Open chat assistant',
+
+    // Quick view
+    'quickview.title': 'Quick View',
+    'quickview.viewFullDetails': 'View Full Details',
+    'quickview.selectSize': 'Select Size',
+
+    // Compare
+    'compare.title': 'Compare Products',
+    'compare.subtitle': 'Side-by-side comparison of up to 4 products.',
+    'compare.empty': 'No products to compare yet. Add some from the shop.',
+    'compare.add': 'Compare',
+    'compare.remove': 'Remove',
+    'compare.added': 'Added to compare',
+    'compare.removed': 'Removed from compare',
+    'compare.full': 'You can compare up to 4 products',
+    'compare.viewAll': 'View comparison',
+    'compare.clearAll': 'Clear all',
+    'compare.feature.price': 'Price',
+    'compare.feature.rating': 'Rating',
+    'compare.feature.reviews': 'Reviews',
+    'compare.feature.category': 'Category',
+    'compare.feature.sizes': 'Available sizes',
+    'compare.feature.material': 'Material',
+    'compare.feature.features': 'Key features',
+
+    // Back-in-stock
+    'restock.title': 'Notify me when back in stock',
+    'restock.desc': "We'll email you the moment this is restocked.",
+    'restock.placeholder': 'your@email.com',
+    'restock.cta': 'Notify me',
+    'restock.success': "You're on the list. We'll email you as soon as it's available.",
+    'restock.already': 'You are already subscribed for this item.',
+    'restock.invalidEmail': 'Please enter a valid email address.',
+    'restock.error': 'Something went wrong. Please try again.',
   },
   ro: {
     // Hero section
@@ -811,6 +860,55 @@ const translations = {
     // Footer
     'footer.help': 'Ajutor & Întrebări',
     'footer.shipping': 'Livrare & Retururi',
+
+    // Mobile bottom nav
+    'nav.home': 'Acasă',
+    'nav.shop': 'Magazin',
+    'nav.cart': 'Coș',
+    'nav.wishlist': 'Salvate',
+    'nav.account': 'Cont',
+
+    // AI Chat assistant
+    'chat.title': 'Asistent AI',
+    'chat.welcome': 'Întreabă-mă despre produse, mărimi, livrare sau retururi.',
+    'chat.placeholder': 'Scrie întrebarea ta...',
+    'chat.clear': 'Șterge',
+    'chat.error': 'Ne pare rău — nu am putut contacta asistentul. Te rugăm să încerci din nou.',
+    'chat.open': 'Deschide asistentul de chat',
+
+    // Quick view
+    'quickview.title': 'Vizualizare Rapidă',
+    'quickview.viewFullDetails': 'Vezi Detalii Complete',
+    'quickview.selectSize': 'Selectează Mărimea',
+
+    // Compare
+    'compare.title': 'Compară Produse',
+    'compare.subtitle': 'Comparație lângă lângă a până la 4 produse.',
+    'compare.empty': 'Niciun produs de comparat încă. Adaugă unele din magazin.',
+    'compare.add': 'Compară',
+    'compare.remove': 'Elimină',
+    'compare.added': 'Adăugat la comparație',
+    'compare.removed': 'Eliminat din comparație',
+    'compare.full': 'Poți compara până la 4 produse',
+    'compare.viewAll': 'Vezi comparația',
+    'compare.clearAll': 'Șterge tot',
+    'compare.feature.price': 'Preț',
+    'compare.feature.rating': 'Rating',
+    'compare.feature.reviews': 'Recenzii',
+    'compare.feature.category': 'Categorie',
+    'compare.feature.sizes': 'Mărimi disponibile',
+    'compare.feature.material': 'Material',
+    'compare.feature.features': 'Caracteristici cheie',
+
+    // Back-in-stock
+    'restock.title': 'Anunță-mă când revine în stoc',
+    'restock.desc': 'Îți trimitem email în momentul în care produsul este reaprovizionat.',
+    'restock.placeholder': 'email@exemplu.com',
+    'restock.cta': 'Anunță-mă',
+    'restock.success': 'Ești pe listă. Îți trimitem email imediat ce devine disponibil.',
+    'restock.already': 'Ești deja abonat pentru acest produs.',
+    'restock.invalidEmail': 'Te rugăm să introduci o adresă de email validă.',
+    'restock.error': 'A apărut o eroare. Te rugăm să încerci din nou.',
   }
 };
 

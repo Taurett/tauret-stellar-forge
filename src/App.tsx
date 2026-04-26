@@ -10,6 +10,9 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PaymentTestModeBanner } from "./components/PaymentTestModeBanner";
 import ErrorBoundary from "./components/ErrorBoundary";
+import MobileBottomNav from "./components/MobileBottomNav";
+import AIChatWidget from "./components/AIChatWidget";
+import CompareTray from "./components/CompareTray";
 
 // Code-split routes — keeps the initial bundle (Index/landing) lean.
 const Index           = lazy(() => import("./pages/Index"));
@@ -28,6 +31,7 @@ const AdminAnalytics  = lazy(() => import("./pages/AdminAnalytics"));
 const Wishlist        = lazy(() => import("./pages/Wishlist"));
 const AdminReviews    = lazy(() => import("./pages/AdminReviews"));
 const Help            = lazy(() => import("./pages/Help"));
+const Compare         = lazy(() => import("./pages/Compare"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -67,11 +71,15 @@ const App = () => (
                       <Route path="/admin/reviews" element={<AdminReviews />} />
                       <Route path="/wishlist" element={<Wishlist />} />
                       <Route path="/help" element={<Help />} />
+                      <Route path="/compare" element={<Compare />} />
                       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
                 </ErrorBoundary>
+                <CompareTray />
+                <AIChatWidget />
+                <MobileBottomNav />
               </TooltipProvider>
             </CartProvider>
           </AuthProvider>

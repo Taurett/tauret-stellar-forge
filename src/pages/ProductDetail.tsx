@@ -18,6 +18,7 @@ import RecentlyViewed from "@/components/RecentlyViewed";
 import ProductReviews from "@/components/ProductReviews";
 import VariantPicker from "@/components/VariantPicker";
 import StockBadge from "@/components/StockBadge";
+import BackInStockSubscribe from "@/components/BackInStockSubscribe";
 import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
@@ -307,6 +308,13 @@ const ProductDetail = () => {
                 <ShoppingCart className="h-5 w-5 mr-2" />
                 {isOutOfStock ? (t("stock.out") || "Out of stock") : t('product.addToCart')}
               </Button>
+
+              {isOutOfStock && (
+                <BackInStockSubscribe
+                  productId={product.id}
+                  variantId={selectedVariantId}
+                />
+              )}
 
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-primary/20">
                 <div className="glass clip-angle p-4 text-center border border-primary/20">

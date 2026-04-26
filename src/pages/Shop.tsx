@@ -167,7 +167,7 @@ const Shop = () => {
   }, [localisedProducts, selectedCategory, searchTerm]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-0">
       <SearchBar />
       <LanguageSwitcher />
       <ThemeToggle />
@@ -355,6 +355,12 @@ const Shop = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <ProductQuickView
+        productId={quickViewId}
+        open={quickViewId !== null}
+        onClose={() => setQuickViewId(null)}
+      />
     </div>
   );
 };

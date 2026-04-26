@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-import { Search, ShoppingCart, Star, ArrowLeft } from "lucide-react";
+import { Search, ShoppingCart, Star, ArrowLeft, Eye } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -18,6 +18,9 @@ import { getProductImage, type ProductImageKey } from "@/lib/productImages";
 import { getProductCopy, getCategoryLabelKey } from "@/lib/productI18n";
 import { getSizesFor } from "@/lib/productSizes";
 import { useSeo } from "@/hooks/useSeo";
+import WishlistHeart from "@/components/WishlistHeart";
+import CompareToggle from "@/components/CompareToggle";
+import ProductQuickView from "@/components/ProductQuickView";
 
 // Clothing-only catalog — image keys are resolved per active theme.
 const products: Array<{

@@ -859,8 +859,6 @@ const translations = {
 
     // Footer
     'footer.help': 'Ajutor & Întrebări',
-    // Footer
-    'footer.help': 'Ajutor & Întrebări',
     'footer.shipping': 'Livrare & Retururi',
 
     // Mobile bottom nav

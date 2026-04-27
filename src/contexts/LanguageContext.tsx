@@ -466,6 +466,55 @@ const translations = {
     'restock.already': 'You are already subscribed for this item.',
     'restock.invalidEmail': 'Please enter a valid email address.',
     'restock.error': 'Something went wrong. Please try again.',
+
+    // Product Q&A
+    'qa.title': 'Questions & Answers',
+    'qa.question': 'question',
+    'qa.questions': 'questions',
+    'qa.askLabel': 'Ask a question about this product',
+    'qa.askPlaceholder': 'What do you want to know?',
+    'qa.ask': 'Ask Question',
+    'qa.submitting': 'Submitting…',
+    'qa.signInToAsk': 'Sign in to ask a question.',
+    'qa.signIn': 'Sign In',
+    'qa.noQuestions': 'No questions yet. Be the first to ask!',
+    'qa.anon': 'Customer',
+    'qa.official': 'Official',
+    'qa.reply': 'Reply',
+    'qa.cancel': 'Cancel',
+    'qa.submitAnswer': 'Submit Answer',
+    'qa.answerPlaceholder': 'Share what you know…',
+    'qa.tooShort': 'Question too short',
+    'qa.submitError': 'Failed to submit',
+    'qa.submitted': 'Question submitted',
+    'qa.submittedDesc': 'It will appear once approved by our team.',
+    'qa.answerSubmitted': 'Answer submitted',
+
+    // Bundle deals
+    'bundle.deals': 'Bundle Deals',
+    'bundle.buy': 'Buy',
+    'bundle.off': 'off',
+
+    // Wishlist sharing
+    'share.title': 'Share your wishlist',
+    'share.desc': "Get a public link friends and family can view to see what you'd love.",
+    'share.create': 'Create Share Link',
+    'share.share': 'Share',
+    'share.disable': 'Disable',
+    'share.enable': 'Enable',
+    'share.regenerate': 'Reset Link',
+    'share.copied': 'Link copied',
+    'share.created': 'Share link created',
+    'share.error': 'Failed to create share',
+    'share.disabled': 'Disabled',
+    'share.nativeTitle': 'My TAURET wishlist',
+    'share.pageTitle': 'Shared wishlist',
+    'share.giftHints': 'Gift Hints',
+    'share.notFound': 'This wishlist is no longer available.',
+    'share.empty': 'This wishlist is currently empty.',
+
+    // Invoice
+    'invoice.download': 'Download PDF',
   },
   ro: {
     // Hero section
@@ -909,6 +958,55 @@ const translations = {
     'restock.already': 'Ești deja abonat pentru acest produs.',
     'restock.invalidEmail': 'Te rugăm să introduci o adresă de email validă.',
     'restock.error': 'A apărut o eroare. Te rugăm să încerci din nou.',
+
+    // Product Q&A
+    'qa.title': 'Întrebări și răspunsuri',
+    'qa.question': 'întrebare',
+    'qa.questions': 'întrebări',
+    'qa.askLabel': 'Pune o întrebare despre acest produs',
+    'qa.askPlaceholder': 'Ce vrei să afli?',
+    'qa.ask': 'Trimite întrebarea',
+    'qa.submitting': 'Se trimite…',
+    'qa.signInToAsk': 'Autentifică-te pentru a pune o întrebare.',
+    'qa.signIn': 'Autentificare',
+    'qa.noQuestions': 'Încă nu există întrebări. Fii primul!',
+    'qa.anon': 'Client',
+    'qa.official': 'Oficial',
+    'qa.reply': 'Răspunde',
+    'qa.cancel': 'Anulează',
+    'qa.submitAnswer': 'Trimite răspunsul',
+    'qa.answerPlaceholder': 'Împărtășește ce știi…',
+    'qa.tooShort': 'Întrebare prea scurtă',
+    'qa.submitError': 'Trimitere eșuată',
+    'qa.submitted': 'Întrebare trimisă',
+    'qa.submittedDesc': 'Va apărea după aprobarea echipei noastre.',
+    'qa.answerSubmitted': 'Răspuns trimis',
+
+    // Bundle deals
+    'bundle.deals': 'Oferte pachete',
+    'bundle.buy': 'Cumpără',
+    'bundle.off': 'reducere',
+
+    // Wishlist sharing
+    'share.title': 'Distribuie lista de favorite',
+    'share.desc': 'Obține un link public pe care prietenii îl pot vedea pentru idei de cadouri.',
+    'share.create': 'Creează link de partajare',
+    'share.share': 'Distribuie',
+    'share.disable': 'Dezactivează',
+    'share.enable': 'Activează',
+    'share.regenerate': 'Resetează linkul',
+    'share.copied': 'Link copiat',
+    'share.created': 'Link de partajare creat',
+    'share.error': 'Eroare la creare',
+    'share.disabled': 'Dezactivat',
+    'share.nativeTitle': 'Lista mea TAURET',
+    'share.pageTitle': 'Listă partajată',
+    'share.giftHints': 'Idei cadouri',
+    'share.notFound': 'Această listă nu mai este disponibilă.',
+    'share.empty': 'Această listă este momentan goală.',
+
+    // Invoice
+    'invoice.download': 'Descarcă PDF',
   }
 };
 

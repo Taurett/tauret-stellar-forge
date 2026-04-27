@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      bundle_deals: {
+        Row: {
+          created_at: string
+          description: string | null
+          discount_percent: number
+          ends_at: string | null
+          id: string
+          is_active: boolean
+          min_quantity: number
+          name: string
+          product_id: number | null
+          sort_order: number
+          starts_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          discount_percent: number
+          ends_at?: string | null
+          id?: string
+          is_active?: boolean
+          min_quantity: number
+          name: string
+          product_id?: number | null
+          sort_order?: number
+          starts_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          discount_percent?: number
+          ends_at?: string | null
+          id?: string
+          is_active?: boolean
+          min_quantity?: number
+          name?: string
+          product_id?: number | null
+          sort_order?: number
+          starts_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       chat_conversations: {
         Row: {
           created_at: string
@@ -192,6 +237,83 @@ export type Database = {
           tracking_url?: string | null
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      product_answers: {
+        Row: {
+          body: string
+          created_at: string
+          display_name: string | null
+          id: string
+          is_admin_answer: boolean
+          question_id: string
+          status: Database["public"]["Enums"]["qa_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          is_admin_answer?: boolean
+          question_id: string
+          status?: Database["public"]["Enums"]["qa_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          is_admin_answer?: boolean
+          question_id?: string
+          status?: Database["public"]["Enums"]["qa_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_answers_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "product_questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_questions: {
+        Row: {
+          body: string
+          created_at: string
+          display_name: string | null
+          id: string
+          product_id: number
+          status: Database["public"]["Enums"]["qa_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          product_id: number
+          status?: Database["public"]["Enums"]["qa_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          product_id?: number
+          status?: Database["public"]["Enums"]["qa_status"]
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -470,6 +592,36 @@ export type Database = {
         }
         Relationships: []
       }
+      wishlist_shares: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          share_token: string
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          share_token?: string
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          share_token?: string
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       wishlists: {
         Row: {
           created_at: string
@@ -506,6 +658,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      qa_status: "pending" | "approved" | "rejected"
       return_status:
         | "requested"
         | "approved"
@@ -641,6 +794,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      qa_status: ["pending", "approved", "rejected"],
       return_status: [
         "requested",
         "approved",

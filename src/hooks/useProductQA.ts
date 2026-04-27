@@ -54,7 +54,7 @@ export function useProductQA(productId: number | null) {
       }, {} as Record<string, ProductAnswer[]>);
     }
     setQuestions(
-      (qs ?? []).map((q) => ({ ...(q as ProductQuestion), answers: answersByQ[q.id] ?? [] })),
+      (qs ?? []).map((q) => ({ ...(q as unknown as ProductQuestion), answers: answersByQ[q.id] ?? [] })),
     );
     setLoading(false);
   }, [productId]);

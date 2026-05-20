@@ -1,0 +1,18 @@
+# TAURET
+
+> Premium futuristic sportswear engineered for elite athletes across tennis, football, basketball, cycling, gym, and more.
+
+TAURET designs and sells high-performance sports clothing with a deep-space / cyberpunk aesthetic. The catalog is focused on apparel only — no equipment or footwear.
+
+## Pages
+
+- [Home](/): Brand introduction, featured products, and sport categories.
+- [Shop](/shop): Full product catalog with filters by sport and category.
+- [Wishlist](/wishlist): Saved products (also shareable via link).
+- [Compare](/compare): Side-by-side product comparison.
+- [Help Center](/help): FAQs about shipping, returns, sizing, payments, and orders.
+
+## Optional
+
+- [Cart](/cart): User shopping cart.
+- [Sign in](/auth): Account login and registration.
